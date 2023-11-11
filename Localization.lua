@@ -308,8 +308,8 @@ PawnUIFrame_ButtonOffRadio_Tooltip = "Don't show the Pawn button on the Characte
 
 -- Configuration UI, About tab
 PawnUIFrame_AboutTab_Text = "About"
-PawnUIFrame_AboutHeaderLabel_Text = "by Vger-Azjol-Nerub"
-PawnUIFrame_AboutVersionLabel_Text = "Version %s"
+PawnUIFrame_AboutHeaderLabel_Text = "by Vger-Azjol-Nerub - Updated by Undeadhunter"
+PawnUIFrame_AboutVersionLabel_Text = "Version %s - Chomiecraft by Undeadhunter"
 PawnUIFrame_AboutTranslationLabel_Text = "Official English version" -- Translators: credit yourself here... "Klingon translation by Stovokor"
 PawnUIFrame_ReadmeLabel_Text = "New to Pawn?  See the getting started tab for a really basic introduction.  You can learn about more advanced features in the readme file that comes with Pawn."
 PawnUIFrame_WebsiteLabel_Text = "For other mods by Vger, visit vgermods.com.\n\nWowhead stat weights used with permission.  If you have feedback on the scale values, please direct it to the appropriate Wowhead Theorycrafting forum threads."
