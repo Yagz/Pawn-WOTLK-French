@@ -483,7 +483,7 @@ PawnGemData70Uncommon =
 
 { 23100, true, false, true, "Strength", 3, "Stamina", 4 }, -- Sovereign Shadow Draenite
 { 23108, true, false, true, "SpellPower", 4, "Stamina", 4 }, -- Glowing Shadow Draenite
-{ 23109, true, false, true, "SpellPower", 3, "Mp5", 1 }, -- Royal Shadow Draenite
+{ 23109, true, false, true, "SpellPower", 4, "Mp5", 2 }, -- Royal Shadow Draenite
 { 23110, true, false, true, "Agility", 3, "Stamina", 4 }, -- Shifting Shadow Draenite
 { 31862, true, false, true, "Ap", 6, "Stamina", 4 }, -- Balanced Shadow Draenite
 { 31864, true, false, true, "Ap", 6, "Mp5", 2 }, -- Infused Shadow Draenite
@@ -506,7 +506,7 @@ PawnGemData70Rare =
 
 { 24027, true, false, false, "Strength", 8 }, -- Bold Living Ruby
 { 24028, true, false, false, "Agility", 8 }, -- Delicate Living Ruby
-{ 24029, true, false, false, "SpellPower", 6 }, -- Teardrop Living Ruby
+{ 24029, true, false, false, "SpellPower", 9 }, -- Teardrop Living Ruby
 { 24030, true, false, false, "SpellPower", 9 }, -- Runed Living Ruby
 { 24031, true, false, false, "Ap", 16 }, -- Bright Living Ruby
 { 24032, true, false, false, "DodgeRating", 8 }, -- Subtle Living Ruby
@@ -569,7 +569,7 @@ PawnGemData70Rare =
 { 24054, true, false, true, "Strength", 4, "Stamina", 6 }, -- Sovereign Nightseye
 { 24055, true, false, true, "Agility", 4, "Stamina", 6 }, -- Shifting Nightseye
 { 24056, true, false, true, "SpellPower", 5, "Stamina", 6 }, -- Glowing Nightseye
-{ 24057, true, false, true, "Healing", 9, "SpellPower", 3, Mp5 = 2 }, -- Royal Nightseye
+{ 24057, true, false, true, "SpellPower", 5, Mp5 = 2 }, -- Royal Nightseye
 { 31863, true, false, true, "Ap", 8, "Stamina", 6 }, -- Balanced Nightseye
 { 31865, true, false, true, "Ap", 8, "Mp5", 2 }, -- Infused Nightseye
 { 35707, true, false, true, "DodgeRating", 4, "Stamina", 6 }, -- Regal Nightseye (PHASE 5)
@@ -591,7 +591,7 @@ PawnGemData70Epic =
 
 { 32193, true, false, false, "Strength", 10 }, -- Bold Crimson Spinel
 { 32194, true, false, false, "Agility", 10 }, -- Delicate Crimson Spinel
-{ 32195, true, false, false, "SpellPower", 8 }, -- Teardrop Crimson Spinel
+{ 32195, true, false, false, "SpellPower", 12 }, -- Teardrop Crimson Spinel
 { 32196, true, false, false, "SpellPower", 12 }, -- Runed Crimson Spinel (PHASE 3)
 { 32197, true, false, false, "Ap", 20 }, -- Bright Crimson Spinel (PHASE 3)
 { 32198, true, false, false, "DodgeRating", 10 }, -- Subtle Crimson Spinel
@@ -607,7 +607,7 @@ PawnGemData70Epic =
 { 32219, true, false, true, "SpellPower", 4, "Intellect", 5 }, -- Luminous Pyrestone
 { 32220, true, false, true, "HitRating", 5, "Agility", 5 }, -- Glinting Pyrestone
 { 32221, true, false, true, "SpellHitRating", 5, "SpellPower", 6 }, -- Veiled Pyrestone
-{ 32222, true, false, true, "CritRating", 5, Ap = 10 }, -- Glinting Pyrestone
+{ 32222, true, false, true, "CritRating", 5, "Ap", 10 }, -- Wicked Pyrestone
 { 35760, true, false, true, "SpellHasteRating", 5, "SpellPower", 6 }, -- Reckless Pyrestone
 
 
@@ -671,7 +671,7 @@ PawnMetaGemData70Rare =
 
 	
 { 25896, "Stamina", 18 }, -- Powerful Earthstorm Diamond
-{ 25897, "SpellPower", 9 }, -- Bracing Earthstorm Diamond
+{ 25897, "SpellPower", 14 }, -- Bracing Earthstorm Diamond
 { 25898, "DefenseRating", 12 }, -- Tenacious Earthstorm Diamond
 { 25901, "Intellect", 12 }, -- Insightful Earthstorm Diamond
 { 32409, "Agility", 12 }, -- Relentless Earthstorm Diamond
@@ -679,7 +679,7 @@ PawnMetaGemData70Rare =
 { 25894, "Ap", 24 }, -- Swift Skyfire Diamond
 { 34220, "SpellCritRating", 12 }, -- Chaotic Skyfire Diamond
 { 35501, "DefenseRating", 12 }, -- Eternal Earthstorm Diamond (PHASE 5)
-{ 35503, "SpellPower", 14 }, -- Ember Skyfire Diamond (PHASE 5)
+{ 35503, "SpellPower", 14 }, -- Ember Skyfire Diamond (PHASE 5) + 2% Int
 
 
 }
@@ -721,4 +721,4 @@ PawnMetaGemQualityTables =
 	[71] = PawnMetaGemData70Rare,
 	[81] = PawnMetaGemData80Rare,
 }
-PawnDefaultMetaGemQualityLevel = 81
+PawnDefaultMetaGemQualityLevel = 71
