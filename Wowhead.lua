@@ -22,7 +22,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_WarriorArms,
 	"c79c6e",
 	{
-		["Strength"] = 100, ["HitRating"] = 90, ["ExpertiseRating"] = 85, ["CritRating"] = 80, ["Agility"] = 65, ["ArmorPenetration"] = 65, ["HasteRating"] = 50, ["Ap"] = 45, ["Armor"] = 1, ["Stamina"] = .1, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["Strength"] = 1.073, ["HitRating"] = 1.561, ["ExpertiseRating"] = 0.634, ["CritRating"] = 0.927, ["Agility"] = 0.78, ["ArmorPenetration"] = 0.829, ["HasteRating"] = 0.341, ["Ap"] = 0.488, ["Armor"] = 0.01, ["Stamina"] = .1, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100, ["MeleeDps"] = 6.049
 	},
 	1
 )
@@ -33,7 +33,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_WarriorFury,
 	"c79c6e",
 	{
-		["ExpertiseRating"] = 100, ["Strength"] = 82, ["CritRating"] = 66, ["Agility"] = 53, ["ArmorPenetration"] = 52, ["HitRating"] = 48, ["HasteRating"] = 36, ["Ap"] = 31, ["Armor"] = 5, ["Stamina"] = .1, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["ExpertiseRating"] = 2.5, ["Strength"] = 3.25, ["CritRating"] = 1.875, ["Agility"] = 1.25, ["ArmorPenetration"] = 3.125, ["HitRating"] = 2.5, ["HasteRating"] = 1.875, ["Ap"] = 1.25, ["Armor"] = 0.025, ["Stamina"] = .1, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100, ["MeleeDps"] = 27.5
 	},
 	1
 )
@@ -44,7 +44,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_WarriorTank,
 	"c79c6e",
 	{
-		["Stamina"] = 100, ["DodgeRating"] = 90, ["DefenseRating"] = 86, ["BlockValue"] = 81, ["Agility"] = 67, ["ParryRating"] = 67, ["BlockRating"] = 48, ["Strength"] = 48, ["ExpertiseRating"] = 19, ["HitRating"] = 10, ["ArmorPenetration"] = 10, ["CritRating"] = 7, ["Armor"] = 6, ["HasteRating"] = 1, ["Ap"] = 1, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["Stamina"] = 2, ["DodgeRating"] = 1.4, ["DefenseRating"] = 1.6, ["BlockValue"] = 1.18, ["Agility"] = 1.2, ["ParryRating"] = 1.16, ["BlockRating"] = 0.7, ["Strength"] = 0.66, ["ExpertiseRating"] = 1.34, ["HitRating"] = 0.4, ["ArmorPenetration"] = 0.4, ["CritRating"] = 0.4, ["Armor"] = 0.1, ["HasteRating"] = 0.4, ["Ap"] = 0.12, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100, ["MeleeDps"] = 20, ["BonusArmor"] = 0.1
 	},
 	1
 )
@@ -59,7 +59,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_PaladinHoly,
 	"f58cba",
 	{
-		["Intellect"] = 100, ["Mp5"] = 88, ["SpellPower"] = 58, ["CritRating"] = 46, ["HasteRating"] = 35, ["Stamina"] = .1, ["IsDagger"] = -1000000, ["IsFist"] = -1000000, ["IsStaff"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["Intellect"] = 3.264, ["Mp5"] = 2.374, ["SpellPower"] = 2.374, ["CritRating"] = 2.671, ["HasteRating"] = 1.78, ["Stamina"] = .1, ["IsDagger"] = -1000000, ["IsFist"] = -1000000, ["IsStaff"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -70,7 +70,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_PaladinTank,
 	"f58cba",
 	{
-		["Stamina"] = 100, ["Agility"] = 60, ["ExpertiseRating"] = 59, ["DodgeRating"] = 55, ["DefenseRating"] = 45, ["ParryRating"] = 30, ["Strength"] = 16, ["Armor"] = 8, ["BlockRating"] = 7, ["BlockValue"] = 6, ["IsDagger"] = -1000000, ["IsFist"] = -1000000, ["IsStaff"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["Stamina"] = 2.5, ["Agility"] = 1.9, ["ExpertiseRating"] = 1.975, ["DodgeRating"] = 2.35, ["DefenseRating"] = 2.15, ["ParryRating"] = 2.15, ["Armor"] = 0.15, ["BlockRating"] = 1.3, ["BlockValue"] = 2.15, ["IsDagger"] = -1000000, ["IsFist"] = -1000000, ["IsStaff"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100, ["SpellPower"] = 0.15, ["HitRating"] = 1.45, ["BonusArmor"] = 0.15, ["CritRating"] = 0.075, ["Ap"] = 0.15, ["MeleeDps"] = 12.5
 	},
 	1
 )
@@ -81,7 +81,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_PaladinRetribution,
 	"f58cba",
 	{
-		["MeleeDps"] = 470, ["HitRating"] = 100, ["Strength"] = 80, ["ExpertiseRating"] = 66, ["CritRating"] = 40, ["Ap"] = 34, ["Agility"] = 32, ["HasteRating"] = 30, ["ArmorPenetration"] = 22, ["SpellPower"] = 9, ["Stamina"] = .1, ["IsDagger"] = -1000000, ["IsFist"] = -1000000, ["IsStaff"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["MeleeDps"] = 5.988, ["HitRating"] = 2.695, ["Strength"] = 2.994, ["ExpertiseRating"] = 4.491, ["CritRating"] = 2.156, ["Ap"] = 1.228, ["Agility"] = 2.096, ["HasteRating"] = 2.036, ["ArmorPenetration"] = 1.886, ["SpellPower"] = 1.198, ["Stamina"] = .1, ["IsDagger"] = -1000000, ["IsFist"] = -1000000, ["IsStaff"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100, ["Speed"] = 2.096, 
 	},
 	1
 )
@@ -96,7 +96,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_HunterBeastMastery,
 	"abd473",
 	{
-		["RangedDps"] = 213, ["HitRating"] = 100, ["Agility"] = 58, ["CritRating"] = 40, ["Intellect"] = 37, ["Ap"] = 30, ["ArmorPenetration"] = 28, ["HasteRating"] = 21, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsShield"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["RangedDps"] = 12.5, ["HitRating"] = 3.25, ["Agility"] = 2.5, ["CritRating"] = 1.75, ["Intellect"] = 0.1, ["Ap"] = 1, ["ArmorPenetration"] = 1.75, ["HasteRating"] = 2.75, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsShield"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -107,7 +107,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_HunterMarksman,
 	"abd473",
 	{
-		["RangedDps"] = 379, ["HitRating"] = 100, ["Agility"] = 74, ["CritRating"] = 57, ["ArmorPenetration"] = 40, ["Intellect"] = 39, ["Ap"] = 32, ["HasteRating"] = 24, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsShield"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["RangedDps"] = 12.5, ["HitRating"] = 3.25, ["Agility"] = 2.5, ["CritRating"] = 1.75, ["Intellect"] = 0.1, ["ArmorPenetration"] = 1.75, ["HasteRating"] = 2.75, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsShield"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -118,7 +118,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_HunterSurvival,
 	"abd473",
 	{
-		["RangedDps"] = 181, ["HitRating"] = 100, ["Agility"] = 76, ["CritRating"] = 42, ["Intellect"] = 35, ["HasteRating"] = 31, ["Ap"] = 29, ["ArmorPenetration"] = 26, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsShield"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["RangedDps"] = 12.5, ["HitRating"] = 3.25, ["Agility"] = 2.5, ["CritRating"] = 1.75, ["Intellect"] = 0.1, ["Ap"] = 1, ["ArmorPenetration"] = 1.75, ["HasteRating"] = 2.75, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsShield"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -133,7 +133,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_RogueAssassination,
 	"fff569",
 	{
-		["MeleeDps"] = 170, ["Agility"] = 100, ["ExpertiseRating"] = 87, ["HitRating"] = 83, ["CritRating"] = 81, ["Ap"] = 65, ["ArmorPenetration"] = 65, ["HasteRating"] = 64, ["Strength"] = 55, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsShield"] = -1000000, ["IsPolearm"] = -1000000, ["IsStaff"] = -1000000, ["Is2HAxe"] = -1000000, ["Is2HMace"] = -1000000, ["Is2HSword"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["MeleeDps"] = 8, ["Agility"] = 2.3, ["ExpertiseRating"] = 2, ["HitRating"] = 2, ["CritRating"] = 1.5, ["Ap"] = 1, ["ArmorPenetration"] = 1.5, ["HasteRating"] = 1.8, ["Strength"] = 1.1, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsShield"] = -1000000, ["IsPolearm"] = -1000000, ["IsStaff"] = -1000000, ["Is2HAxe"] = -1000000, ["Is2HMace"] = -1000000, ["Is2HSword"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -144,7 +144,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_RogueCombat,
 	"fff569",
 	{
-		["MeleeDps"] = 220, ["ArmorPenetration"] = 100, ["Agility"] = 100, ["ExpertiseRating"] = 82, ["HitRating"] = 80, ["CritRating"] = 75, ["HasteRating"] = 73, ["Strength"] = 55, ["Ap"] = 50, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsShield"] = -1000000, ["IsPolearm"] = -1000000, ["IsStaff"] = -1000000, ["Is2HAxe"] = -1000000, ["Is2HMace"] = -1000000, ["Is2HSword"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["MeleeDps"] = 8, ["Agility"] = 2.3, ["ExpertiseRating"] = 2, ["HitRating"] = 2, ["CritRating"] = 1.5, ["Ap"] = 1, ["ArmorPenetration"] = 1.5, ["HasteRating"] = 1.8, ["Strength"] = 1.1, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsShield"] = -1000000, ["IsPolearm"] = -1000000, ["IsStaff"] = -1000000, ["Is2HAxe"] = -1000000, ["Is2HMace"] = -1000000, ["Is2HSword"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -155,7 +155,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_RogueSubtlety,
 	"fff569",
 	{
-		["MeleeDps"] = 228, ["ExpertiseRating"] = 100, ["Agility"] = 100, ["HitRating"] = 80, ["ArmorPenetration"] = 75, ["CritRating"] = 75, ["HasteRating"] = 75, ["Strength"] = 55, ["Ap"] = 50, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsShield"] = -1000000, ["IsPolearm"] = -1000000, ["IsStaff"] = -1000000, ["Is2HAxe"] = -1000000, ["Is2HMace"] = -1000000, ["Is2HSword"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["MeleeDps"] = 8, ["Agility"] = 2.3, ["ExpertiseRating"] = 2, ["HitRating"] = 2, ["CritRating"] = 1.5, ["Ap"] = 1, ["ArmorPenetration"] = 1.5, ["HasteRating"] = 1.8, ["Strength"] = 1.1, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsShield"] = -1000000, ["IsPolearm"] = -1000000, ["IsStaff"] = -1000000, ["Is2HAxe"] = -1000000, ["Is2HMace"] = -1000000, ["Is2HSword"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -170,7 +170,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_PriestDiscipline,
 	"ffffff",
 	{
-		["SpellPower"] = 100, ["Mp5"] = 67, ["Intellect"] = 65, ["HasteRating"] = 59, ["CritRating"] = 48, ["Spirit"] = 22, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsPolearm"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["Is2HMace"] = -1000000, ["MetaSocketEffect"] = 3600
+		["SpellPower"] = 2.667, ["Mp5"] = 3.333, ["Intellect"] = 2.333, ["HasteRating"] = 4, ["CritRating"] = 1.333, ["Spirit"] = 2.333, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsPolearm"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["Is2HMace"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -181,7 +181,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_PriestHoly,
 	"ffffff",
 	{
-		["Mp5"] = 100, ["Intellect"] = 69, ["SpellPower"] = 60, ["Spirit"] = 52, ["CritRating"] = 38, ["HasteRating"] = 31, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsPolearm"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["Is2HMace"] = -1000000, ["MetaSocketEffect"] = 3600
+		["SpellPower"] = 2.667, ["Mp5"] = 3.333, ["Intellect"] = 2.333, ["HasteRating"] = 4, ["CritRating"] = 1.333, ["Spirit"] = 2.333, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsPolearm"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["Is2HMace"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -192,7 +192,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_PriestShadow,
 	"ffffff",
 	{
-		["HitRating"] = 100, ["ShadowSpellDamage"] = 76, ["SpellPower"] = 76, ["CritRating"] = 54, ["HasteRating"] = 50, ["Spirit"] = 16, ["Intellect"] = 16, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsPolearm"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["Is2HMace"] = -1000000, ["MetaSocketEffect"] = 3600
+		["HitRating"] = 3.333, ["ShadowSpellDamage"] = 3.333, ["SpellPower"] = 3.333, ["CritRating"] = 3.333, ["HasteRating"] = 3.333, ["Spirit"] = 0.333, ["Intellect"] = 0.167, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsPolearm"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["Is2HMace"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -203,22 +203,11 @@ PawnAddPluginScale(
 
 PawnAddPluginScale(
 	ScaleProviderName,
-	"DeathKnightBloodDps",
-	PawnWowheadScale_DeathKnightBloodDps,
-	"ff4d6b",
-	{
-		["MeleeDps"] = 360, ["ArmorPenetration"] = 100, ["Strength"] = 99, ["HitRating"] = 91, ["ExpertiseRating"] = 90, ["CritRating"] = 57, ["HasteRating"] = 55, ["Ap"] = 36, ["Armor"] = 1, ["Stamina"] = .1, ["IsShield"] = -1000000, ["IsDagger"] = -1000000, ["IsFist"] = -1000000, ["IsStaff"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
-	},
-	1
-)
-
-PawnAddPluginScale(
-	ScaleProviderName,
 	"DeathKnightBloodTank",
 	PawnWowheadScale_DeathKnightBloodTank,
 	"ff4d6b",
 	{
-		["MeleeDps"] = 500, ["Stamina"] = 100, ["DefenseRating"] = 90, ["Agility"] = 69, ["DodgeRating"] = 50, ["ParryRating"] = 43, ["ExpertiseRating"] = 38, ["Strength"] = 31, ["ArmorPenetration"] = 26, ["CritRating"] = 22, ["Armor"] = 18, ["HitRating"] = 16, ["HasteRating"] = 16, ["BonusArmor"] = 11, ["Ap"] = 8, ["IsShield"] = -1000000, ["IsDagger"] = -1000000, ["IsFist"] = -1000000, ["IsStaff"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["MeleeDps"] = 20, ["Stamina"] = 2, ["DefenseRating"] = 1.6, ["Agility"] = 1.2, ["DodgeRating"] = 1.4, ["ParryRating"] = 1.16, ["ExpertiseRating"] = 1.34, ["Strength"] = 0.66, ["ArmorPenetration"] = 0.4, ["CritRating"] = 0.4, ["Armor"] = 0.1, ["HitRating"] = 1.34, ["HasteRating"] = 0.4, ["Ap"] = 0.12, ["IsShield"] = -1000000, ["IsDagger"] = -1000000, ["IsFist"] = -1000000, ["IsStaff"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100, ["BonusArmor"] = 0.1
 	},
 	1
 )
@@ -229,18 +218,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_DeathKnightFrostDps,
 	"ff4d6b",
 	{
-		["MeleeDps"] = 337, ["HitRating"] = 100, ["Strength"] = 97, ["ExpertiseRating"] = 81, ["ArmorPenetration"] = 61, ["CritRating"] = 45, ["Ap"] = 35, ["HasteRating"] = 28, ["Armor"] = 1, ["Stamina"] = .1, ["IsShield"] = -1000000, ["IsDagger"] = -1000000, ["IsFist"] = -1000000, ["IsStaff"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
-	},
-	1
-)
-
-PawnAddPluginScale(
-	ScaleProviderName,
-	"DeathKnightFrostTank",
-	PawnWowheadScale_DeathKnightFrostTank,
-	"ff4d6b",
-	{
-		["MeleeDps"] = 419, ["ParryRating"] = 100, ["HitRating"] = 97, ["Strength"] = 96, ["DefenseRating"] = 85, ["ExpertiseRating"] = 69, ["DodgeRating"] = 61, ["Agility"] = 61, ["Stamina"] = 61, ["CritRating"] = 49, ["Ap"] = 41, ["ArmorPenetration"] = 31, ["Armor"] = 5, ["IsShield"] = -1000000, ["IsDagger"] = -1000000, ["IsFist"] = -1000000, ["IsStaff"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["MeleeDps"] = 62.5, ["HitRating"] = 1.25, ["Strength"] = 2.6, ["ExpertiseRating"] = 1.25, ["ArmorPenetration"] = 1.25, ["CritRating"] = 1.25, ["Ap"] = 1.25, ["HasteRating"] = 1.25, ["Armor"] = 1, ["Stamina"] = .1, ["IsShield"] = -1000000, ["IsDagger"] = -1000000, ["IsFist"] = -1000000, ["IsStaff"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100, ["Agility"] = 0.625
 	},
 	1
 )
@@ -251,7 +229,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_DeathKnightUnholyDps,
 	"ff4d6b",
 	{
-		["MeleeDps"] = 209, ["Strength"] = 100, ["HitRating"] = 66, ["ExpertiseRating"] = 51, ["HasteRating"] = 48, ["CritRating"] = 45, ["Ap"] = 34, ["ArmorPenetration"] = 32, ["Armor"] = 1, ["Stamina"] = .1, ["IsShield"] = -1000000, ["IsDagger"] = -1000000, ["IsFist"] = -1000000, ["IsStaff"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["MeleeDps"] = 62.5, ["HitRating"] = 1.25, ["Strength"] = 2.6, ["ExpertiseRating"] = 1.25, ["ArmorPenetration"] = 1.25, ["CritRating"] = 1.25, ["Ap"] = 1.25, ["HasteRating"] = 1.25, ["Armor"] = 1, ["Stamina"] = .1, ["IsShield"] = -1000000, ["IsDagger"] = -1000000, ["IsFist"] = -1000000, ["IsStaff"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100, ["Agility"] = 0.625
 	},
 	1
 )
@@ -266,7 +244,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_ShamanElemental,
 	"6e95ff",
 	{
-		["HitRating"] = 100, ["SpellPower"] = 60, ["HasteRating"] = 56, ["CritRating"] = 40, ["Intellect"] = 11, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsPolearm"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["HitRating"] = 3.333, ["SpellPower"] = 3.333, ["HasteRating"] = 3.333, ["CritRating"] = 3.333, ["Intellect"] = 0.567, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsPolearm"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -277,7 +255,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_ShamanEnhancement,
 	"6e95ff",
 	{
-		["MeleeDps"] = 135, ["HitRating"] = 100, ["ExpertiseRating"] = 84, ["Agility"] = 55, ["Intellect"] = 55, ["CritRating"] = 55, ["HasteRating"] = 42, ["Strength"] = 35, ["Ap"] = 32, ["SpellPower"] = 29, ["ArmorPenetration"] = 26, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsPolearm"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["MeleeDps"] = 16.667, ["HitRating"] = 1.342, ["ExpertiseRating"] = 4.51, ["Agility"] = 2.232, ["Intellect"] = 55, ["CritRating"] = 0.318, ["HasteRating"] = 3.078, ["Strength"] = 2, ["Ap"] = 1.667, ["SpellPower"] = 0.758, ["ArmorPenetration"] = 3, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsPolearm"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -288,7 +266,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_ShamanRestoration,
 	"6e95ff",
 	{
-		["Mp5"] = 100, ["Intellect"] = 85, ["SpellPower"] = 77, ["CritRating"] = 62, ["HasteRating"] = 35, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsPolearm"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["Mp5"] = 4.615, ["Intellect"] = 3.846, ["SpellPower"] = 3.846, ["CritRating"] = 3.846, ["HasteRating"] = 4.615, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsPolearm"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -303,7 +281,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_MageArcane,
 	"69ccf0",
 	{
-		["HitRating"] = 100, ["HasteRating"] = 54, ["ArcaneSpellDamage"] = 49, ["SpellPower"] = 49, ["CritRating"] = 37, ["Intellect"] = 34, ["FrostSpellDamage"] = 24, ["FireSpellDamage"] = 24, ["Spirit"] = 14, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsPolearm"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["MetaSocketEffect"] = 3600
+		["HitRating"] = 2.727, ["HasteRating"] = 3.03, ["ArcaneSpellDamage"] = 3.333, ["SpellPower"] = 3.333, ["CritRating"] = 2.423, ["Intellect"] = 2.12, ["Spirit"] = 0.607, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsPolearm"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["MetaSocketEffect"] = 100, ["Mp5"] = 1.517
 	},
 	1
 )
@@ -314,7 +292,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_MageFire,
 	"69ccf0",
 	{
-		["HitRating"] = 100, ["HasteRating"] = 53, ["FireSpellDamage"] = 46, ["SpellPower"] = 46, ["CritRating"] = 43, ["FrostSpellDamage"] = 23, ["ArcaneSpellDamage"] = 23, ["Intellect"] = 13, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsPolearm"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["MetaSocketEffect"] = 3600
+		["HitRating"] = 4.167, ["HasteRating"] = 3.057, ["FireSpellDamage"] = 3.333, ["SpellPower"] = 3.333, ["CritRating"] = 2.5, ["Intellect"] = 1.39, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsPolearm"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["MetaSocketEffect"] = 100, ["Mp5"] = 1.39, ["Spirit"] = 0.557
 	},
 	1
 )
@@ -325,7 +303,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_MageFrost,
 	"69ccf0",
 	{
-		["HitRating"] = 100, ["HasteRating"] = 42, ["FrostSpellDamage"] = 39, ["SpellPower"] = 39, ["ArcaneSpellDamage"] = 19, ["FireSpellDamage"] = 19, ["CritRating"] = 19, ["Intellect"] = 6, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsPolearm"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["MetaSocketEffect"] = 3600
+		["HitRating"] = 5.15, ["HasteRating"] = 4.39, ["FrostSpellDamage"] = 3.333, ["SpellPower"] = 3.333, ["CritRating"] = 2.137, ["Intellect"] = 0.617, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsPolearm"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["MetaSocketEffect"] = 100, ["Mp5"] = 1.463, ["Spirit"] = 0.557
 	},
 	1
 )
@@ -340,7 +318,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_WarlockAffliction,
 	"bca5ff",
 	{
-		["HitRating"] = 100, ["ShadowSpellDamage"] = 72, ["SpellPower"] = 72, ["HasteRating"] = 61, ["CritRating"] = 38, ["FireSpellDamage"] = 36, ["Spirit"] = 34, ["Intellect"] = 15, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsPolearm"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["MetaSocketEffect"] = 3600
+		["HitRating"] = 4.667, ["ShadowSpellDamage"] = 3.333, ["SpellPower"] = 3.333, ["HasteRating"] = 3.667, ["CritRating"] = 2, ["Intellect"] = 0.667, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsPolearm"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -351,7 +329,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_WarlockDemonology,
 	"bca5ff",
 	{
-		["HitRating"] = 100, ["HasteRating"] = 50, ["FireSpellDamage"] = 45, ["ShadowSpellDamage"] = 45, ["SpellPower"] = 45, ["CritRating"] = 31, ["Spirit"] = 29, ["Intellect"] = 13, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsPolearm"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["MetaSocketEffect"] = 3600
+		["HitRating"] = 5.333, ["HasteRating"] = 4, ["ShadowSpellDamage"] = 3.333, ["SpellPower"] = 3.333, ["CritRating"] = 2.667, ["Intellect"] = 1.333, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsPolearm"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -362,7 +340,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_WarlockDestruction,
 	"bca5ff",
 	{
-		["HitRating"] = 100, ["FireSpellDamage"] = 47, ["SpellPower"] = 47, ["HasteRating"] = 46, ["Spirit"] = 26, ["ShadowSpellDamage"] = 23, ["CritRating"] = 16, ["Intellect"] = 13, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsPolearm"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["MetaSocketEffect"] = 3600
+		["HitRating"] = 5.333, ["HasteRating"] = 4, ["ShadowSpellDamage"] = 3.333, ["SpellPower"] = 3.333, ["CritRating"] = 2.667, ["Intellect"] = 1.333, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsLeather"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsFist"] = -1000000, ["IsMace"] = -1000000, ["Is2HMace"] = -1000000, ["IsPolearm"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -377,7 +355,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_DruidBalance,
 	"ff7d0a",
 	{
-		["HitRating"] = 100, ["SpellPower"] = 66, ["HasteRating"] = 54, ["CritRating"] = 43, ["Spirit"] = 22, ["Intellect"] = 22, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["HitRating"] = 4, ["SpellPower"] = 3.333, ["ArcaneSpellDamage"] = 3.333, ["HasteRating"] = 2.667, ["CritRating"] = 2, ["Spirit"] = 1, ["Intellect"] = 1.333, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100, ["Mp5"] = 2
 	},
 	1
 )
@@ -388,7 +366,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_DruidFeralDps,
 	"ff7d0a",
 	{
-		["Agility"] = 100, ["ArmorPenetration"] = 90, ["Strength"] = 80, ["CritRating"] = 55, ["ExpertiseRating"] = 50, ["HitRating"] = 50, ["FeralAp"] = 40, ["Ap"] = 40, ["HasteRating"] = 35, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["Agility"] = 2.758, ["ArmorPenetration"] = 2.59, ["Strength"] = 2.266, ["CritRating"] = 1.623, ["ExpertiseRating"] = 2.407, ["HitRating"] = 2.407, ["FeralAp"] = 1, ["Ap"] = 1, ["HasteRating"] = 0.927, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
@@ -399,7 +377,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_DruidFeralTank,
 	"ff7d0a",
 	{
-		["Agility"] = 100, ["Stamina"] = 75, ["DodgeRating"] = 65, ["DefenseRating"] = 60, ["ExpertiseRating"] = 16, ["Strength"] = 10, ["Armor"] = 10, ["HitRating"] = 8, ["HasteRating"] = 5, ["Ap"] = 4, ["FeralAp"] = 4, ["CritRating"] = 3, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["Agility"] = 1.482, ["Stamina"] = 1.561, ["DodgeRating"] = 0.243, ["DefenseRating"] = 0.232, ["ExpertiseRating"] = 2.28, ["Strength"] = 1.133, ["Armor"] = 0.286, ["HitRating"] = 1.123, ["HasteRating"] = 0.831, ["Ap"] = 0.5, ["FeralAp"] = 0.5, ["CritRating"] = 1.009, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100, ["ArmorPenetration"] = 0.879, ["Resilience"] = 0.116
 	},
 	1
 )
@@ -410,7 +388,7 @@ PawnAddPluginScale(
 	PawnWowheadScale_DruidRestoration,
 	"ff7d0a",
 	{
-		["SpellPower"] = 100, ["Mp5"] = 73, ["HasteRating"] = 57, ["Intellect"] = 51, ["Spirit"] = 32, ["CritRating"] = 11, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 3600
+		["SpellPower"] = 3.125, ["Mp5"] = 1.563, ["HasteRating"] = 3.125, ["Intellect"] = 0.891, ["Spirit"] = 1.238, ["CritRating"] = 0.313, ["Stamina"] = .1, ["IsPlate"] = -1000000, ["IsMail"] = -1000000, ["IsShield"] = -1000000, ["IsAxe"] = -1000000, ["Is2HAxe"] = -1000000, ["IsSword"] = -1000000, ["Is2HSword"] = -1000000, ["IsBow"] = -1000000, ["IsCrossbow"] = -1000000, ["IsGun"] = -1000000, ["IsThrown"] = -1000000, ["IsWand"] = -1000000, ["MetaSocketEffect"] = 100
 	},
 	1
 )
