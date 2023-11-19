@@ -314,7 +314,7 @@ PawnGemData80Epic =
 { 40128, false, true, false, "HasteRating", 20 }, -- Quick King's Amber
 
 
-------------------------------------------------------------
+--------------------------------------------------------Brilliant Dawn----
 -- Green gems
 ------------------------------------------------------------
 
@@ -530,14 +530,14 @@ PawnGemData70Rare =
 -- Yellow gems
 ------------------------------------------------------------
 
-{ 24047, false, false, true, "Intellect", 8 }, -- Brilliant Dawnstone
-{ 24048, false, false, true, "CritRating", 8 }, -- Smooth Dawnstone
-{ 24050, false, false, true, "SpellCritRating", 8 }, -- Gleaming Dawnstone
-{ 24051, false, false, true, "HitRating", 8 }, -- Rigid Dawnstone
-{ 24052, false, false, true, "DefenseRating", 8 }, -- Thick Dawnstone
-{ 24053, false, false, true, "ResilienceRating", 8 }, -- Mystic Dawnstone
-{ 31861, false, false, true, "SpellHitRating", 8 }, -- Great Dawnstone
-{ 35315, false, false, true, "SpellHasteRating", 8 }, -- Quick Dawnstone (PHASE 5)
+{ 24047, false, true, false, "Intellect", 8 }, -- Brilliant Dawnstone
+{ 24048, false, true, false, "CritRating", 8 }, -- Smooth Dawnstone
+{ 24050, false, true, false, "SpellCritRating", 8 }, -- Gleaming Dawnstone
+{ 24051, false, true, false, "HitRating", 8 }, -- Rigid Dawnstone
+{ 24052, false, true, false, "DefenseRating", 8 }, -- Thick Dawnstone
+{ 24053, false, true, false, "ResilienceRating", 8 }, -- Mystic Dawnstone
+{ 31861, false, true, false, "SpellHitRating", 8 }, -- Great Dawnstone
+{ 35315, false, true, false, "SpellHasteRating", 8 }, -- Quick Dawnstone (PHASE 5)
 
 
 ------------------------------------------------------------
