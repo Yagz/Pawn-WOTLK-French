@@ -11,8 +11,9 @@ VgerCore\VgerCore.lua
 Localization.lua
 Localization.frFR.lua
 Gems.lua
-PawnDebug.lua
 Pawn.lua
+PawnDebug.lua
+PawnEncodingFix.lua
 PawnUI.lua
 PawnUI.xml
 Wowhead.lua
