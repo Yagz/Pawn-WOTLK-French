@@ -547,10 +547,14 @@ PawnIgnoreNames =
 
 -- This is a list of regular expression substitutions that Pawn performs to normalize stat names before running
 -- them through the normal gauntlet of expressions.
-PawnNormalizationRegexes =
+PawnNormalizationRegexes = 
 {
-	{"^([%w%s%.àáâãäçèéêëìíîïðñòóôõöùúûüýÿ]+) %+(%d+)$", "+%2 %1"}, -- "Endurance +5" --> "+5 Endurance"
-	{"^(.-)|r.*", "%1"}, -- For removing meta gem requirements
+    {"^([%w%s%.àáâãäçèéêëìíîïðñòóôõöùúûüýÿÃ©â¢]+) %+(%d+)$", "+%2 %1"},
+    {"^(.-)Â(.*)$", "%1 %2"},        -- Supprimer les Â parasites
+    {"ÃquipÃ©", "Équipé"},            -- Convertir encodage corrompu
+    {"AgilitÃ©", "Agilité"},
+    {"dÃ©gÃ¢ts", "dégâts"},
+    {"^(.-)|r.*", "%1"},
 }
 
 -- These regular expressions are used to parse item tooltips.
