@@ -1,4 +1,4 @@
-﻿<Bindings>
+<Bindings>
 	<Binding name="PAWN_TOGGLE_UI" header="PAWN">
 		PawnUIShow()
 	</Binding>

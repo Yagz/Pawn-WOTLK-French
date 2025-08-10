@@ -568,249 +568,304 @@ PawnMultipleStatsExtract = "_MultipleExtract"
 PawnRegexes =
 {
 	-- ========================================
-	-- Strings that are ignored for compatibility with other mods
+	-- 1. COMPATIBILITÉ MODS ET PATTERNS COMMUNS IGNORÉS
 	-- ========================================
 	{"^Used by outfits:"}, -- Mod compatibility: Outfitter
 	
-	-- ========================================
-	-- Common strings that are ignored (rare ones are at the bottom of the file)
-	-- ========================================
-	{PawnGameConstant(ITEM_QUALITY0_DESC)}, -- Poor
-	{PawnGameConstant(ITEM_QUALITY1_DESC)}, -- Common
-	{PawnGameConstant(ITEM_QUALITY2_DESC)}, -- Uncommon
+	-- Qualités d'objets (constants automatiques)
+	{PawnGameConstant(ITEM_QUALITY0_DESC)}, -- Médiocre
+	{PawnGameConstant(ITEM_QUALITY1_DESC)}, -- Commun
+	{PawnGameConstant(ITEM_QUALITY2_DESC)}, -- Peu commun
 	{PawnGameConstant(ITEM_QUALITY3_DESC)}, -- Rare
-	{PawnGameConstant(ITEM_QUALITY4_DESC)}, -- Epic
-	{PawnGameConstant(ITEM_QUALITY5_DESC)}, -- Legendary
+	{PawnGameConstant(ITEM_QUALITY4_DESC)}, -- Épique
+	{PawnGameConstant(ITEM_QUALITY5_DESC)}, -- Légendaire
 	{PawnGameConstant(ITEM_QUALITY7_DESC)}, -- Heirloom
-	{PawnGameConstant(ITEM_HEROIC)}, -- Heroic (Thrall's Chestguard of Triumph, level 258 version)
-	{PawnGameConstant(ITEM_HEROIC_EPIC)}, -- Heroic Epic (Thrall's Chestguard of Triumph, level 258 version, with colorblind mode on)
-	{"^" .. ITEM_LEVEL}, -- Item Level 200
-	{PawnGameConstant(ITEM_UNSELLABLE)}, -- No sell price
-	{PawnGameConstant(ITEM_SOULBOUND)}, -- Soulbound
-	{PawnGameConstant(ITEM_BIND_ON_EQUIP)}, -- Binds when equipped
-	{PawnGameConstant(ITEM_BIND_ON_PICKUP)}, -- Binds when picked up
-	{PawnGameConstant(ITEM_BIND_ON_USE)}, -- Binds when used
-	{PawnGameConstant(ITEM_BIND_TO_ACCOUNT)}, -- Binds to account (Polished Spaulders of Valor)
-	{"^" .. PawnGameConstantUnwrapped(ITEM_UNIQUE)}, -- Unique; leave off the $ for Unique(20)
-	{"^" .. PawnGameConstantUnwrapped(ITEM_BIND_QUEST)}, -- Leave off the $ for MonkeyQuest mod compatibility
-	{PawnGameConstant(ITEM_STARTS_QUEST)}, -- This Item Begins a Quest
-	{PawnGameConstant(ITEM_CONJURED)}, -- Conjured Item
+	{PawnGameConstant(ITEM_HEROIC)}, -- Héroïque
+	{PawnGameConstant(ITEM_HEROIC_EPIC)}, -- Héroïque Épique
+
+	-- Informations d'objet de base
+	{"^" .. ITEM_LEVEL}, -- Niveau d'objet 200
+	{PawnGameConstant(ITEM_UNSELLABLE)}, -- Prix de vente nul
+	{PawnGameConstant(ITEM_SOULBOUND)}, -- Lié au ramassage
+	{PawnGameConstant(ITEM_BIND_ON_EQUIP)}, -- Lié quand équipé
+	{PawnGameConstant(ITEM_BIND_ON_PICKUP)}, -- Lié quand ramassé
+	{PawnGameConstant(ITEM_BIND_ON_USE)}, -- Lié quand utilisé
+	{PawnGameConstant(ITEM_BIND_TO_ACCOUNT)}, -- Lié au compte
+	{"^" .. PawnGameConstantUnwrapped(ITEM_UNIQUE)}, -- Unique
+	{"^" .. PawnGameConstantUnwrapped(ITEM_BIND_QUEST)}, -- Objet de quête
+	{PawnGameConstant(ITEM_STARTS_QUEST)}, -- Cet objet commence une quête
+	{PawnGameConstant(ITEM_CONJURED)}, -- Objet invoqué
 	{PawnGameConstant(ITEM_PROSPECTABLE)}, -- Prospectable
-	{PawnGameConstant(ITEM_MILLABLE)}, -- Millable
-	{PawnGameConstant(ITEM_DISENCHANT_NOT_DISENCHANTABLE)}, -- Cannot be disenchanted
-	{"^Will receive"}, -- Appears in the trade window when an item is about to be enchanted ("Will receive +8 Stamina")
-	{"^Disenchanting requires"}, -- Appears on item tooltips when the Disenchant ability is specified ("Disenchanting requires Enchanting (25)")
-	{PawnGameConstant(ITEM_ENCHANT_DISCLAIMER)}, -- Item will not be traded!
-	{"^.+ Charges?$"}, -- Brilliant Mana Oil
-	{PawnGameConstant(LOCKED)}, -- Locked
-	{PawnGameConstant(ENCRYPTED)}, -- Encrypted (Floral Foundations) (does not seem to exist in the game yet)
-	{PawnGameConstant(ITEM_SPELL_KNOWN)}, -- Already Known
-	{PawnGameConstant(INVTYPE_HEAD)}, -- Head
-	{PawnGameConstant(INVTYPE_NECK)}, -- Neck
-	{PawnGameConstant(INVTYPE_SHOULDER)}, -- Shoulder
-	{PawnGameConstant(INVTYPE_CLOAK), "IsCloth", 1, PawnMultipleStatsFixed}, -- Back (cloaks are cloth even though they don't list it)
-	{PawnGameConstant(INVTYPE_ROBE)}, -- Chest
-	{PawnGameConstant(INVTYPE_BODY)}, -- Shirt
-	{PawnGameConstant(INVTYPE_TABARD)}, -- Tabard
-	{PawnGameConstant(INVTYPE_WRIST)}, -- Wrist
-	{PawnGameConstant(INVTYPE_HAND)}, -- Hands
-	{PawnGameConstant(INVTYPE_WAIST)}, -- Waist
-	{PawnGameConstant(INVTYPE_FEET)}, -- Feet
-	{PawnGameConstant(INVTYPE_LEGS)}, -- Legs
-	{PawnGameConstant(INVTYPE_FINGER)}, -- Finger
-	{PawnGameConstant(INVTYPE_TRINKET)}, -- Trinket
-	{PawnGameConstant(MAJOR_GLYPH)}, -- Major Glyph
-	{PawnGameConstant(MINOR_GLYPH)}, -- Minor Glyph
+	{PawnGameConstant(ITEM_MILLABLE)}, -- Broyable
+	{PawnGameConstant(ITEM_DISENCHANT_NOT_DISENCHANTABLE)}, -- Ne peut pas être désenchanté
+
+	-- Informations techniques et commerce
+	{"^Will receive"}, -- Fenêtre d'échange pour enchantements
+	{"^Disenchanting requires"}, -- Exigences de désenchantement
+	{PawnGameConstant(ITEM_ENCHANT_DISCLAIMER)}, -- L'objet ne sera pas échangé !
+	{"^.+ Charges?$"}, -- Huile de mana brillante
+	{PawnGameConstant(LOCKED)}, -- Verrouillé
+	{PawnGameConstant(ENCRYPTED)}, -- Crypté
+	{PawnGameConstant(ITEM_SPELL_KNOWN)}, -- Déjà connu
+
+	-- Descriptions et informations diverses
+	{"<.+>"}, -- Fabriqué par, Clic-droit pour lire, etc.
+	{"^Écrit par "},
+	{"^Rédigé par "},
+	{"|cff%x%x%x%x%x%xNécessite"}, -- Exigences de gemmes méta
+	{"|cff%x%x%x%x%x%xRequiert"}, -- Alternative pour les exigences
+
+	-- Types spéciaux et informations
 	{"^Totem$"},
-	{"^Relic$"},
-	{"^Idol$"},
+	{"^Relique$"},
+	{"^Idole$"},
 	{"^Libram$"},
-	{"^Mount$"}, -- Cenarion War Hippogryph
-	{"^Classes:"},
-	{"^Races:"},
-	{"^Requires"},
-	{"^Durability"},
-	{"^Duration:"},
-	{"^Cooldown remaining:"},
-	{"<.+>"}, -- Made by, Right-click to read, etc. (No ^$; can be prefixed by a color)
-	{"^Written by "},
-	{"|cff%x%x%x%x%x%xRequires"}, -- Meta gem requirements
-	{"^%d+ Slot .+$"}, -- Bags of all kinds
-	{"^.+%(%d+ sec%)$"}, -- Temporary item buff
-	{"^.+%(%d+ min%)$"}, -- Temporary item buff
-	{"^Enchantment Requires"}, -- Seen on the enchanter-only ring enchantments when you're not an enchanter, and socketed jewelcrafter-only BoP gems
-	{"^Niveau (%d+) requis$"},
-	{"^Lié quand équipé$"},  
-	{"^Lié quand ramassé$"},
-	{"^Soulié au compte$"},
-	{"^À une main$"},
-	{"^Arme à une main$"},
-	{"^Unique%-équipé$"},
-	{"^Utiliser :"},
-	{"^Classes : "},
-	{"^Races : "},
+	{"^Monture$"},
+	{"^Classes :"},
+	{"^Races :"},
+	{"^Nécessite"},
+	{"^Requiert"},
+	{"^Durabilité"},
+	{"^Durée :"},
+	{"^Temps de recharge restant :"},
+	{"^Récupération restante :"},
+
+	-- Sacs et contenants
+	{"^.+ à (%d+) emplacements?$"}, -- Sacs génériques
+	{"^Sac à (%d+) emplacements?$"}, -- Sacs spécifiques
+
+	-- Effets temporaires
+	{"^.+%(%d+ sec%)$"}, -- Effet temporaire d'objet
+	{"^.+%(%d+ min%)$"}, -- Effet temporaire d'objet
+
+	-- Enchantements
+	{"^L'enchantement nécessite"}, -- Enchantements spéciaux
+	{"^Enchantement requis"},
+
+	-- ========================================
+	-- 2. TYPES D'ÉQUIPEMENT ET EMPLACEMENTS
+	-- ========================================
 	
-	-- ========================================
-	-- Strings that represent statistics that Pawn cares about
-	-- ========================================
+	-- Emplacements d'équipement (constants automatiques)
+	{PawnGameConstant(INVTYPE_HEAD)}, -- Tête
+	{PawnGameConstant(INVTYPE_NECK)}, -- Cou
+	{PawnGameConstant(INVTYPE_SHOULDER)}, -- Épaule
+	{PawnGameConstant(INVTYPE_CLOAK), "IsCloth", 1, PawnMultipleStatsFixed}, -- Dos
+	{PawnGameConstant(INVTYPE_ROBE)}, -- Torse
+	{PawnGameConstant(INVTYPE_BODY)}, -- Chemise
+	{PawnGameConstant(INVTYPE_TABARD)}, -- Tabard
+	{PawnGameConstant(INVTYPE_WRIST)}, -- Poignet
+	{PawnGameConstant(INVTYPE_HAND)}, -- Mains
+	{PawnGameConstant(INVTYPE_WAIST)}, -- Taille
+	{PawnGameConstant(INVTYPE_FEET)}, -- Pieds
+	{PawnGameConstant(INVTYPE_LEGS)}, -- Jambes
+	{PawnGameConstant(INVTYPE_FINGER)}, -- Doigt
+	{PawnGameConstant(INVTYPE_TRINKET)}, -- Bijou
+
+	-- Types d'armes et objets
 	{PawnGameConstant(INVTYPE_RANGED), "IsRanged", 1, PawnMultipleStatsFixed}, -- À distance
-	{"^Projectile$", "IsRanged", 1, PawnMultipleStatsFixed}, -- Projectile
+	{"^Projectile$", "IsRanged", 1, PawnMultipleStatsFixed},
 	{PawnGameConstant(INVTYPE_THROWN), "IsRanged", 1, PawnMultipleStatsFixed}, -- Arme de jet
 	{PawnGameConstant(INVTYPE_WEAPON), "IsOneHand", 1, PawnMultipleStatsFixed}, -- Une main
 	{PawnGameConstant(INVTYPE_2HWEAPON), "IsTwoHand", 1, PawnMultipleStatsFixed}, -- Deux mains
 	{PawnGameConstant(INVTYPE_WEAPONMAINHAND), "IsMainHand", 1, PawnMultipleStatsFixed}, -- Main principale
 	{PawnGameConstant(INVTYPE_WEAPONOFFHAND), "IsOffHand", 1, PawnMultipleStatsFixed}, -- Main secondaire
-	{PawnGameConstant(INVTYPE_HOLDABLE)}, -- Tenu en main secondaire ; pas de stat Pawn pour ceci
-	{"^(%d-) %- (%d-) Dégâts$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract}, -- Arme standard
+	{PawnGameConstant(INVTYPE_HOLDABLE)}, -- Tenu en main secondaire
+
+	-- Glyphes
+	{PawnGameConstant(MAJOR_GLYPH)}, -- Glyphe majeur
+	{PawnGameConstant(MINOR_GLYPH)}, -- Glyphe mineur
+
+	-- ========================================
+	-- 3. DÉGÂTS D'ARMES ET VITESSE
+	-- ========================================
+	
+	-- Dégâts de base des armes
+	{"^(%d-) %- (%d-) Dégâts$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
 	{"^Dégâts : (%d+) %- (%d+)$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
 	{"^%+(%d+) aux dégâts de l'arme$", "WeaponDamage"},
-	{"^%+?(%d-) %- (%d-) Dégâts de feu$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract}, -- Baguette
-	{"^%+?(%d-) %- (%d-) Dégâts d'ombre$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract}, -- Baguette
-	{"^%+?(%d-) %- (%d-) Dégâts de nature$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract}, -- Baguette, Thunderfury
-	{"^%+?(%d-) %- (%d-) Dégâts des arcanes$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract}, -- Baguette
-	{"^%+?(%d-) %- (%d-) Dégâts de givre$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract}, -- Baguette
-	{"^%+?(%d-) %- (%d-) Dégâts du sacré$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract}, -- Baguette, Ashbringer
-	{"^%+?(%d-) Dégâts d'arme$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 1, PawnMultipleStatsExtract}, -- Enchantements d'arme
-	{"^Équipé : %+?(%d-) Dégâts d'arme%.$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 1, PawnMultipleStatsExtract}, -- Chaîne d'éternium tressée
-	{"^%+?(%d-) Dégâts$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 1, PawnMultipleStatsExtract}, -- Armes sans portée de dégâts
-	{"^Lunette %(%+(%d-) Dégâts%)$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 1, PawnMultipleStatsExtract}, -- Lunettes d'armes à distance
-	{"^%+?(%d+) à toutes les caractéristiques$", "Strength", 1, PawnMultipleStatsExtract, "Agility", 1, PawnMultipleStatsExtract, "Stamina", 1, PawnMultipleStatsExtract, "Intellect", 1, PawnMultipleStatsExtract, "Spirit", 1, PawnMultipleStatsExtract},
-	{"^%+?(%d+) to All Stats$", "Strength", 1, PawnMultipleStatsExtract, "Agility", 1, PawnMultipleStatsExtract, "Stamina", 1, PawnMultipleStatsExtract, "Intellect", 1, PawnMultipleStatsExtract, "Spirit", 1, PawnMultipleStatsExtract}, -- Enchanted Pearl, Enchanted Tear
-	{"^%+?(%-?%d+) Force$", "Strength"},
-	{"^Puissance$", "Strength", 20, PawnMultipleStatsFixed}, -- enchantement d'arme (non testé)
-	{"^%+?(%-?%d+) Agilité$", "Agility"},
-	{"^%+(%d+) Agilité$", "Agility"},
-	{"^AgilitÃ©$", "Agility", 1, PawnMultipleStatsFixed},
-	{"^%+?(%-?%d+) Endurance$", "Stamina"},
-	{"^Endurance$", "Stamina", 1, PawnMultipleStatsFixed},
-	{"^%+?(%-?%d+) Intelligence$", "Intellect"}, -- Intelligence négative : Chope de Kreeg
-	{"^%+(%d+) Intelligence$", "Intellect"},
-	{"^Intelligence$", "Intellect", 1, PawnMultipleStatsFixed},
-	{"^%+?(%-?%d+) Esprit$", "Spirit"},
-	{"^%+(%d+) Esprit$", "Spirit"},
-	{"^Chaîne d'arme en titane$", "HitRating", 28, PawnMultipleStatsFixed}, -- Enchantement d'arme ; a des effets supplémentaires
-	{"^%+?(%d+) Blocage$", "BlockValue"},
-	{"^Bloquer : (%d+)$", "BlockValue"},
-	{"^%+(%d+) Valeur de blocage$", "BlockValue"}, -- partie de l'enchantement de casque de guerrier complexe
-	{"^%+(%d+) Valeur de blocage du bouclier$", "BlockValue"}, -- Placage de titane
-	{"^Équipé : Augmente la valeur de blocage de votre bouclier de (%d+)%.$", "BlockValue"},
-	{"^Équipé : Augmente votre score de blocage de (%d+)%.$", "BlockRating"}, -- Ceinture de colère
-	{"^Équipé : Augmente votre score de blocage du bouclier de (%d+)%.$", "BlockRating"}, -- Plastron du porteguerre
-	{"^%+?(%d+) Score de blocage$", "BlockRating"}, -- Bouclier de blocage du nordique
-	{"^%+?(%d+) Score de blocage du bouclier$", "BlockRating"}, -- enchantement
-	{"^Équipé : Augmente le score de défense de (%d+)%.$", "DefenseRating"}, -- Rempart des rois
-	{"^%+(%d+) au score de défense$", "DefenseRating"},
-	{"^Augmente le score de défense de (%d+)%.$", "DefenseRating"},
-	{"^Score de défense %+(%d)%$", "DefenseRating"},
-	{"^%+?(%d+) Défense$", "DefenseRating"}, -- enchantement de paladin composé
-	{"^%+?(%d+) Score de défense$", "DefenseRating"}, -- Ambre épais ; Jambières d'écailles de sang de défense
-	{"^Équipé : Score de défense augmenté de (%d+)%.$", "DefenseRating"},
-	{"^%+?(%d+) Score d'esquive$", "DodgeRating"}, -- Anneau arctique d'évitement
-	{"^Équipé : Augmente votre score d'esquive de (%d+)%.$", "DodgeRating"}, -- Insigne de Loup-de-givre rang 6
-	{"^Équipé : Augmente votre score de parade de (%d+)%.$", "ParryRating"}, -- Vengeur draconique
-	{"^%+?(%d+) Score de parade$", "ParryRating"},
+	{"^%+?(%d-) Dégâts d'arme$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 1, PawnMultipleStatsExtract},
+	{"^%+?(%d-) Dégâts$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 1, PawnMultipleStatsExtract},
+
+	-- Dégâts par type magique (baguettes et enchantements)
+	{"^%+?(%d-) %- (%d-) Dégâts de feu$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
+	{"^%+?(%d-) %- (%d-) Dégâts d'ombre$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
+	{"^%+?(%d-) %- (%d-) Dégâts de nature$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
+	{"^%+?(%d-) %- (%d-) Dégâts des arcanes$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
+	{"^%+?(%d-) %- (%d-) Dégâts de givre$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
+	{"^%+?(%d-) %- (%d-) Dégâts du sacré$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
+
+	-- Dégâts avec type spécifique
+	{"^(%d+) %- (%d+) points de dégâts %(([%w%s]+)%)$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
+
+	-- Dégâts spéciaux et enchantements
+	{"^Équipé : %+?(%d-) Dégâts d'arme%.$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 1, PawnMultipleStatsExtract},
+	{"^Lunette %(%+(%d-) Dégâts%)$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 1, PawnMultipleStatsExtract},
+
+	-- DPS et vitesse
 	{"^%(([%d%.,]+) dégâts par seconde%)$"}, -- Ignorer ceci ; les DPS sont calculés manuellement
 	{"^Ajoute ([%d%.,]+) dégâts par seconde$", "Dps"},
-	{"^Arme enflammée$", "Dps", 4, PawnMultipleStatsFixed}, -- enchantement d'arme
-	{"^Équipé : Augmente votre score d'expertise de (%d+)%.$", "ExpertiseRating"}, -- Garde-terre
-	{"^Équipé : Augmente de (%d+) le score d'expertise%.$", "ExpertiseRating"},
-	{"^%+?(%d+) Score d'expertise$", "ExpertiseRating"}, -- Cristal d'ombre du gardien
+	{"^Arme enflammée$", "Dps", 4, PawnMultipleStatsFixed}, -- Enchantement d'arme
+
+	-- ========================================
+	-- 4. STATISTIQUES PRINCIPALES (CORE STATS)
+	-- ========================================
+	
+	-- Stats de base individuelles
+	{"^%+?(%-?%d+) Force$", "Strength"},
+	{"^%+?(%-?%d+) Agilité$", "Agility"},
+	{"^%+?(%-?%d+) Endurance$", "Stamina"},
+	{"^%+?(%-?%d+) Intelligence$", "Intellect"},
+	{"^%+?(%-?%d+) Esprit$", "Spirit"},
+
+	-- Variantes alternatives
+	{"^%+(%d+) Agilité$", "Agility"},
+	{"^%+(%d+) Intelligence$", "Intellect"},
+	{"^%+(%d+) Esprit$", "Spirit"},
+
+	-- Stats fixes (gemmes ou enchantements spéciaux)
+	{"^Endurance$", "Stamina", 1, PawnMultipleStatsFixed},
+	{"^Intelligence$", "Intellect", 1, PawnMultipleStatsFixed},
+	{"^Puissance$", "Strength", 20, PawnMultipleStatsFixed}, -- Enchantement d'arme
+
+	-- Toutes les stats ensemble
+	{"^%+?(%d+) à toutes les caractéristiques$", "Strength", 1, PawnMultipleStatsExtract, "Agility", 1, PawnMultipleStatsExtract, "Stamina", 1, PawnMultipleStatsExtract, "Intellect", 1, PawnMultipleStatsExtract, "Spirit", 1, PawnMultipleStatsExtract},
+	{"^%+?(%d+) to All Stats$", "Strength", 1, PawnMultipleStatsExtract, "Agility", 1, PawnMultipleStatsExtract, "Stamina", 1, PawnMultipleStatsExtract, "Intellect", 1, PawnMultipleStatsExtract, "Spirit", 1, PawnMultipleStatsExtract},
+
+	-- ========================================
+	-- 5. SCORES DE COMBAT (RATINGS)
+	-- ========================================
+	
+	-- Score de toucher
+	{"^Équipé : Augmente votre score de toucher de (%d+)%.$", "HitRating"},
+	{"^Équipé : Améliore le score de toucher de (%d+)%.$", "HitRating"},
+	{"^%+?(%d+) Score de toucher$", "HitRating"},
+	{"%+(%d+) au score de toucher", "HitRating"},
+
+	-- Score de critique
 	{"^Équipé : Augmente de (%d+) le score de coup critique%.$", "CritRating"},
 	{"^Équipé : Améliore le score de coup critique de (%d+)%.$", "CritRating"},
 	{"^Équipé : Augmente votre score de coup critique de (%d+)%.$", "CritRating"},
-	{"^%+?(%d+) Score de critique$", "CritRating"}, -- Manteau de Malorne
-	{"^%+?(%d+) Score de critique$", "CritRating"}, -- Opale de feu gravée (après normalisation)
-	{"^%+?(%d+) Score de coup critique%.?$", "CritRating"}, -- Un enchantement de tête est "20 Score de coup critique." avec un point et minuscule
-	{"^Lunette %(%+(%d+) Score de coup critique%)$", "CritRating"},
-	{"^%+?(%d+) Coup critique à distance$", "CritRating"}, -- Lunette percecoeur (non testé) ; Pawn ne distingue pas entre score de critique à distance et hybride
+	{"^%+?(%d+) Score de critique$", "CritRating"},
+	{"^%+?(%d+) Score de coup critique%.?$", "CritRating"},
+	{"^%+?(%d+) Coup critique à distance$", "CritRating"},
 	{"%+(%d+) au score de coup critique", "CritRating"},
-	{"^Équipé : Augmente votre score de toucher de (%d+)%.$", "HitRating"}, -- Anneau de Don Julio
-	{"^Équipé : Améliore le score de toucher de (%d+)%.$", "HitRating"},
-	{"^%+?(%d+) Score de toucher$", "HitRating"}, -- lunette 3% de toucher
-	{"^Pied sûr$", "HitRating", 10, PawnMultipleStatsFixed}, -- Enchantement (non testé) ; a des effets supplémentaires
-	{"^Précision$", "HitRating", 25, PawnMultipleStatsFixed, "CritRating", 25, PawnMultipleStatsFixed}, -- enchantement d'arme
+	{"^Lunette %(%+(%d+) Score de coup critique%)$", "CritRating"},
+
+	-- Score de hâte
+	{"^Équipé : Augmente de (%d+) le score de hâte%.$", "HasteRating"},
+	{"^Équipé : Améliore le score de hâte de (%d+)%.$", "HasteRating"},
+	{"^%+?(%d+) Score de hâte$", "HasteRating"},
+	{"%+(%d+) au score de hâte$", "HasteRating"},
+	{"^Contrepoids %(%+(%d+) Score de hâte%)", "HasteRating"},
+
+	-- Score d'expertise
+	{"^Équipé : Augmente votre score d'expertise de (%d+)%.$", "ExpertiseRating"},
+	{"^Équipé : Augmente de (%d+) le score d'expertise%.$", "ExpertiseRating"},
+	{"^%+?(%d+) Score d'expertise$", "ExpertiseRating"},
+
+	-- Scores de défense
+	{"^Équipé : Augmente le score de défense de (%d+)%.$", "DefenseRating"},
+	{"^%+(%d+) au score de défense$", "DefenseRating"},
+	{"^Augmente le score de défense de (%d+)%.$", "DefenseRating"},
+	{"^Score de défense %+(%d)%$", "DefenseRating"},
+	{"^%+?(%d+) Défense$", "DefenseRating"},
+	{"^%+?(%d+) Score de défense$", "DefenseRating"},
+	{"^Équipé : Score de défense augmenté de (%d+)%.$", "DefenseRating"},
+
+	-- Score d'esquive
+	{"^%+?(%d+) Score d'esquive$", "DodgeRating"},
+	{"^Équipé : Augmente votre score d'esquive de (%d+)%.$", "DodgeRating"},
+	{"%+(%d+) au score d'esquive", "DodgeRating"},
+
+	-- Score de parade
+	{"^Équipé : Augmente votre score de parade de (%d+)%.$", "ParryRating"},
+	{"^%+?(%d+) Score de parade$", "ParryRating"},
+
+	-- Score de résilience
 	{"^Équipé : Améliore votre score de résilience de (%d+)%.$", "ResilienceRating"},
 	{"^%+?(%d+) Score de résilience$", "ResilienceRating"},
-	{"^%+?(%d+) Résilience$", "ResilienceRating"}, -- Pierre de l'aube mystique sublime
-	{"^Équipé : Augmente de (%d+) le score de hâte%.$", "HasteRating"},
-	{"^Contrepoids %(%+(%d+) Score de hâte%)", "HasteRating"},
-	{"^Équipé : Améliore le score de hâte de (%d+)%.$", "HasteRating"}, -- Épaulettes d'acier rapide
-	{"^%+?(%d+) Score de hâte$", "HasteRating"}, -- Jambières du trahi
-	{"^Équipé : Augmente votre score de maîtrise de (%d+)%.", "MasteryRating"}, -- Hache d'hast d'elementium (4.0) (Ne pas inclure $ ; le score de maîtrise inclut maintenant le nom de votre maîtrise sur l'objet.)
-	{"^%+?(%d+) Score de maîtrise$", "MasteryRating"}, -- Joyau d'ambre fracturé (4.0).
-	{"^Équipé : Augmente la puissance d'attaque de (%d+)%.$", "Ap"},
+	{"^%+?(%d+) Résilience$", "ResilienceRating"},
+
+	-- Score de maîtrise (WotLK)
+	{"^Équipé : Augmente votre score de maîtrise de (%d+)%.", "MasteryRating"},
+	{"^%+?(%d+) Score de maîtrise$", "MasteryRating"},
+
+	-- Enchantements spéciaux avec ratings
+	{"^Chaîne d'arme en titane$", "HitRating", 28, PawnMultipleStatsFixed},
+	{"^Pied sûr$", "HitRating", 10, PawnMultipleStatsFixed},
+	{"^Précision$", "HitRating", 25, PawnMultipleStatsFixed, "CritRating", 25, PawnMultipleStatsFixed},
+
+	-- ========================================
+	-- 6. PUISSANCE D'ATTAQUE ET SORTS
+	-- ========================================
+	
+	-- Puissance d'attaque
 	{"^Équipé : Augmente la puissance d'attaque de (%d+)%.$", "Ap"},
 	{"^%+?(%d+) Puissance d'attaque$", "Ap"},
-	{"%+(%d+) Ã  la puissance d'attaque", "Ap"},
 	{"%+(%d+) à la puissance d'attaque", "Ap"},
-	{"ÃquipÃ© : Augmente de (%d+) la puissance d'attaque", "Ap"},
 	{"Équipé : Augmente de (%d+) la puissance d'attaque", "Ap"},
+
+	-- Puissance d'attaque à distance
 	{"^%+?(%d+) Puissance d'attaque à distance$", "Rap"},
 	{"^Équipé : Augmente la puissance d'attaque à distance de (%d+)%.$", "Rap"},
+
+	-- Puissance des sorts (générale)
+	{"^Équipé : Augmente la puissance des sorts de (%d+)%.$", "SpellPower"},
+	{"^%+?(%d+) Puissance des sorts$", "SpellPower"},
+	{"%+(%d+) à la puissance des sorts", "SpellPower"},
+
+	-- Régénération de mana
 	{"^Équipé : Rend (%d+) points de mana toutes les 5 sec%.$", "Mp5"},
-	{"^%+?(%d+) Régén. de mana$", "Mp5"}, -- enchantement d'épaule, Scripteurs ?
+	{"^%+?(%d+) Régén. de mana$", "Mp5"},
 	{"^Régén. mana (%d+) toutes les 5 sec%.$", "Mp5"},
 	{"^%+?(%d+) [mM]ana toutes les 5 sec%.?$", "Mp5"},
 	{"^%+?(%d+) [mM]ana par 5 sec%.?$", "Mp5"},
-	{"^%+?(%d+) [mM]ana toutes les 5 secondes$", "Mp5"}, -- Draénite d'ombre royale
-	{"^%+?(%d+) [mM]ana par 5 sec%.$", "Mp5"},
 	{"^%+?(%d+) [mM]ana toutes les 5 secondes$", "Mp5"},
-	{"^%+(%d+) Mana récupéré toutes les 5 secondes$", "Mp5"}, -- Kit d'armure du magistère
+	{"^%+?(%d+) [mM]ana par 5 sec%.$", "Mp5"},
+	{"^%+(%d+) Mana récupéré toutes les 5 secondes$", "Mp5"},
+	{"Équipé : Rend (%d+) points de mana toutes les 5 secondes", "Mp5"},
+
+	-- Régénération de vie
 	{"^Équipé : Rend (%d+) points de vie toutes les 5 sec%.$", "Hp5"},
-	{"^Équipé : Rend (%d+) points de vie par 5 sec%.$", "Hp5"}, -- Oui, "toutes les" et "par" sont tous deux utilisés sur les objets...
-	{"^%+?(%d+) [vV]ie toutes les 5 sec%.?$", "Hp5"}, -- Chevalière d'aigue-marine de régénération
-	{"^%+?(%d+) [vV]ie par 5 sec%.?$", "Hp5"}, -- Collier d'anglésite de régénération
-	{"^%+(%d+) Vie et mana toutes les 5 sec$", "Mp5", 1, PawnMultipleStatsExtract, "Hp5", 1, PawnMultipleStatsExtract}, -- enchantement de bottes Vitalité supérieure
-	{"^%+(%d+) Mana$", "Mana"}, -- enchantement +150 mana
-	{"^%+(%d+) PV$", "Health"}, -- enchantement de tête/jambes +100 points de vie
-	{"^%+(%d+) Points de vie$", "Health"}, -- enchantement +150 points de vie
+	{"^Équipé : Rend (%d+) points de vie par 5 sec%.$", "Hp5"},
+	{"^%+?(%d+) [vV]ie toutes les 5 sec%.?$", "Hp5"},
+	{"^%+?(%d+) [vV]ie par 5 sec%.?$", "Hp5"},
+	{"%+(%d+) points de vie toutes les 5 sec", "Hp5"},
+
+	-- Mana et vie totales
+	{"^%+(%d+) Mana$", "Mana"},
+	{"^%+(%d+) PV$", "Health"},
+	{"^%+(%d+) Points de vie$", "Health"},
+
+	-- Combo vie/mana
+	{"^%+(%d+) Vie et mana toutes les 5 sec$", "Mp5", 1, PawnMultipleStatsExtract, "Hp5", 1, PawnMultipleStatsExtract},
+
+	-- ========================================
+	-- 7. DÉFENSES ET ARMURE
+	-- ========================================
+	
+	-- Armure
 	{"^Armure : (%d+)$", "AutoArmor"},
-	{"^(%d+) Armure$", "AutoArmor"}, -- armure normale
-	{"^%+(%d+) Armure$", "BonusArmor"}, -- enchantements d'armure de cape
-	{"^Renforcé %(%+(%d+) Armure%)$", "BonusArmor"}, -- kits d'armure
-	{"^Équipé : %+(%d+) Armure%.$", "BonusArmor"}, -- sceau royal d'Eldre'Thalas de paladin
-	{"^Équipé : Augmente la puissance des sorts de (%d+)%.$", "SpellPower"}, -- Épaulières de chaîne superposée
-	{"^%+?(%d+) Puissance des sorts$", "SpellPower"}, -- Topaze de monarque téméraire
-	{"%+(%d+) Ã  la puissance des sorts", "SpellPower"},
-	{"%+(%d+) à la puissance des sorts", "SpellPower"},
-	{"%+(%d+) aux dÃ©gÃ¢ts des sorts", "SpellPower"},
-	{"^Équipé : Augmente le score de pénétration d'armure de (%d+)%.$", "ArmorPenetration"}, -- Cuirasse d'assaut, Ceinture de chaîne d'argent de Vereesa
-	{"^Équipé : Augmente votre score de pénétration d'armure de (%d+)%.$", "ArmorPenetration"}, -- Écraseur de squelettes d'argent
-	{"^%+?(%d+) Score de pénétration d'armure$", "ArmorPenetration"}, -- Rubis écarlate fracturé
-	{"^Équipé : Augmente votre pénétration des sorts de (%d+)%.$", "SpellPenetration"}, -- Robe de givrefeu
-	{"^%+?(%d+) Pénétration des sorts$", "SpellPenetraction"}, -- Talasite radieuse
-	{"^%+(%d+) Dégâts de feu$", "FireSpellDamage"},
-	{"^%+(%d+) Dégâts des sorts de feu$", "FireSpellDamage"},
-	{"^Équipé : Augmente les dégâts infligés par les sorts et effets de Feu jusqu'à (%d+)%.$", "FireSpellDamage"},
-	{"^Équipé : Augmente la puissance des sorts de feu de (%d+)%.$", "FireSpellDamage"},
-	{"%+(%d+) aux dÃ©gÃ¢ts des sorts de Feu", "FireSpellDamage"},
-	{"^%+(%d+) Dégâts d'ombre$", "ShadowSpellDamage"},
-	{"^%+(%d+) Dégâts des sorts d'ombre$", "ShadowSpellDamage"},
-	{"^Équipé : Augmente les dégâts infligés par les sorts et effets d'Ombre jusqu'à (%d+)%.$", "ShadowSpellDamage"},
-	{"^Équipé : Augmente la puissance des sorts d'ombre de (%d+)%.$", "ShadowSpellDamage"}, -- Épaulières d'ombregivre gelée
-	{"%+(%d+) aux dÃ©gÃ¢ts des sorts d'Ombre", "ShadowSpellDamage"},
-	{"^%+(%d+) Dégâts de nature$", "NatureSpellDamage"}, -- Jambières du traqueur du Néant de colère de la nature
-	{"^%+(%d+) Dégâts des sorts de nature$", "NatureSpellDamage"},
-	{"^Équipé : Augmente les dégâts infligés par les sorts et effets de Nature jusqu'à (%d+)%.$", "NatureSpellDamage"},
-	{"^Équipé : Augmente la puissance des sorts de nature de (%d+)%.$", "NatureSpellDamage"},
-	{"%+(%d+) aux dÃ©gÃ¢ts des sorts de Nature", "NatureSpellDamage"},
-	{"^%+(%d+) Dégâts des arcanes$", "ArcaneSpellDamage"},
-	{"^%+(%d+) Dégâts des sorts des arcanes$", "ArcaneSpellDamage"}, -- Doigt de dragon de colère des arcanes
-	{"^Équipé : Augmente les dégâts infligés par les sorts et effets des Arcanes jusqu'à (%d+)%.$", "ArcaneSpellDamage"},
-	{"^Équipé : Augmente la puissance des sorts des arcanes de (%d+)%.$", "ArcaneSpellDamage"},
-	{"%+(%d+) aux dÃ©gÃ¢ts des sorts des Arcanes", "ArcaneSpellDamage"},
-	{"^%+(%d+) Dégâts de givre$", "FrostSpellDamage"},
-	{"^%+(%d+) Dégâts des sorts de givre$", "FrostSpellDamage"}, -- enchantement
-	{"%+(%d+) aux dÃ©gÃ¢ts des sorts de Givre", "FrostSpellDamage"},
-	{"^Équipé : Augmente les dégâts infligés par les sorts et effets de Givre jusqu'à (%d+)%.$", "FrostSpellDamage"},
-	{"^Équipé : Augmente la puissance des sorts de givre de (%d+)%.$", "FrostSpellDamage"}, -- Épaulières d'ombregivre gelée
-	{"^%+(%d+) Dégâts du sacré$", "HolySpellDamage"},
-	{"^%+(%d+) Dégâts des sorts du sacré$", "HolySpellDamage"},
-	{"^Équipé : Augmente les dégâts infligés par les sorts et effets du Sacré jusqu'à (%d+)%.$", "HolySpellDamage"}, -- Lame forgée par la lumière
-	{"^Équipé : Augmente les dégâts infligés par les sorts et effets du Sacré jusqu'à (%d+)%.$", "HolySpellDamage"}, -- Drapé du vertueux
-	{"^Équipé : Augmente la puissance des sorts du sacré de (%d+)%.$", "HolySpellDamage"},
+	{"^(%d+) Armure$", "AutoArmor"},
+	{"^%+(%d+) Armure$", "BonusArmor"},
+	{"^Renforcé %(%+(%d+) Armure%)$", "BonusArmor"},
+	{"^Équipé : %+(%d+) Armure%.$", "BonusArmor"},
+
+	-- Blocage et boucliers
+	{"^%+?(%d+) Blocage$", "BlockValue"},
+	{"^Bloquer : (%d+)$", "BlockValue"},
+	{"^%+(%d+) Valeur de blocage$", "BlockValue"},
+	{"^%+(%d+) Valeur de blocage du bouclier$", "BlockValue"},
+	{"^Équipé : Augmente la valeur de blocage de votre bouclier de (%d+)%.$", "BlockValue"},
+	{"^Équipé : Augmente votre score de blocage de (%d+)%.$", "BlockRating"},
+	{"^Équipé : Augmente votre score de blocage du bouclier de (%d+)%.$", "BlockRating"},
+	{"^%+?(%d+) Score de blocage$", "BlockRating"},
+	{"^%+?(%d+) Score de blocage du bouclier$", "BlockRating"},
+
+	-- Résistances magiques
 	{"^%+?(%d+) Toutes les résistances$", "AllResist"},
-	{"^%+?(%d+) Résistance à tout$", "AllResist"}, -- Sphère prismatique
+	{"^%+?(%d+) Résistance à tout$", "AllResist"},
 	{"^%+?(%d+) Résistance au feu$", "FireResist"},
 	{"^%+(%d+) à la résistance au feu$", "FireResist"},
 	{"^%+?(%d+) Résistance à l'ombre$", "ShadowResist"},
@@ -821,13 +876,97 @@ PawnRegexes =
 	{"^%+(%d+) à la résistance aux arcanes$", "ArcaneResist"},
 	{"^%+?(%d+) Résistance au givre$", "FrostResist"},
 	{"^%+(%d+) à la résistance au givre$", "FrostResist"},
+
+	-- ========================================
+	-- 8. CHÂSSES (SOCKETS)
+	-- ========================================
+	
 	{"^Châsse rouge$", "RedSocket", 1, PawnMultipleStatsFixed},
 	{"^Châsse jaune$", "YellowSocket", 1, PawnMultipleStatsFixed},
 	{"^Châsse bleue$", "BlueSocket", 1, PawnMultipleStatsFixed},
-	{"^Châsse prismatique$", "PrismaticSocket", 1, PawnMultipleStatsFixed}, -- Les châsses prismatiques / incolores sont ajoutées par la forge
+	{"^Châsse prismatique$", "PrismaticSocket", 1, PawnMultipleStatsFixed},
 	{"^Châsse méta$", "MetaSocket", 1, PawnMultipleStatsFixed},
-	{"^\"Ne rentre que dans un emplacement de gemme méta%.\"$", "MetaSocketEffect", 1, PawnMultipleStatsFixed}, -- Vraies gemmes méta, pas la châsse
-	-- Scores d'équipement (patterns très fréquents dans les logs)
+	{"^\"Ne rentre que dans un emplacement de gemme méta%.\"$", "MetaSocketEffect", 1, PawnMultipleStatsFixed},
+
+	-- ========================================
+	-- 9. BONUS DE SERTISSAGE (NOUVELLES REGEX PRIORITAIRES)
+	-- ========================================
+	
+	{"^Bonus de sertissage : %+(%d+) Force$", "Strength"},
+	{"^Bonus de sertissage : %+(%d+) Agilité$", "Agility"},
+	{"^Bonus de sertissage : %+(%d+) Endurance$", "Stamina"},
+	{"^Bonus de sertissage : %+(%d+) Intelligence$", "Intellect"},
+	{"^Bonus de sertissage : %+(%d+) Esprit$", "Spirit"},
+
+	-- Variantes avec "châsse"
+	{"^Bonus de châsse : %+(%d+) Force$", "Strength"},
+	{"^Bonus de châsse : %+(%d+) Agilité$", "Agility"},
+	{"^Bonus de châsse : %+(%d+) Endurance$", "Stamina"},
+	{"^Bonus de châsse : %+(%d+) Intelligence$", "Intellect"},
+	{"^Bonus de châsse : %+(%d+) Esprit$", "Spirit"},
+
+	-- ========================================
+	-- 10. PÉNÉTRATION ET SCORES ÉQUIPÉS
+	-- ========================================
+	
+	-- Pénétration d'armure (nouvelles regex prioritaires)
+	{"^Équipé : Augmente de (%d+) votre score de pénétration d'armure%.$", "ArmorPenetrationRating"},
+	{"^Équipé : Augmente le score de pénétration d'armure de (%d+)%.$", "ArmorPenetration"},
+	{"^Équipé : Augmente votre score de pénétration d'armure de (%d+)%.$", "ArmorPenetration"},
+	{"^%+?(%d+) Score de pénétration d'armure$", "ArmorPenetration"},
+
+	-- Pénétration des sorts
+	{"^Équipé : Augmente votre pénétration des sorts de (%d+)%.$", "SpellPenetration"},
+	{"^%+?(%d+) Pénétration des sorts$", "SpellPenetraction"},
+
+	-- ========================================
+	-- 11. SORTS SPÉCIALISÉS PAR ÉCOLE
+	-- ========================================
+	
+	-- Sorts de feu
+	{"^%+(%d+) Dégâts de feu$", "FireSpellDamage"},
+	{"^%+(%d+) Dégâts des sorts de feu$", "FireSpellDamage"},
+	{"^Équipé : Augmente les dégâts infligés par les sorts et effets de Feu jusqu'à (%d+)%.$", "FireSpellDamage"},
+	{"^Équipé : Augmente la puissance des sorts de feu de (%d+)%.$", "FireSpellDamage"},
+
+	-- Sorts d'ombre
+	{"^%+(%d+) Dégâts d'ombre$", "ShadowSpellDamage"},
+	{"^%+(%d+) Dégâts des sorts d'ombre$", "ShadowSpellDamage"},
+	{"^Équipé : Augmente les dégâts infligés par les sorts et effets d'Ombre jusqu'à (%d+)%.$", "ShadowSpellDamage"},
+	{"^Équipé : Augmente la puissance des sorts d'ombre de (%d+)%.$", "ShadowSpellDamage"},
+
+	-- Sorts de nature
+	{"^%+(%d+) Dégâts de nature$", "NatureSpellDamage"},
+	{"^%+(%d+) Dégâts des sorts de nature$", "NatureSpellDamage"},
+	{"^Équipé : Augmente les dégâts infligés par les sorts et effets de Nature jusqu'à (%d+)%.$", "NatureSpellDamage"},
+	{"^Équipé : Augmente la puissance des sorts de nature de (%d+)%.$", "NatureSpellDamage"},
+
+	-- Sorts des arcanes
+	{"^%+(%d+) Dégâts des arcanes$", "ArcaneSpellDamage"},
+	{"^%+(%d+) Dégâts des sorts des arcanes$", "ArcaneSpellDamage"},
+	{"^Équipé : Augmente les dégâts infligés par les sorts et effets des Arcanes jusqu'à (%d+)%.$", "ArcaneSpellDamage"},
+	{"^Équipé : Augmente la puissance des sorts des arcanes de (%d+)%.$", "ArcaneSpellDamage"},
+
+	-- Sorts de givre
+	{"^%+(%d+) Dégâts de givre$", "FrostSpellDamage"},
+	{"^%+(%d+) Dégâts des sorts de givre$", "FrostSpellDamage"},
+	{"^Équipé : Augmente les dégâts infligés par les sorts et effets de Givre jusqu'à (%d+)%.$", "FrostSpellDamage"},
+	{"^Équipé : Augmente la puissance des sorts de givre de (%d+)%.$", "FrostSpellDamage"},
+
+	-- Sorts du sacré
+	{"^%+(%d+) Dégâts du sacré$", "HolySpellDamage"},
+	{"^%+(%d+) Dégâts des sorts du sacré$", "HolySpellDamage"},
+	{"^Équipé : Augmente les dégâts infligés par les sorts et effets du Sacré jusqu'à (%d+)%.$", "HolySpellDamage"},
+	{"^Équipé : Augmente la puissance des sorts du sacré de (%d+)%.$", "HolySpellDamage"},
+
+	-- ========================================
+	-- 12. PATTERNS UTF-8 CORROMPUS (ENCODING FIXES)
+	-- ========================================
+	
+	-- Stats de base corrompues
+	{"^AgilitÃ©$", "Agility", 1, PawnMultipleStatsFixed},
+
+	-- Scores équipés corrompus
 	{"ÃquipÃ© : Augmente de (%d+) le score de toucher", "HitRating"},
 	{"ÃquipÃ© : Augmente de (%d+) le score d'esquive", "DodgeRating"},
 	{"ÃquipÃ© : Augmente de (%d+) le score de parade", "ParryRating"},
@@ -835,59 +974,65 @@ PawnRegexes =
 	{"ÃquipÃ© : Augmente de (%d+) le score de rÃ©silience", "ResilienceRating"},
 	{"ÃquipÃ© : Augmente de (%d+) le score de pÃ©nÃ©tration d'armure", "ArmorPenetration"},
 	{"ÃquipÃ© : Augmente de (%d+) le score de hÃ¢te", "HasteRating"},
+	{"ÃquipÃ© : Augmente de (%d+) votre score de pÃ©nÃ©tration d'armure%.$", "ArmorPenetrationRating"},
 
-	-- Versions avec accents corrects (au cas où l'encoding fix fonctionne)
-	{"Équipé : Augmente de (%d+) le score de toucher", "HitRating"},
-	{"Équipé : Augmente de (%d+) le score d'esquive", "DodgeRating"},
-	{"Équipé : Augmente de (%d+) le score de parade", "ParryRating"},
-	{"Équipé : Augmente de (%d+) le score de blocage", "BlockRating"},
-	{"Équipé : Augmente de (%d+) le score de résilience", "ResilienceRating"},
-	{"Équipé : Augmente de (%d+) le score de pénétration d'armure", "ArmorPenetration"},
-	{"Équipé : Augmente de (%d+) le score de hâte", "HasteRating"},
-	{"%+(%d+) au score de hÃ¢te", "HasteRating"},
+	-- Scores directs corrompus
+	{"%+(%d+) au score de hÃ¢te$", "HasteRating"},
 	{"%+(%d+) au score de toucher", "HitRating"},
 
-	-- Résistances avec encodage corrompu
+	-- Puissance d'attaque/sorts corrompue
+	{"%+(%d+) Ã  la puissance d'attaque", "Ap"},
+	{"%+(%d+) Ã  la puissance des sorts", "SpellPower"},
+	{"%+(%d+) aux dÃ©gÃ¢ts des sorts", "SpellPower"},
+	{"ÃquipÃ© : Augmente de (%d+) la puissance d'attaque", "Ap"},
+
+	-- Résistances corrompues
 	{"%+(%d+) Ã  la rÃ©sistance Feu", "FireResist"},
 	{"%+(%d+) Ã  la rÃ©sistance Givre", "FrostResist"},
 	{"%+(%d+) Ã  la rÃ©sistance Ombre", "ShadowResist"},
 	{"%+(%d+) Ã  la rÃ©sistance Nature", "NatureResist"},
 	{"%+(%d+) Ã  la rÃ©sistance Arcanes", "ArcaneResist"},
-
-	-- Variantes "au" au lieu de "à la"
 	{"%+(%d+) Ã  la rÃ©sistance au Givre", "FrostResist"},
 	{"%+(%d+) au Givre", "FrostResist"},
 	{"%+(%d+) au Feu", "FireResist"},
-
-	-- Versions avec accents corrects
 	{"%+(%d+) à la résistance Feu", "FireResist"},
 	{"%+(%d+) à la résistance Givre", "FrostResist"},
 	{"%+(%d+) à la résistance Ombre", "ShadowResist"},
 	{"%+(%d+) à la résistance Nature", "NatureResist"},
 	{"%+(%d+) à la résistance Arcanes", "ArcaneResist"},
 
-	-- Points de vie
-	{"%+(%d+) points de vie toutes les 5 sec", "Hp5"},
+	-- Sorts spécialisés corrompus
+	{"%+(%d+) aux dÃ©gÃ¢ts des sorts de Feu", "FireSpellDamage"},
+	{"%+(%d+) aux dÃ©gÃ¢ts des sorts d'Ombre", "ShadowSpellDamage"},
+	{"%+(%d+) aux dÃ©gÃ¢ts des sorts de Nature", "NatureSpellDamage"},
+	{"%+(%d+) aux dÃ©gÃ¢ts des sorts des Arcanes", "ArcaneSpellDamage"},
+	{"%+(%d+) aux dÃ©gÃ¢ts des sorts de Givre", "FrostSpellDamage"},
 
-	-- Points de mana
-	{"%+(%d+) points de mana toutes les 5 sec", "Mp5"},
-	{"ÃquipÃ© : Rend (%d+) points de mana toutes les 5 secondes", "Mp5"},
-	{"Équipé : Rend (%d+) points de mana toutes les 5 secondes", "Mp5"},
-
-	-- Dégâts par type (armes)
+	-- Dégâts d'armes corrompus
 	{"(%d+) %- (%d+) points de dÃ©gÃ¢ts %(Feu%)", "MinDamage", 1, "MaxDamage", 2},
 	{"(%d+) %- (%d+) points de dÃ©gÃ¢ts %(Givre%)", "MinDamage", 1, "MaxDamage", 2},
 	{"(%d+) %- (%d+) points de dÃ©gÃ¢ts %(Nature%)", "MinDamage", 1, "MaxDamage", 2},
 	{"(%d+) %- (%d+) points de dÃ©gÃ¢ts %(Arcanes%)", "MinDamage", 1, "MaxDamage", 2},
+	{"^(%d+) %- (%d+) points de dÃ©gÃ¢ts %(([%w%s]+)%)$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
 
-	-- Score d'esquive spécifique trouvé dans les logs
-	{"%+(%d+) au score d'esquive", "DodgeRating"},
+	-- Bonus de sertissage corrompus
+	{"^Bonus de sertissage : %+(%d+) AgilitÃ©$", "Agility"},
+	{"^Bonus de sertissage : %+(%d+) EndurancÃ©$", "Stamina"},
+	{"^Bonus de sertissage : %+(%d+) IntelligencÃ©$", "Intellect"},
+	{"^Bonus de sertissage : %+(%d+) EspriÃ©$", "Spirit"},
+
+	-- Régénération corrompue
+	{"%+(%d+) points de mana toutes les 5 sec", "Mp5"},
+	{"ÃquipÃ© : Rend (%d+) points de mana toutes les 5 secondes", "Mp5"},
 
 	-- ========================================
-	-- Chaînes rares qui sont ignorées (les communes sont en haut du fichier)
+	-- 13. PATTERNS RARES IGNORÉS (ZONES ET OBJETS SPÉCIFIQUES)
 	-- ========================================
+	
 	{'^"'}, -- Texte de saveur
-	{"^Augmente la puissance d'attaque de (%d+) uniquement sous forme de Chat, Ours, Ours redoutable et Sélénien%.$"}, -- Apparaît sur les armes pour les druides
+	{"^Augmente la puissance d'attaque de (%d+) uniquement sous forme de Chat, Ours, Ours redoutable et Sélénien%.$"}, -- Druides
+	
+	-- Zones et donjons spécifiques
 	{"^Vallée d'Alterac$"}, -- Sang de soldat de Dent-de-givre
 	{"^Profondeurs de Rochenoire$"}, -- Bière de la brune sombre
 	{"^Monts Tranchantes$"}, -- Masque à gaz corrompu par les gangréens
@@ -895,7 +1040,7 @@ PawnRegexes =
 	{"^Hachoir$"}, -- Clé de la cour de Gordok
 	{"^Collines de Grisonner$"}, -- Élément 115
 	{"^Sommet d'Hyjal$"}, -- Larmes de la déesse
-	{"^Couronne de glace$"}, -- (Quêtes journalières du tournoi d'Argent)
+	{"^Couronne de glace$"}, -- Quêtes journalières du tournoi d'Argent
 	{"^Karazhan$"}, -- Tourment du worgen
 	{"^Contreforts de Hautebrande d'autrefois$"}, -- Paquet de bombes incendiaires
 	{"^Caverne du sanctuaire du Serpent$"}, -- Noyau souillé
