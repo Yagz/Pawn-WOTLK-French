@@ -614,6 +614,11 @@ PawnRegexes =
 	{"^Rédigé par "},
 	{"|cff%x%x%x%x%x%xNécessite"}, -- Exigences de gemmes méta
 	{"|cff%x%x%x%x%x%xRequiert"}, -- Alternative pour les exigences
+	{"^Utiliser : "},
+	{"^Chances quand vous touchez : "},
+	{"^Équipé : Augmente les dégâts infligés par"},
+	{"^Utiliser : "},
+	{"^Chances quand vous touchez : "},
 
 	-- Types spéciaux et informations
 	{"^Totem$"},
@@ -629,6 +634,9 @@ PawnRegexes =
 	{"^Durée :"},
 	{"^Temps de recharge restant :"},
 	{"^Récupération restante :"},
+	{"^Niveau (%d+) requis"},
+	{"^Équipé : Réduit le temps de recharge"}, -- Ignore tous les cooldown reductions
+	{"^Équipé : Evite à son porteur"}, -- Ignore tous les effets de protection spéciaux
 
 	-- Sacs et contenants
 	{"^.+ à (%d+) emplacements?$"}, -- Sacs génériques
@@ -671,6 +679,9 @@ PawnRegexes =
 	{PawnGameConstant(INVTYPE_WEAPONMAINHAND), "IsMainHand", 1, PawnMultipleStatsFixed}, -- Main principale
 	{PawnGameConstant(INVTYPE_WEAPONOFFHAND), "IsOffHand", 1, PawnMultipleStatsFixed}, -- Main secondaire
 	{PawnGameConstant(INVTYPE_HOLDABLE)}, -- Tenu en main secondaire
+	{"^Epée$", "IsSword", 1, PawnMultipleStatsFixed},{"^Epée$", "IsSword", 1, PawnMultipleStatsFixed},
+	{"^Arme de pugilat$", "IsFist", 1, PawnMultipleStatsFixed},
+	{"^Tenu%(e%) en main gauche$", "IsOffHand", 1, PawnMultipleStatsFixed},	
 
 	-- Glyphes
 	{PawnGameConstant(MAJOR_GLYPH)}, -- Glyphe majeur
@@ -686,6 +697,7 @@ PawnRegexes =
 	{"^%+(%d+) aux dégâts de l'arme$", "WeaponDamage"},
 	{"^%+?(%d-) Dégâts d'arme$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 1, PawnMultipleStatsExtract},
 	{"^%+?(%d-) Dégâts$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 1, PawnMultipleStatsExtract},
+	
 
 	-- Dégâts par type magique (baguettes et enchantements)
 	{"^%+?(%d-) %- (%d-) Dégâts de feu$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
@@ -694,6 +706,7 @@ PawnRegexes =
 	{"^%+?(%d-) %- (%d-) Dégâts des arcanes$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
 	{"^%+?(%d-) %- (%d-) Dégâts de givre$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
 	{"^%+?(%d-) %- (%d-) Dégâts du sacré$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
+	{"^%+(%d+) %- (%d+) points de dégâts %(([%w%s]+)%)$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
 
 	-- Dégâts avec type spécifique
 	{"^(%d+) %- (%d+) points de dégâts %(([%w%s]+)%)$", "MinDamage", 1, PawnMultipleStatsExtract, "MaxDamage", 2, PawnMultipleStatsExtract},
@@ -731,7 +744,8 @@ PawnRegexes =
 	-- Toutes les stats ensemble
 	{"^%+?(%d+) à toutes les caractéristiques$", "Strength", 1, PawnMultipleStatsExtract, "Agility", 1, PawnMultipleStatsExtract, "Stamina", 1, PawnMultipleStatsExtract, "Intellect", 1, PawnMultipleStatsExtract, "Spirit", 1, PawnMultipleStatsExtract},
 	{"^%+?(%d+) to All Stats$", "Strength", 1, PawnMultipleStatsExtract, "Agility", 1, PawnMultipleStatsExtract, "Stamina", 1, PawnMultipleStatsExtract, "Intellect", 1, PawnMultipleStatsExtract, "Spirit", 1, PawnMultipleStatsExtract},
-
+	{"%+(%d+) Score de défense %+(%d+) Endurance %+(%d+) Valeur de blocage$", "DefenseRating", 1, PawnMultipleStatsExtract, "Stamina", 2, PawnMultipleStatsExtract, "BlockValue", 3, PawnMultipleStatsExtract},
+	
 	-- ========================================
 	-- 5. SCORES DE COMBAT (RATINGS)
 	-- ========================================
@@ -741,6 +755,7 @@ PawnRegexes =
 	{"^Équipé : Améliore le score de toucher de (%d+)%.$", "HitRating"},
 	{"^%+?(%d+) Score de toucher$", "HitRating"},
 	{"%+(%d+) au score de toucher", "HitRating"},
+	{"^Équipé : Augmente de (%d+) le score de toucher%.$", "HitRating"},
 
 	-- Score de critique
 	{"^Équipé : Augmente de (%d+) le score de coup critique%.$", "CritRating"},
@@ -751,6 +766,7 @@ PawnRegexes =
 	{"^%+?(%d+) Coup critique à distance$", "CritRating"},
 	{"%+(%d+) au score de coup critique", "CritRating"},
 	{"^Lunette %(%+(%d+) Score de coup critique%)$", "CritRating"},
+	{"^Équipé : Augmente de (%d+) le score de coup critique à distance%.$", "CritRating"},
 
 	-- Score de hâte
 	{"^Équipé : Augmente de (%d+) le score de hâte%.$", "HasteRating"},
@@ -777,15 +793,19 @@ PawnRegexes =
 	{"^%+?(%d+) Score d'esquive$", "DodgeRating"},
 	{"^Équipé : Augmente votre score d'esquive de (%d+)%.$", "DodgeRating"},
 	{"%+(%d+) au score d'esquive", "DodgeRating"},
+	{"^Équipé : Augmente de (%d+) le score d'esquive%.$", "DodgeRating"},
 
 	-- Score de parade
 	{"^Équipé : Augmente votre score de parade de (%d+)%.$", "ParryRating"},
 	{"^%+?(%d+) Score de parade$", "ParryRating"},
+	{"^Équipé : Augmente de (%d+) le score de parade%.$", "ParryRating"},
+	
 
 	-- Score de résilience
 	{"^Équipé : Améliore votre score de résilience de (%d+)%.$", "ResilienceRating"},
 	{"^%+?(%d+) Score de résilience$", "ResilienceRating"},
 	{"^%+?(%d+) Résilience$", "ResilienceRating"},
+	{"^Équipé : Augmente de (%d+) le score de résilience%.$", "ResilienceRating"},
 
 	-- Score de maîtrise (WotLK)
 	{"^Équipé : Augmente votre score de maîtrise de (%d+)%.", "MasteryRating"},
@@ -809,11 +829,13 @@ PawnRegexes =
 	-- Puissance d'attaque à distance
 	{"^%+?(%d+) Puissance d'attaque à distance$", "Rap"},
 	{"^Équipé : Augmente la puissance d'attaque à distance de (%d+)%.$", "Rap"},
+	{"^Équipé : Augmente la puissance des attaques à distance de (%d+)%.$", "Rap"},
 
 	-- Puissance des sorts (générale)
 	{"^Équipé : Augmente la puissance des sorts de (%d+)%.$", "SpellPower"},
 	{"^%+?(%d+) Puissance des sorts$", "SpellPower"},
 	{"%+(%d+) à la puissance des sorts", "SpellPower"},
+	{"^Équipé : Augmente la puissance de vos sorts de (%d+)%.$", "SpellPower"},
 
 	-- Régénération de mana
 	{"^Équipé : Rend (%d+) points de mana toutes les 5 sec%.$", "Mp5"},
@@ -835,6 +857,8 @@ PawnRegexes =
 
 	-- Mana et vie totales
 	{"^%+(%d+) Mana$", "Mana"},
+	{"%+(%d+) points de mana$", "Mana"},
+	{"%+(%d+) point de mana$", "Mana"},
 	{"^%+(%d+) PV$", "Health"},
 	{"^%+(%d+) Points de vie$", "Health"},
 
@@ -862,6 +886,7 @@ PawnRegexes =
 	{"^Équipé : Augmente votre score de blocage du bouclier de (%d+)%.$", "BlockRating"},
 	{"^%+?(%d+) Score de blocage$", "BlockRating"},
 	{"^%+?(%d+) Score de blocage du bouclier$", "BlockRating"},
+	{"^Équipé : Augmente de (%d+) le score de blocage%.$", "BlockRating"},
 
 	-- Résistances magiques
 	{"^%+?(%d+) Toutes les résistances$", "AllResist"},
@@ -897,6 +922,12 @@ PawnRegexes =
 	{"^Bonus de sertissage : %+(%d+) Endurance$", "Stamina"},
 	{"^Bonus de sertissage : %+(%d+) Intelligence$", "Intellect"},
 	{"^Bonus de sertissage : %+(%d+) Esprit$", "Spirit"},
+	{"^Bonus de sertissage : %+(%d+) au score de défense$", "DefenseRating"},
+	{"^Bonus de sertissage : %+(%d+) au score de toucher$", "HitRating"},
+	{"^Bonus de sertissage : %+(%d+) au score de critique$", "CritRating"},
+	{"^Bonus de sertissage : %+(%d+) au score de hâte$", "HasteRating"},
+	{"^Bonus de sertissage : %+(%d+) au score d'esquive$", "DodgeRating"},
+	{"^Bonus de sertissage : %+(%d+) au score de blocage$", "BlockRating"},
 
 	-- Variantes avec "châsse"
 	{"^Bonus de châsse : %+(%d+) Force$", "Strength"},
@@ -914,10 +945,13 @@ PawnRegexes =
 	{"^Équipé : Augmente le score de pénétration d'armure de (%d+)%.$", "ArmorPenetration"},
 	{"^Équipé : Augmente votre score de pénétration d'armure de (%d+)%.$", "ArmorPenetration"},
 	{"^%+?(%d+) Score de pénétration d'armure$", "ArmorPenetration"},
+	{"^Équipé : Augmente de (%d+) le score de pénétration d'armure%.$", "ArmorPenetrationRating"},
 
 	-- Pénétration des sorts
 	{"^Équipé : Augmente votre pénétration des sorts de (%d+)%.$", "SpellPenetration"},
 	{"^%+?(%d+) Pénétration des sorts$", "SpellPenetraction"},
+	{"^Équipé : Augmente la pénétration des sorts de (%d+)%.$", "SpellPenetration"},
+	{"^Équipé : Augmente la pénétration de vos sorts de (%d+)%.$", "SpellPenetration"},
 
 	-- ========================================
 	-- 11. SORTS SPÉCIALISÉS PAR ÉCOLE
@@ -1020,6 +1054,7 @@ PawnRegexes =
 	{"^Bonus de sertissage : %+(%d+) EndurancÃ©$", "Stamina"},
 	{"^Bonus de sertissage : %+(%d+) IntelligencÃ©$", "Intellect"},
 	{"^Bonus de sertissage : %+(%d+) EspriÃ©$", "Spirit"},
+	
 
 	-- Régénération corrompue
 	{"%+(%d+) points de mana toutes les 5 sec", "Mp5"},
