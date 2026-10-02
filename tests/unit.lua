@@ -226,4 +226,14 @@ Test("scan : mode gemmes", function()
 	Equal(PawnScan.GetEntry(PawnScanResults.state, 1).Link, "item:999:0:40000:0:0:0:0:0", "lien")
 end)
 
+Test("enUS : les tables d'analyse restent celles de la 2.8.11", function()
+	local Env = setmetatable({ GetLocale = function() return "enUS" end }, { __index = _G })
+	Env.PawnRegexes = { { "^sentinelle$" } }
+	local Chunk = assert(loadfile("TooltipParsing.frFR.lua"))
+	setfenv(Chunk, Env)
+	Chunk()
+	Equal(Env.PawnRegexes[1][1], "^sentinelle$", "PawnRegexes inchangé")
+	Equal(rawget(Env, "PawnRightHandRegexes"), nil, "PawnRightHandRegexes non redéfini")
+end)
+
 return Tests
