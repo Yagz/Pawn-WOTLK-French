@@ -1,0 +1,140 @@
+# Généré par tests/gen_corpus.lua depuis GlobalStrings.lua (frFR 3.3.5a).
++15 Force => Strength=15
++15 Agilité => Agility=15
++15 Endurance => Stamina=15
+-5 Endurance => Stamina=-5
++15 Intelligence => Intellect=15
++15 Esprit => Spirit=15
++150 Vie => Health=150
++150 Mana => Mana=150
+Équipé : Augmente la puissance d'attaque de 40. => Ap=40
+Équipé : Augmente la puissance d'attaque à distance de 40. => Rap=40
+Équipé : Augmente de 20 le score de coup critique. => CritRating=20
+Équipé : Augmente de 20 le score de coup critique en mêlée. => CritRating=20
+Équipé : Augmente de 20 le score de coup critique à distance. => CritRating=20
+Équipé : Augmente de 20 le score de coup critique des sorts. => CritRating=20
+Équipé : Augmente de 20 le score de toucher. => HitRating=20
+Équipé : Augmente de 20 le score de toucher en mêlée. => HitRating=20
+Équipé : Augmente de 20 le score de toucher à distance. => HitRating=20
+Équipé : Augmente de 20 le score de toucher des sorts. => HitRating=20
+Équipé : Augmente de 20 le score de hâte. => HasteRating=20
+Équipé : Augmente de 20 le score de hâte en mêlée. => HasteRating=20
+Équipé : Augmente de 20 le score de hâte à distance. => HasteRating=20
+Équipé : Augmente de 20 le score de hâte des sorts. => HasteRating=20
+Équipé : Augmente votre score d'expertise de 20. => ExpertiseRating=20
+Équipé : Augmente de 20 votre score de pénétration d'armure. => ArmorPenetration=20
+Équipé : Augmente la puissance des sorts de 30. => SpellPower=30
+Équipé : Augmente la pénétration des sorts de 20. => SpellPenetration=20
+Équipé : Augmente le score de défense de 20. => DefenseRating=20
+Équipé : Augmente de 20 le score d'esquive. => DodgeRating=20
+Équipé : Augmente de 20 le score de parade. => ParryRating=20
+Équipé : Augmente de 20 le score de blocage. => BlockRating=20
+Équipé : Augmente la valeur de blocage de votre bouclier de 20. => BlockValue=20
+Équipé : Augmente de 20 le score de résilience. => ResilienceRating=20
+Équipé : Rend 8 points de mana toutes les 5 secondes. => Mp5=8
+Équipé : Rend 8 points de vie toutes les 5 secondes. => Hp5=8
+Équipé : Augmente la puissance d'attaque de 300 seulement en forme de félin, ours, ours redoutable ou sélénien. => ignored
+Augmente la puissance d'attaque de 300 seulement en forme de félin, ours, ours redoutable ou sélénien. => ignored
++10 à toutes les résistances => AllResist=10
+Dégâts : 100 - 200 => MinDamage=100; MaxDamage=200
+83 - 156 points de dégâts (Arcanes) => MinDamage=83; MaxDamage=156
++10 - 20 points de dégâts (Feu) => MinDamage=10; MaxDamage=20
++ 10 - 20 points de dégâts => MinDamage=10; MaxDamage=20
+50 Dégâts => MinDamage=50; MaxDamage=50
+50 points de dégâts (Ombre) => MinDamage=50; MaxDamage=50
+(45.5 dégâts par seconde) => ignored
+(45,5 dégâts par seconde) => ignored
+|| Vitesse 2,60 => Speed=2.6
+|| Vitesse 2.60 => Speed=2.6
+Armure : 1200 => Armor=1200
+Bloquer : 40 => BlockValue=40
+Bonus de sertissage : +6 Endurance => Stamina=6
+Châsse rouge => RedSocket=1
+Châsse jaune => YellowSocket=1
+Châsse bleue => BlueSocket=1
+Méta-châsse => MetaSocket=1
+Châsse prismatique => PrismaticSocket=1
+À une main => IsOneHand=1
+Deux mains => IsTwoHand=1
+Main droite => IsMainHand=1
+Main gauche => IsOffHand=1
+À distance => IsRanged=1
+Armes de jet => IsRanged=1
+Tête => ignored
+Cou => ignored
+Épaule => ignored
+Dos => ignored
+Torse => ignored
+Chemise => ignored
+Tabard => ignored
+Poignets => ignored
+Mains => ignored
+Taille => ignored
+Pieds => ignored
+Jambes => ignored
+Doigt => ignored
+Bijou => ignored
+Munitions => ignored
+Lié => ignored
+Lié quand équipé => ignored
+Lié quand ramassé => ignored
+Lié quand utilisé => ignored
+Lié au compte => ignored
+Unique => ignored
+Unique - Equipé => ignored
+Objet de quête => ignored
+Cet objet permet de lancer une quête => ignored
+Objet invoqué => ignored
+Prospection possible => ignored
+Pilable => ignored
+Ne peut pas être désenchanté => ignored
+L'objet ne sera pas échangé ! => ignored
+Codé => ignored
+Déjà connu => ignored
+Héroïque => ignored
+Épique d'héroïque => ignored
+Mauvais => ignored
+Commun => ignored
+Inhabituel => ignored
+Rare => ignored
+Épique => ignored
+Légendaire => ignored
+Héritage => ignored
+<Clic droit pour ouvrir> => ignored
+<Clic droit pour lire> => ignored
+<Maj clic-droit pour sertir> => ignored
+<Enchantement aléatoire> => ignored
+Glyphe majeur => ignored
+Glyphe mineur => ignored
+Pas de charges => ignored
+Durabilité 100 / 100 => ignored
+Niveau d'objet 200 => ignored
+Niveau 80 requis => ignored
+Requiert Forge => ignored
+Requiert Aube d'argent - Révéré => ignored
+Requiert un niveau de 1 à 80 => ignored
+Nécessite une cote d'arène personnelle et en équipe de 1800 => ignored
+Classes : Prêtre => ignored
+Races : Humain => ignored
+Le désenchantement nécessite Enchantement (300) => ignored
+Durée : 30 min => ignored
+Durée : 30 sec => ignored
+Durée : 2 heures => ignored
+Durée : 2 jours => ignored
+Temps de recharge restant : 5 min => ignored
+Temps de recharge : 5 min => ignored
+Temps de recharge : 30 sec. => ignored
+Tps de recharge restant : 2 heures => ignored
+Tps de recharge restant : 2 jours => ignored
+Écrit par Vger => ignored
+|cff00ff00<Artisan : Vger>|r => ignored
+5 charges => ignored
+Unique (3) => ignored
+Unique - Equipé : Gemme (3) => ignored
+Huile (30 min) => ignored
+Huile (30 sec.) => ignored
+Huile (2 heures) => ignored
+Huile (2 jours) => ignored
+L'enchantement requiert Enchantement. => ignored
+L'enchantement requiert Enchantement (375). => ignored
+L'enchantement requiert le niveau 60 => ignored

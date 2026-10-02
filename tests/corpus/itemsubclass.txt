@@ -1,0 +1,29 @@
+# Généré par tests/gen_corpus.lua depuis ItemSubClass.dbc (frFR 3.3.5a) : texte de droite de l'infobulle.
+|| Hache => IsAxe=1
+|| Arc => IsBow=1
+|| Arme à feu => IsGun=1
+|| Masse => IsMace=1
+|| Arme d'hast => IsPolearm=1
+|| Epée => IsSword=1
+|| Obsolète => ignored
+|| Bâton => IsStaff=1
+|| Spéciale => ignored
+|| Arme de pugilat => IsFist=1
+|| Divers => ignored
+|| Dague => IsDagger=1
+|| Armes de jet => IsThrown=1
+|| Lance => ignored
+|| Arbalète => IsCrossbow=1
+|| Baguette => IsWand=1
+|| Canne à pêche => ignored
+|| Tissu => IsCloth=1
+|| Cuir => IsLeather=1
+|| Mailles => IsMail=1
+|| Plaques => IsPlate=1
+|| Bouclier => IsShield=1
+|| Libram => ignored
+|| Idole => ignored
+|| Totem => ignored
+|| Cachet => ignored
+|| Flèche => ignored
+|| Balle => ignored
