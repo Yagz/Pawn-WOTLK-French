@@ -1,0 +1,245 @@
+# Spell.dbc (frFR) description templates, # = value, count = number of spells.  Kept: 1 value, no duration, count >= 3.
+421	Augmente la puissance des sorts de #.
+144	Augmente de # la puissance d'attaque.
+116	Augmente de # la puissance d'attaque pour les formes de félin, d'ours, d'ours redoutable et de sélénien uniquement.
+114	+# en Endurance.
+102	Rend # points de vie à une cible alliée.
+88	Rend # points de mana toutes les 5 sec.
+55	Augmente la puissance des sorts de Givre de #.
+55	+# à l'Armure.
+54	Augmente la puissance des sorts d'Ombre de #.
+53	Augmente la puissance des sorts de Feu de #.
+52	Augmente la puissance des sorts des Arcanes de #.
+51	+# en Intelligence.
+50	+# en Force.
+50	+# en Agilité.
+50	+# à la résistance aux Arcanes.
+50	Augmente la valeur de blocage de votre bouclier de #.
+49	Rend # points de mana.
+49	+# à la résistance au Feu.
+48	+# à la résistance à l'Ombre.
+47	+# à la résistance au Givre.
+47	+# à la résistance à la Nature.
+46	+# en Esprit.
+44	+# à toutes les résistances.
+44	Augmente de # le score de pénétration d'armure.
+43	Augmente votre score de coup critique de #.
+41	Augmente la puissance des sorts de Nature de #.
+41	+# au score de résilience.
+40	Augmente votre score de blocage de #.
+40	Rend # points de vie toutes les 5 sec.
+40	Augmente la puissance des sorts du Sacré de #.
+38	Augmente la puissance des attaques à distance de #.
+34	Augmente la pénétration de vos sorts de #.
+29	Augmente le score de la compétence Dagues de #.
+29	Augmente votre score de toucher de #.
+27	Augmente le score de la compétence Epées de #.
+24	Rend instantanément # points de vie.
+24	Augmente le score de la compétence Masses de #.
+19	Rend # points de vie.
+19	Rend à votre cible # points de vie.
+19	Augmente le score de la compétence Epées à deux mains de #.
+19	Augmente le score de la compétence Haches à deux mains de #.
+18	Augmente le score de la compétence Masses à deux mains de #.
+17	Augmente votre total d'Intelligence de #%.
+17	Augmente de # la puissance d'attaque lorsque vous combattez des bêtes.
+14	Augmente votre score de parade de #.
+14	Augmente les dégâts infligés de #%.
+13	Augmente les chances d'obtenir un effet critique avec vos sorts du Sacré de #%.
+13	Augmente de # la puissance d'attaque lorsque vous combattez des démons.
+13	Augmente vos chances de Parer de #%.
+13	Augmente la vitesse des attaques à distance de #%.
+12	Augmente de # la puissance d'attaque lorsque vous combattez les morts-vivants.
+11	Augmente de # la puissance du sort Eclair lumineux.
+11	Réduit tous les dégâts subis de #%.
+10	Augmente la résistance à la Nature de #.
+10	Augmente le score de la compétence Armes à feu de #.
+10	Augmente vos chances d'esquiver une attaque de #%.
+10	+# aux dégâts des armes.
+10	Augmente la puissance du sort Vague de soins inférieurs de #.
+10	Augmente la puissance des sorts de la valeur finale des soins de votre Fleur de vie de #.
+9	Rend # points de vie aux alliés proches.
+9	Augmente votre score d'esquive de #.
+9	Rend instantanément # points de vie au lanceur de sorts.
+9	Augmente la résistance au Feu de #.
+9	Augmente la résistance au Givre de #.
+9	Augmente la résistance à l'Ombre de #.
+8	Augmente les points de dégâts que vous infligez avec les armes de mêlée à deux mains de #%.
+8	Augmente le score de hâte de #.
+8	Augmente la puissance de vos sorts de #% de votre total d'Intelligence.
+8	Augmente les dégâts infligés de #% jusqu'à ce que l'énergie du rayon s'effondre.
+7	Augmente l'Armure de #.
+7	Augmente de # les points de vie des membres du groupe et du raid.
+7	Augmente tous les dégâts infligés de #%.
+7	Augmente la puissance des sorts d'un montant égal à #% de votre Intelligence totale.
+6	Rend # points de vie au lanceur de sorts.
+6	Augmente de # les points de vie de votre familier.
+6	Réduit la probabilité que les sorts d'Ombre vous touchent de #%.
+6	Augmente de # la puissance des sorts contre les morts-vivants.
+6	Augmente la puissance de vos sorts de #.
+6	Rend # points de vie au Maître toutes les secondes.
+6	Augmente votre total d'Esprit de #%.
+6	Augmente les dégâts physiques de #%.
+6	Réduit les dégâts et les soins produits par tous les ennemis proches de #%.
+5	Rend # points de vie à la cible.
+5	Rend # points de vie à un allié.
+5	Augmente de # les dégâts infligés par le familier.
+5	Augmente de # l’Esprit du familier. Doit être entraîné en utilisant Dressage des bêtes.
+5	Augmente de # la résistance des familiers à toutes les écoles de magie.
+5	Augmente votre Esprit de #.
+5	Réduit le temps d'incantation de votre sort Boule de feu de # secondes.
+5	Réduit le temps d'incantation de votre sort Eclair de givre de # sec.
+5	Augmente de #% les dégâts infligés par vos sorts de Feu.
+5	Augmente vos chances d'infliger un coup critique avec les armes de mêlée de #%.
+5	Augmente la réduction de puissance d'attaque en mêlée de votre Cri démoralisant de #%.
+5	Augmente vos chances de toucher avec les armes et les attaques empoisonnées de #%.
+5	Augmente vos chances d'infliger un coup critique avec les Dagues et les Armes de pugilat de #%.
+5	Augmente les points de dégâts infligés par l'arme que vous utilisez en main gauche de #%.
+5	Augmente vos chances d'infliger un coup critique de #%.
+5	Réduit la durée des effets d'étourdissement, de peur et de silence contre vous de #% supplémentaires.
+5	Augmente les dégâts que vous infligez avec les baguettes de #%.
+5	Augmente le montant de points de vie rendus par vos sorts de soins de #%.
+5	Augmente la puissance des sorts d'un montant égal à #% de votre Esprit total.
+5	Réduit le temps d'incantation de vos sorts Soins et Soins supérieurs de # sec.
+5	Augmente les dégâts de vos sorts d'Ombre de #%.
+5	Réduit le temps de recharge de vos Horions et de Cisaille de vent de # secondes.
+5	Réduit le coût en mana de vos totems de #%.
+5	Augmente de #% l'efficacité de vos sorts de soins.
+5	Réduit de #% le coût en mana de vos sorts de soins.
+5	Réduit le temps d'incantation de votre sort Vague de soins de # secondes.
+5	Augmente les chances d'obtenir un effet critique avec vos sorts de soins et d'éclair de #%.
+5	Augmente de #% vos chances d'infliger un coup critique avec tous les sorts et attaques.
+5	Augmente de #% les dégâts physiques que vous infligez quand une arme de mêlée à une main est équipée.
+5	Réduit le temps d'incantation de vos sorts Eclair, Chaîne d'éclairs et Explosion de lave de # sec.
+5	Augmente votre maximum de points de mana de #%.
+5	Réduit le temps d'incantation de vos sorts Colère et Feu Stellaire de # sec.
+5	Réduit le coût en rage ou en énergie de vos techniques Mutiler, Balayage, Griffe, Griffure et Mutilation de #.
+5	Augmente les chances d'obtenir un effet critique avec vos sorts Rétablissement et Nourrir de #%.
+5	Augmente les effets de tous les sorts de soins de #%.
+5	Augmente les effets de votre sort Récupération de #%.
+5	Augmente votre Intelligence de #%.
+5	Augmente de #% les points de dégâts infligés par vos techniques Attaque pernicieuse, Attaque sournoise et Eviscération.
+5	Réduit le temps d'incantation de vos sorts Châtiment, Flammes sacrées, Soins et Soins supérieurs de # sec.
+5	Augmente votre Agilité de #%.
+5	Augmente votre Endurance de #%.
+5	Augmente les points de dégâts infligés par les armes de mêlée de #%.
+5	Réduit le coût en mana de vos Tirs, Morsures et Piqûres de #%.
+5	Augmente vos chances d'infliger un coup critique avec vos armes à distance de #%.
+5	Augmente le bonus de dégâts de vos coups critiques avec vos techniques à distance de #%.
+5	Augmente de #% les chances de votre familier d'infliger un coup critique.
+5	Augmente les dégâts infligés par vos familiers de #%.
+5	Augmente vos chances d'esquiver de #%.
+5	Réduit le coût en mana de tous les sorts à l'incantation instantanée de #%.
+5	Augmente vos chances d'infliger un coup critique avec tous les sorts et les attaques de #%.
+5	Augmente votre total de Force de #%.
+5	Augmente le score de la compétence Arbalètes de #.
+5	Augmente de #% les points de dégâts infligés par l'arme que vous utilisez en main gauche.
+5	Réduit le coût en mana de vos sorts Toucher guérisseur, Nourrir et Tranquillité de #%.
+5	Réduit tous les dégâts des sorts subis de #%.
+5	Augmente vos chances de coup critique en mêlée et avec les sorts ainsi que celles de votre démon invoqué de #%.
+5	Augmente votre puissance d'attaque de #%.
+5	Augmente le score de compétence Combat farouche de #.
+5	Augmente le score de la compétence Armes de pugilat de #.
+5	Réduit le temps de recharge de votre technique Rapidité de la nature de # sec.
+5	Augmente le score d'expertise de #.
+5	Augmente de #% les dégâts et les soins produits par vos sorts instantanés.
+5	Augmente de #% vos chances d'infliger un coup critique avec les armes, les sorts et les techniques.
+5	Augmente vos dégâts de Givre et d'Ombre de #%.
+5	Augmente vos chances de réussir un coup critique avec les sorts de #%.
+5	Augmente les dégâts infligés par vos techniques Heurtoir, Tourbillon et Sanguinaire de #%.
+5	Augmente les dégâts et les soins produits par les effets de dégâts et de soins de vos sorts périodiques de #%.
+5	Augmente tous les soins que vous prodiguez et tous les effets de soins sur vous de #%.
+4	Augmente de #% les points de dégâts supplémentaires infligés par les coups critiques de vos sorts de Givre.
+4	Réduit de # secondes le temps de recharge de la technique Rage intérieure.
+4	Réduit le coût en mana de tous les changements de forme de #%.
+4	Rend # points de mana et de vie.
+4	Augmente la résistance aux Arcanes de #.
+4	Augmente de # la puissance des sorts Chaîne d'éclairs et Eclair.
+4	Augmente la vitesse d'attaque en mêlée de #%.
+4	Augmente le score de coup critique des sorts de #.
+4	Augmente la puissance du sort Lumière sacrée de #.
+4	Augmente le score de coup critique de #.
+4	Augmente les vitesses d'attaque et d'incantation du lanceur de sorts de #%.
+4	Rend # points de vie à la cible protégée.
+4	Rend # points de vie à l'expiration de Fleur de vie.
+4	Augmente les dégâts physiques et la vitesse d'attaque de #%.
+4	Rend instantanément # points de vie à une cible alliée.
+3	Augmente de #% vos chances d'infliger un coup critique avec vos sorts de Feu.
+3	Augmente les points de dégâts infligés par vos sorts de Givre de #%.
+3	Augmente de #% les points de dégâts infligés par votre sort Cône de froid.
+3	Augmente les chances de toucher et réduit le coût en mana de vos sorts des Arcanes de #%.
+3	Réduit le coût en rage de votre technique Frappe héroïque de # points.
+3	Réduit de #% la durée de tous les effets d'étourdissement et de charme utilisés contre vous.
+3	Réduit le coût en rage de vos techniques Fracasser armure et Dévaster de #.
+3	Augmente le bonus de dégâts infligé par votre technique Enchaînement de #%.
+3	Augmente la durée de l'effet de votre technique Suriner de # sec.
+3	Augmente les dégâts infligés par votre technique Eviscération de #%.
+3	Réduit le coût en mana de vos sorts instantanés de #%.
+3	Augmente les dégâts absorbés par votre Mot de pouvoir : Bouclier de #%.
+3	Augmente de #% le montant de points de vie rendus par votre sort Rénovation.
+3	Réduit le coût en mana de vos sorts Soins inférieurs, Soins, Soins supérieurs, Hymne divin et Pénitence de #%.
+3	Augmente de #% les dégâts infligés par vos sorts et vos chances de coup critique.
+3	Augmente les dégâts infligés par votre sort Mot de l'ombre : Douleur de #%.
+3	Augmente de #% l'effet de vos Totems de Force de la Terre et Langue de feu.
+3	Augmente de #% les dégâts infligés par vos sorts Feu stellaire, Eclat lunaire et Colère.
+3	Augmente de #% la valeur d'armure apportée par les objets en tissu et en cuir.
+3	Réduit le coût en mana de vos sorts de Destruction de #%.
+3	Augmente les dégâts infligés par votre sort Immolation de #%.
+3	Augmente de #% les chances d'infliger un coup critique avec votre sort Douleur brûlante.
+3	Augmente les effets des sorts Eclair de feu, Bouclier de feu et Pacte de sang de votre diablotin de #%.
+3	Augmente votre total d'Endurance de #%.
+3	Diminue la durée des effets affectant le mouvement de #%.
+3	Augmente vos chances d'infliger un coup critique avec toutes vos attaques de #%.
+3	Augmente les dégâts infligés par votre Tir des arcanes de #%.
+3	Augmente les dégâts infligés par vos sorts Flèches multiples, Visée et Salve de #%.
+3	Augmente la portée de vos armes à distance de # mètres.
+3	Augmente les points de dégâts que vous infligez avec les armes à distance de #%.
+3	Augmente le bonus d'Esquive conféré par Aspect du singe ou votre Aspect du faucon-dragon de #%.
+3	Augmente tous les dégâts que vous infligez de #% quand une arme de mêlée à une main est équipée.
+3	Augmente les chances d'obtenir un effet critique avec votre sort Eclair lumineux de #%.
+3	Augmente de #% vos chances de réaliser un effet critique avec vos sorts Lumière sacrée et Horion sacré.
+3	Réduit le coût en rage de votre technique Exécution de #.
+3	+#% à la résistance aux étourdissements.
+3	Rend parfois à celui qui le porte # points de vie quand il attaque un ennemi.
+3	Augmente vos chances de résister aux effets de peur de #%.
+3	Rend à la cible alliée # points de vie.
+3	Augmente la pénétration de vos sorts de feu de #.
+3	Rend # points d'énergie.
+3	Augmente votre Armure d'un montant égal à #% de votre Intelligence.
+3	Augmente les soins reçus de # au maximum.
+3	Augmente les dégâts que vous infligez aux morts-vivants de #%.
+3	Augmente de #% les dégâts que vous infligez avec toutes les armes.
+3	Augmente le montant de points de vie rendus par votre sort Vague de soins de #%.
+3	Réduit le coût en mana et augmente vos chances de toucher avec les sorts de #%.
+3	Augmente vos chances de toucher l'ennemi avec vos armes de mêlée de #%.
+3	Réduit le coût en rage de vos techniques offensives de #.
+3	Augmente de #% l'effet de soins de votre sort Voile mortel.
+3	Augmente de #% l'efficacité de votre Armure démoniaque et de votre Gangrarmure.
+3	Réduit tous les dégâts physiques subis de #%.
+3	Augmente de #% supplémentaires vos chances de toucher lorsque vous portez deux armes.
+3	Augmente vos soins d'un montant égal à #% de votre Intelligence.
+3	Augmente votre taux de régénération d'énergie de #%.
+3	Réduit les dégâts que vous infligent les attaques à zone d'effet de #%.
+3	Réduit les dégâts que vous infligent tous les sorts de #%.
+3	Réduit de #% le temps de recharge de vos sorts Nova de givre, Cône de froid, Bloc de glace et Veines glaciales.
+3	Augmente les dégâts de votre sort Corruption d'un montant égal à #% de votre puissance des sorts.
+3	Rend # points de vie au lanceur de sorts et à une cible alliée. Menace faible.
+3	Réduit le coût en mana de vos sorts Attaque mentale, Contrôle mental, Fouet mental et Incandescence mentale de #%.
+3	Réduit toute la menace générée de #%.
+3	Réduit la menace de toutes les attaques de #%.
+3	Réduit la probabilité que vous soyez touché par les attaques de #%.
+3	Augmente votre puissance d'attaque à distance d'un montant égal à #% de votre total d'Intelligence.
+3	Augmente vos chances de résister aux effets d'étourdissement de #%.
+3	Augmente de #% votre hâte des sorts.
+3	Réduit le temps de recharge de vos techniques Rage sanguinaire, Rage berserker, Témérité et Souhait mortel de #%.
+3	Augmente les soins de #% sur les cibles alliées qui ne disposent plus que de 50% ou moins de leurs points de vie.
+3	Augmente les chances d'obtenir un effet critique avec vos sorts Prompte guérison et Nourrir de #%.
+3	Réduit les chances de vous toucher en mêlée de #%.
+3	Réduit le temps de recharge de votre technique Poigne de la mort de # sec.
+3	Augmente votre puissance d'attaque de #% de votre Intelligence.
+3	Augmente de #% vos chances de réussir un coup critique avec les actions de combo.
+3	Augmente de #% les chances de coup critique de votre familier.
+3	Réduit le temps de recharge de Courroux bestial, Intimidation et des techniques spéciales de familier de #%.
+3	Augmente les chances de coup critique de votre démon invoqué, les rendant égales à #% de vos propres chances.
+3	Augmente l'Endurance totale de votre familier de #%.
+3	Réduit le temps de recharge de vos sorts Renforcement démoniaque, Métamorphe et Domination corrompue de #%.

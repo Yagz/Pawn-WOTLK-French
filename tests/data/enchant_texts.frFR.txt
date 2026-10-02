@@ -1,0 +1,516 @@
+# SpellItemEnchantment.dbc (frFR) texts: count<TAB>template<TAB>first real example.
+135	+# à la puissance des sorts	+1 à la puissance des sorts
+90	+# Endurance	+1 Endurance
+83	+# à la puissance d'attaque	+2 à la puissance d'attaque
+78	+# Esprit	+3 Esprit
+78	+# Agilité	+1 Agilité
+76	+# Force	+1 Force
+76	+# Intelligence	+1 Intelligence
+62	+# au score de défense	+5 au score de défense
+61	+# au score de coup critique	+14 au score de coup critique
+56	+# à la résistance au Feu	+5 à la résistance au Feu
+53	+# à la résistance au Givre	+8 à la résistance au Givre
+53	Bloquer niveau #	Bloquer niveau 14
+52	+# à la résistance à l'Ombre	+10 à la résistance à l'Ombre
+51	+# à la résistance à la Nature	+1 à la résistance à la Nature
+49	+# aux dégâts des sorts de Givre	+1 aux dégâts des sorts de Givre
+48	+# aux dégâts des sorts de Feu	+1 aux dégâts des sorts de Feu
+48	+# aux dégâts des sorts de Nature	+1 aux dégâts des sorts de Nature
+48	+# aux dégâts des sorts d'Ombre	+1 aux dégâts des sorts d'Ombre
+48	+# à la résistance aux Arcanes	+1 à la résistance aux Arcanes
+40	+# points de mana toutes les # sec.	+2 points de mana toutes les 5 sec.
+38	+# à la puissance des attaques à distance	+2 à la puissance des attaques à distance
+38	+# aux dégâts des sorts des Arcanes	+1 aux dégâts des sorts des Arcanes
+38	+# aux dégâts des sorts du Sacré	+1 aux dégâts des sorts du Sacré
+36	Croque-roc #	Croque-roc 3
+33	+# Armure	+3 Armure
+33	+# points de vie toutes les # sec.	+2 points de vie toutes les 5 sec.
+32	+# au score de toucher	+6 au score de toucher
+20	+# au score de résilience	+8 au score de résilience
+19	+# au score d'esquive	+12 au score d'esquive
+17	+# à la puissance d'attaque et +# au score de coup critique	+30 à la puissance d'attaque et +10 au score de coup critique
+16	+# au score de hâte	+10 au score de hâte
+15	+# à la puissance des sorts et +# Endurance	+18 à la puissance des sorts et +10 Endurance
+14	+# à toutes les résistances	+4 à toutes les résistances
+12	+# à la pénétration des sorts	+8 à la pénétration des sorts
+12	+# au score de parade	+8 au score de parade
+11	+# à toutes les caractéristiques	+1 à toutes les caractéristiques
+10	+# au score de blocage	+5 au score de blocage
+10	+# à la puissance des sorts et +# au score de coup critique	+15 à la puissance des sorts et +14 au score de coup critique
+10	+# au score d'expertise	+4 au score d'expertise
+9	Arme de givre #	Arme de givre 1
+9	+# aux dégâts de l'arme	+2 aux dégâts de l'arme
+9	+# points de mana toutes les # secondes	+3 points de mana toutes les 5 secondes
+8	Furie-des-vents #	Furie-des-vents 1
+8	+# à la puissance des sorts et +# Intelligence	+13 à la puissance des sorts et +15 Intelligence
+8	# points de mana toutes les # sec.	8 points de mana toutes les 5 sec.
+8	+# au score de coup critique et +# à la pénétration des sorts	+3 au score de coup critique et +4 à la pénétration des sorts
+8	+# au score d'esquive et +# au score de défense	+15 au score d'esquive et +10 au score de défense
+8	+# à la puissance des sorts et +# au score de résilience	+6 à la puissance des sorts et +4 au score de résilience
+8	+# au score de pénétration d'armure	+12 au score de pénétration d'armure
+7	Aiguisé (+# points de dégâts)	Aiguisé (+3 points de dégâts)
+7	+# à la compétence Epée	+1 à la compétence Epée
+7	+# à la compétence Epée à deux mains	+1 à la compétence Epée à deux mains
+7	+# à la compétence Masse	+1 à la compétence Masse
+7	+# à la compétence Masse à deux mains	+1 à la compétence Masse à deux mains
+7	+# à la compétence Hache	+1 à la compétence Hache
+7	+# à la compétence Hache à deux mains	+1 à la compétence Hache à deux mains
+7	+# à la compétence Dague	+1 à la compétence Dague
+7	+# à la compétence Arme à feu	+1 à la compétence Arme à feu
+7	+# à la compétence Arc	+1 à la compétence Arc
+7	+# (Bêtes)	+2 (Bêtes)
+7	#% quand touché : Trait de l'ombre (# points de dégâts)	10% quand touché : Trait de l'ombre (10 points de dégâts)
+7	+# aux dégâts des armes (Feu)	+2 aux dégâts des armes (Feu)
+7	Langue de feu #	Langue de feu 4
+7	+# à la puissance des sorts et +# points de mana toutes les # secondes	+5 à la puissance des sorts et +2 points de mana toutes les 5 secondes
+7	+# à la puissance d'attaque et +# Endurance	+10 à la puissance d'attaque et +6 Endurance
+7	+# à la puissance d'attaque et +# au score de résilience	+8 à la puissance d'attaque et +5 au score de résilience
+7	+# à la puissance des sorts et +# Esprit	+6 à la puissance des sorts et +4 Esprit
+6	Équilibré (+# points de dégâts)	Équilibré (+2 points de dégâts)
+6	+# points de dégâts	+2 points de dégâts
+6	+# points de mana	+20 points de mana
+6	Réaction #	Réaction 1
+6	+# à la puissance des sorts et +# au score de toucher	+18 à la puissance des sorts et +8 au score de toucher
+6	+# au score de coup critique et +# à la puissance des sorts	+3 au score de coup critique et +4 à la puissance des sorts
+6	+# à la puissance d'attaque et +# au score de toucher	+34 à la puissance d'attaque et +16 au score de toucher
+6	+# Endurance et +# Agilité	+30 Endurance et +10 Agilité
+6	Viveterre #	Viveterre 1
+5	Renforcé (+# Armure)	Renforcé (+8 Armure)
+5	+# points de vie	+5 points de vie
+5	+# aux points de vie	+15 aux points de vie
+5	Appât de pêche (+# compétence de pêche)	Appât de pêche (+25 compétence de pêche)
+5	Pierre de feu #	Pierre de feu 1
+5	+# point de vie toutes les # sec.	+1 point de vie toutes les 5 sec.
+5	+# Agilité et +# Endurance	+3 Agilité et +4 Endurance
+5	+# Force et +# Endurance	+3 Force et +4 Endurance
+5	+# au score de parade et +# au score de défense	+5 au score de parade et +4 au score de défense
+5	+# à la puissance des sorts et +# à la pénétration des sorts	+6 à la puissance des sorts et +5 à la pénétration des sorts
+5	+# à la puissance d'attaque et +# points de mana toutes les # secondes	+8 à la puissance d'attaque et +2 points de mana toutes les 5 secondes
+5	+# à la puissance des sorts et +# à l'Esprit	+6 à la puissance des sorts et +5 à l'Esprit
+4	Lunette (+# point de dégâts)	Lunette (+1 point de dégâts)
+4	Lunette (+# points de dégâts)	Lunette (+2 points de dégâts)
+4	+#% à la vitesse de la monture	+4% à la vitesse de la monture
+4	+# point de mana toutes les # sec.	+1 point de mana toutes les 5 sec.
+4	+# à la valeur de blocage	+36 à la valeur de blocage
+4	+# au score de défense et +# Endurance	+3 au score de défense et +4 Endurance
+4	+# Intelligence et +# points de mana toutes les # secondes	+4 Intelligence et +2 points de mana toutes les 5 secondes
+4	+# au score de coup critique et +# Endurance	+3 au score de coup critique et +4 Endurance
+4	+# à la puissance d'attaque et légère augmentation de la vitesse de course	+24 à la puissance d'attaque et légère augmentation de la vitesse de course
+4	+# Endurance, +# au score de coup critique	+3 Endurance, +4 au score de coup critique
+4	+# au score de coup critique et +# à la puissance d'attaque	+15 au score de coup critique et +20 à la puissance d'attaque
+4	+# au score de toucher et +# à la puissance des sorts	+5 au score de toucher et +6 à la puissance des sorts
+4	+# au score de hâte et +# à l'Endurance	+4 au score de hâte et +6 à l'Endurance
+4	Arme runique gelée #	Arme runique gelée 2
+4	+# à la puissance des sorts et +# à l'Endurance	+7 à la puissance des sorts et +9 à l'Endurance
+4	+# à la puissance des sorts et +# au score de hâte	+7 à la puissance des sorts et +6 au score de hâte
+4	+# au score d'expertise et +# au score de toucher	+6 au score d'expertise et +6 au score de toucher
+4	+# au score d'expertise et +# au score de défense	+6 au score d'expertise et +6 au score de défense
+4	+# à la puissance d'attaque et +# au score de hâte	+12 à la puissance d'attaque et +6 au score de hâte
+4	+# au score de coup critique et +# points de mana toutes les # secondes	+6 au score de coup critique et +3 points de mana toutes les 5 secondes
+4	+# au score de toucher et +# points de mana toutes les # secondes	+6 au score de toucher et +3 points de mana toutes les 5 secondes
+4	+# au score de résilience et +# points de mana toutes les # secondes	+6 au score de résilience et +3 points de mana toutes les 5 secondes
+4	+# au score de hâte et +# points de mana toutes les # secondes	+6 au score de hâte et +3 points de mana toutes les 5 secondes
+4	+# au score de toucher et +# à la pénétration des sorts	+6 au score de toucher et +8 à la pénétration des sorts
+4	+# au score de hâte et +# à la pénétration des sorts	+6 au score de hâte et +8 à la pénétration des sorts
+3	Langue de feu #	Langue de feu 3
+3	Poison (# points de dégâts)	Poison (15 points de dégâts)
+3	+# aux points de mana	+5 aux points de mana
+3	+# Tueur de bêtes	+4 Tueur de bêtes
+3	Absorption (#)	Absorption (10)
+3	Totem Langue de feu #	Totem Langue de feu 3
+3	Totem Furie-des-vents #	Totem Furie-des-vents 2
+3	+# en Pêche	+5 en Pêche
+3	+# au score de toucher et +# au score de coup critique	+10 au score de toucher et +10 au score de coup critique
+3	+# à la puissance d'attaque contre les morts-vivants	+100 à la puissance d'attaque contre les morts-vivants
+3	+# à la puissance des sorts et # points de mana toutes les # sec.	+16 à la puissance des sorts et 6 points de mana toutes les 5 sec.
+3	+# au score de coup critique et +# Force	+3 au score de coup critique et +3 Force
+3	+# au score de toucher et +# Agilité	+3 au score de toucher et +3 Agilité
+3	+# à la résilience	+9 à la résilience
+3	# point de mana toutes les # sec.	3 point de mana toutes les 5 sec.
+3	+ # Force	+ 7 Force
+3	+# au score de défense et +# au score d'esquive	+15 au score de défense et +10 au score d'esquive
+3	+# Force et +# au score de toucher	+5 Force et +4 au score de toucher
+3	+# au score d'esquive et +# Endurance	+5 au score d'esquive et +6 Endurance
+3	+# au score de parade et +# Endurance	+5 au score de parade et +6 Endurance
+3	+# Intelligence et +# Endurance	+5 Intelligence et +6 Endurance
+3	+# à la Force et +# au score de défense	+5 à la Force et +4 au score de défense
+3	+# Endurance et +# score de résilience	+6 Endurance et +5 score de résilience
+3	+# Force et +# au score de résilience	+5 Force et +4 au score de résilience
+3	+# au score de résilience et +# Endurance	+4 au score de résilience et +6 Endurance
+3	+# au score de pénétration d'armure et +# à l'Endurance	+6 au score de pénétration d'armure et +9 à l'Endurance
+3	+# à l'Agilité et +# à l'Endurance	+6 à l'Agilité et +9 à l'Endurance
+3	+# à la puissance d'attaque et +# à l'Endurance	+12 à la puissance d'attaque et +9 à l'Endurance
+3	+# au score d'esquive et +# à l'Endurance	+6 au score d'esquive et +9 à l'Endurance
+3	+# au score d'expertise et +# à l'Endurance	+6 au score d'expertise et +9 à l'Endurance
+3	+# à l'Agilité et +# points de mana toutes les # secondes	+6 à l'Agilité et +3 points de mana toutes les 5 secondes
+3	+# à la puissance des sorts et +# à l'Intelligence	+7 à la puissance des sorts et +6 à l'Intelligence
+3	+# à l'Agilité et +# au score de toucher	+6 à l'Agilité et +6 au score de toucher
+3	+# à l'Agilité et +# au score de coup critique	+6 à l'Agilité et +6 au score de coup critique
+3	+# à l'Agilité et +# au score de résilience	+6 à l'Agilité et +6 au score de résilience
+3	+# à l'Agilité et +# au score de hâte	+6 à l'Agilité et +6 au score de hâte
+3	+# au score de coup critique et +# à l'Endurance	+6 au score de coup critique et +9 à l'Endurance
+3	+# au score de toucher et +# à l'Endurance	+6 au score de toucher et +9 à l'Endurance
+3	+# au score de défense et +# à l'Endurance	+6 au score de défense et +9 à l'Endurance
+3	+# au score de résilience et +# à l'Endurance	+6 au score de résilience et +9 à l'Endurance
+3	+# au score de coup critique et +# à l'Esprit	+6 au score de coup critique et +6 à l'Esprit
+3	+# au score de toucher et +# à l'Esprit	+6 au score de toucher et +6 à l'Esprit
+3	+# au score de résilience et +# à l'Esprit	+6 au score de résilience et +6 à l'Esprit
+3	+# au score de hâte et +# à l'Esprit	+6 au score de hâte et +6 à l'Esprit
+2	Totem Langue de feu #	Totem Langue de feu 1
+2	+# Minage	+2 Minage
+2	+# Herboristerie	+2 Herboristerie
+2	+# à la résistance aux arcanes	+31 à la résistance aux arcanes
+2	Totem Furie-des vents #	Totem Furie-des vents 4
+2	+# points de vie et de mana toutes les # sec.	+5 points de vie et de mana toutes les 5 sec.
+2	Huile de mana excellente	Huile de mana excellente
+2	+# à la puissance des sorts contre les morts-vivants	+60 à la puissance des sorts contre les morts-vivants
+2	+# aux score de toucher	+11 aux score de toucher
+2	+$i au score de coup critique	+$i au score de coup critique
+2	+# au score de défense et une chance de rendre des points de vie au toucher	+12 au score de défense et une chance de rendre des points de vie au toucher
+2	+# Endurance, +# au score de critique	+3 Endurance, +4 au score de critique
+2	+# à la puissance des sorts et légère augmentation de la vitesse de course	+12 à la puissance des sorts et légère augmentation de la vitesse de course
+2	+# à la puissance des sorts et # points de mana toutes les # secondes	+12 à la puissance des sorts et 8 points de mana toutes les 5 secondes
+2	+# Endurance et +# au score de résilience	+18 Endurance et +20 au score de résilience
+2	+# Endurance et +# au score de coup critique	+6 Endurance et +5 au score de coup critique
+2	+# Agilité et +# au score de toucher	+5 Agilité et +4 au score de toucher
+2	+# au score de coup critique et # points de mana toutes les # sec.	+5 au score de coup critique et 2 points de mana toutes les 5 sec.
+2	+# Esprit et +# à la puissance des sorts	+5 Esprit et +5 à la puissance des sorts
+2	+# Intelligence et +# Esprit	+4 Intelligence et +5 Esprit
+2	+# Endurance et +# au score de défense	+6 Endurance et +5 au score de défense
+2	+# au score de toucher et +# Endurance	+5 au score de toucher et +6 Endurance
+2	Chance d'augmenter la vitesse d'attaque en mêlée/à distance	Chance d'augmenter la vitesse d'attaque en mêlée/à distance
+2	+# au score de hâte et +# à la puissance des sorts	+4 au score de hâte et +5 à la puissance des sorts
+2	+# au score de défense et +#% à la valeur de blocage du bouclier	+12 au score de défense et +5% à la valeur de blocage du bouclier
+2	+# au score de hâte et +# Endurance	+5 au score de hâte et +7 Endurance
+2	+# à la puissance des sorts et +# au score de critique	+6 à la puissance des sorts et +5 au score de critique
+2	+# à la Force et +# à l'Endurance	+6 à la Force et +9 à l'Endurance
+2	+# à la Force et +# au score de coup critique	+6 à la Force et +6 au score de coup critique
+2	+# à la Force et +# au score de résilience	+6 à la Force et +6 au score de résilience
+2	+# à la Force et +# au score de hâte	+6 à la Force et +6 au score de hâte
+2	+# à la Force et +# au score de toucher	+6 à la Force et +6 au score de toucher
+2	+# à l'Intelligence et +# à l'Endurance	+6 à l'Intelligence et +9 à l'Endurance
+2	+# à l'Intelligence et +# à l'Esprit	+6 à l'Intelligence et +6 à l'Esprit
+2	+# à l'Intelligence et +# points de mana toutes les # secondes	+6 à l'Intelligence et +3 points de mana toutes les 5 secondes
+2	+# au score de parade et +# à l'Endurance	+8 au score de parade et +12 à l'Endurance
+2	+# Force et +# au score de coup critique	+10 Force et +10 au score de coup critique
+2	+# Force et +# au score de défense	+10 Force et +10 au score de défense
+2	+# Force et +# au score de hâte	+10 Force et +10 au score de hâte
+2	+# au score de coup critique et durée de Ralentir et Immobiliser réduite de #%	+21 au score de coup critique et durée de Ralentir et Immobiliser réduite de 10%
+2	+# à la puissance des sorts et durée de Silence réduite de #%	+25 à la puissance des sorts et durée de Silence réduite de 10%
+2	+# au score de coup critique et durée de Peur réduite de #%	+21 au score de coup critique et durée de Peur réduite de 10%
+2	+# à la puissance des sorts et +# points de mana par tranche de # secondes	+18 à la puissance des sorts et +5 points de mana par tranche de 5 secondes
+1	Poison mortel	Poison mortel
+1	Poison mortel II	Poison mortel II
+1	Poison affaiblissant	Poison affaiblissant
+1	Poison de distraction mentale II	Poison de distraction mentale II
+1	Huile des ténèbres	Huile des ténèbres
+1	Huile glaciale	Huile glaciale
+1	Fractionnement	Fractionnement
+1	Contrepoids (+# au score de hâte)	Contrepoids (+20 au score de hâte)
+1	Poison de Distraction mentale	Poison de Distraction mentale
+1	Enchanter : Eclat flamboyant	Enchanter : Eclat flamboyant
+1	Dragonne en acier	Dragonne en acier
+1	Poison (Instantané #)	Poison (Instantané 20)
+1	Pointe en fer (#-#)	Pointe en fer (8-12)
+1	+# point de dégâts	+1 point de dégâts
+1	+# Dégâts de l'arme	+1 Dégâts de l'arme
+1	Orbe de feu	Orbe de feu
+1	Poison instantané	Poison instantané
+1	Poison instantané II	Poison instantané II
+1	Poison instantané III	Poison instantané III
+1	Leurre du Temple noir	Leurre du Temple noir
+1	Pointe en mithril (#-#)	Pointe en mithril (16-20)
+1	+# Croque-roc	+80 Croque-roc
+1	+# Agilité / +# Esprit	+1 Agilité / +1 Esprit
+1	+# Agilité / +# Intelligence	+1 Agilité / +1 Intelligence
+1	+# Agilité / +# Endurance	+1 Agilité / +1 Endurance
+1	+# Agilité / +# Force	+1 Agilité / +1 Force
+1	+# Intelligence / +# Esprit	+1 Intelligence / +1 Esprit
+1	+# Intelligence / +# Endurance	+1 Intelligence / +1 Endurance
+1	+# Intelligence / +# Force	+1 Intelligence / +1 Force
+1	+# Esprit / +# Endurance	+1 Esprit / +1 Endurance
+1	+# Esprit / +# Force	+1 Esprit / +1 Force
+1	+# Endurance / +# Force	+1 Endurance / +1 Force
+1	Poison affaiblissant II	Poison affaiblissant II
+1	Poison instantané IV	Poison instantané IV
+1	Poison instantané V	Poison instantané V
+1	Poison instantané VI	Poison instantané VI
+1	Poison mortel III	Poison mortel III
+1	Poison mortel IV	Poison mortel IV
+1	Poison de distraction mentale III	Poison de distraction mentale III
+1	Poison douloureux	Poison douloureux
+1	Poison douloureux II	Poison douloureux II
+1	Poison douloureux III	Poison douloureux III
+1	Poison douloureux IV	Poison douloureux IV
+1	+# Camouflage	+2 Camouflage
+1	Arme flamboyante	Arme flamboyante
+1	+# Tueur d'élémentaires	+6 Tueur d'élémentaires
+1	+# Dépeçage	+5 Dépeçage
+1	Camouflage augmenté	Camouflage augmenté
+1	Augmentation mineure de vitesse	Augmentation mineure de vitesse
+1	Tueur de démon	Tueur de démon
+1	Poison de Peau-de-venin	Poison de Peau-de-venin
+1	+#/# MANA/RF	+85/14 MANA/RF
+1	+#/# PV/RF	+75/14 PV/RF
+1	+#/# CA/RF	+110/14 CA/RF
+1	+#/# FOR/RF	+10/14 FOR/RF
+1	+#/# END/RF	+10/14 END/RF
+1	+#/# AGI/RF	+10/14 AGI/RF
+1	+#/# INT/RF	+10/14 INT/RF
+1	+#/# ESP/RF	+10/14 ESP/RF
+1	+#/# FOR/END	+10/10 FOR/END
+1	+#/#/#/# FOR/END/CA/RF	+10/10/110/15 FOR/END/CA/RF
+1	+#/#/#/# INT/ESP/MANA/RF	+10/10/100/15 INT/ESP/MANA/RF
+1	Pointe en thorium (#-#)	Pointe en thorium (20-30)
+1	Augure de clarté	Augure de clarté
+1	MHTest#	MHTest02
+1	Sang froid	Sang froid
+1	+# points de mana et de vie toutes les # sec.	+4 points de mana et de vie toutes les 5 sec.
+1	Arme glacée	Arme glacée
+1	+# aux dégâts	+9 aux dégâts
+1	Vampirique	Vampirique
+1	Arme impie	Arme impie
+1	Croisé	Croisé
+1	+# au score de critique en mêlée	+28 au score de critique en mêlée
+1	+# au score de toucher à distance	+30 au score de toucher à distance
+1	# à la régén. mana toutes les # sec.	5 à la régén. mana toutes les 5 sec.
+1	+# Score de défense +# Endurance +# Valeur de blocage	+10 Score de défense +10 Endurance +30 Valeur de blocage
+1	+# Défense/+# Endurance/+# à la puissance des sorts	+10 Défense/+10 Endurance/+12 à la puissance des sorts
+1	+# à la puissance d'attaque/+# au score d'esquive	+28 à la puissance d'attaque/+12 au score d'esquive
+1	+# à la puissance d'attaque à distance/+# Endurance/+# au score de toucher	+24 à la puissance d'attaque à distance/+10 Endurance/+10 au score de toucher
+1	+# à la puissance des sorts/+# Endurance/+# points de mana toutes les # secondes	+13 à la puissance des sorts/+10 Endurance/+5 points de mana toutes les 5 secondes
+1	+# Intelligence/+# Endurance/+# à la puissance des sorts	+10 Intelligence/+10 Endurance/+12 à la puissance des sorts
+1	zzOLDBlank	zzOLDBlank
+1	+#% à la menace	+2% à la menace
+1	+# à la puissance des sorts d'Ombre	+20 à la puissance des sorts d'Ombre
+1	+# à la puissance des sorts de Givre	+20 à la puissance des sorts de Givre
+1	+# à la puissance des sorts de Feu	+20 à la puissance des sorts de Feu
+1	Menace diminuée de #%	Menace diminuée de 2%
+1	Huile de sorcier mineure	Huile de sorcier mineure
+1	Huile de mana mineure	Huile de mana mineure
+1	Huile de mana inférieure	Huile de mana inférieure
+1	Huile de sorcier inférieure	Huile de sorcier inférieure
+1	Huile de sorcier	Huile de sorcier
+1	Huile de sorcier brillante	Huile de sorcier brillante
+1	Huile de mana brillante	Huile de mana brillante
+1	Poison mortel V	Poison mortel V
+1	Poison anesthésiant	Poison anesthésiant
+1	Poison instantané VII	Poison instantané VII
+1	Poison mortel VI	Poison mortel VI
+1	Poison mortel VII	Poison mortel VII
+1	Poison douloureux V	Poison douloureux V
+1	+# à la puissance des sorts de Feu et des Arcanes	+50 à la puissance des sorts de Feu et des Arcanes
+1	+# à la puissance des sorts d'Ombre et de Givre	+54 à la puissance des sorts d'Ombre et de Givre
+1	Mangouste	Mangouste
+1	Eruption de sort	Eruption de sort
+1	Maître de guerre	Maître de guerre
+1	Huile de sorcier excellente	Huile de sorcier excellente
+1	+# Agilité (# gemmes rouges)	+12 Agilité (2 gemmes rouges)
+1	+# Agilité pour chaque couleur de gemme	+4 Agilité pour chaque couleur de gemme
+1	+# Force avec # gemmes bleues équipées	+12 Force avec 4 gemmes bleues équipées
+1	+# Intelligence et +# point de mana toutes les # sec.	+3 Intelligence et +2 point de mana toutes les 5 sec.
+1	+# à la puissance des sorts et +# point de mana toutes les # secondes	+4 à la puissance des sorts et +2 point de mana toutes les 5 secondes
+1	Aiguisé (+# au score de critique et +# aux points de dégâts)	Aiguisé (+14 au score de critique et +12 aux points de dégâts)
+1	Pointe en gangracier (#-#)	Pointe en gangracier (26-38)
+1	+# Endurance et +# Armure	+16 Endurance et +100 Armure
+1	+# à la puissance d'attaque/+# au score de coup critique	+26 à la puissance d'attaque/+14 au score de coup critique
+1	Rune de garde inférieure	Rune de garde inférieure
+1	Gardien de sauvegarde inférieur	Gardien de sauvegarde inférieur
+1	Gardien de sauvegarde supérieur	Gardien de sauvegarde supérieur
+1	Lunette (+# au score de coup critique)	Lunette (+28 au score de coup critique)
+1	ZZOLD Rune de garde inférieure	ZZOLD Rune de garde inférieure
+1	Rune de garde supérieure	Rune de garde supérieure
+1	+# points de mana rendus toutes les # secondes	+4 points de mana rendus toutes les 5 secondes
+1	Semelles confortables	Semelles confortables
+1	+$i Intelligence (+$n/+$f)	+$i Intelligence (+$n/+$f)
+1	+$i Endurance (+$n/+$f)	+$i Endurance (+$n/+$f)
+1	+$i Armure (+$n/+$f)	+$i Armure (+$n/+$f)
+1	+$i Agilité	+$i Agilité
+1	+$i Endurance	+$i Endurance
+1	+$i Intelligence	+$i Intelligence
+1	+$i Force	+$i Force
+1	+$i Esprit	+$i Esprit
+1	+$i aux dégâts des Arcanes	+$i aux dégâts des Arcanes
+1	+$i aux dégâts de Feu	+$i aux dégâts de Feu
+1	+$i aux dégâts de Nature	+$i aux dégâts de Nature
+1	+$i aux dégâts de Givre	+$i aux dégâts de Givre
+1	+$i aux dégâts d'Ombre	+$i aux dégâts d'Ombre
+1	+$i aux soins	+$i aux soins
+1	+$i au score de défense	+$i au score de défense
+1	+$i points de vie toutes les # sec.	+$i points de vie toutes les 5 sec.
+1	+$i au score d'esquive	+$i au score d'esquive
+1	+$i points de mana toutes les # sec.	+$i points de mana toutes les 5 sec.
+1	+$i à la résistance aux Arcanes	+$i à la résistance aux Arcanes
+1	+$i à la résistance au Feu	+$i à la résistance au Feu
+1	+$i à la résistance au Givre	+$i à la résistance au Givre
+1	+$i à la résistance à la Nature	+$i à la résistance à la Nature
+1	+$i à la résistance à l'Ombre	+$i à la résistance à l'Ombre
+1	+$i à la puissance des sorts	+$i à la puissance des sorts
+1	+$i à la puissance d'attaque	+$i à la puissance d'attaque
+1	+$i au score de blocage	+$i au score de blocage
+1	+# au score de critique et #% de renvoi de sort	+14 au score de critique et 1% de renvoi de sort
+1	Chance d'augmenter la vitesse d'incantation des sorts	Chance d'augmenter la vitesse d'incantation des sorts
+1	+# au score de coup critique et durées des ralentissements/immobilisations réduites de #%	+12 au score de coup critique et durées des ralentissements/immobilisations réduites de 10%
+1	+# à l'Endurance et durée d'Étourdissement réduite de #%.	+18 à l'Endurance et durée d'Étourdissement réduite de 15%.
+1	+# à la puissance des sorts et #% de réduction de la menace	+14 à la puissance des sorts et 2% de réduction de la menace
+1	+# aux dégâts en mêlée et une chance d'étourdir la cible	+3 aux dégâts en mêlée et une chance d'étourdir la cible
+1	+# Intelligence et une chance de restaurer des points de mana au lancement d'un sort	+12 Intelligence et une chance de restaurer des points de mana au lancement d'un sort
+1	+$i Endurance et +$i Intelligence	+$i Endurance et +$i Intelligence
+1	+# Force, +# au score de critique	+5 Force, +5 au score de critique
+1	test enchantement de gemme	test enchantement de gemme
+1	Vitesse mineure et +# à l'Agilité	Vitesse mineure et +6 à l'Agilité
+1	Vitesse mineure et +# à l'Endurance	Vitesse mineure et +9 à l'Endurance
+1	+# à la puissance d'attaque, +# au score de critique	+10 à la puissance d'attaque, +5 au score de critique
+1	Équilibré (+# au score de crit. et +# aux points de dégâts)	Équilibré (+14 au score de crit. et +12 aux points de dégâts)
+1	+# point de mana toutes les # secondes	+2 point de mana toutes les 5 secondes
+1	+# Régén. de mana	+6 Régén. de mana
+1	+# Endurance, +# au score d'esquive et +# au score de résilience	+18 Endurance, +12 au score d'esquive et +12 au score de résilience
+1	Totem Furie-des-vents # (Test Niv. #)	Totem Furie-des-vents 5 (Test Niv. 70)
+1	+# au score de coup critique et +# points de mana toutes les # sec.	+5 au score de coup critique et +2 points de mana toutes les 5 sec.
+1	+# au score de coup critique et +# au score d'esquive	+6 au score de coup critique et +5 au score d'esquive
+1	+# au score d'esquive et +# au score de toucher	+5 au score d'esquive et +4 au score de toucher
+1	+# Force et +# score de coup critique	+5 Force et +4 score de coup critique
+1	+# Agilité et +# au score de défense	+4 Agilité et +5 au score de défense
+1	+# Intelligence et # points de mana toutes les # sec.	+5 Intelligence et 2 points de mana toutes les 5 sec.
+1	+# au score de défense et # points de mana toutes les # sec.	+5 au score de défense et 2 points de mana toutes les 5 sec.
+1	+# au score d'esquive et +# au score de résilience	+5 au score d'esquive et +4 au score de résilience
+1	+# Endurance et +# au score de critique	+6 Endurance et +5 au score de critique
+1	+# au score de toucher et # points de mana toutes les # sec.	+5 au score de toucher et 2 points de mana toutes les 5 sec.
+1	+# au score de parade et +# au score de résilience	+5 au score de parade et +4 au score de résilience
+1	+# à la puissance d'attaque contre les morts-vivants et les démons	+150 à la puissance d'attaque contre les morts-vivants et les démons
+1	+# Force et +# Intelligence	+17 Force et +16 Intelligence
+1	Poison	Poison
+1	+# à la puissance d'attaque & +# point de mana toutes les # secondes	+6 à la puissance d'attaque & +1 point de mana toutes les 5 secondes
+1	+# à l'Agilité et dégâts critiques augmentés de #%	+12 à l'Agilité et dégâts critiques augmentés de 3%
+1	+# à la puissance d'attaque et #% à la résistance aux étourdissements	+24 à la puissance d'attaque et 5% à la résistance aux étourdissements
+1	+# à la puissance des sorts et #% à la résistance aux étourdissements	+14 à la puissance des sorts et 5% à la résistance aux étourdissements
+1	Dragonne en adamantite	Dragonne en adamantite
+1	Bourreau	Bourreau
+1	+# Endurance et augmentation mineure de la vitesse	+15 Endurance et augmentation mineure de la vitesse
+1	Récolteur	Récolteur
+1	Arme brise-glace	Arme brise-glace
+1	Gardevie	Gardevie
+1	Marcheglace	Marcheglace
+1	Tueur de géants	Tueur de géants
+1	+#% à la menace et # au score de parade	+2% à la menace et 10 au score de parade
+1	Camouflage augmenté et Agilité +#	Camouflage augmenté et Agilité +10
+1	+# au score de coups critiques et dégâts des critiques augmentés de #%	+12 au score de coups critiques et dégâts des critiques augmentés de 3%
+1	+# Armure, -#% vitesse	+150 Armure, -10% vitesse
+1	Enduit d'arme béni	Enduit d'arme béni
+1	Enduit d'arme vertueux	Enduit d'arme vertueux
+1	Givre mortel	Givre mortel
+1	+# à la puissance des sorts & +#% à l'Intelligence	+14 à la puissance des sorts & +2% à l'Intelligence
+1	Enchant. cravache d'équitation de test	Enchant. cravache d'équitation de test
+1	Déployeur de cape à ressort	Déployeur de cape à ressort
+1	Test utilisation charges	Test utilisation charges
+1	+# Esprit et menace réduite de #%	+10 Esprit et menace réduite de 2%
+1	Huile de mana exceptionnelle	Huile de mana exceptionnelle
+1	Huile de sorcier exceptionnelle	Huile de sorcier exceptionnelle
+1	Test ajout de châsse enchantement	Test ajout de châsse enchantement
+1	Test de compétence requise enchantement	Test de compétence requise enchantement
+1	Arme runique gelée	Arme runique gelée
+1	QA Test Blank Purple Gem Enchant	QA Test Blank Purple Gem Enchant
+1	Vol Norfendre	Vol Norfendre
+1	+# à la puissance d'attaque, +# au score de coup critique	+10 à la puissance d'attaque, +5 au score de coup critique
+1	Charge de la lame runique	Charge de la lame runique
+1	Rune de Fracasse-épée	Rune de Fracasse-épée
+1	Rune de Lichemort	Rune de Lichemort
+1	Rune de Fracasse-sort	Rune de Fracasse-sort
+1	Rune du Croisé déchu	Rune du Croisé déchu
+1	Rune de Cendreglace	Rune de Cendreglace
+1	Rune de Trancheglace	Rune de Trancheglace
+1	+# Force et +# à l'Endurance	+10 Force et +15 à l'Endurance
+1	+# Intelligence et +# à l'Endurance	+10 Intelligence et +15 à l'Endurance
+1	+# Intelligence et +# à l'Esprit	+10 Intelligence et +10 à l'Esprit
+1	Test +# Intelligence et +# points de mana toutes les # secondes	Test +4 Intelligence et +2 points de mana toutes les 5 secondes
+1	Rune de Brise-épée	Rune de Brise-épée
+1	Rune de Brise-sort	Rune de Brise-sort
+1	Pierre de feu magistrale	Pierre de feu magistrale
+1	Générateur personnel de pulsation électromagnétique	Générateur personnel de pulsation électromagnétique
+1	Ceinture à fragmentation	Ceinture à fragmentation
+1	Pyrofusée à montage manuel	Pyrofusée à montage manuel
+1	Accélérateurs hyper-stimulants	Accélérateurs hyper-stimulants
+1	Doublure en toile de lin	Doublure en toile de lin
+1	+# au score de hâte à distance	+40 au score de hâte à distance
+1	+# au score de coup critique à distance	+40 au score de coup critique à distance
+1	Pierre de feu inférieure	Pierre de feu inférieure
+1	Pierre de feu	Pierre de feu
+1	Pierre de feu supérieure	Pierre de feu supérieure
+1	Pierre de feu majeure	Pierre de feu majeure
+1	Pierre de feu gangrenée	Pierre de feu gangrenée
+1	Pierre de feu grandiose	Pierre de feu grandiose
+1	Pierre de sort	Pierre de sort
+1	Pierre de sort supérieure	Pierre de sort supérieure
+1	Pierre de sort majeure	Pierre de sort majeure
+1	Pierre de sort magistrale	Pierre de sort magistrale
+1	Pierre de sort démoniaque	Pierre de sort démoniaque
+1	Pierre de sort grandiose	Pierre de sort grandiose
+1	+# au score de coup critique et dégâts des critiques augmentés de #%	+21 au score de coup critique et dégâts des critiques augmentés de 3%
+1	+# au score de coup critique et #% au renvoi des sorts	+25 au score de coup critique et 1% au renvoi des sorts
+1	+# à la puissance des sorts et +#% à l'Intelligence	+25 à la puissance des sorts et +2% à l'Intelligence
+1	+# à la puissance des sorts et menace réduite de #%	+25 à la puissance des sorts et menace réduite de 2%
+1	+# à l'Intelligence et une chance de rendre du mana lors des incantations	+21 à l'Intelligence et une chance de rendre du mana lors des incantations
+1	+# à l'Agilité & dégâts des critiques augmentés de #%	+21 à l'Agilité & dégâts des critiques augmentés de 3%
+1	+# à la puissance des sorts et augmentation de la Vitesse de course mineure	+25 à la puissance des sorts et augmentation de la Vitesse de course mineure
+1	+# points de mana toutes les # secondes et effets de soin critiques augmentés de #%	+11 points de mana toutes les 5 secondes et effets de soin critiques augmentés de 3%
+1	+# Endurance et réduit les dégâts des sorts reçus de #%	+32 Endurance et réduit les dégâts des sorts reçus de 2%
+1	+# Endurance et augmente de #% la valeur d'armure des objets	+32 Endurance et augmente de 2% la valeur d'armure des objets
+1	+# à la puissance d'attaque et durée de Etourdir réduite de #%	+42 à la puissance d'attaque et durée de Etourdir réduite de 10%
+1	+# à la puissance des sort et durée de Etourdir réduite de #%	+25 à la puissance des sort et durée de Etourdir réduite de 10%
+1	+# à la puissance d'attaque et régénère parfois vos points de vie quand critique	+42 à la puissance d'attaque et régénère parfois vos points de vie quand critique
+1	+# au score de coup critique et +#% aux points de mana	+21 au score de coup critique et +2% aux points de mana
+1	+# Endurance et durée de Etourdir réduite de #%	+32 Endurance et durée de Etourdir réduite de 10%
+1	+# à la puissance d'attaque et +# points de mana toutes les # sec.	+14 à la puissance d'attaque et +4 points de mana toutes les 5 sec.
+1	+# au score de pénétration d'armure et +# Endurance	+7 au score de pénétration d'armure et +11 Endurance
+1	+# Agilité et +# points de mana toutes les # secondes	+7 Agilité et +4 points de mana toutes les 5 secondes
+1	+# au score d'expertise et +# Endurance	+7 au score d'expertise et +11 Endurance
+1	+# à la puissance d'attaque et +# au score de coup critique (VIEUX)	+14 à la puissance d'attaque et +7 au score de coup critique (VIEUX)
+1	+# Agilité et +# au score de hâte	+7 Agilité et +7 au score de hâte
+1	+# Agilité et +# au score de coup critique	+7 Agilité et +7 au score de coup critique
+1	+# Agilité et +# au score de résilience	+7 Agilité et +7 au score de résilience
+1	+# au score de coup critique et +# Esprit	+7 au score de coup critique et +7 Esprit
+1	+# au score de hâte et +# Esprit	+7 au score de hâte et +7 Esprit
+1	+# au score de toucher et +# Esprit	+7 au score de toucher et +7 Esprit
+1	+# au score de résilience et +# Esprit	+7 au score de résilience et +7 Esprit
+1	Châsse de brassard	Châsse de brassard
+1	Broderie tisse-lumière	Broderie tisse-lumière
+1	Châsse de gants	Châsse de gants
+1	+$i au score de hâte	+$i au score de hâte
+1	+$i au score de toucher	+$i au score de toucher
+1	Broderie sombrelueur	Broderie sombrelueur
+1	Ceinture de châsse	Ceinture de châsse
+1	Broderie gardépée	Broderie gardépée
+1	Dragonne en titane	Dragonne en titane
+1	Pointe en titane (#-#)	Pointe en titane (45-67)
+1	+# à toutes les statistiques	+4 à toutes les statistiques
+1	+# à la puissance d'attaque +# Endurance +# au score de toucher	+24 à la puissance d'attaque +10 Endurance +10 au score de toucher
+1	+# à la puissance d'attaque +# au score d'esquive	+28 à la puissance d'attaque +12 au score d'esquive
+1	+# de résistance à la Nature	+70 de résistance à la Nature
+1	Poison instantané VIII	Poison instantané VIII
+1	Poison instantané IX	Poison instantané IX
+1	Poison mortel VIII	Poison mortel VIII
+1	Poison mortel IX	Poison mortel IX
+1	Poison douloureux VI	Poison douloureux VI
+1	Poison douloureux VII	Poison douloureux VII
+1	Poison anesthésiant II	Poison anesthésiant II
+1	+# Défense et +# au score d'esquive	+20 Défense et +15 au score d'esquive
+1	Berserker	Berserker
+1	Magie noire	Magie noire
+1	+# à la puissance d'attaque et durée d'Etourdissement réduite de #%	+34 à la puissance d'attaque et durée d'Etourdissement réduite de 10%
+1	+# Endurance et durée d'Etourdissement réduite de #%	+26 Endurance et durée d'Etourdissement réduite de 10%
+1	+# à la puissance des sorts et durée d'Etourdissement réduite de #%	+20 à la puissance des sorts et durée d'Etourdissement réduite de 10%
+1	+# à la résistance au Givre et +# Endurance	+25 à la résistance au Givre et +30 Endurance
+1	+# à la résistance à la Nature et +# Endurance	+25 à la résistance à la Nature et +30 Endurance
+1	+# à la résistance à l'Ombre et +# Endurance	+25 à la résistance à l'Ombre et +30 Endurance
+1	+# à la résistance aux Arcanes et +# Endurance	+25 à la résistance aux Arcanes et +30 Endurance
+1	+# à la résistance au Feu et +# Endurance	+25 à la résistance au Feu et +30 Endurance
+1	+# à la puissance des sorts et # au score de coup critique	+30 à la puissance des sorts et 20 au score de coup critique
+1	+# à la puissance d'attaque et +# au score de critique	+120 à la puissance d'attaque et +15 au score de critique
+1	+# à la puissance des sorts et +# points de mana/# secondes	+70 à la puissance des sorts et +8 points de mana/5 secondes
+1	Rune de la gargouille peau de pierre	Rune de la gargouille peau de pierre
+1	Châsse de bâton	Châsse de bâton
+1	Plaque en titane	Plaque en titane
+1	Garde lame	Garde lame
+1	Drain de sang	Drain de sang
+1	Parabole d'amplification de l'esprit	Parabole d'amplification de l'esprit
+1	Rune de la carapace nérubienne	Rune de la carapace nérubienne

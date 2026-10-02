@@ -1,0 +1,34 @@
+# ItemSubClass.dbc (frFR): class<TAB>subclass<TAB>display name.
+2	0	Hache
+2	1	Hache
+2	2	Arc
+2	3	Arme à feu
+2	4	Masse
+2	5	Masse
+2	6	Arme d'hast
+2	7	Epée
+2	8	Epée
+2	9	Obsolète
+2	10	Bâton
+2	11	Spéciale
+2	12	Spéciale
+2	13	Arme de pugilat
+2	14	Divers
+2	15	Dague
+2	16	Armes de jet
+2	17	Lance
+2	18	Arbalète
+2	19	Baguette
+2	20	Canne à pêche
+4	0	Divers
+4	1	Tissu
+4	2	Cuir
+4	3	Mailles
+4	4	Plaques
+4	6	Bouclier
+4	7	Libram
+4	8	Idole
+4	9	Totem
+4	10	Cachet
+6	2	Flèche
+6	3	Balle
