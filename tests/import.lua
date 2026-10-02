@@ -5,8 +5,9 @@
 package.path = "./tests/?.lua;" .. package.path
 local Corpus = require("corpus")
 
+-- Lines with a newline (meta gem requirements) are kept: Corpus.Append writes the newline as \n.
 local function Usable(Line)
-	return type(Line) == "string" and Line ~= "" and not Line:find("\n", 1, true) and not Line:find(" => ", 1, true)
+	return type(Line) == "string" and Line ~= "" and not Line:find(" => ", 1, true)
 end
 
 local function LoadSavedVariables(Path)

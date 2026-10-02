@@ -2,7 +2,12 @@
 -- Line format:  left[ || right] => expectation   (or  || right => expectation)
 -- expectation: ignored | unhandled | todo | Stat=value[; Stat=value]
 -- The LAST " => " on the line separates the text from the expectation.
+-- A newline inside a tooltip text (meta gem requirements) is written as the two characters \n.
 local Corpus = {}
+
+-- Newline <-> the two characters "\\n" (real client texts contain no backslash).
+function Corpus.Escape(Text) return (Text:gsub("\n", "\\n")) end
+function Corpus.Unescape(Text) return (Text:gsub("\\n", "\n")) end
 
 function Corpus.FormatStats(Stats)
 	local Keys = {}
@@ -27,7 +32,8 @@ function Corpus.ParseCase(Line)
 		Left, Right = Text:match("^(.-)%s+|| (.*)$")
 		if not Left then Left = Text end
 	end
-	local Case = { Left = Left, Right = Right, Text = Text }
+	-- Text stays as written in the file (escaped); Left and Right are the real tooltip texts.
+	local Case = { Left = Corpus.Unescape(Left), Right = Right and Corpus.Unescape(Right), Text = Text }
 	if Expect == "ignored" or Expect == "unhandled" or Expect == "todo" then
 		Case.Kind = Expect
 		return Case
@@ -64,7 +70,7 @@ function Corpus.Files()
 	return Files
 end
 
--- Appends "Text => Expect" lines to Path, skipping texts already present in Path or in any corpus file.
+-- Appends "Text => Expect" lines to Path (Text escaped with Corpus.Escape), skipping texts already present in Path or in any corpus file.
 -- Writes Header first when Path doesn't exist yet.  Returns the number of lines added.
 function Corpus.Append(Path, Entries, Header)
 	local Known = {}
@@ -78,9 +84,10 @@ function Corpus.Append(Path, Entries, Header)
 	if not Existing and Header then Out:write(Header, "\n") end
 	local Added = 0
 	for _, Entry in ipairs(Entries) do
-		if not Known[Entry.Text] then
-			Out:write(Entry.Text, " => ", Entry.Expect, "\n")
-			Known[Entry.Text] = true
+		local Text = Corpus.Escape(Entry.Text)
+		if not Known[Text] then
+			Out:write(Text, " => ", Entry.Expect, "\n")
+			Known[Text] = true
 			Added = Added + 1
 		end
 	end
