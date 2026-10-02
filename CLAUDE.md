@@ -19,6 +19,7 @@ All commands run from the addon root.
 - `/pawnscan inspect <itemID | lien>` records in `PawnScanResults.inspect` (last 20) what Pawn reads on one cached item: tooltip lines, every `PawnLookForSingleStat` call with its result, final stats, unknown lines and scale values. Read it from SavedVariables after `/reload`.
 - `/pawnscan gems` iterates gem enchant IDs 2686..3879 (from GemProperties.dbc) in the first jewel slot of the base item: 3.3.5a jewel link fields take SpellItemEnchantment IDs, not gem item IDs.
 - Scanning needs the items cached: first pass at `/pawnscan speed 100` to warm the cache, then `/pawnscan clear` and a fast pass (`speed 500`). New files in `Pawn.toc` need a full client restart, not `/reload`.
+- End of session: `/cloture-session` (`.claude/skills/cloture-session/`) records progress in memory, lists what's left, checks for corrections and proposes new tooling.
 - `GetItemStats` exists in this client. `mismatch` entries are expected noise in gems/enchants modes and when an item has both melee and spell crit keys; the goal is "every mismatch explained", not an empty list.
 
 ## Architecture
