@@ -1,505 +1,505 @@
 # Généré par tests/gen_corpus.lua depuis SpellItemEnchantment.dbc (frFR 3.3.5a), du plus fréquent au plus rare. À classer.
-+1 à la puissance des sorts => todo
-+1 Endurance => todo
-+2 à la puissance d'attaque => todo
-+3 Esprit => todo
-+1 Agilité => todo
-+1 Force => todo
-+1 Intelligence => todo
-+5 au score de défense => todo
-+14 au score de coup critique => todo
-+5 à la résistance au Feu => todo
-+8 à la résistance au Givre => todo
-Bloquer niveau 14 => todo
-+10 à la résistance à l'Ombre => todo
-+1 à la résistance à la Nature => todo
-+1 aux dégâts des sorts de Givre => todo
-+1 aux dégâts des sorts de Feu => todo
-+1 aux dégâts des sorts de Nature => todo
-+1 aux dégâts des sorts d'Ombre => todo
-+1 à la résistance aux Arcanes => todo
-+2 points de mana toutes les 5 sec. => todo
-+2 à la puissance des attaques à distance => todo
-+1 aux dégâts des sorts des Arcanes => todo
-+1 aux dégâts des sorts du Sacré => todo
-Croque-roc 3 => todo
-+3 Armure => todo
-+2 points de vie toutes les 5 sec. => todo
-+6 au score de toucher => todo
-+8 au score de résilience => todo
-+12 au score d'esquive => todo
-+30 à la puissance d'attaque et +10 au score de coup critique => todo
-+10 au score de hâte => todo
-+18 à la puissance des sorts et +10 Endurance => todo
-+4 à toutes les résistances => todo
-+8 à la pénétration des sorts => todo
-+8 au score de parade => todo
-+1 à toutes les caractéristiques => todo
-+5 au score de blocage => todo
-+15 à la puissance des sorts et +14 au score de coup critique => todo
-+4 au score d'expertise => todo
-Arme de givre 1 => todo
-+2 aux dégâts de l'arme => todo
-+3 points de mana toutes les 5 secondes => todo
-Furie-des-vents 1 => todo
-+13 à la puissance des sorts et +15 Intelligence => todo
-8 points de mana toutes les 5 sec. => todo
-+3 au score de coup critique et +4 à la pénétration des sorts => todo
-+15 au score d'esquive et +10 au score de défense => todo
-+6 à la puissance des sorts et +4 au score de résilience => todo
-+12 au score de pénétration d'armure => todo
-Aiguisé (+3 points de dégâts) => todo
-+1 à la compétence Epée => todo
-+1 à la compétence Epée à deux mains => todo
-+1 à la compétence Masse => todo
-+1 à la compétence Masse à deux mains => todo
-+1 à la compétence Hache => todo
-+1 à la compétence Hache à deux mains => todo
-+1 à la compétence Dague => todo
-+1 à la compétence Arme à feu => todo
-+1 à la compétence Arc => todo
-+2 (Bêtes) => todo
-10% quand touché : Trait de l'ombre (10 points de dégâts) => todo
-+2 aux dégâts des armes (Feu) => todo
-Langue de feu 4 => todo
-+5 à la puissance des sorts et +2 points de mana toutes les 5 secondes => todo
-+10 à la puissance d'attaque et +6 Endurance => todo
-+8 à la puissance d'attaque et +5 au score de résilience => todo
-+6 à la puissance des sorts et +4 Esprit => todo
-Équilibré (+2 points de dégâts) => todo
-+2 points de dégâts => todo
-+20 points de mana => todo
-Réaction 1 => todo
-+18 à la puissance des sorts et +8 au score de toucher => todo
-+3 au score de coup critique et +4 à la puissance des sorts => todo
-+34 à la puissance d'attaque et +16 au score de toucher => todo
-+30 Endurance et +10 Agilité => todo
-Viveterre 1 => todo
-Renforcé (+8 Armure) => todo
-+5 points de vie => todo
-+15 aux points de vie => todo
-Appât de pêche (+25 compétence de pêche) => todo
-Pierre de feu 1 => todo
-+1 point de vie toutes les 5 sec. => todo
-+3 Agilité et +4 Endurance => todo
-+3 Force et +4 Endurance => todo
-+5 au score de parade et +4 au score de défense => todo
-+6 à la puissance des sorts et +5 à la pénétration des sorts => todo
-+8 à la puissance d'attaque et +2 points de mana toutes les 5 secondes => todo
-+6 à la puissance des sorts et +5 à l'Esprit => todo
-Lunette (+1 point de dégâts) => todo
-Lunette (+2 points de dégâts) => todo
-+4% à la vitesse de la monture => todo
-+1 point de mana toutes les 5 sec. => todo
-+36 à la valeur de blocage => todo
-+3 au score de défense et +4 Endurance => todo
-+4 Intelligence et +2 points de mana toutes les 5 secondes => todo
-+3 au score de coup critique et +4 Endurance => todo
-+24 à la puissance d'attaque et légère augmentation de la vitesse de course => todo
-+3 Endurance, +4 au score de coup critique => todo
-+15 au score de coup critique et +20 à la puissance d'attaque => todo
-+5 au score de toucher et +6 à la puissance des sorts => todo
-+4 au score de hâte et +6 à l'Endurance => todo
-Arme runique gelée 2 => todo
-+7 à la puissance des sorts et +9 à l'Endurance => todo
-+7 à la puissance des sorts et +6 au score de hâte => todo
-+6 au score d'expertise et +6 au score de toucher => todo
-+6 au score d'expertise et +6 au score de défense => todo
-+12 à la puissance d'attaque et +6 au score de hâte => todo
-+6 au score de coup critique et +3 points de mana toutes les 5 secondes => todo
-+6 au score de toucher et +3 points de mana toutes les 5 secondes => todo
-+6 au score de résilience et +3 points de mana toutes les 5 secondes => todo
-+6 au score de hâte et +3 points de mana toutes les 5 secondes => todo
-+6 au score de toucher et +8 à la pénétration des sorts => todo
-+6 au score de hâte et +8 à la pénétration des sorts => todo
-Langue de feu 3 => todo
-Poison (15 points de dégâts) => todo
-+5 aux points de mana => todo
-+4 Tueur de bêtes => todo
-Absorption (10) => todo
-Totem Langue de feu 3 => todo
-Totem Furie-des-vents 2 => todo
-+5 en Pêche => todo
-+10 au score de toucher et +10 au score de coup critique => todo
-+100 à la puissance d'attaque contre les morts-vivants => todo
-+16 à la puissance des sorts et 6 points de mana toutes les 5 sec. => todo
-+3 au score de coup critique et +3 Force => todo
-+3 au score de toucher et +3 Agilité => todo
-+9 à la résilience => todo
-3 point de mana toutes les 5 sec. => todo
-+ 7 Force => todo
-+15 au score de défense et +10 au score d'esquive => todo
-+5 Force et +4 au score de toucher => todo
-+5 au score d'esquive et +6 Endurance => todo
-+5 au score de parade et +6 Endurance => todo
-+5 Intelligence et +6 Endurance => todo
-+5 à la Force et +4 au score de défense => todo
-+6 Endurance et +5 score de résilience => todo
-+5 Force et +4 au score de résilience => todo
-+4 au score de résilience et +6 Endurance => todo
-+6 au score de pénétration d'armure et +9 à l'Endurance => todo
-+6 à l'Agilité et +9 à l'Endurance => todo
-+12 à la puissance d'attaque et +9 à l'Endurance => todo
-+6 au score d'esquive et +9 à l'Endurance => todo
-+6 au score d'expertise et +9 à l'Endurance => todo
-+6 à l'Agilité et +3 points de mana toutes les 5 secondes => todo
-+7 à la puissance des sorts et +6 à l'Intelligence => todo
-+6 à l'Agilité et +6 au score de toucher => todo
-+6 à l'Agilité et +6 au score de coup critique => todo
-+6 à l'Agilité et +6 au score de résilience => todo
-+6 à l'Agilité et +6 au score de hâte => todo
-+6 au score de coup critique et +9 à l'Endurance => todo
-+6 au score de toucher et +9 à l'Endurance => todo
-+6 au score de défense et +9 à l'Endurance => todo
-+6 au score de résilience et +9 à l'Endurance => todo
-+6 au score de coup critique et +6 à l'Esprit => todo
-+6 au score de toucher et +6 à l'Esprit => todo
-+6 au score de résilience et +6 à l'Esprit => todo
-+6 au score de hâte et +6 à l'Esprit => todo
-Totem Langue de feu 1 => todo
-+2 Minage => todo
-+2 Herboristerie => todo
-+31 à la résistance aux arcanes => todo
-Totem Furie-des vents 4 => todo
-+5 points de vie et de mana toutes les 5 sec. => todo
-Huile de mana excellente => todo
-+60 à la puissance des sorts contre les morts-vivants => todo
-+11 aux score de toucher => todo
-+$i au score de coup critique => todo
-+3 Endurance, +4 au score de critique => todo
-+12 à la puissance des sorts et légère augmentation de la vitesse de course => todo
-+12 à la puissance des sorts et 8 points de mana toutes les 5 secondes => todo
-+18 Endurance et +20 au score de résilience => todo
-+6 Endurance et +5 au score de coup critique => todo
-+5 Agilité et +4 au score de toucher => todo
-+5 au score de coup critique et 2 points de mana toutes les 5 sec. => todo
-+5 Esprit et +5 à la puissance des sorts => todo
-+4 Intelligence et +5 Esprit => todo
-+6 Endurance et +5 au score de défense => todo
-+5 au score de toucher et +6 Endurance => todo
-Chance d'augmenter la vitesse d'attaque en mêlée/à distance => todo
-+4 au score de hâte et +5 à la puissance des sorts => todo
-+5 au score de hâte et +7 Endurance => todo
-+6 à la puissance des sorts et +5 au score de critique => todo
-+6 à la Force et +9 à l'Endurance => todo
-+6 à la Force et +6 au score de coup critique => todo
-+6 à la Force et +6 au score de résilience => todo
-+6 à la Force et +6 au score de hâte => todo
-+6 à la Force et +6 au score de toucher => todo
-+6 à l'Intelligence et +9 à l'Endurance => todo
-+6 à l'Intelligence et +6 à l'Esprit => todo
-+6 à l'Intelligence et +3 points de mana toutes les 5 secondes => todo
-+8 au score de parade et +12 à l'Endurance => todo
-+10 Force et +10 au score de coup critique => todo
-+10 Force et +10 au score de défense => todo
-+10 Force et +10 au score de hâte => todo
-+21 au score de coup critique et durée de Ralentir et Immobiliser réduite de 10% => todo
-+25 à la puissance des sorts et durée de Silence réduite de 10% => todo
-+21 au score de coup critique et durée de Peur réduite de 10% => todo
-+18 à la puissance des sorts et +5 points de mana par tranche de 5 secondes => todo
-Poison mortel => todo
-Poison mortel II => todo
-Poison affaiblissant => todo
-Poison de distraction mentale II => todo
-Huile des ténèbres => todo
-Huile glaciale => todo
-Fractionnement => todo
-Contrepoids (+20 au score de hâte) => todo
-Poison de Distraction mentale => todo
-Enchanter : Eclat flamboyant => todo
-Dragonne en acier => todo
-Poison (Instantané 20) => todo
-Pointe en fer (8-12) => todo
-+1 point de dégâts => todo
-+1 Dégâts de l'arme => todo
-Orbe de feu => todo
-Poison instantané => todo
-Poison instantané II => todo
-Poison instantané III => todo
-Leurre du Temple noir => todo
-Pointe en mithril (16-20) => todo
-+80 Croque-roc => todo
-+1 Agilité / +1 Esprit => todo
-+1 Agilité / +1 Intelligence => todo
-+1 Agilité / +1 Endurance => todo
-+1 Agilité / +1 Force => todo
-+1 Intelligence / +1 Esprit => todo
-+1 Intelligence / +1 Endurance => todo
-+1 Intelligence / +1 Force => todo
-+1 Esprit / +1 Endurance => todo
-+1 Esprit / +1 Force => todo
-+1 Endurance / +1 Force => todo
-Poison affaiblissant II => todo
-Poison instantané IV => todo
-Poison instantané V => todo
-Poison instantané VI => todo
-Poison mortel III => todo
-Poison mortel IV => todo
-Poison de distraction mentale III => todo
-Poison douloureux => todo
-Poison douloureux II => todo
-Poison douloureux III => todo
-Poison douloureux IV => todo
-+2 Camouflage => todo
-Arme flamboyante => todo
-+6 Tueur d'élémentaires => todo
-+5 Dépeçage => todo
-Camouflage augmenté => todo
-Augmentation mineure de vitesse => todo
-Tueur de démon => todo
-Poison de Peau-de-venin => todo
-+85/14 MANA/RF => todo
-+75/14 PV/RF => todo
-+110/14 CA/RF => todo
-+10/14 END/RF => todo
-+10/14 AGI/RF => todo
-+10/14 INT/RF => todo
-+10/14 ESP/RF => todo
-+10/10 FOR/END => todo
-+10/10/110/15 FOR/END/CA/RF => todo
-+10/10/100/15 INT/ESP/MANA/RF => todo
-Pointe en thorium (20-30) => todo
-Augure de clarté => todo
-MHTest02 => todo
-Sang froid => todo
-+4 points de mana et de vie toutes les 5 sec. => todo
-Arme glacée => todo
-+9 aux dégâts => todo
-Vampirique => todo
-Arme impie => todo
-+28 au score de critique en mêlée => todo
-+30 au score de toucher à distance => todo
-5 à la régén. mana toutes les 5 sec. => todo
-+10 Score de défense +10 Endurance +30 Valeur de blocage => todo
-+10 Défense/+10 Endurance/+12 à la puissance des sorts => todo
-+28 à la puissance d'attaque/+12 au score d'esquive => todo
-+24 à la puissance d'attaque à distance/+10 Endurance/+10 au score de toucher => todo
-+13 à la puissance des sorts/+10 Endurance/+5 points de mana toutes les 5 secondes => todo
-+10 Intelligence/+10 Endurance/+12 à la puissance des sorts => todo
-zzOLDBlank => todo
-+2% à la menace => todo
-+20 à la puissance des sorts d'Ombre => todo
-+20 à la puissance des sorts de Givre => todo
-+20 à la puissance des sorts de Feu => todo
-Menace diminuée de 2% => todo
-Huile de sorcier mineure => todo
-Huile de mana mineure => todo
-Huile de mana inférieure => todo
-Huile de sorcier inférieure => todo
-Huile de sorcier => todo
-Poison mortel V => todo
-Poison anesthésiant => todo
-Poison instantané VII => todo
-Poison mortel VI => todo
-Poison mortel VII => todo
-Poison douloureux V => todo
-+50 à la puissance des sorts de Feu et des Arcanes => todo
-+54 à la puissance des sorts d'Ombre et de Givre => todo
-Mangouste => todo
-Eruption de sort => todo
-Maître de guerre => todo
-Huile de sorcier excellente => todo
-+12 Agilité (2 gemmes rouges) => todo
-+4 Agilité pour chaque couleur de gemme => todo
-+12 Force avec 4 gemmes bleues équipées => todo
-+3 Intelligence et +2 point de mana toutes les 5 sec. => todo
-+4 à la puissance des sorts et +2 point de mana toutes les 5 secondes => todo
-Aiguisé (+14 au score de critique et +12 aux points de dégâts) => todo
-Pointe en gangracier (26-38) => todo
-+16 Endurance et +100 Armure => todo
-+26 à la puissance d'attaque/+14 au score de coup critique => todo
-Rune de garde inférieure => todo
-Gardien de sauvegarde inférieur => todo
-Gardien de sauvegarde supérieur => todo
-Lunette (+28 au score de coup critique) => todo
-ZZOLD Rune de garde inférieure => todo
-Rune de garde supérieure => todo
-+4 points de mana rendus toutes les 5 secondes => todo
-Semelles confortables => todo
-+$i Intelligence (+$n/+$f) => todo
-+$i Endurance (+$n/+$f) => todo
-+$i Armure (+$n/+$f) => todo
-+$i Agilité => todo
-+$i Endurance => todo
-+$i Intelligence => todo
-+$i Force => todo
-+$i Esprit => todo
-+$i aux dégâts des Arcanes => todo
-+$i aux dégâts de Feu => todo
-+$i aux dégâts de Nature => todo
-+$i aux dégâts de Givre => todo
-+$i aux dégâts d'Ombre => todo
-+$i aux soins => todo
-+$i au score de défense => todo
-+$i points de vie toutes les 5 sec. => todo
-+$i au score d'esquive => todo
-+$i points de mana toutes les 5 sec. => todo
-+$i à la résistance aux Arcanes => todo
-+$i à la résistance au Feu => todo
-+$i à la résistance au Givre => todo
-+$i à la résistance à la Nature => todo
-+$i à la résistance à l'Ombre => todo
-+$i à la puissance des sorts => todo
-+$i à la puissance d'attaque => todo
-+$i au score de blocage => todo
-Chance d'augmenter la vitesse d'incantation des sorts => todo
-+12 au score de coup critique et durées des ralentissements/immobilisations réduites de 10% => todo
-+14 à la puissance des sorts et 2% de réduction de la menace => todo
-+3 aux dégâts en mêlée et une chance d'étourdir la cible => todo
-+$i Endurance et +$i Intelligence => todo
-+5 Force, +5 au score de critique => todo
-test enchantement de gemme => todo
-Vitesse mineure et +6 à l'Agilité => todo
-Vitesse mineure et +9 à l'Endurance => todo
-+10 à la puissance d'attaque, +5 au score de critique => todo
-Équilibré (+14 au score de crit. et +12 aux points de dégâts) => todo
-+2 point de mana toutes les 5 secondes => todo
-+6 Régén. de mana => todo
-+18 Endurance, +12 au score d'esquive et +12 au score de résilience => todo
-Totem Furie-des-vents 5 (Test Niv. 70) => todo
-+5 au score de coup critique et +2 points de mana toutes les 5 sec. => todo
-+6 au score de coup critique et +5 au score d'esquive => todo
-+5 au score d'esquive et +4 au score de toucher => todo
-+5 Force et +4 score de coup critique => todo
-+4 Agilité et +5 au score de défense => todo
-+5 Intelligence et 2 points de mana toutes les 5 sec. => todo
-+5 au score de défense et 2 points de mana toutes les 5 sec. => todo
-+5 au score d'esquive et +4 au score de résilience => todo
-+6 Endurance et +5 au score de critique => todo
-+5 au score de toucher et 2 points de mana toutes les 5 sec. => todo
-+5 au score de parade et +4 au score de résilience => todo
-+150 à la puissance d'attaque contre les morts-vivants et les démons => todo
-+17 Force et +16 Intelligence => todo
-Poison => todo
-+6 à la puissance d'attaque & +1 point de mana toutes les 5 secondes => todo
-+24 à la puissance d'attaque et 5% à la résistance aux étourdissements => todo
-+14 à la puissance des sorts et 5% à la résistance aux étourdissements => todo
-Dragonne en adamantite => todo
-Bourreau => todo
-+15 Endurance et augmentation mineure de la vitesse => todo
-Récolteur => todo
-Arme brise-glace => todo
-Gardevie => todo
-Marcheglace => todo
-Tueur de géants => todo
-+2% à la menace et 10 au score de parade => todo
-Camouflage augmenté et Agilité +10 => todo
-+150 Armure, -10% vitesse => todo
-Enduit d'arme béni => todo
-Enduit d'arme vertueux => todo
-Givre mortel => todo
-+14 à la puissance des sorts & +2% à l'Intelligence => todo
-Enchant. cravache d'équitation de test => todo
-Déployeur de cape à ressort => todo
-Test utilisation charges => todo
-+10 Esprit et menace réduite de 2% => todo
-Huile de mana exceptionnelle => todo
-Huile de sorcier exceptionnelle => todo
-Test ajout de châsse enchantement => todo
-Test de compétence requise enchantement => todo
-Arme runique gelée => todo
-QA Test Blank Purple Gem Enchant => todo
-Vol Norfendre => todo
-+10 à la puissance d'attaque, +5 au score de coup critique => todo
-Charge de la lame runique => todo
-Rune de Fracasse-épée => todo
-Rune de Lichemort => todo
-Rune de Fracasse-sort => todo
-Rune du Croisé déchu => todo
-Rune de Cendreglace => todo
-Rune de Trancheglace => todo
-+10 Force et +15 à l'Endurance => todo
-+10 Intelligence et +15 à l'Endurance => todo
-+10 Intelligence et +10 à l'Esprit => todo
-Test +4 Intelligence et +2 points de mana toutes les 5 secondes => todo
-Rune de Brise-épée => todo
-Rune de Brise-sort => todo
-Pierre de feu magistrale => todo
-Générateur personnel de pulsation électromagnétique => todo
-Ceinture à fragmentation => todo
-Pyrofusée à montage manuel => todo
-Accélérateurs hyper-stimulants => todo
-Doublure en toile de lin => todo
-+40 au score de hâte à distance => todo
-+40 au score de coup critique à distance => todo
-Pierre de feu inférieure => todo
-Pierre de feu => todo
-Pierre de feu supérieure => todo
-Pierre de feu majeure => todo
-Pierre de feu gangrenée => todo
-Pierre de feu grandiose => todo
-Pierre de sort => todo
-Pierre de sort supérieure => todo
-Pierre de sort majeure => todo
-Pierre de sort magistrale => todo
-Pierre de sort démoniaque => todo
-Pierre de sort grandiose => todo
-+21 au score de coup critique et dégâts des critiques augmentés de 3% => todo
-+25 au score de coup critique et 1% au renvoi des sorts => todo
-+25 à la puissance des sorts et +2% à l'Intelligence => todo
-+25 à la puissance des sorts et menace réduite de 2% => todo
-+21 à l'Intelligence et une chance de rendre du mana lors des incantations => todo
-+21 à l'Agilité & dégâts des critiques augmentés de 3% => todo
-+25 à la puissance des sorts et augmentation de la Vitesse de course mineure => todo
-+11 points de mana toutes les 5 secondes et effets de soin critiques augmentés de 3% => todo
-+32 Endurance et réduit les dégâts des sorts reçus de 2% => todo
-+32 Endurance et augmente de 2% la valeur d'armure des objets => todo
-+42 à la puissance d'attaque et durée de Etourdir réduite de 10% => todo
-+25 à la puissance des sort et durée de Etourdir réduite de 10% => todo
-+42 à la puissance d'attaque et régénère parfois vos points de vie quand critique => todo
-+21 au score de coup critique et +2% aux points de mana => todo
-+32 Endurance et durée de Etourdir réduite de 10% => todo
-+14 à la puissance d'attaque et +4 points de mana toutes les 5 sec. => todo
-+7 au score de pénétration d'armure et +11 Endurance => todo
-+7 Agilité et +4 points de mana toutes les 5 secondes => todo
-+7 au score d'expertise et +11 Endurance => todo
-+14 à la puissance d'attaque et +7 au score de coup critique (VIEUX) => todo
-+7 Agilité et +7 au score de hâte => todo
-+7 Agilité et +7 au score de coup critique => todo
-+7 Agilité et +7 au score de résilience => todo
-+7 au score de coup critique et +7 Esprit => todo
-+7 au score de hâte et +7 Esprit => todo
-+7 au score de toucher et +7 Esprit => todo
-+7 au score de résilience et +7 Esprit => todo
-Châsse de brassard => todo
-Broderie tisse-lumière => todo
-Châsse de gants => todo
-+$i au score de hâte => todo
-+$i au score de toucher => todo
-Broderie sombrelueur => todo
-Ceinture de châsse => todo
-Broderie gardépée => todo
-Dragonne en titane => todo
-Pointe en titane (45-67) => todo
-+4 à toutes les statistiques => todo
-+24 à la puissance d'attaque +10 Endurance +10 au score de toucher => todo
-+28 à la puissance d'attaque +12 au score d'esquive => todo
-+70 de résistance à la Nature => todo
-Poison instantané VIII => todo
-Poison instantané IX => todo
-Poison mortel VIII => todo
-Poison mortel IX => todo
-Poison douloureux VI => todo
-Poison douloureux VII => todo
-Poison anesthésiant II => todo
-+20 Défense et +15 au score d'esquive => todo
-Berserker => todo
-Magie noire => todo
-+34 à la puissance d'attaque et durée d'Etourdissement réduite de 10% => todo
-+26 Endurance et durée d'Etourdissement réduite de 10% => todo
-+20 à la puissance des sorts et durée d'Etourdissement réduite de 10% => todo
-+25 à la résistance au Givre et +30 Endurance => todo
-+25 à la résistance à la Nature et +30 Endurance => todo
-+25 à la résistance à l'Ombre et +30 Endurance => todo
-+25 à la résistance aux Arcanes et +30 Endurance => todo
-+25 à la résistance au Feu et +30 Endurance => todo
-+30 à la puissance des sorts et 20 au score de coup critique => todo
-+120 à la puissance d'attaque et +15 au score de critique => todo
-+70 à la puissance des sorts et +8 points de mana/5 secondes => todo
-Rune de la gargouille peau de pierre => todo
-Châsse de bâton => todo
-Plaque en titane => todo
-Garde lame => todo
-Drain de sang => todo
-Parabole d'amplification de l'esprit => todo
-Rune de la carapace nérubienne => todo
++1 à la puissance des sorts => SpellPower=1
++1 Endurance => Stamina=1
++2 à la puissance d'attaque => Ap=2
++3 Esprit => Spirit=3
++1 Agilité => Agility=1
++1 Force => Strength=1
++1 Intelligence => Intellect=1
++5 au score de défense => DefenseRating=5
++14 au score de coup critique => CritRating=14
++5 à la résistance au Feu => FireResist=5
++8 à la résistance au Givre => FrostResist=8
+Bloquer niveau 14 => unhandled
++10 à la résistance à l'Ombre => ShadowResist=10
++1 à la résistance à la Nature => NatureResist=1
++1 aux dégâts des sorts de Givre => FrostSpellDamage=1
++1 aux dégâts des sorts de Feu => FireSpellDamage=1
++1 aux dégâts des sorts de Nature => NatureSpellDamage=1
++1 aux dégâts des sorts d'Ombre => ShadowSpellDamage=1
++1 à la résistance aux Arcanes => ArcaneResist=1
++2 points de mana toutes les 5 sec. => Mp5=2
++2 à la puissance des attaques à distance => Rap=2
++1 aux dégâts des sorts des Arcanes => ArcaneSpellDamage=1
++1 aux dégâts des sorts du Sacré => HolySpellDamage=1
+Croque-roc 3 => unhandled
++3 Armure => Armor=3
++2 points de vie toutes les 5 sec. => Hp5=2
++6 au score de toucher => HitRating=6
++8 au score de résilience => ResilienceRating=8
++12 au score d'esquive => DodgeRating=12
++30 à la puissance d'attaque et +10 au score de coup critique => Ap=30; CritRating=10
++10 au score de hâte => HasteRating=10
++18 à la puissance des sorts et +10 Endurance => SpellPower=18; Stamina=10
++4 à toutes les résistances => AllResist=4
++8 à la pénétration des sorts => SpellPenetration=8
++8 au score de parade => ParryRating=8
++1 à toutes les caractéristiques => Agility=1; Intellect=1; Spirit=1; Stamina=1; Strength=1
++5 au score de blocage => BlockRating=5
++15 à la puissance des sorts et +14 au score de coup critique => CritRating=14; SpellPower=15
++4 au score d'expertise => ExpertiseRating=4
+Arme de givre 1 => unhandled
++2 aux dégâts de l'arme => MaxDamage=2; MinDamage=2
++3 points de mana toutes les 5 secondes => Mp5=3
+Furie-des-vents 1 => unhandled
++13 à la puissance des sorts et +15 Intelligence => Intellect=15; SpellPower=13
+8 points de mana toutes les 5 sec. => Mp5=8
++3 au score de coup critique et +4 à la pénétration des sorts => CritRating=3; SpellPenetration=4
++15 au score d'esquive et +10 au score de défense => DefenseRating=10; DodgeRating=15
++6 à la puissance des sorts et +4 au score de résilience => ResilienceRating=4; SpellPower=6
++12 au score de pénétration d'armure => ArmorPenetration=12
+Aiguisé (+3 points de dégâts) => unhandled
++1 à la compétence Epée => unhandled
++1 à la compétence Epée à deux mains => unhandled
++1 à la compétence Masse => unhandled
++1 à la compétence Masse à deux mains => unhandled
++1 à la compétence Hache => unhandled
++1 à la compétence Hache à deux mains => unhandled
++1 à la compétence Dague => unhandled
++1 à la compétence Arme à feu => unhandled
++1 à la compétence Arc => unhandled
++2 (Bêtes) => unhandled
+10% quand touché : Trait de l'ombre (10 points de dégâts) => unhandled
++2 aux dégâts des armes (Feu) => unhandled
+Langue de feu 4 => unhandled
++5 à la puissance des sorts et +2 points de mana toutes les 5 secondes => Mp5=2; SpellPower=5
++10 à la puissance d'attaque et +6 Endurance => Ap=10; Stamina=6
++8 à la puissance d'attaque et +5 au score de résilience => Ap=8; ResilienceRating=5
++6 à la puissance des sorts et +4 Esprit => SpellPower=6; Spirit=4
+Équilibré (+2 points de dégâts) => unhandled
++2 points de dégâts => MaxDamage=2; MinDamage=2
++20 points de mana => Mana=20
+Réaction 1 => unhandled
++18 à la puissance des sorts et +8 au score de toucher => HitRating=8; SpellPower=18
++3 au score de coup critique et +4 à la puissance des sorts => CritRating=3; SpellPower=4
++34 à la puissance d'attaque et +16 au score de toucher => Ap=34; HitRating=16
++30 Endurance et +10 Agilité => Agility=10; Stamina=30
+Viveterre 1 => unhandled
+Renforcé (+8 Armure) => Armor=8
++5 points de vie => Health=5
++15 aux points de vie => Health=15
+Appât de pêche (+25 compétence de pêche) => unhandled
+Pierre de feu 1 => unhandled
++1 point de vie toutes les 5 sec. => Hp5=1
++3 Agilité et +4 Endurance => Agility=3; Stamina=4
++3 Force et +4 Endurance => Stamina=4; Strength=3
++5 au score de parade et +4 au score de défense => DefenseRating=4; ParryRating=5
++6 à la puissance des sorts et +5 à la pénétration des sorts => SpellPenetration=5; SpellPower=6
++8 à la puissance d'attaque et +2 points de mana toutes les 5 secondes => Ap=8; Mp5=2
++6 à la puissance des sorts et +5 à l'Esprit => SpellPower=6; Spirit=5
+Lunette (+1 point de dégâts) => MaxDamage=1; MinDamage=1
+Lunette (+2 points de dégâts) => MaxDamage=2; MinDamage=2
++4% à la vitesse de la monture => unhandled
++1 point de mana toutes les 5 sec. => Mp5=1
++36 à la valeur de blocage => BlockValue=36
++3 au score de défense et +4 Endurance => DefenseRating=3; Stamina=4
++4 Intelligence et +2 points de mana toutes les 5 secondes => Intellect=4; Mp5=2
++3 au score de coup critique et +4 Endurance => CritRating=3; Stamina=4
++24 à la puissance d'attaque et légère augmentation de la vitesse de course => unhandled
++3 Endurance, +4 au score de coup critique => CritRating=4; Stamina=3
++15 au score de coup critique et +20 à la puissance d'attaque => Ap=20; CritRating=15
++5 au score de toucher et +6 à la puissance des sorts => HitRating=5; SpellPower=6
++4 au score de hâte et +6 à l'Endurance => HasteRating=4; Stamina=6
+Arme runique gelée 2 => unhandled
++7 à la puissance des sorts et +9 à l'Endurance => SpellPower=7; Stamina=9
++7 à la puissance des sorts et +6 au score de hâte => HasteRating=6; SpellPower=7
++6 au score d'expertise et +6 au score de toucher => ExpertiseRating=6; HitRating=6
++6 au score d'expertise et +6 au score de défense => DefenseRating=6; ExpertiseRating=6
++12 à la puissance d'attaque et +6 au score de hâte => Ap=12; HasteRating=6
++6 au score de coup critique et +3 points de mana toutes les 5 secondes => CritRating=6; Mp5=3
++6 au score de toucher et +3 points de mana toutes les 5 secondes => HitRating=6; Mp5=3
++6 au score de résilience et +3 points de mana toutes les 5 secondes => Mp5=3; ResilienceRating=6
++6 au score de hâte et +3 points de mana toutes les 5 secondes => HasteRating=6; Mp5=3
++6 au score de toucher et +8 à la pénétration des sorts => HitRating=6; SpellPenetration=8
++6 au score de hâte et +8 à la pénétration des sorts => HasteRating=6; SpellPenetration=8
+Langue de feu 3 => unhandled
+Poison (15 points de dégâts) => unhandled
++5 aux points de mana => Mana=5
++4 Tueur de bêtes => unhandled
+Absorption (10) => unhandled
+Totem Langue de feu 3 => unhandled
+Totem Furie-des-vents 2 => unhandled
++5 en Pêche => unhandled
++10 au score de toucher et +10 au score de coup critique => CritRating=10; HitRating=10
++100 à la puissance d'attaque contre les morts-vivants => unhandled
++16 à la puissance des sorts et 6 points de mana toutes les 5 sec. => Mp5=6; SpellPower=16
++3 au score de coup critique et +3 Force => CritRating=3; Strength=3
++3 au score de toucher et +3 Agilité => Agility=3; HitRating=3
++9 à la résilience => ResilienceRating=9
+3 point de mana toutes les 5 sec. => Mp5=3
++ 7 Force => Strength=7
++15 au score de défense et +10 au score d'esquive => DefenseRating=15; DodgeRating=10
++5 Force et +4 au score de toucher => HitRating=4; Strength=5
++5 au score d'esquive et +6 Endurance => DodgeRating=5; Stamina=6
++5 au score de parade et +6 Endurance => ParryRating=5; Stamina=6
++5 Intelligence et +6 Endurance => Intellect=5; Stamina=6
++5 à la Force et +4 au score de défense => DefenseRating=4; Strength=5
++6 Endurance et +5 score de résilience => ResilienceRating=5; Stamina=6
++5 Force et +4 au score de résilience => ResilienceRating=4; Strength=5
++4 au score de résilience et +6 Endurance => ResilienceRating=4; Stamina=6
++6 au score de pénétration d'armure et +9 à l'Endurance => ArmorPenetration=6; Stamina=9
++6 à l'Agilité et +9 à l'Endurance => Agility=6; Stamina=9
++12 à la puissance d'attaque et +9 à l'Endurance => Ap=12; Stamina=9
++6 au score d'esquive et +9 à l'Endurance => DodgeRating=6; Stamina=9
++6 au score d'expertise et +9 à l'Endurance => ExpertiseRating=6; Stamina=9
++6 à l'Agilité et +3 points de mana toutes les 5 secondes => Agility=6; Mp5=3
++7 à la puissance des sorts et +6 à l'Intelligence => Intellect=6; SpellPower=7
++6 à l'Agilité et +6 au score de toucher => Agility=6; HitRating=6
++6 à l'Agilité et +6 au score de coup critique => Agility=6; CritRating=6
++6 à l'Agilité et +6 au score de résilience => Agility=6; ResilienceRating=6
++6 à l'Agilité et +6 au score de hâte => Agility=6; HasteRating=6
++6 au score de coup critique et +9 à l'Endurance => CritRating=6; Stamina=9
++6 au score de toucher et +9 à l'Endurance => HitRating=6; Stamina=9
++6 au score de défense et +9 à l'Endurance => DefenseRating=6; Stamina=9
++6 au score de résilience et +9 à l'Endurance => ResilienceRating=6; Stamina=9
++6 au score de coup critique et +6 à l'Esprit => CritRating=6; Spirit=6
++6 au score de toucher et +6 à l'Esprit => HitRating=6; Spirit=6
++6 au score de résilience et +6 à l'Esprit => ResilienceRating=6; Spirit=6
++6 au score de hâte et +6 à l'Esprit => HasteRating=6; Spirit=6
+Totem Langue de feu 1 => unhandled
++2 Minage => unhandled
++2 Herboristerie => unhandled
++31 à la résistance aux arcanes => ArcaneResist=31
+Totem Furie-des vents 4 => unhandled
++5 points de vie et de mana toutes les 5 sec. => Hp5=5; Mp5=5
+Huile de mana excellente => unhandled
++60 à la puissance des sorts contre les morts-vivants => unhandled
++11 aux score de toucher => HitRating=11
++$i au score de coup critique => unhandled
++3 Endurance, +4 au score de critique => CritRating=4; Stamina=3
++12 à la puissance des sorts et légère augmentation de la vitesse de course => unhandled
++12 à la puissance des sorts et 8 points de mana toutes les 5 secondes => Mp5=8; SpellPower=12
++18 Endurance et +20 au score de résilience => ResilienceRating=20; Stamina=18
++6 Endurance et +5 au score de coup critique => CritRating=5; Stamina=6
++5 Agilité et +4 au score de toucher => Agility=5; HitRating=4
++5 au score de coup critique et 2 points de mana toutes les 5 sec. => CritRating=5; Mp5=2
++5 Esprit et +5 à la puissance des sorts => SpellPower=5; Spirit=5
++4 Intelligence et +5 Esprit => Intellect=4; Spirit=5
++6 Endurance et +5 au score de défense => DefenseRating=5; Stamina=6
++5 au score de toucher et +6 Endurance => HitRating=5; Stamina=6
+Chance d'augmenter la vitesse d'attaque en mêlée/à distance => unhandled
++4 au score de hâte et +5 à la puissance des sorts => HasteRating=4; SpellPower=5
++5 au score de hâte et +7 Endurance => HasteRating=5; Stamina=7
++6 à la puissance des sorts et +5 au score de critique => CritRating=5; SpellPower=6
++6 à la Force et +9 à l'Endurance => Stamina=9; Strength=6
++6 à la Force et +6 au score de coup critique => CritRating=6; Strength=6
++6 à la Force et +6 au score de résilience => ResilienceRating=6; Strength=6
++6 à la Force et +6 au score de hâte => HasteRating=6; Strength=6
++6 à la Force et +6 au score de toucher => HitRating=6; Strength=6
++6 à l'Intelligence et +9 à l'Endurance => Intellect=6; Stamina=9
++6 à l'Intelligence et +6 à l'Esprit => Intellect=6; Spirit=6
++6 à l'Intelligence et +3 points de mana toutes les 5 secondes => Intellect=6; Mp5=3
++8 au score de parade et +12 à l'Endurance => ParryRating=8; Stamina=12
++10 Force et +10 au score de coup critique => CritRating=10; Strength=10
++10 Force et +10 au score de défense => DefenseRating=10; Strength=10
++10 Force et +10 au score de hâte => HasteRating=10; Strength=10
++21 au score de coup critique et durée de Ralentir et Immobiliser réduite de 10% => unhandled
++25 à la puissance des sorts et durée de Silence réduite de 10% => unhandled
++21 au score de coup critique et durée de Peur réduite de 10% => unhandled
++18 à la puissance des sorts et +5 points de mana par tranche de 5 secondes => Mp5=5; SpellPower=18
+Poison mortel => unhandled
+Poison mortel II => unhandled
+Poison affaiblissant => unhandled
+Poison de distraction mentale II => unhandled
+Huile des ténèbres => unhandled
+Huile glaciale => unhandled
+Fractionnement => unhandled
+Contrepoids (+20 au score de hâte) => HasteRating=20
+Poison de Distraction mentale => unhandled
+Enchanter : Eclat flamboyant => unhandled
+Dragonne en acier => unhandled
+Poison (Instantané 20) => unhandled
+Pointe en fer (8-12) => unhandled
++1 point de dégâts => MaxDamage=1; MinDamage=1
++1 Dégâts de l'arme => MaxDamage=1; MinDamage=1
+Orbe de feu => unhandled
+Poison instantané => unhandled
+Poison instantané II => unhandled
+Poison instantané III => unhandled
+Leurre du Temple noir => unhandled
+Pointe en mithril (16-20) => unhandled
++80 Croque-roc => unhandled
++1 Agilité / +1 Esprit => Agility=1; Spirit=1
++1 Agilité / +1 Intelligence => Agility=1; Intellect=1
++1 Agilité / +1 Endurance => Agility=1; Stamina=1
++1 Agilité / +1 Force => Agility=1; Strength=1
++1 Intelligence / +1 Esprit => Intellect=1; Spirit=1
++1 Intelligence / +1 Endurance => Intellect=1; Stamina=1
++1 Intelligence / +1 Force => Intellect=1; Strength=1
++1 Esprit / +1 Endurance => Spirit=1; Stamina=1
++1 Esprit / +1 Force => Spirit=1; Strength=1
++1 Endurance / +1 Force => Stamina=1; Strength=1
+Poison affaiblissant II => unhandled
+Poison instantané IV => unhandled
+Poison instantané V => unhandled
+Poison instantané VI => unhandled
+Poison mortel III => unhandled
+Poison mortel IV => unhandled
+Poison de distraction mentale III => unhandled
+Poison douloureux => unhandled
+Poison douloureux II => unhandled
+Poison douloureux III => unhandled
+Poison douloureux IV => unhandled
++2 Camouflage => unhandled
+Arme flamboyante => unhandled
++6 Tueur d'élémentaires => unhandled
++5 Dépeçage => unhandled
+Camouflage augmenté => unhandled
+Augmentation mineure de vitesse => unhandled
+Tueur de démon => unhandled
+Poison de Peau-de-venin => unhandled
++85/14 MANA/RF => unhandled
++75/14 PV/RF => unhandled
++110/14 CA/RF => unhandled
++10/14 END/RF => unhandled
++10/14 AGI/RF => unhandled
++10/14 INT/RF => unhandled
++10/14 ESP/RF => unhandled
++10/10 FOR/END => unhandled
++10/10/110/15 FOR/END/CA/RF => unhandled
++10/10/100/15 INT/ESP/MANA/RF => unhandled
+Pointe en thorium (20-30) => unhandled
+Augure de clarté => unhandled
+MHTest02 => unhandled
+Sang froid => unhandled
++4 points de mana et de vie toutes les 5 sec. => Hp5=4; Mp5=4
+Arme glacée => unhandled
++9 aux dégâts => unhandled
+Vampirique => unhandled
+Arme impie => unhandled
++28 au score de critique en mêlée => CritRating=28
++30 au score de toucher à distance => HitRating=30
+5 à la régén. mana toutes les 5 sec. => Mp5=5
++10 Score de défense +10 Endurance +30 Valeur de blocage => BlockValue=30; DefenseRating=10; Stamina=10
++10 Défense/+10 Endurance/+12 à la puissance des sorts => DefenseRating=10; SpellPower=12; Stamina=10
++28 à la puissance d'attaque/+12 au score d'esquive => Ap=28; DodgeRating=12
++24 à la puissance d'attaque à distance/+10 Endurance/+10 au score de toucher => HitRating=10; Rap=24; Stamina=10
++13 à la puissance des sorts/+10 Endurance/+5 points de mana toutes les 5 secondes => Mp5=5; SpellPower=13; Stamina=10
++10 Intelligence/+10 Endurance/+12 à la puissance des sorts => Intellect=10; SpellPower=12; Stamina=10
+zzOLDBlank => unhandled
++2% à la menace => unhandled
++20 à la puissance des sorts d'Ombre => ShadowSpellDamage=20
++20 à la puissance des sorts de Givre => FrostSpellDamage=20
++20 à la puissance des sorts de Feu => FireSpellDamage=20
+Menace diminuée de 2% => unhandled
+Huile de sorcier mineure => unhandled
+Huile de mana mineure => unhandled
+Huile de mana inférieure => unhandled
+Huile de sorcier inférieure => unhandled
+Huile de sorcier => unhandled
+Poison mortel V => unhandled
+Poison anesthésiant => unhandled
+Poison instantané VII => unhandled
+Poison mortel VI => unhandled
+Poison mortel VII => unhandled
+Poison douloureux V => unhandled
++50 à la puissance des sorts de Feu et des Arcanes => ArcaneSpellDamage=50; FireSpellDamage=50
++54 à la puissance des sorts d'Ombre et de Givre => FrostSpellDamage=54; ShadowSpellDamage=54
+Mangouste => unhandled
+Eruption de sort => unhandled
+Maître de guerre => unhandled
+Huile de sorcier excellente => unhandled
++12 Agilité (2 gemmes rouges) => unhandled
++4 Agilité pour chaque couleur de gemme => unhandled
++12 Force avec 4 gemmes bleues équipées => unhandled
++3 Intelligence et +2 point de mana toutes les 5 sec. => Intellect=3; Mp5=2
++4 à la puissance des sorts et +2 point de mana toutes les 5 secondes => Mp5=2; SpellPower=4
+Aiguisé (+14 au score de critique et +12 aux points de dégâts) => unhandled
+Pointe en gangracier (26-38) => unhandled
++16 Endurance et +100 Armure => Armor=100; Stamina=16
++26 à la puissance d'attaque/+14 au score de coup critique => Ap=26; CritRating=14
+Rune de garde inférieure => unhandled
+Gardien de sauvegarde inférieur => unhandled
+Gardien de sauvegarde supérieur => unhandled
+Lunette (+28 au score de coup critique) => CritRating=28
+ZZOLD Rune de garde inférieure => unhandled
+Rune de garde supérieure => unhandled
++4 points de mana rendus toutes les 5 secondes => Mp5=4
+Semelles confortables => unhandled
++$i Intelligence (+$n/+$f) => unhandled
++$i Endurance (+$n/+$f) => unhandled
++$i Armure (+$n/+$f) => unhandled
++$i Agilité => unhandled
++$i Endurance => unhandled
++$i Intelligence => unhandled
++$i Force => unhandled
++$i Esprit => unhandled
++$i aux dégâts des Arcanes => unhandled
++$i aux dégâts de Feu => unhandled
++$i aux dégâts de Nature => unhandled
++$i aux dégâts de Givre => unhandled
++$i aux dégâts d'Ombre => unhandled
++$i aux soins => unhandled
++$i au score de défense => unhandled
++$i points de vie toutes les 5 sec. => unhandled
++$i au score d'esquive => unhandled
++$i points de mana toutes les 5 sec. => unhandled
++$i à la résistance aux Arcanes => unhandled
++$i à la résistance au Feu => unhandled
++$i à la résistance au Givre => unhandled
++$i à la résistance à la Nature => unhandled
++$i à la résistance à l'Ombre => unhandled
++$i à la puissance des sorts => unhandled
++$i à la puissance d'attaque => unhandled
++$i au score de blocage => unhandled
+Chance d'augmenter la vitesse d'incantation des sorts => unhandled
++12 au score de coup critique et durées des ralentissements/immobilisations réduites de 10% => unhandled
++14 à la puissance des sorts et 2% de réduction de la menace => unhandled
++3 aux dégâts en mêlée et une chance d'étourdir la cible => unhandled
++$i Endurance et +$i Intelligence => unhandled
++5 Force, +5 au score de critique => CritRating=5; Strength=5
+test enchantement de gemme => unhandled
+Vitesse mineure et +6 à l'Agilité => unhandled
+Vitesse mineure et +9 à l'Endurance => unhandled
++10 à la puissance d'attaque, +5 au score de critique => Ap=10; CritRating=5
+Équilibré (+14 au score de crit. et +12 aux points de dégâts) => unhandled
++2 point de mana toutes les 5 secondes => Mp5=2
++6 Régén. de mana => unhandled
++18 Endurance, +12 au score d'esquive et +12 au score de résilience => DodgeRating=12; ResilienceRating=12; Stamina=18
+Totem Furie-des-vents 5 (Test Niv. 70) => unhandled
++5 au score de coup critique et +2 points de mana toutes les 5 sec. => CritRating=5; Mp5=2
++6 au score de coup critique et +5 au score d'esquive => CritRating=6; DodgeRating=5
++5 au score d'esquive et +4 au score de toucher => DodgeRating=5; HitRating=4
++5 Force et +4 score de coup critique => CritRating=4; Strength=5
++4 Agilité et +5 au score de défense => Agility=4; DefenseRating=5
++5 Intelligence et 2 points de mana toutes les 5 sec. => Intellect=5; Mp5=2
++5 au score de défense et 2 points de mana toutes les 5 sec. => DefenseRating=5; Mp5=2
++5 au score d'esquive et +4 au score de résilience => DodgeRating=5; ResilienceRating=4
++6 Endurance et +5 au score de critique => CritRating=5; Stamina=6
++5 au score de toucher et 2 points de mana toutes les 5 sec. => HitRating=5; Mp5=2
++5 au score de parade et +4 au score de résilience => ParryRating=5; ResilienceRating=4
++150 à la puissance d'attaque contre les morts-vivants et les démons => unhandled
++17 Force et +16 Intelligence => Intellect=16; Strength=17
+Poison => unhandled
++6 à la puissance d'attaque & +1 point de mana toutes les 5 secondes => Ap=6; Mp5=1
++24 à la puissance d'attaque et 5% à la résistance aux étourdissements => unhandled
++14 à la puissance des sorts et 5% à la résistance aux étourdissements => unhandled
+Dragonne en adamantite => unhandled
+Bourreau => unhandled
++15 Endurance et augmentation mineure de la vitesse => unhandled
+Récolteur => unhandled
+Arme brise-glace => unhandled
+Gardevie => unhandled
+Marcheglace => unhandled
+Tueur de géants => unhandled
++2% à la menace et 10 au score de parade => unhandled
+Camouflage augmenté et Agilité +10 => unhandled
++150 Armure, -10% vitesse => unhandled
+Enduit d'arme béni => unhandled
+Enduit d'arme vertueux => unhandled
+Givre mortel => unhandled
++14 à la puissance des sorts & +2% à l'Intelligence => unhandled
+Enchant. cravache d'équitation de test => unhandled
+Déployeur de cape à ressort => unhandled
+Test utilisation charges => unhandled
++10 Esprit et menace réduite de 2% => unhandled
+Huile de mana exceptionnelle => unhandled
+Huile de sorcier exceptionnelle => unhandled
+Test ajout de châsse enchantement => unhandled
+Test de compétence requise enchantement => unhandled
+Arme runique gelée => unhandled
+QA Test Blank Purple Gem Enchant => unhandled
+Vol Norfendre => unhandled
++10 à la puissance d'attaque, +5 au score de coup critique => Ap=10; CritRating=5
+Charge de la lame runique => unhandled
+Rune de Fracasse-épée => unhandled
+Rune de Lichemort => unhandled
+Rune de Fracasse-sort => unhandled
+Rune du Croisé déchu => unhandled
+Rune de Cendreglace => unhandled
+Rune de Trancheglace => unhandled
++10 Force et +15 à l'Endurance => Stamina=15; Strength=10
++10 Intelligence et +15 à l'Endurance => Intellect=10; Stamina=15
++10 Intelligence et +10 à l'Esprit => Intellect=10; Spirit=10
+Test +4 Intelligence et +2 points de mana toutes les 5 secondes => unhandled
+Rune de Brise-épée => unhandled
+Rune de Brise-sort => unhandled
+Pierre de feu magistrale => unhandled
+Générateur personnel de pulsation électromagnétique => unhandled
+Ceinture à fragmentation => unhandled
+Pyrofusée à montage manuel => unhandled
+Accélérateurs hyper-stimulants => unhandled
+Doublure en toile de lin => unhandled
++40 au score de hâte à distance => HasteRating=40
++40 au score de coup critique à distance => CritRating=40
+Pierre de feu inférieure => unhandled
+Pierre de feu => unhandled
+Pierre de feu supérieure => unhandled
+Pierre de feu majeure => unhandled
+Pierre de feu gangrenée => unhandled
+Pierre de feu grandiose => unhandled
+Pierre de sort => unhandled
+Pierre de sort supérieure => unhandled
+Pierre de sort majeure => unhandled
+Pierre de sort magistrale => unhandled
+Pierre de sort démoniaque => unhandled
+Pierre de sort grandiose => unhandled
++21 au score de coup critique et dégâts des critiques augmentés de 3% => CritRating=21
++25 au score de coup critique et 1% au renvoi des sorts => unhandled
++25 à la puissance des sorts et +2% à l'Intelligence => unhandled
++25 à la puissance des sorts et menace réduite de 2% => unhandled
++21 à l'Intelligence et une chance de rendre du mana lors des incantations => unhandled
++21 à l'Agilité & dégâts des critiques augmentés de 3% => Agility=21
++25 à la puissance des sorts et augmentation de la Vitesse de course mineure => unhandled
++11 points de mana toutes les 5 secondes et effets de soin critiques augmentés de 3% => unhandled
++32 Endurance et réduit les dégâts des sorts reçus de 2% => unhandled
++32 Endurance et augmente de 2% la valeur d'armure des objets => unhandled
++42 à la puissance d'attaque et durée de Etourdir réduite de 10% => unhandled
++25 à la puissance des sort et durée de Etourdir réduite de 10% => unhandled
++42 à la puissance d'attaque et régénère parfois vos points de vie quand critique => unhandled
++21 au score de coup critique et +2% aux points de mana => unhandled
++32 Endurance et durée de Etourdir réduite de 10% => unhandled
++14 à la puissance d'attaque et +4 points de mana toutes les 5 sec. => Ap=14; Mp5=4
++7 au score de pénétration d'armure et +11 Endurance => ArmorPenetration=7; Stamina=11
++7 Agilité et +4 points de mana toutes les 5 secondes => Agility=7; Mp5=4
++7 au score d'expertise et +11 Endurance => ExpertiseRating=7; Stamina=11
++14 à la puissance d'attaque et +7 au score de coup critique (VIEUX) => unhandled
++7 Agilité et +7 au score de hâte => Agility=7; HasteRating=7
++7 Agilité et +7 au score de coup critique => Agility=7; CritRating=7
++7 Agilité et +7 au score de résilience => Agility=7; ResilienceRating=7
++7 au score de coup critique et +7 Esprit => CritRating=7; Spirit=7
++7 au score de hâte et +7 Esprit => HasteRating=7; Spirit=7
++7 au score de toucher et +7 Esprit => HitRating=7; Spirit=7
++7 au score de résilience et +7 Esprit => ResilienceRating=7; Spirit=7
+Châsse de brassard => unhandled
+Broderie tisse-lumière => unhandled
+Châsse de gants => unhandled
++$i au score de hâte => unhandled
++$i au score de toucher => unhandled
+Broderie sombrelueur => unhandled
+Ceinture de châsse => unhandled
+Broderie gardépée => unhandled
+Dragonne en titane => unhandled
+Pointe en titane (45-67) => unhandled
++4 à toutes les statistiques => Agility=4; Intellect=4; Spirit=4; Stamina=4; Strength=4
++24 à la puissance d'attaque +10 Endurance +10 au score de toucher => Ap=24; HitRating=10; Stamina=10
++28 à la puissance d'attaque +12 au score d'esquive => Ap=28; DodgeRating=12
++70 de résistance à la Nature => NatureResist=70
+Poison instantané VIII => unhandled
+Poison instantané IX => unhandled
+Poison mortel VIII => unhandled
+Poison mortel IX => unhandled
+Poison douloureux VI => unhandled
+Poison douloureux VII => unhandled
+Poison anesthésiant II => unhandled
++20 Défense et +15 au score d'esquive => DefenseRating=20; DodgeRating=15
+Berserker => unhandled
+Magie noire => unhandled
++34 à la puissance d'attaque et durée d'Etourdissement réduite de 10% => unhandled
++26 Endurance et durée d'Etourdissement réduite de 10% => unhandled
++20 à la puissance des sorts et durée d'Etourdissement réduite de 10% => unhandled
++25 à la résistance au Givre et +30 Endurance => FrostResist=25; Stamina=30
++25 à la résistance à la Nature et +30 Endurance => NatureResist=25; Stamina=30
++25 à la résistance à l'Ombre et +30 Endurance => ShadowResist=25; Stamina=30
++25 à la résistance aux Arcanes et +30 Endurance => ArcaneResist=25; Stamina=30
++25 à la résistance au Feu et +30 Endurance => FireResist=25; Stamina=30
++30 à la puissance des sorts et 20 au score de coup critique => CritRating=20; SpellPower=30
++120 à la puissance d'attaque et +15 au score de critique => Ap=120; CritRating=15
++70 à la puissance des sorts et +8 points de mana/5 secondes => Mp5=8; SpellPower=70
+Rune de la gargouille peau de pierre => unhandled
+Châsse de bâton => unhandled
+Plaque en titane => unhandled
+Garde lame => unhandled
+Drain de sang => unhandled
+Parabole d'amplification de l'esprit => unhandled
+Rune de la carapace nérubienne => unhandled

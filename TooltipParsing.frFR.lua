@@ -98,6 +98,11 @@ PawnLocal.DecimalSeparator = ","
 local Fr, FrEquip, FrSpell = PawnFrPattern, PawnFrEquipPattern, PawnFrSpellPattern
 local Fixed, Extract = PawnMultipleStatsFixed, PawnMultipleStatsExtract
 
+-- GlobalStrings: ITEM_RESIST_SINGLE "%1$c%2$d à la résistance %3$s", for one school name as the client shows it in game.
+local function FrResist(School)
+	return "^" .. PawnFrFormatToPattern((gsub(ITEM_RESIST_SINGLE, "%%3%$s", School))) .. "$"
+end
+
 PawnRegexes =
 {
 	-- ========================================
@@ -150,6 +155,7 @@ PawnRegexes =
 	{Fr("INVTYPE_TRINKET")}, -- GlobalStrings
 	{Fr("INVTYPE_RELIC")}, -- GlobalStrings
 	{Fr("INVTYPE_AMMO")}, -- GlobalStrings
+	{"^Projectile$"}, -- scan: "Projectile" (item 31735), slot line of ammo
 	{Fr("MAJOR_GLYPH")}, -- GlobalStrings
 	{Fr("MINOR_GLYPH")}, -- GlobalStrings
 	{"^Libram$"}, -- ItemSubClass.dbc 4:7; logs
@@ -178,8 +184,10 @@ PawnRegexes =
 	{Fr("ITEM_WRITTEN_BY")}, -- GlobalStrings
 	{"|cff%x%x%x%x%x%x" .. PawnFrFormatToPattern(ENCHANT_CONDITION_REQUIRES)}, -- GlobalStrings: meta gem requirements ("Nécessite ...")
 	{"^.+ %d+ emplacements?$"}, -- GlobalStrings: CONTAINER_SLOTS; logs: "Sac 14 emplacements", "Carquois 18 emplacements"
-	{Fr("ITEM_ENCHANT_TIME_LEFT_DAYS")}, -- GlobalStrings: temporary item buff
-	{Fr("ITEM_ENCHANT_TIME_LEFT_HOURS")}, -- GlobalStrings
+	-- GlobalStrings: temporary item buff.  ITEM_ENCHANT_TIME_LEFT_DAYS "%s (%d |4jour:jours;)" and _HOURS "%s (%d |4heure:heures;)"
+	-- are written by hand: the generic |4 form would also swallow "Utiliser : ... (30 min de recharge)" (scan).
+	{"^.- %(%d+ jours?%)$"}, -- GlobalStrings: ITEM_ENCHANT_TIME_LEFT_DAYS
+	{"^.- %(%d+ heures?%)$"}, -- GlobalStrings: ITEM_ENCHANT_TIME_LEFT_HOURS
 	{Fr("ITEM_ENCHANT_TIME_LEFT_MIN")}, -- GlobalStrings
 	{Fr("ITEM_ENCHANT_TIME_LEFT_SEC")}, -- GlobalStrings
 	{Fr("ENCHANT_ITEM_REQ_SKILL")}, -- GlobalStrings
@@ -243,6 +251,14 @@ PawnRegexes =
 	{Fr("SHIELD_BLOCK_TEMPLATE"), "BlockValue"}, -- GlobalStrings
 	{Fr("ARMOR_TEMPLATE"), "Armor"}, -- GlobalStrings
 	{Fr("ITEM_RESIST_ALL"), "AllResist"}, -- GlobalStrings
+	{FrResist("Feu"), "FireResist"}, -- GlobalStrings: ITEM_RESIST_SINGLE; scan (PawnScanResults.parsed): "+110 à la résistance Feu", "-10 à la résistance Feu"
+	{FrResist("Ombre"), "ShadowResist"}, -- GlobalStrings: ITEM_RESIST_SINGLE; scan (parsed): "+100 à la résistance Ombre"
+	{FrResist("Nature"), "NatureResist"}, -- GlobalStrings: ITEM_RESIST_SINGLE; scan (parsed): "+100 à la résistance Nature"
+	{FrResist("Arcanes"), "ArcaneResist"}, -- GlobalStrings: ITEM_RESIST_SINGLE; scan (parsed): "+5 à la résistance Arcanes"
+	{FrResist("Givre"), "FrostResist"}, -- GlobalStrings: ITEM_RESIST_SINGLE; scan (parsed): "+100 à la résistance Givre"
+	{FrSpell("Score de défense augmenté de #."), "DefenseRating"}, -- scan (PawnScanResults.parsed, no item number kept): "Équipé : Score de défense augmenté de 7."
+	{FrSpell("Augmente de # la puissance d'attaque pour les formes de félin, d'ours, d'ours redoutable et de sélénien uniquement."), "FeralAp"}, -- Spell.dbc; scan (parsed): "... de 154 ..."
+	{"^Ajoute ([%d%.,]+) dégâts par seconde$", "Dps"}, -- scan (PawnScanResults.parsed): "Ajoute 32 dégâts par seconde", "Ajoute 46.5 dégâts par seconde" (ammunition)
 	{FrSpell("Augmente la puissance des sorts de Feu de #."), "FireSpellDamage"}, -- Spell.dbc
 	{FrSpell("Augmente la puissance des sorts d'Ombre de #."), "ShadowSpellDamage"}, -- Spell.dbc; logs
 	{FrSpell("Augmente la puissance des sorts de Nature de #."), "NatureSpellDamage"}, -- Spell.dbc
@@ -259,11 +275,38 @@ PawnRegexes =
 	{FrSpell("Rend # points de mana toutes les 5 sec."), "Mp5"}, -- Spell.dbc
 	{FrSpell("Rend # points de vie toutes les 5 sec."), "Hp5"}, -- Spell.dbc
 	{FrSpell("+# à toutes les résistances."), "AllResist"}, -- Spell.dbc; logs
+	{FrSpell("+# en Force."), "Strength"}, -- Spell.dbc
+	{FrSpell("+# en Agilité."), "Agility"}, -- Spell.dbc
+	{FrSpell("+# en Endurance."), "Stamina"}, -- Spell.dbc
+	{FrSpell("+# en Intelligence."), "Intellect"}, -- Spell.dbc
+	{FrSpell("+# en Esprit."), "Spirit"}, -- Spell.dbc
+	{FrSpell("Augmente votre Esprit de #."), "Spirit"}, -- Spell.dbc
+	{FrSpell("+# à l'Armure."), "Armor"}, -- Spell.dbc
+	{FrSpell("Augmente l'Armure de #."), "Armor"}, -- Spell.dbc
+	{FrSpell("+# à la résistance au Feu."), "FireResist"}, -- Spell.dbc
+	{FrSpell("+# à la résistance à l'Ombre."), "ShadowResist"}, -- Spell.dbc
+	{FrSpell("+# à la résistance à la Nature."), "NatureResist"}, -- Spell.dbc
+	{FrSpell("+# à la résistance aux Arcanes."), "ArcaneResist"}, -- Spell.dbc
+	{FrSpell("+# à la résistance au Givre."), "FrostResist"}, -- Spell.dbc
+	{FrSpell("Augmente la résistance au Feu de #."), "FireResist"}, -- Spell.dbc
+	{FrSpell("Augmente la résistance à l'Ombre de #."), "ShadowResist"}, -- Spell.dbc
+	{FrSpell("Augmente la résistance à la Nature de #."), "NatureResist"}, -- Spell.dbc
+	{FrSpell("Augmente la résistance aux Arcanes de #."), "ArcaneResist"}, -- Spell.dbc
+	{FrSpell("Augmente la résistance au Givre de #."), "FrostResist"}, -- Spell.dbc
+	{FrSpell("Augmente la puissance de vos sorts de #."), "SpellPower"}, -- Spell.dbc
+	{FrSpell("Augmente le score de coup critique de #."), "CritRating"}, -- Spell.dbc
+	{FrSpell("Augmente le score de coup critique des sorts de #."), "CritRating"}, -- Spell.dbc
+	{FrSpell("Augmente votre score de coup critique à distance de #."), "CritRating"}, -- scan: "Équipé : Augmente votre score de coup critique à distance de 14." (item 7348)
+	{FrSpell("Augmente le score de hâte de #."), "HasteRating"}, -- Spell.dbc
+	{FrSpell("Augmente le score d'expertise de #."), "ExpertiseRating"}, -- Spell.dbc
+	{FrSpell("Augmente votre score d'esquive de #."), "DodgeRating"}, -- Spell.dbc
+	{FrSpell("Augmente votre score de parade de #."), "ParryRating"}, -- Spell.dbc
+	{FrSpell("+# au score de résilience."), "ResilienceRating"}, -- Spell.dbc
 	{"^%+(%d+) à la puissance des sorts$", "SpellPower"}, -- SpellItemEnchantment.dbc
 	{"^%+(%d+) à la puissance d'attaque$", "Ap"}, -- SpellItemEnchantment.dbc
 	{"^%+(%d+) à la puissance des attaques à distance$", "Rap"}, -- SpellItemEnchantment.dbc
 	{"^%+(%d+) au score de défense$", "DefenseRating"}, -- SpellItemEnchantment.dbc; logs
-	{"^%+(%d+) au score de coup critique$", "CritRating"}, -- SpellItemEnchantment.dbc
+	{"^%+?(%d+) au score de coup critique$", "CritRating"}, -- SpellItemEnchantment.dbc (also "+30 à la puissance des sorts et 20 au score de coup critique")
 	{"^%+(%d+) au score de coups critiques$", "CritRating"}, -- logs
 	{"^%+(%d+) au score de critique$", "CritRating"}, -- logs
 	{"^%+(%d+) au score de toucher$", "HitRating"}, -- SpellItemEnchantment.dbc
@@ -283,7 +326,7 @@ PawnRegexes =
 	{"^%+(%d+) aux dégâts de l'arme$", "MinDamage", 1, Extract, "MaxDamage", 1, Extract}, -- SpellItemEnchantment.dbc
 	{"^%+(%d+) points de dégâts$", "MinDamage", 1, Extract, "MaxDamage", 1, Extract}, -- SpellItemEnchantment.dbc
 	{"^%+?(%d+) points de mana toutes les 5 sec%.$", "Mp5"}, -- SpellItemEnchantment.dbc
-	{"^%+(%d+) points de mana toutes les 5 secondes$", "Mp5"}, -- SpellItemEnchantment.dbc
+	{"^%+?(%d+) points de mana toutes les 5 secondes$", "Mp5"}, -- SpellItemEnchantment.dbc (also "+12 à la puissance des sorts et 8 points de mana toutes les 5 secondes")
 	{"^%+(%d+) points de vie toutes les 5 sec%.$", "Hp5"}, -- SpellItemEnchantment.dbc
 	{"^%+(%d+) aux dégâts des sorts de Feu$", "FireSpellDamage"}, -- SpellItemEnchantment.dbc; logs
 	{"^%+(%d+) aux dégâts des sorts d'Ombre$", "ShadowSpellDamage"}, -- SpellItemEnchantment.dbc
@@ -298,6 +341,51 @@ PawnRegexes =
 	{"^%+(%d+) à la résistance au Givre$", "FrostResist"}, -- SpellItemEnchantment.dbc
 	{"^%+(%d+) à toutes les résistances$", "AllResist"}, -- SpellItemEnchantment.dbc
 	{"^%+(%d+) à toutes les caractéristiques$", "Strength", 1, Extract, "Agility", 1, Extract, "Stamina", 1, Extract, "Intellect", 1, Extract, "Spirit", 1, Extract}, -- SpellItemEnchantment.dbc
+	-- Other SpellItemEnchantment.dbc wordings (one row per real text form)
+	{"^%+ (%d+) Force$", "Strength"}, -- SpellItemEnchantment.dbc: "+ 7 Force"
+	{"^%+(%d+) à la Force$", "Strength"}, -- SpellItemEnchantment.dbc: "+5 à la Force et +4 au score de défense"
+	{"^%+(%d+) à l'Intelligence$", "Intellect"}, -- SpellItemEnchantment.dbc: "+7 à la puissance des sorts et +6 à l'Intelligence"
+	{"^%+(%d+) à l'Esprit$", "Spirit"}, -- SpellItemEnchantment.dbc: "+6 à la puissance des sorts et +5 à l'Esprit"
+	{"^%+(%d+) à toutes les statistiques$", "Strength", 1, Extract, "Agility", 1, Extract, "Stamina", 1, Extract, "Intellect", 1, Extract, "Spirit", 1, Extract}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) aux points de vie$", "Health"}, -- SpellItemEnchantment.dbc: "+15 aux points de vie"
+	{"^%+(%d+) aux points de mana$", "Mana"}, -- SpellItemEnchantment.dbc: "+5 aux points de mana"
+	{"^%+(%d+) Défense$", "DefenseRating"}, -- SpellItemEnchantment.dbc: "+20 Défense et +15 au score d'esquive"
+	{"^%+(%d+) score de coup critique$", "CritRating"}, -- SpellItemEnchantment.dbc: "+5 Force et +4 score de coup critique"
+	{"^%+(%d+) au score de critique en mêlée$", "CritRating"}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) au score de coup critique à distance$", "CritRating"}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) aux score de toucher$", "HitRating"}, -- SpellItemEnchantment.dbc: "+11 aux score de toucher"
+	{"^%+(%d+) au score de toucher à distance$", "HitRating"}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) au score de hâte à distance$", "HasteRating"}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) score de résilience$", "ResilienceRating"}, -- SpellItemEnchantment.dbc: "+6 Endurance et +5 score de résilience"
+	{"^%+(%d+) à la résilience$", "ResilienceRating"}, -- SpellItemEnchantment.dbc: "+9 à la résilience"
+	{"^%+(%d+) à la valeur de blocage$", "BlockValue"}, -- SpellItemEnchantment.dbc: "+36 à la valeur de blocage"
+	{"^%+(%d+) à la puissance d'attaque à distance$", "Rap"}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) à la puissance des sorts de Feu$", "FireSpellDamage"}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) à la puissance des sorts d'Ombre$", "ShadowSpellDamage"}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) à la puissance des sorts de Givre$", "FrostSpellDamage"}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) à la puissance des sorts de Feu et des Arcanes$", "FireSpellDamage", 1, Extract, "ArcaneSpellDamage", 1, Extract}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) à la puissance des sorts d'Ombre et de Givre$", "ShadowSpellDamage", 1, Extract, "FrostSpellDamage", 1, Extract}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) à la résistance aux arcanes$", "ArcaneResist"}, -- SpellItemEnchantment.dbc: "+31 à la résistance aux arcanes"
+	{"^%+(%d+) de résistance à la Nature$", "NatureResist"}, -- SpellItemEnchantment.dbc: "+70 de résistance à la Nature"
+	{"^%+(%d+) point de vie toutes les 5 sec%.$", "Hp5"}, -- SpellItemEnchantment.dbc: "+1 point de vie toutes les 5 sec."
+	{"^%+?(%d+) point de mana toutes les 5 sec%.$", "Mp5"}, -- SpellItemEnchantment.dbc: "+1 point de mana ...", "3 point de mana ..."
+	{"^%+(%d+) point de mana toutes les 5 secondes$", "Mp5"}, -- SpellItemEnchantment.dbc: "+2 point de mana toutes les 5 secondes"
+	{"^%+(%d+) points de mana rendus toutes les 5 secondes$", "Mp5"}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) points de mana par tranche de 5 secondes$", "Mp5"}, -- SpellItemEnchantment.dbc
+	{"^(%d+) à la régén%. mana toutes les 5 sec%.$", "Mp5"}, -- SpellItemEnchantment.dbc: "5 à la régén. mana toutes les 5 sec."
+	{"^%+(%d+) points de vie et de mana toutes les 5 sec%.$", "Hp5", 1, Extract, "Mp5", 1, Extract}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) points de mana et de vie toutes les 5 sec%.$", "Mp5", 1, Extract, "Hp5", 1, Extract}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) point de dégâts$", "MinDamage", 1, Extract, "MaxDamage", 1, Extract}, -- SpellItemEnchantment.dbc: "+1 point de dégâts"
+	{"^%+(%d+) Dégâts de l'arme$", "MinDamage", 1, Extract, "MaxDamage", 1, Extract}, -- SpellItemEnchantment.dbc: "+1 Dégâts de l'arme"
+	{"^Lunette %(%+(%d+) points? de dégâts%)$", "MinDamage", 1, Extract, "MaxDamage", 1, Extract}, -- SpellItemEnchantment.dbc: ranged weapon scope
+	{"^Lunette %(%+(%d+) au score de coup critique%)$", "CritRating"}, -- SpellItemEnchantment.dbc
+	{"^Renforcé %(%+(%d+) Armure%)$", "Armor"}, -- SpellItemEnchantment.dbc: armor kit
+	{"^Contrepoids %(%+(%d+) au score de hâte%)$", "HasteRating"}, -- SpellItemEnchantment.dbc
+	-- Whole lines whose stats are not separated by ", ", "/", " & " or " et ", or whose "/" would split a stat in two
+	{"^%+(%d+) Score de défense %+(%d+) Endurance %+(%d+) Valeur de blocage$", "DefenseRating", 1, Extract, "Stamina", 2, Extract, "BlockValue", 3, Extract}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) à la puissance d'attaque %+(%d+) Endurance %+(%d+) au score de toucher$", "Ap", 1, Extract, "Stamina", 2, Extract, "HitRating", 3, Extract}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) à la puissance d'attaque %+(%d+) au score d'esquive$", "Ap", 1, Extract, "DodgeRating", 2, Extract}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) à la puissance des sorts et %+(%d+) points de mana/5 secondes$", "SpellPower", 1, Extract, "Mp5", 2, Extract}, -- SpellItemEnchantment.dbc
 	{Fr("EMPTY_SOCKET_RED"), "RedSocket", 1, Fixed}, -- GlobalStrings
 	{Fr("EMPTY_SOCKET_YELLOW"), "YellowSocket", 1, Fixed}, -- GlobalStrings
 	{Fr("EMPTY_SOCKET_BLUE"), "BlueSocket", 1, Fixed}, -- GlobalStrings
