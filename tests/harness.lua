@@ -17,6 +17,7 @@ Harness.Files = {
 	"ScaleTemplates.lua",
 	"ItemIDs.lua",
 	"Pawn.lua",
+	"PawnScan.lua",
 }
 
 -- Loads the client constants line by line: a few lines of the real file use escapes LuaJIT rejects.

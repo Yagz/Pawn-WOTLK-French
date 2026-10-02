@@ -116,4 +116,113 @@ Test("frFR : rien n'est redéfini sur un client enUS", function()
 	end
 end)
 
+local function ResetScan()
+	if PawnScan then PawnScan.Stop() end
+	PawnScanResults = nil
+	WowApiItems, WowApiItemTooltips, WowApiHyperlinks = {}, {}, {}
+end
+
+Test("scan : modèle d'une ligne", function()
+	Equal(PawnScan.Template("Augmente de 12 le score de toucher."), "Augmente de # le score de toucher.")
+end)
+
+Test("scan : même format de stats que le corpus", function()
+	local Stats = { Speed = 2.6, Agility = 12, MinDamage = 10 }
+	Equal(PawnScan.FormatStats(Stats), Corpus.FormatStats(Stats))
+end)
+
+Test("scan : lignes inconnues regroupées par modèle, lignes comprises échantillonnées", function()
+	ResetScan()
+	-- The socket line comes first: Pawn ignores unknown lines before the first understood line.
+	WowApiItemTooltips["item:1"] = { "Casque A", EMPTY_SOCKET_RED, "Équipé : Fait une chose de 12 étrange." }
+	WowApiItemTooltips["item:2"] = { "Casque B", "Équipé : Fait une chose de 30 étrange." }
+	Equal(PawnScan.RecordItem("item:1", 1), "nok", "objet 1")
+	Equal(PawnScan.RecordItem("item:2", 2), "nok", "objet 2")
+	local Entry = PawnScanResults.unknown["Équipé : Fait une chose de # étrange."]
+	Equal(Entry.count, 2, "nombre")
+	Equal(Entry.example, 1, "exemple")
+	Equal(Entry.line, "Équipé : Fait une chose de 12 étrange.", "ligne réelle")
+	Equal(PawnScanResults.parsed[EMPTY_SOCKET_RED].stats, "RedSocket=1", "ligne comprise")
+	Equal(PawnScanResults.summary.scanned, 2, "objets analysés")
+	Equal(PawnScanResults.socketedExample, 1, "objet à châsses")
+end)
+
+Test("scan : un objet qui ne répond jamais est abandonné après 3 essais", function()
+	ResetScan()
+	local Calls = 0
+	local RealGetItemInfo = GetItemInfo
+	GetItemInfo = function() Calls = Calls + 1 return nil end
+	PawnScan.Start("range", 5, 5)
+	local Now, Steps = 0, 0
+	while PawnScan.Step(Now) do
+		Now, Steps = Now + 0.25, Steps + 1
+		assert(Steps < 100, "le scan ne se termine pas")
+	end
+	GetItemInfo = RealGetItemInfo
+	PawnScan.Stop()
+	Equal(Calls, 3, "appels à GetItemInfo")
+	Equal(#WowApiHyperlinks, 1, "amorçage par infobulle cachée")
+	Equal(WowApiHyperlinks[1], "item:5", "lien amorcé")
+end)
+
+Test("scan : reprise après /reload", function()
+	ResetScan()
+	for ID = 10, 12 do
+		WowApiItems[ID] = { "Casque " .. ID, "INVTYPE_HEAD" }
+		WowApiItemTooltips["item:" .. ID] = { "Casque " .. ID, INVTYPE_HEAD }
+	end
+	PawnScan.Start("range", 10, 12)
+	PawnScan.Step(0)
+	PawnScan.Stop()
+	PawnScan.Command("")
+	Equal(PawnScanResults.state.next, 11, "position reprise")
+	while PawnScan.Step(0) do end
+	PawnScan.Stop()
+	Equal(PawnScanResults.summary.scanned, 3, "objets analysés")
+end)
+
+Test("scan : un pic de latence ne traite pas plus d'une seconde d'entrées", function()
+	ResetScan()
+	for ID = 100, 200 do
+		WowApiItems[ID] = { "Bague", "INVTYPE_FINGER" }
+		WowApiItemTooltips["item:" .. ID] = { "Bague", INVTYPE_FINGER }
+	end
+	PawnScan.Start("range", 100, 200)
+	PawnScan.OnUpdate(30)
+	Equal(PawnScanResults.state.next, 100 + PawnScan.ItemsPerSecond, "position")
+	PawnScan.Stop()
+end)
+
+Test("scan : les objets non équipables sont ignorés", function()
+	ResetScan()
+	WowApiItems[20] = { "Sac", "INVTYPE_BAG" }
+	WowApiItems[21] = { "Potion", "" }
+	PawnScan.Start("range", 20, 21)
+	while PawnScan.Step(0) do end
+	PawnScan.Stop()
+	Equal(PawnScanResults.summary.scanned, 0, "objets analysés")
+end)
+
+Test("scan : écart avec GetItemStats", function()
+	ResetScan()
+	WowApiItemTooltips["item:300"] = { "Bottes", INVTYPE_FEET }
+	GetItemStats = function() return { ITEM_MOD_STAMINA_SHORT = 15 } end
+	PawnScan.RecordItem("item:300", 300)
+	GetItemStats = nil
+	Equal(PawnScanResults.mismatch["300 Stamina"], "jeu 15, Pawn 0")
+end)
+
+Test("scan : mode gemmes", function()
+	ResetScan()
+	local RealLevels, RealMeta = PawnGemQualityLevels, PawnMetaGemQualityLevels
+	PawnGemQualityLevels = { { 0, { { ID = 40000, R = true, Stats = { Strength = 12 } } } } }
+	PawnMetaGemQualityLevels = { { 0, { { ID = 41285, Stats = { CritRating = 21 } } } } }
+	WowApiItems[999] = { "Plastron", "INVTYPE_CHEST" }
+	PawnScan.Start("gems", 1, 0, 999)
+	PawnScan.Stop()
+	PawnGemQualityLevels, PawnMetaGemQualityLevels = RealLevels, RealMeta
+	Equal(PawnScanResults.state.last, 2, "nombre de gemmes")
+	Equal(PawnScan.GetEntry(PawnScanResults.state, 1).Link, "item:999:0:40000:0:0:0:0:0", "lien")
+end)
+
 return Tests
