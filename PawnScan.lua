@@ -65,6 +65,14 @@ ScanFrame:SetScript("OnUpdate", function(self, Delta) PawnScan.OnUpdate(Delta) e
 local PrimerTooltip = CreateFrame("GameTooltip", "PawnScanPrimerTooltip", nil, "GameTooltipTemplate")
 PrimerTooltip:SetOwner(WorldFrame, "ANCHOR_NONE")
 
+-- Asks the server for an item.  The tooltip is re-owned and cleared each time: the client may unown it after an
+-- uncached item, and later SetHyperlink calls would then do nothing.
+local function PrimeItem(ItemID)
+	PrimerTooltip:SetOwner(WorldFrame, "ANCHOR_NONE")
+	PrimerTooltip:ClearLines()
+	PrimerTooltip:SetHyperlink("item:" .. ItemID)
+end
+
 function PawnScan.Message(Text)
 	VgerCore.Message(VgerCore.Color.Blue .. "PawnScan : " .. VgerCore.Color.Reset .. Text)
 end
@@ -200,7 +208,7 @@ function PawnScan.TryEntry(Entry, Tries)
 	if Entry.Require then
 		local Name, ItemLink, _, _, _, _, _, _, EquipLoc = GetItemInfo(Entry.Require)
 		if not Name then
-			if Tries == 0 then PrimerTooltip:SetHyperlink("item:" .. Entry.Require) end
+			if Tries == 0 then PrimeItem(Entry.Require) end
 			return "pending"
 		end
 		if not Link then
@@ -311,7 +319,7 @@ function PawnScan.Command(Text)
 			return
 		end
 		if not GetItemInfo(Base) then
-			PrimerTooltip:SetHyperlink("item:" .. Base)
+			PrimeItem(Base)
 			PawnScan.Message("l'objet " .. Base .. " n'est pas encore en cache. Réessayez dans quelques secondes.")
 			return
 		end
