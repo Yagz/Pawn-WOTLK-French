@@ -5635,7 +5635,14 @@ end
 -- Wraps the GetClassInfo function so that it can be called on WoW Classic.
 -- (On WoW Classic, returns something like "Druid", "DRUID".)
 function PawnGetClassInfo(ClassID)
-	if GetClassInfo then return GetClassInfo(ClassID) end
+	if GetClassInfo then
+		local LocalizedClassName, UnlocalizedClassName, RealClassID = GetClassInfo(ClassID)
+		-- !!!ClassicAPI on 3.3.5a returns a C_CreatureInfo-style table instead of three values.
+		if type(LocalizedClassName) == "table" then
+			return LocalizedClassName.className, LocalizedClassName.classFile, LocalizedClassName.classID
+		end
+		return LocalizedClassName, UnlocalizedClassName, RealClassID
+	end
 
 	local UnlocalizedClassName
 	if ClassID == 1 then
