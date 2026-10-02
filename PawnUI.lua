@@ -2414,6 +2414,12 @@ function PawnUI_OnQuestInfo_Display(template)
 	end
 end
 
+-- 3.3.5a has no QuestInfo_GetRewardButton / QuestInfoFrame.rewardsFrame: its reward buttons are QuestInfoItem1..N (FrameXML QuestInfo.lua).
+local function PawnUI_GetQuestRewardButton(Index)
+	if QuestInfo_GetRewardButton then return QuestInfo_GetRewardButton(QuestInfoFrame.rewardsFrame, Index) end
+	return _G["QuestInfoItem" .. Index]
+end
+
 -- When quest info is shown, annotate item rewards with upgrade and vendor icons.
 function PawnUI_OnQuestInfo_ShowRewards()
 	-- Before doing anything else, clear out our state from last time.
@@ -2448,7 +2454,7 @@ function PawnUI_OnQuestInfo_ShowRewards()
 	end
 	-- BUG: In 7.0, sometimes when turning in a quest (the "else" case above), these numbers are still 0 by the time that this is called.  Calling GetNumQuest*() too early apparently prevents the reward from getting shown at all...?
 	if StaticRewards + RewardChoices == 0 then return end
-	if not QuestInfo_GetRewardButton(QuestInfoFrame.rewardsFrame, 1) then
+	if not PawnUI_GetQuestRewardButton(1) then
 		VgerCore.Fail("Failed to annotate quest info because we couldn't find the reward button.  (Is a quest log mod interfering with Pawn?)")
 		return
 	end
@@ -2493,7 +2499,7 @@ function PawnUI_OnQuestInfo_ShowRewards()
 
 	local Reward
 	for _, Reward in pairs(QuestRewards) do
-		local ItemButton = QuestInfo_GetRewardButton(QuestInfoFrame.rewardsFrame, Reward.Index)
+		local ItemButton = PawnUI_GetQuestRewardButton(Reward.Index)
 		local TextureName
 		if ItemButton then
 			local Overlay = PawnQuestAdvisorOverlays[Reward.Index]
