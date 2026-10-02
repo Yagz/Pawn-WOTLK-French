@@ -142,6 +142,9 @@ Test("frFR : rien n'est redéfini sur un client enUS", function()
 	end
 end)
 
+-- date() is a client global (os.date is not available in game); the offline fakes don't define it.
+date = date or os.date
+
 local function ResetScan()
 	if PawnScan then PawnScan.Stop() end
 	PawnScanResults = nil
@@ -389,6 +392,64 @@ Test("scan : speed n'accepte qu'un nombre positif", function()
 	PawnScan.Command("speed 250")
 	Equal(PawnScan.ItemsPerSecond, 250, "après speed 250")
 	PawnScan.ItemsPerSecond = Before
+end)
+
+Test("scan : inspect enregistre lignes, lectures, stats et lignes inconnues", function()
+	ResetScan()
+	WowApiItems["item:7"] = { "Casque 7", "INVTYPE_HEAD" }
+	WowApiItemTooltips["item:7"] = { "Casque 7", EMPTY_SOCKET_RED, "Équipé : Fait une chose de 12 étrange." }
+	local Entry = PawnScan.Inspect("item:7")
+	Equal(PawnScanResults.inspect[1], Entry, "enregistré")
+	Equal(Entry.link, "item:7", "lien")
+	Equal(Entry.name, "Casque 7", "nom")
+	Equal(type(Entry.time), "string", "date")
+	Equal(#Entry.lines, 3, "lignes")
+	Equal(Entry.lines[2].left, EMPTY_SOCKET_RED, "ligne 2")
+	Equal(Entry.lines[3].left, "Équipé : Fait une chose de 12 étrange.", "ligne 3")
+	Equal(Entry.stats, "RedSocket=1", "stats")
+	Equal(Entry.socketBonus, "", "bonus de châsse")
+	Equal(Entry.unknown[1], "Équipé : Fait une chose de 12 étrange.", "ligne inconnue")
+	Equal(type(Entry.values), "table", "valeurs")
+	local Understood, Unknown
+	for i, Read in ipairs(Entry.reads) do
+		if Read.text == EMPTY_SOCKET_RED then Understood = i; Equal(Read.understood, true, "comprise"); Equal(Read.stats, "RedSocket=1", "stats lues"); Equal(Read.side, "left", "côté") end
+		if Read.text == "Équipé : Fait une chose de 12 étrange." then Unknown = i; Equal(Read.understood, false, "non comprise") end
+	end
+	assert(Understood and Unknown and Understood < Unknown, "lectures dans l'ordre")
+end)
+
+Test("scan : inspect d'un objet absent du cache n'enregistre rien et l'amorce", function()
+	ResetScan()
+	Equal(PawnScan.Inspect("item:99"), nil, "résultat")
+	Equal(PawnScanResults and PawnScanResults.inspect, nil, "rien d'enregistré")
+	Equal(WowApiHyperlinks[1], "item:99", "lien amorcé")
+end)
+
+Test("scan : inspect garde au plus 20 entrées", function()
+	ResetScan()
+	WowApiItems["item:7"] = { "Casque 7", "INVTYPE_HEAD" }
+	WowApiItemTooltips["item:7"] = { "Casque 7" }
+	for i = 1, 25 do
+		WowApiItems["item:" .. i] = { "Casque " .. i, "INVTYPE_HEAD" }
+		WowApiItemTooltips["item:" .. i] = { "Casque " .. i }
+		PawnScan.Inspect("item:" .. i)
+	end
+	Equal(#PawnScanResults.inspect, 20, "nombre")
+	Equal(PawnScanResults.inspect[1].name, "Casque 6", "le plus ancien restant")
+	Equal(PawnScanResults.inspect[20].name, "Casque 25", "le plus récent")
+end)
+
+Test("scan : inspect accepte un lien collé et un numéro", function()
+	ResetScan()
+	WowApiItems["item:7"] = { "Casque 7", "INVTYPE_HEAD" }
+	WowApiItemTooltips["item:7"] = { "Casque 7" }
+	PawnScan.Command("inspect |cff0070dd|Hitem:7|h[Casque 7]|h|r")
+	PawnScan.Command("inspect 7")
+	PawnScan.Command("inspect item:7")
+	Equal(#PawnScanResults.inspect, 3, "trois entrées")
+	for i = 1, 3 do Equal(PawnScanResults.inspect[i].link, "item:7", "lien " .. i) end
+	PawnScan.Command("inspect n'importe quoi")
+	Equal(#PawnScanResults.inspect, 3, "argument invalide ignoré")
 end)
 
 return Tests

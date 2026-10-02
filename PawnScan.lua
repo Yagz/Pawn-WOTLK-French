@@ -4,7 +4,7 @@
 -- See Readme.htm for more information.
 --
 -- PawnScan: checks Pawn's tooltip parsing on the client's items, in game.
--- /pawnscan [first last] | gems [itemID] | enchants [itemID] | stop | status | clear | speed <n>
+-- /pawnscan [first last] | gems [itemID] | enchants [itemID] | inspect <itemID | item link> | stop | status | clear | speed <n>
 -- Results go to the PawnScanResults SavedVariable; tests/import.lua turns them into test corpus files.
 ------------------------------------------------------------
 
@@ -285,6 +285,69 @@ function PawnScan.Finish()
 	PawnScan.Message("scan terminé. " .. PawnScan.StatusText())
 end
 
+-- Item link or number typed or pasted by the player --> "item:..." string, or nil.
+function PawnScan.ParseItemArgument(Text)
+	Text = strtrim(Text or "")
+	local Link = string.match(Text, "|H(item:[^|]*)|h") or string.match(Text, "^(item:%S*)$")
+	if Link then return Link end
+	if string.match(Text, "^%d+$") then return "item:" .. Text end
+end
+
+PawnScan.MaxInspectEntries = 20
+
+-- Records everything Pawn reads on one item in PawnScanResults.inspect (see tests/unit.lua).  Link: "item:..." string.
+-- Returns the entry, or nil when the item is not in the client cache yet.
+function PawnScan.Inspect(Link)
+	local ItemName = GetItemInfo(Link)
+	if not ItemName then
+		PrimeItem(tonumber(string.match(Link, "^item:(%d+)")) or 0)
+		PawnScan.Message("l'objet " .. Link .. " n'est pas encore en cache. Réessayez dans quelques secondes.")
+		return
+	end
+	local Entry = { link = Link, name = ItemName, time = date("%Y-%m-%d %H:%M:%S"), lines = {}, reads = {}, unknown = {} }
+
+	local Original = PawnLookForSingleStat
+	PawnLookForSingleStat = function(RegexTable, Stats, Text, DebugMessages)
+		local Found = {}
+		local Understood = Original(RegexTable, Found, Text, DebugMessages)
+		PawnAddStatsToTable(Stats, Found)
+		tinsert(Entry.reads, { text = Text, side = (RegexTable == PawnRightHandRegexes) and "right" or "left", understood = Understood and true or false, stats = PawnScan.FormatStats(Found) })
+		return Understood
+	end
+	local Ok, Stats, SocketBonus, UnknownLines = pcall(PawnGetStatsForItemLink, Link, false)
+	PawnLookForSingleStat = Original
+	if not Ok then Entry.error = tostring(Stats) end
+
+	local Name = PawnPrivateTooltipName
+	for i = 1, _G[Name]:NumLines() do
+		local Left, Right = _G[Name .. "TextLeft" .. i], _G[Name .. "TextRight" .. i]
+		tinsert(Entry.lines, { left = Left and Left:GetText(), right = Right and Right:GetText() })
+	end
+	if Ok and Stats then
+		Entry.stats = PawnScan.FormatStats(Stats)
+		Entry.socketBonus = PawnScan.FormatStats(SocketBonus or {})
+		for Line in pairs(UnknownLines or {}) do tinsert(Entry.unknown, Line) end
+		table.sort(Entry.unknown)
+	end
+
+	Entry.values = {}
+	local ValuesOk, Item = pcall(PawnGetItemData, Link)
+	if not ValuesOk then
+		Entry.error = tostring(Item)
+	elseif Item and Item.Values then
+		for _, V in ipairs(Item.Values) do
+			tinsert(Entry.values, { scale = V[1], value = V[2], unenchanted = V[3], name = V[4] })
+		end
+	end
+
+	local R = PawnScan.GetResults()
+	R.inspect = R.inspect or {}
+	tinsert(R.inspect, Entry)
+	while #R.inspect > PawnScan.MaxInspectEntries do tremove(R.inspect, 1) end
+	PawnScan.Message(format("inspect enregistré : %s (%d lignes, %d non comprises). Faites /reload pour l'écrire sur le disque.", ItemName, #Entry.lines, #Entry.unknown))
+	return Entry
+end
+
 function PawnScan.Command(Text)
 	local Args = {}
 	for Word in gmatch(Text or "", "%S+") do tinsert(Args, Word) end
@@ -310,6 +373,13 @@ function PawnScan.Command(Text)
 		else
 			PawnScan.Start("enchants", 1, PawnScan.MaxEnchantID, Base)
 		end
+	elseif Command == "inspect" then
+		local Link = PawnScan.ParseItemArgument((gsub(Text, "^%s*%S+%s*", "", 1)))
+		if not Link then
+			PawnScan.Message("usage : /pawnscan inspect <numéro d'objet ou lien>")
+			return
+		end
+		PawnScan.Inspect(Link)
 	elseif Command == "stop" then
 		PawnScan.Stop()
 		PawnScan.Message("scan arrêté. " .. PawnScan.StatusText())
@@ -324,7 +394,7 @@ function PawnScan.Command(Text)
 		PawnScan.ItemsPerSecond = tonumber(Args[2])
 		PawnScan.Message("débit : " .. Args[2] .. " entrées par seconde.")
 	else
-		PawnScan.Message("usage : /pawnscan [début fin] | gems [objet] | enchants [objet] | stop | status | clear | speed <n>")
+		PawnScan.Message("usage : /pawnscan [début fin] | gems [objet] | enchants [objet] | inspect <objet> | stop | status | clear | speed <n>")
 	end
 end
 
