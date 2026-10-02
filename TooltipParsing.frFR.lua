@@ -83,6 +83,7 @@ PawnNormalizationRegexes =
 	-- "|r\n"; they are dropped so the gem's effect is read alone.
 	-- scan: "durée de Etourdir réduite de 10%|r\n  |cff808080Nécessite au moins 3 gemmes bleue(s)" (gem 3642, piece after " et ")
 	-- scan: "|cff808080+8 points de mana toutes les 5 sec.|r\n  |cff808080Nécessite plus de gemmes rouge(s) que de Méta|r\n  …" (gem 2689, whole line)
+	-- Limit: a requirement using ENCHANT_CONDITION_EQUAL_COMPARE / NOT_EQUAL_COMPARE contains " et ", so after an effect split on " et " it leaves an unknown piece (unseen in the 2686..3879 gem scan).
 	{"^(.-)|r\n[^\n]-" .. PawnFrFormatToPattern(ENCHANT_CONDITION_REQUIRES) .. ".*$", "%1"},
 	{"^([^%+%-%d][^%+]-) %+(%d+)$", "+%2 %1"}, -- SpellItemEnchantment.dbc: "Agilité +10" --> "+10 Agilité"
 }
@@ -328,6 +329,7 @@ PawnRegexes =
 	{"^%+(%d+) au score de résilience$", "ResilienceRating"}, -- SpellItemEnchantment.dbc
 	{"^%+(%d+) au score d'esquive$", "DodgeRating"}, -- SpellItemEnchantment.dbc
 	{"^%+(%d+) au score de parade$", "ParryRating"}, -- SpellItemEnchantment.dbc
+	{"^(%d+) au score de parade$", "ParryRating"}, -- SpellItemEnchantment.dbc: "+2% à la menace et 10 au score de parade"; scan: "10 au score de parade" (gem 3253)
 	{"^%+(%d+) au score de blocage$", "BlockRating"}, -- SpellItemEnchantment.dbc
 	{"^%+(%d+) à la pénétration des sorts$", "SpellPenetration"}, -- SpellItemEnchantment.dbc
 	{"^%+(%d+) à l'Agilité$", "Agility"}, -- SpellItemEnchantment.dbc; logs

@@ -996,7 +996,7 @@ Utiliser : Tire une fusée explosive sur un ennemi et lui inflige 1654 à 2020 p
 |cff808080Chance d'augmenter la vitesse d'attaque en mêlée => unhandled
 +0 aux dégâts de Givre => unhandled
 +0 Intelligence (+$n => unhandled
-10 au score de parade => unhandled
+10 au score de parade => ParryRating=10
 Équilibré (+14 au score de crit. => unhandled
 -10% vitesse => unhandled
 à distance => unhandled
