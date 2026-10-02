@@ -196,6 +196,7 @@ PawnRegexes =
 	{Fr("ITEM_MOD_FERAL_ATTACK_POWER")}, -- GlobalStrings: Pawn computes feral AP from weapon DPS
 	{FrEquip("ITEM_MOD_FERAL_ATTACK_POWER")}, -- GlobalStrings
 	{Fr("DPS_TEMPLATE")}, -- GlobalStrings: Pawn computes DPS itself
+	{"^%(%d+%.%$ dégâts par seconde%)$"}, -- scan: "(1.$ dégâts par seconde)" (item 3346), a DPS_TEMPLATE line the client renders broken on some items
 
 	-- ========================================
 	-- Stats
@@ -259,6 +260,12 @@ PawnRegexes =
 	{FrSpell("Score de défense augmenté de #."), "DefenseRating"}, -- scan (PawnScanResults.parsed, no item number kept): "Équipé : Score de défense augmenté de 7."
 	{FrSpell("Augmente de # la puissance d'attaque pour les formes de félin, d'ours, d'ours redoutable et de sélénien uniquement."), "FeralAp"}, -- Spell.dbc; scan (parsed): "... de 154 ..."
 	{"^Ajoute ([%d%.,]+) dégâts par seconde$", "Dps"}, -- scan (PawnScanResults.parsed): "Ajoute 32 dégâts par seconde", "Ajoute 46.5 dégâts par seconde" (ammunition)
+	{"^%+ " .. PawnFrFormatToPattern(SINGLE_DAMAGE_TEMPLATE_WITH_SCHOOL) .. "$", "MinDamage", 1, Extract, "MaxDamage", 1, Extract}, -- GlobalStrings: SINGLE_DAMAGE_TEMPLATE_WITH_SCHOOL; scan: "+ 5 points de dégâts (Givre)" (item 7730), bonus damage line of a weapon
+	{FrSpell("Augmente de # la puissance d'attaque en mêlée et à distance."), "Ap"}, -- scan: "Équipé : Augmente de 600 la puissance d'attaque en mêlée et à distance." (item 22736)
+	{FrSpell("Protégé du froid. Votre résistance au Givre est augmentée de #."), "FrostResist"}, -- scan: "Équipé : Protégé du froid. Votre résistance au Givre est augmentée de 20." (item 41112)
+	-- scan: "Équipé : Augmente le score de défense de 5, la résistance à l'Ombre de 10 et votre régénération des points de vie normale de 3." (item 10779);
+	-- GetItemStats of that item gives DefenseRating 5 and Hp5 3 (PawnScanResults.mismatch), which confirms the regeneration part is Hp5.
+	{FrSpell("Augmente le score de défense de #, la résistance à l'Ombre de # et votre régénération des points de vie normale de #."), "DefenseRating", 1, Extract, "ShadowResist", 2, Extract, "Hp5", 3, Extract},
 	{FrSpell("Augmente la puissance des sorts de Feu de #."), "FireSpellDamage"}, -- Spell.dbc
 	{FrSpell("Augmente la puissance des sorts d'Ombre de #."), "ShadowSpellDamage"}, -- Spell.dbc; logs
 	{FrSpell("Augmente la puissance des sorts de Nature de #."), "NatureSpellDamage"}, -- Spell.dbc
