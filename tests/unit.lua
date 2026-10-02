@@ -102,7 +102,8 @@ end)
 
 Test("frFR : globales d'analyse issues du client", function()
 	Equal(PawnLocal.TooltipParsing.SocketBonusPrefix, "Bonus de sertissage : ", "préfixe du bonus de châsse")
-	Equal(PawnSeparatorIgnorePrefixes[2], ITEM_SPELL_TRIGGER_ONEQUIP, "Équipé :")
+	Equal(PawnSeparatorIgnorePrefixes[2], (gsub(ITEM_SPELL_TRIGGER_ONEQUIP, "\194\160", " ")), "Équipé :")
+	Equal(PawnSeparatorIgnorePrefixes[2]:find("\194\160", 1, true), nil, "pas d'espace insécable")
 end)
 
 Test("frFR : rien n'est redéfini sur un client enUS", function()

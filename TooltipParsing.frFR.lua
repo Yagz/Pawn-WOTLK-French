@@ -11,12 +11,17 @@
 
 if GetLocale() ~= "frFR" then return end
 
+-- The client writes a no-break space before ":"; Pawn turns those into plain spaces before parsing (LookForNBSP).
+-- This is the single normalization rule for every client string used below.
+local function PawnFrNoNbsp(Text)
+	return (gsub(Text, "\194\160", " "))
+end
+
 -- Turns a GlobalStrings.lua format into a Lua pattern (not anchored).
 -- %d and %c%d capture a number, %.1f captures a decimal number (dot or comma), %% is a literal percent sign,
 -- %s and |4singular:plural; match any text without capturing.  Positional forms such as %1$d are accepted.
 function PawnFrFormatToPattern(Format)
-	-- The client writes a no-break space before ":"; Pawn turns those into plain spaces before parsing (LookForNBSP).
-	local Pattern = gsub(Format, "\194\160", " ")
+	local Pattern = PawnFrNoNbsp(Format)
 	Pattern = gsub(Pattern, "%%%%", "\005")
 	Pattern = gsub(Pattern, "%%%d%$", "%%")
 	Pattern = gsub(Pattern, "|4[^;]*;", "\001")
@@ -65,9 +70,9 @@ PawnSeparators =
 PawnSeparatorIgnorePrefixes =
 {
 	'"', -- flavor text
-	ITEM_SPELL_TRIGGER_ONEQUIP, -- GlobalStrings: "Équipé :"
-	ITEM_SPELL_TRIGGER_ONUSE, -- GlobalStrings: "Utiliser :"
-	ITEM_SPELL_TRIGGER_ONPROC, -- GlobalStrings: "Chances quand vous touchez :"
+	PawnFrNoNbsp(ITEM_SPELL_TRIGGER_ONEQUIP), -- GlobalStrings: "Équipé :"
+	PawnFrNoNbsp(ITEM_SPELL_TRIGGER_ONUSE), -- GlobalStrings: "Utiliser :"
+	PawnFrNoNbsp(ITEM_SPELL_TRIGGER_ONPROC), -- GlobalStrings: "Chances quand vous touchez :"
 }
 
 -- Normalizations applied before the regexes.
@@ -78,7 +83,7 @@ PawnNormalizationRegexes =
 }
 
 -- GlobalStrings: ITEM_SOCKET_BONUS = "Bonus de sertissage : %s"
-PawnLocal.TooltipParsing.SocketBonusPrefix = gsub(gsub(ITEM_SOCKET_BONUS, "\194\160", " "), "%%s", "")
+PawnLocal.TooltipParsing.SocketBonusPrefix = gsub(PawnFrNoNbsp(ITEM_SOCKET_BONUS), "%%s", "")
 
 -- No thousands separator; decimals may use a comma or a point (Pawn turns "," into "." before tonumber).
 PawnLocal.ThousandsSeparator = ""
