@@ -19,6 +19,7 @@ PawnScan.RetryDelay = 1
 -- Keys returned by GetItemStats (when the client has it) and the Pawn stat each one feeds.
 PawnScan.ItemModToStat =
 {
+	ITEM_MOD_FERAL_ATTACK_POWER_SHORT = "FeralAp",
 	ITEM_MOD_STRENGTH_SHORT = "Strength",
 	ITEM_MOD_AGILITY_SHORT = "Agility",
 	ITEM_MOD_STAMINA_SHORT = "Stamina",
@@ -334,7 +335,7 @@ function PawnScan.Command(Text)
 		PawnScanResults = nil
 		PawnScan.GetResults()
 		PawnScan.Message("résultats effacés.")
-	elseif Command == "speed" and tonumber(Args[2]) then
+	elseif Command == "speed" and (tonumber(Args[2]) or 0) > 0 then
 		PawnScan.ItemsPerSecond = tonumber(Args[2])
 		PawnScan.Message("débit : " .. Args[2] .. " entrées par seconde.")
 	else

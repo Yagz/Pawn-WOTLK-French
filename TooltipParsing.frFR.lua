@@ -182,7 +182,7 @@ PawnRegexes =
 	{Fr("ITEM_COOLDOWN_TIME_SEC")}, -- GlobalStrings
 	{"<.+>"}, -- GlobalStrings: ITEM_CREATED_BY, ITEM_OPENABLE, ITEM_READABLE, ITEM_SOCKETABLE, ITEM_RANDOM_ENCHANT... (can be prefixed by a color)
 	{Fr("ITEM_WRITTEN_BY")}, -- GlobalStrings
-	{"|cff%x%x%x%x%x%x" .. PawnFrFormatToPattern(ENCHANT_CONDITION_REQUIRES)}, -- GlobalStrings: meta gem requirements ("Nécessite ...")
+	{"^" .. PawnFrFormatToPattern(ENCHANT_CONDITION_REQUIRES)}, -- GlobalStrings: meta gem requirements ("Nécessite ...")
 	{"^.+ %d+ emplacements?$"}, -- GlobalStrings: CONTAINER_SLOTS; logs: "Sac 14 emplacements", "Carquois 18 emplacements"
 	-- GlobalStrings: temporary item buff.  ITEM_ENCHANT_TIME_LEFT_DAYS "%s (%d |4jour:jours;)" and _HOURS "%s (%d |4heure:heures;)"
 	-- are written by hand: the generic |4 form would also swallow "Utiliser : ... (30 min de recharge)" (scan).
@@ -258,7 +258,7 @@ PawnRegexes =
 	{FrResist("Arcanes"), "ArcaneResist"}, -- GlobalStrings: ITEM_RESIST_SINGLE; scan (parsed): "+5 à la résistance Arcanes"
 	{FrResist("Givre"), "FrostResist"}, -- GlobalStrings: ITEM_RESIST_SINGLE; scan (parsed): "+100 à la résistance Givre"
 	{FrSpell("Score de défense augmenté de #."), "DefenseRating"}, -- scan (PawnScanResults.parsed, no item number kept): "Équipé : Score de défense augmenté de 7."
-	{FrSpell("Augmente de # la puissance d'attaque pour les formes de félin, d'ours, d'ours redoutable et de sélénien uniquement."), "FeralAp"}, -- Spell.dbc; scan (parsed): "... de 154 ..."
+	{FrSpell("Augmente de # la puissance d'attaque pour les formes de félin, d'ours, d'ours redoutable et de sélénien uniquement.")}, -- Spell.dbc; scan (parsed): "... de 154 ...".  Ignored, not valued: Pawn derives FeralAp from the weapon DPS (PawnGetFeralAp), like the ignored GlobalStrings feral lines above; valuing it would count it twice
 	{"^Ajoute ([%d%.,]+) dégâts par seconde$", "Dps"}, -- scan (PawnScanResults.parsed): "Ajoute 32 dégâts par seconde", "Ajoute 46.5 dégâts par seconde" (ammunition)
 	{"^%+ " .. PawnFrFormatToPattern(SINGLE_DAMAGE_TEMPLATE_WITH_SCHOOL) .. "$", "MinDamage", 1, Extract, "MaxDamage", 1, Extract}, -- GlobalStrings: SINGLE_DAMAGE_TEMPLATE_WITH_SCHOOL; scan: "+ 5 points de dégâts (Givre)" (item 7730), bonus damage line of a weapon
 	{FrSpell("Augmente de # la puissance d'attaque en mêlée et à distance."), "Ap"}, -- scan: "Équipé : Augmente de 600 la puissance d'attaque en mêlée et à distance." (item 22736)

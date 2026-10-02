@@ -1,7 +1,7 @@
 # Généré par tests/gen_corpus.lua depuis Spell.dbc (frFR 3.3.5a), du plus fréquent au plus rare. À classer.
 Équipé : Augmente la puissance des sorts de 12. => SpellPower=12
 Équipé : Augmente de 12 la puissance d'attaque. => Ap=12
-Équipé : Augmente de 12 la puissance d'attaque pour les formes de félin, d'ours, d'ours redoutable et de sélénien uniquement. => FeralAp=12
+Équipé : Augmente de 12 la puissance d'attaque pour les formes de félin, d'ours, d'ours redoutable et de sélénien uniquement. => ignored
 Équipé : +12 en Endurance. => Stamina=12
 Équipé : Rend 12 points de vie à une cible alliée. => unhandled
 Équipé : Rend 12 points de mana toutes les 5 sec. => Mp5=12

@@ -210,7 +210,8 @@ Test("scan : écart avec GetItemStats", function()
 	GetItemStats = function() return { ITEM_MOD_STAMINA_SHORT = 15 } end
 	PawnScan.RecordItem("item:300", 300)
 	GetItemStats = nil
-	Equal(PawnScanResults.mismatch["300 Stamina"], "jeu 15, Pawn 0")
+	local Mismatch = PawnScanResults.mismatch["300 Stamina"]
+	Equal(Mismatch, "jeu 15, Pawn 0")
 end)
 
 Test("scan : mode gemmes", function()
@@ -234,6 +235,99 @@ Test("enUS : les tables d'analyse restent celles de la 2.8.11", function()
 	Chunk()
 	Equal(Env.PawnRegexes[1][1], "^sentinelle$", "PawnRegexes inchangé")
 	Equal(rawget(Env, "PawnRightHandRegexes"), nil, "PawnRightHandRegexes non redéfini")
+end)
+
+-- Whole-tooltip tests: run the real PawnGetStatsFromTooltip (with its post-processing) on a fake tooltip.
+local function TooltipStats(Lines)
+	WowApiMessages = {}
+	WowApiSetTooltip("PawnTestTooltip", Lines)
+	local Stats, _, Unknown = PawnGetStatsFromTooltip("PawnTestTooltip", false)
+	return Stats, Unknown
+end
+
+local function SubclassName(Class, Sub)
+	for Line in io.lines("tests/data/itemsubclass.frFR.txt") do
+		local C, S, Name = Line:match("^(%d+)\t(%d+)\t(.+)$")
+		if tonumber(C) == Class and tonumber(S) == Sub then return Name end
+	end
+	error("sous-classe absente de itemsubclass.frFR.txt")
+end
+
+local function FeralLine(Number)
+	for Line in io.lines("tests/data/spell_templates.frFR.txt") do
+		local Text = Line:match("^%d+\t(.-%sformes de f.+)$")
+		if Text then return ITEM_SPELL_TRIGGER_ONEQUIP .. " " .. Text:gsub("#", tostring(Number)) end
+	end
+	error("ligne de puissance d'attaque en félin absente de spell_templates.frFR.txt")
+end
+
+Test("tooltip : la PA de féral d'un bâton n'est comptée qu'une fois", function()
+	local Min, Max, Speed = 200, 300, 3.00
+	local Stats = TooltipStats({
+		"Bâton de test",
+		INVTYPE_2HWEAPON,
+		{ format(DAMAGE_TEMPLATE, Min, Max), SPEED .. " " .. format("%.2f", Speed) },
+		FeralLine(154),
+	})
+	local Dps = (Min + Max) / Speed / 2
+	Equal(Stats.TwoHandDps ~= nil, true, "TwoHandDps présent")
+	Equal(math.abs(Stats.Dps - Dps) < 0.001, true, "Dps")
+	Equal(Stats.FeralAp, PawnGetFeralAp(Stats.Dps), "FeralAp issue du Dps seulement")
+end)
+
+Test("tooltip : la valeur de blocage d'un bouclier est lue", function()
+	local Stats = TooltipStats({
+		"Bouclier de test",
+		{ INVTYPE_SHIELD, SubclassName(4, 6) },
+		format(SHIELD_BLOCK_TEMPLATE, 123),
+	})
+	Equal(Stats.BlockValue, 123, "BlockValue")
+end)
+
+Test("tooltip : le bonus de sertissage vert est compté", function()
+	local Stats = TooltipStats({
+		"Plastron de test",
+		EMPTY_SOCKET_RED,
+		format(ITEM_SOCKET_BONUS, "+4 Endurance"),
+	})
+	Equal(Stats.Stamina, 4, "Stamina du bonus")
+end)
+
+Test("tooltip : une arme à distance donne des stats de distance", function()
+	local Min, Max, Speed = 100, 200, 2.50
+	local Stats = TooltipStats({
+		"Arc de test",
+		{ INVTYPE_RANGED, SubclassName(2, 2) },
+		{ format(DAMAGE_TEMPLATE, Min, Max), SPEED .. " " .. format("%.2f", Speed) },
+	})
+	Equal(Stats.RangedDps ~= nil and math.abs(Stats.RangedDps - (Min + Max) / Speed / 2) < 0.001, true, "RangedDps")
+	Equal(Stats.RangedSpeed, Speed, "RangedSpeed")
+	Equal(Stats.RangedMinDamage, Min, "RangedMinDamage")
+	Equal(Stats.MeleeDps, nil, "pas de MeleeDps")
+	Equal(Stats.FeralAp, nil, "pas de FeralAp")
+end)
+
+Test("frFR : une exigence de gemmes de méta est ignorée", function()
+	local Stats, Unknown = TooltipStats({
+		"Gemme de test",
+		"+15 Endurance",
+		ENCHANT_CONDITION_REQUIRES .. format(ENCHANT_CONDITION_MORE_VALUE, 2, "rouges"),
+	})
+	Equal(Stats.Stamina, 15, "Stamina")
+	Equal(Unknown, nil, "ligne inconnue")
+end)
+
+Test("scan : speed n'accepte qu'un nombre positif", function()
+	local Before = PawnScan.ItemsPerSecond
+	PawnScan.Command("speed -5")
+	Equal(PawnScan.ItemsPerSecond, Before, "après speed -5")
+	PawnScan.Command("speed 0")
+	Equal(PawnScan.ItemsPerSecond, Before, "après speed 0")
+	PawnScan.Command("speed abc")
+	Equal(PawnScan.ItemsPerSecond, Before, "après speed abc")
+	PawnScan.Command("speed 250")
+	Equal(PawnScan.ItemsPerSecond, 250, "après speed 250")
+	PawnScan.ItemsPerSecond = Before
 end)
 
 return Tests

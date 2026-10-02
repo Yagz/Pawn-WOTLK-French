@@ -64,7 +64,7 @@ Dégâts : 1 - 3 => MaxDamage=3; MinDamage=1
 Équipé : Augmente de 4 le score de toucher des sorts. => HitRating=4
 Équipé : Augmente de 43 votre score de pénétration d'armure. => ArmorPenetration=43
 Équipé : Augmente de 50 le score de coup critique à distance. => CritRating=50
-Équipé : Augmente de 574 la puissance d'attaque pour les formes de félin, d'ours, d'ours redoutable et de sélénien uniquement. => FeralAp=574
+Équipé : Augmente de 574 la puissance d'attaque pour les formes de félin, d'ours, d'ours redoutable et de sélénien uniquement. => ignored
 Équipé : Augmente de 7 le score d'esquive. => DodgeRating=7
 Équipé : Augmente la puissance d'attaque de 28. => Ap=28
 Équipé : Augmente la puissance d'attaque à distance de 24. => Rap=24
