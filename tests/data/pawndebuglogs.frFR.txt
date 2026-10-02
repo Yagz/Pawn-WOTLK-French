@@ -1,0 +1,179 @@
++10
++10/14 FOR/RF
++100 points de vie
++12 Intelligence et une chance de restaurer des points de mana au lancement d'un sort
++12 au score de coups critiques
++12 au score de coups critiques et dégâts des critiques augmentés de 3%
++12 au score de défense et +5% à la valeur de blocage du bouclier
++12 au score de défense et une chance de rendre des points de vie au toucher
++12 à l'Agilité
++12 à l'Agilité et dégâts critiques augmentés de 3%
++14 au score de critique
++14 au score de critique et 1% de renvoi de sort
++18 à l'Endurance
++18 à l'Endurance et durée d'Étourdissement réduite de 15%.
++36 aux dégâts des sorts de Feu
++5% à la valeur de blocage du bouclier
+1% de renvoi de sort
+14 FOR
+30 m de portée
+402 - 748 points de dégâts (Sacré)
+5% de chances que le lanceur de ce sort soit réduit au silence pendant 3 sec.
+Afflige la cible d'une Malédiction d'agonie qui lui inflige 84 points de dégâts d'Ombre en 24 sec. Les dégâts sont progressifs
+Afflige la cible d'une Malédiction d'agonie qui lui inflige 84 points de dégâts d'Ombre en 24 sec. Les dégâts sont progressifs et sont plus importants avec le temps. La cible ne peut être victime que d'une malédiction par démoniste présent à la fois.
+Alchimie (275) requis
+Alchimie (290) requis
+Arme de pugilat
+Barre d'élémentium
+Bottes d'hiver
+Bottes en vignesang
+Bouclier dentelé en obsidienne
+Brassards en peau de chauve-souris primordiale
+Canalisé
+Canne à pêche
+Carquois 18 emplacements
+Ceinture en écailles de scorpide épaisses
+Ceinture légère en obsidienne
+Chaperon en gangrétoffe
+Chimeric Leggings
+Cidre chaud
+Convertit 77 points de vie en 27 points de mana. La puissance des sorts augmente le montant de points de mana convertis.
+Corrompt la cible
+Corrompt la cible et lui inflige 95 à 100 points de dégâts d'Ombre en 15 sec.
+Couture (255) requis
+Couture (290) requis
+Couture (300) requis
+Crochetage (225) requis
+Croisé
+Cuisine (325) requis
+Cuisine (60) requis
+Drain d'âme inflige quatre fois les dégâts normaux. Si la cible meurt pendant qu'elle est drainée et qu'elle rapporte de l'expérience ou de l'honneur
+Draine l'âme de la cible et lui inflige 55 points de dégâts d'Ombre en 15 sec. Si la cible dispose de 25% ou moins de ses points de vie
+Draine l'âme de la cible et lui inflige 55 points de dégâts d'Ombre en 15 sec. Si la cible dispose de 25% ou moins de ses points de vie, Drain d'âme inflige quatre fois les dégâts normaux. Si la cible meurt pendant qu'elle est drainée et qu'elle rapporte de l'expérience ou de l'honneur, le lanceur de sorts gagne un Fragment d'âme. Chaque fois que le Drain d'âme inflige des dégâts à la cible, il a également une chance de générer un Fragment d'âme. Les Fragments d'âme sont nécessaires pour incanter d'autres sorts.
+Eclair.
+Enchantement (270) requis
+Enchantement (295) requis
+Enchantement (300) requis
+Epaulières d'âmesang
+Epaulières de ténébrâme
+Epaulières du tigre-sang
+Epaulières volcaniques
+Epée
+Forge (200) requis
+Forge (285) requis
+Forge (300) requis
+Gantelets d'âmesang
+Gantelets radieux
+Gants en peau de chauve-souris primordiale
+Hache-croissant des ombres
+Huile de mana brillante
+Huile de sorcier brillante
+Idole
+Incantation immédiate
+Ingénierie (1) requis
+Ingénierie (300) requis
+Ingénierie (50) requis
+Instantané
+Jambières de ténébrâme
+Jambières en thorium
+Jambières en vignesang
+Le désenchantement nécessite Enchantement (175)
+Le désenchantement nécessite Enchantement (200)
+Le désenchantement nécessite Enchantement (225)
+Libram
+Mana : 16
+Mana : 27
+Mana : 30
+Mana : 43
+Minage (300) requis
+Monte (150) requis
+Monte (75) requis
+Niveau 1 à 80 (60) requis
+Pantalon runique en cuir
+Potion de sommeil sans rêve supérieure
+Pourpoint en peau de chauve-souris primordiale
+Pêche (50) requis
+RF
+Robe de l'archimage
+Récupération des informations de l'objet
+Sac 14 emplacements
+Sac 16 emplacements
+Sac 20 emplacements
+Sac 24 emplacements
+Sac 6 emplacements
+Sac 8 emplacements
+Sac d'enchanteur 32 emplacements
+Sac d'herbes 12 emplacements
+Sac d'herbes 32 emplacements
+Sac d'âme 32 emplacements
+Sac de calligraphie 32 emplacements
+Sac de mineur 32 emplacements
+Sac de travail du cuir 28 emplacements
+Secourisme (225) requis
+Thé de chardon
+Totem
+Transfère 10 points de vie de la cible vers le lanceur de sorts toutes les 1 sec. Dure 5 sec.
+Travail du cuir (280) requis
+Travail du cuir (285) requis
+Travail du cuir (300) requis
+Tunique de mailles en obsidienne
+Tunique en tisse-givre
+Verrouillé(e)
+de peur de 1%.
+donne une chance d'augmenter les points de dégâts infligés par vos sorts
+durée d'Étourdissement réduite de 15%.
+dégâts critiques augmentés de 3%
+dégâts des critiques augmentés de 3%
+effets de 132 pendant 10 sec.
+en accomplissant des quêtes augmentée de 10%.
+il a également une chance de générer un Fragment d'âme. Les Fragments d'âme sont nécessaires pour incanter d'autres sorts.
+le lanceur de sorts gagne un Fragment d'âme. Chaque fois que le Drain d'âme inflige des dégâts à la cible
+lui inflige 95 à 100 points de dégâts d'Ombre en 15 sec.
+pendant les incantations. Dure 15 sec.
+qui augmente votre score de coup critique de 35 pendant 12 sec. L'effet est cumulable jusqu'à 3 fois.
+sont plus importants avec le temps. La cible ne peut être victime que d'une malédiction par démoniste présent à la fois.
+une chance de rendre des points de vie au toucher
+une chance de restaurer des points de mana au lancement d'un sort
+vous avez une chance de bénéficier de Berserker
+Équipé : +4 aux dégâts des armes.
+Équipé : +5 à toutes les résistances.
+Équipé : 2% de chances lors d'un lancer de sort réussi de permettre à votre régénération de mana de se poursuivre
+Équipé : 2% de chances lors d'un lancer de sort réussi de permettre à votre régénération de mana de se poursuivre, à 100% de la vitesse normale, pendant les incantations. Dure 15 sec.
+Équipé : Ajoute 2 points de dégâts de Feu à vos attaques de mêlée.
+Équipé : Augmente de 28 la puissance du sort Eclair lumineux.
+Équipé : Augmente de 33 la puissance des sorts Chaîne d'éclairs
+Équipé : Augmente de 33 la puissance des sorts Chaîne d'éclairs et Eclair.
+Équipé : Augmente de 48 la puissance des sorts contre les morts-vivants. Permet aussi l'acquisition de Pierres du Fléau pour le compte de l'Aube d'argent.
+Équipé : Augmente la durée de Marteau de la justice de 0.5 sec.
+Équipé : Augmente la puissance des sorts d'Ombre de 33.
+Équipé : Augmente la puissance des sorts d'Ombre de 43.
+Équipé : Augmente la puissance des sorts d'Ombre de 7.
+Équipé : Augmente la puissance des sorts de Givre de 19.
+Équipé : Augmente la puissance des sorts des Arcanes de 14.
+Équipé : Augmente la puissance du sort Vague de soins inférieurs de 53.
+Équipé : Augmente le nombre de points de dégâts absorbés par votre Mot de pouvoir : Bouclier de 35.
+Équipé : Augmente les chances d'obtenir un effet critique avec vos sorts du Sacré de 2%.
+Équipé : Augmente les points de dégâts infligés par votre sort Flèches multiples de 5%.
+Équipé : Augmente vos chances de résister aux effets d'étourdissement
+Équipé : Augmente vos chances de résister aux effets d'étourdissement et de peur de 1%.
+Équipé : Diminue le temps de recharge de Coup de pied de 0.5 sec.
+Équipé : Diminue le temps de recharge de Feindre la mort de 2 sec.
+Équipé : Dépeçage + 10.
+Équipé : Expérience gagnée en tuant des monstres
+Équipé : Expérience gagnée en tuant des monstres et en accomplissant des quêtes augmentée de 10%.
+Équipé : La vitesse de course augmente légèrement.
+Équipé : Les dégâts des sorts subis sont diminués de 10.
+Équipé : Quand vos sorts offensifs atteignent une cible
+Équipé : Quand vos sorts offensifs atteignent une cible, donne une chance d'augmenter les points de dégâts infligés par vos sorts et effets de 132 pendant 10 sec.
+Équipé : Quand vous infligez ou subissez des dégâts en combat
+Équipé : Quand vous infligez ou subissez des dégâts en combat, vous avez une chance de bénéficier de Berserker, qui augmente votre score de coup critique de 35 pendant 12 sec. L'effet est cumulable jusqu'à 3 fois.
+Équipé : Quand vous êtes frappé par un sort offensif
+Équipé : Quand vous êtes frappé par un sort offensif, 5% de chances que le lanceur de ce sort soit réduit au silence pendant 3 sec.
+Équipé : Réduit de 22 le coût en mana de base de vos sorts de Sceau.
+Équipé : Réduit le coût de votre technique Brise-genou de 2 points de rage.
+Équipé : Réduit le coût en rage de votre technique Brise-genou de 3.
+Équipé : Vitesse de monture augmentée de 3%. Ne fonctionne pas pour les personnages au niveau supérieur à 70.
+Équipé : Vous confère une chance lorsque vous touchez un adversaire en mêlée de gagner 1 attaque supplémentaire.
+Équipé : Vous rend 2% de votre maximum de mana chaque fois que vous tuez une cible qui rapporte de l'expérience ou de l'honneur.
+Équipé : Vous rend 2% de votre maximum de points de vie chaque fois que vous tuez une cible qui rapporte de l'expérience ou de l'honneur.
+à 100% de la vitesse normale
