@@ -79,6 +79,11 @@ PawnSeparatorIgnorePrefixes =
 PawnNormalizationRegexes =
 {
 	{"^|c........(.+)$", "%1"}, -- color codes (same as TooltipParsing.lua)
+	-- GlobalStrings: ENCHANT_CONDITION_REQUIRES.  A socketed meta gem shows its requirements inside the same line, after
+	-- "|r\n"; they are dropped so the gem's effect is read alone.  scan: "|cff808080+8 points de mana toutes les 5 sec.|r\n
+	-- |cff808080Nécessite plus de gemmes rouge(s) que de Méta|r\n  |cff808080Nécessite plus de gemmes jaune(s) que de rouge(s)"
+	-- (gem 2689), and the piece after " et " "durée de Etourdir réduite de 10%|r\n  |cff808080Nécessite au moins 3 gemmes bleue(s)" (gem 3642).
+	{"^(.-)|r\n[^\n]-" .. PawnFrFormatToPattern(ENCHANT_CONDITION_REQUIRES) .. ".*$", "%1"},
 	{"^([^%+%-%d][^%+]-) %+(%d+)$", "+%2 %1"}, -- SpellItemEnchantment.dbc: "Agilité +10" --> "+10 Agilité"
 }
 
@@ -407,6 +412,7 @@ PawnRegexes =
 	{"^%+%d+%% à la valeur de blocage du bouclier$"}, -- logs
 	{"^une chance de rendre des points de vie au toucher$"}, -- logs
 	{"^une chance de restaurer des points de mana au lancement d'un sort$"}, -- logs
+	{"^une chance d'étourdir la cible$"}, -- SpellItemEnchantment.dbc: "+3 aux dégâts en mêlée et une chance d'étourdir la cible"; scan: "une chance d'étourdir la cible|r\n  |cff808080Nécessite au moins 2 gemmes rouge(s)|r\n ..." (gem 2834)
 	{"^%d+%% de renvoi de sort$"}, -- logs
 	{"^durée d'Étourdissement réduite de %d+%%%.$"}, -- logs
 	{"^légère augmentation de la vitesse de course$"}, -- SpellItemEnchantment.dbc: "+24 à la puissance d'attaque et légère augmentation de la vitesse de course"
