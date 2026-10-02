@@ -344,6 +344,40 @@ Test("frFR : une exigence de gemmes de méta est ignorée", function()
 	Equal(Unknown, nil, "ligne inconnue")
 end)
 
+-- Real text of the corpus case of File whose text is exactly Text as written in the file (\n escaped).
+local function CorpusLeft(File, Text)
+	for _, Case in ipairs((Corpus.ReadFile(File))) do
+		if Case.Text == Text then return Case.Left end
+	end
+	error("cas absent de " .. File .. " : " .. Text)
+end
+
+-- The scanner records the pieces of a split line, not the line: the whole meta gem lines below are joined from real pieces
+-- with the separator shown by the SpellItemEnchantment.dbc text of the same gem (enchants.txt).
+Test("frFR : méta-gemme sertie, la stat compte et les exigences sur la même ligne sont ignorées (gemme 3642)", function()
+	local Line = CorpusLeft("tests/corpus/regression.txt", "|cff808080+32 Endurance") .. " et "
+		.. CorpusLeft("tests/corpus/scan.txt", "durée de Etourdir réduite de 10%|r\\n  |cff808080Nécessite au moins 3 gemmes bleue(s)")
+	local Stats, Unknown = TooltipStats({ "Gemme de test", Line })
+	Equal(Stats.Stamina, 32, "Stamina")
+	Equal(Unknown, nil, "ligne inconnue")
+end)
+
+Test("frFR : méta-gemme sertie lue par sa ligne entière une fois les exigences retirées (gemme 2830)", function()
+	local Line = CorpusLeft("tests/corpus/scan.txt", "|cff808080+12 au score de coup critique et durées des ralentissements") .. "/"
+		.. CorpusLeft("tests/corpus/scan.txt", "immobilisations réduites de 10%|r\\n  |cff808080Nécessite plus de gemmes rouge(s) que de jaune(s)")
+	local Stats, Unknown = TooltipStats({ "Gemme de test", Line })
+	Equal(Stats.CritRating, 12, "CritRating")
+	Equal(Unknown, nil, "ligne inconnue")
+end)
+
+Test("frFR : méta-gemme sans séparateur, ligne réelle entière (gemme 2689)", function()
+	local Line = CorpusLeft("tests/corpus/scan.txt", "|cff808080+8 points de mana toutes les 5 sec.|r\\n  |cff808080Nécessite plus de gemmes rouge(s) que de Méta|r\\n  |cff808080Nécessite plus de gemmes jaune(s) que de rouge(s)")
+	Equal(Line:find("\n", 1, true) ~= nil, true, "fin de ligne réelle")
+	local Stats, Unknown = TooltipStats({ "Gemme de test", Line })
+	Equal(Stats.Mp5, 8, "Mp5")
+	Equal(Unknown, nil, "ligne inconnue")
+end)
+
 Test("scan : speed n'accepte qu'un nombre positif", function()
 	local Before = PawnScan.ItemsPerSecond
 	PawnScan.Command("speed -5")

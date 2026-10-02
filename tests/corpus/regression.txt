@@ -88,3 +88,61 @@ Dégâts : 1 - 3 => MaxDamage=3; MinDamage=1
 Équipé : Rend 4 points de mana toutes les 5 sec. => Mp5=4
 Équipé : Rend 89 points de vie toutes les 5 secondes. => Hp5=89
 Équipé : Score de défense augmenté de 7. => DefenseRating=7
++10 Défense => DefenseRating=10
++100 Armure => Armor=100
++2 points de mana toutes les 5 secondes => Mp5=2
++20 à la résistance au Givre => FrostResist=20
++200 aux points de vie => Health=200
++24 à la puissance d'attaque à distance => Rap=24
++25 à la puissance des sort => SpellPower=25
++250 aux points de mana => Mana=250
++3 à toutes les résistances => AllResist=3
++4 au score de critique => CritRating=4
++4 score de coup critique => CritRating=4
++4 à toutes les caractéristiques => Agility=4; Intellect=4; Spirit=4; Stamina=4; Strength=4
++5 points de mana par tranche de 5 secondes => Mp5=5
++5 score de résilience => ResilienceRating=5
++5 à l'Esprit => Spirit=5
++5 à la Force => Strength=5
++6 à l'Agilité => Agility=6
++6 à l'Intelligence => Intellect=6
++7 points de vie et de mana toutes les 5 sec. => Hp5=7; Mp5=7
++70 à la résistance au Feu => FireResist=70
++70 à la résistance aux Arcanes => ArcaneResist=70
++70 à la résistance à l'Ombre => ShadowResist=70
++9 à l'Endurance => Stamina=9
+20 au score de coup critique => CritRating=20
+6 points de mana toutes les 5 sec. => Mp5=6
+8 points de mana toutes les 5 secondes => Mp5=8
+Agilité +10 => Agility=10
+Lunette (+10 point de dégâts) => MaxDamage=10; MinDamage=10
+|cff808080+11 points de mana toutes les 5 secondes => Mp5=11
+|cff808080+12 Intelligence => Intellect=12
+|cff808080+12 au score de coups critiques => CritRating=12
+|cff808080+12 au score de défense => DefenseRating=12
+|cff808080+12 à l'Agilité => Agility=12
+|cff808080+14 au score de critique => CritRating=14
+|cff808080+14 à la puissance des sorts => SpellPower=14
+|cff808080+18 à l'Endurance => Stamina=18
+|cff808080+21 au score de coup critique => CritRating=21
+|cff808080+21 à l'Intelligence => Intellect=21
+|cff808080+24 à la puissance d'attaque => Ap=24
+|cff808080+25 à la puissance des sort => SpellPower=25
+|cff808080+32 Endurance => Stamina=32
+|cffff2020+13 au score d'esquive => DodgeRating=13
+|cffff2020+13 au score de coup critique => CritRating=13
+|cffff2020+13 au score de défense => DefenseRating=13
+|cffff2020+15 à la puissance des sorts => SpellPower=15
+|cffff2020+17 Force => Strength=17
+|cffff2020+18 Endurance => Stamina=18
+|cffff2020+20 Défense => DefenseRating=20
+|cffff2020+26 à la puissance d'attaque => Ap=26
+|cffff2020+40 au score de coup critique à distance => CritRating=40
+|cffff2020+40 au score de hâte à distance => HasteRating=40
+|cffff2020+7 à toutes les résistances => AllResist=7
+|cffff2020+8 à la résistance au Feu => FireResist=8
+|cffff2020+8 à la résistance au Givre => FrostResist=8
+|cffff2020+8 à la résistance aux Arcanes => ArcaneResist=8
+|cffff2020+8 à la résistance à l'Ombre => ShadowResist=8
+|cffff2020+8 à la résistance à la Nature => NatureResist=8
+|cffff2020Lunette (+15 point de dégâts) => MaxDamage=15; MinDamage=15

@@ -80,9 +80,9 @@ PawnNormalizationRegexes =
 {
 	{"^|c........(.+)$", "%1"}, -- color codes (same as TooltipParsing.lua)
 	-- GlobalStrings: ENCHANT_CONDITION_REQUIRES.  A socketed meta gem shows its requirements inside the same line, after
-	-- "|r\n"; they are dropped so the gem's effect is read alone.  scan: "|cff808080+8 points de mana toutes les 5 sec.|r\n
-	-- |cff808080Nécessite plus de gemmes rouge(s) que de Méta|r\n  |cff808080Nécessite plus de gemmes jaune(s) que de rouge(s)"
-	-- (gem 2689), and the piece after " et " "durée de Etourdir réduite de 10%|r\n  |cff808080Nécessite au moins 3 gemmes bleue(s)" (gem 3642).
+	-- "|r\n"; they are dropped so the gem's effect is read alone.
+	-- scan: "durée de Etourdir réduite de 10%|r\n  |cff808080Nécessite au moins 3 gemmes bleue(s)" (gem 3642, piece after " et ")
+	-- scan: "|cff808080+8 points de mana toutes les 5 sec.|r\n  |cff808080Nécessite plus de gemmes rouge(s) que de Méta|r\n  …" (gem 2689, whole line)
 	{"^(.-)|r\n[^\n]-" .. PawnFrFormatToPattern(ENCHANT_CONDITION_REQUIRES) .. ".*$", "%1"},
 	{"^([^%+%-%d][^%+]-) %+(%d+)$", "+%2 %1"}, -- SpellItemEnchantment.dbc: "Agilité +10" --> "+10 Agilité"
 }
