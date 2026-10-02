@@ -23,6 +23,7 @@ Localization.zhCN.lua
 Localization.zhTW.lua
 UIStrings.lua
 TooltipParsing.lua
+TooltipParsing.frFR.lua
 Gems.lua
 GemsClassic.lua
 GemsBurningCrusade.lua

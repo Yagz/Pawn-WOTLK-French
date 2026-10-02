@@ -9,6 +9,7 @@ Harness.Files = {
 	"Localization.frFR.lua",
 	"UIStrings.lua",
 	"TooltipParsing.lua",
+	"TooltipParsing.frFR.lua",
 	"Gems.lua",
 	"GemsClassic.lua",
 	"GemsBurningCrusade.lua",

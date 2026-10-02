@@ -76,4 +76,43 @@ Test("harness : l'essai en jeu se reproduit hors jeu (dégâts d'Arcanes non com
 	Equal(Understood, false, "comprise par les motifs Wrath Classic")
 end)
 
+Test("frFR : conversion des formats GlobalStrings", function()
+	Equal(PawnFrFormatToPattern("%c%d Endurance"), "%+?(%-?%d+) Endurance", "%c%d")
+	Equal(PawnFrFormatToPattern("Augmente de %d le score de coup critique."), "Augmente de (%d+) le score de coup critique%.", "%d")
+	Equal(PawnFrFormatToPattern("(%.1f dégâts par seconde)"), "%(([%d%.,]+) dégâts par seconde%)", "%.1f")
+	Equal(PawnFrFormatToPattern("%2$s %1$d |4emplacement:emplacements;"), ".- (%d+) .-", "positionnel et |4")
+	Equal(PawnFrFormatToPattern("%1$c%2$d à la résistance %3$s"), "%+?(%-?%d+) à la résistance .-", "positionnel %c%d")
+	Equal(PawnFrFormatToPattern("%d%% de chances"), "(%d+)%% de chances", "%%")
+end)
+
+Test("frFR : un motif construit depuis le client lit la ligne du client", function()
+	Equal(("+15 Endurance"):match(PawnFrPattern("ITEM_MOD_STAMINA")), "15", "Endurance")
+	local Low, High = ("83 - 156 points de dégâts (Arcanes)"):match(PawnFrPattern("DAMAGE_TEMPLATE_WITH_SCHOOL"))
+	Equal(Low, "83", "minimum")
+	Equal(High, "156", "maximum")
+	Equal(("Équipé : Augmente de 20 le score de toucher."):match(PawnFrEquipPattern("ITEM_MOD_HIT_RATING")), "20", "Équipé")
+	Equal(("Équipé : Augmente la puissance des sorts d'Ombre de 33."):match(PawnFrSpellPattern("Augmente la puissance des sorts d'Ombre de #.")), "33", "Spell.dbc")
+end)
+
+Test("frFR : une constante absente est signalée par son nom", function()
+	local Ok, Err = pcall(PawnFrPattern, "CONSTANTE_QUI_N_EXISTE_PAS")
+	Equal(Ok, false, "échec attendu")
+	Equal(tostring(Err):find("CONSTANTE_QUI_N_EXISTE_PAS", 1, true) ~= nil, true, "nom dans le message")
+end)
+
+Test("frFR : globales d'analyse issues du client", function()
+	Equal(PawnLocal.TooltipParsing.SocketBonusPrefix, "Bonus de sertissage : ", "préfixe du bonus de châsse")
+	Equal(PawnSeparatorIgnorePrefixes[2], ITEM_SPELL_TRIGGER_ONEQUIP, "Équipé :")
+end)
+
+Test("frFR : rien n'est redéfini sur un client enUS", function()
+	local Chunk = assert(loadfile("TooltipParsing.frFR.lua"))
+	local Env = setmetatable({ GetLocale = function() return "enUS" end }, { __index = _G })
+	setfenv(Chunk, Env)
+	Chunk()
+	for _, Name in ipairs({ "PawnFrFormatToPattern", "PawnSeparators", "PawnSeparatorIgnorePrefixes", "PawnRegexes", "PawnRightHandRegexes" }) do
+		Equal(rawget(Env, Name), nil, Name)
+	end
+end)
+
 return Tests
