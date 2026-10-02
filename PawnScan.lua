@@ -12,6 +12,10 @@ PawnScan = {}
 PawnScan.DefaultFirstID = 1
 PawnScan.DefaultLastID = 56000
 PawnScan.MaxEnchantID = 4000
+-- On 3.3.5a the jewel fields of an item link take SpellItemEnchantment IDs, not gem item IDs.
+-- The client's GemProperties.dbc maps its gems to enchant IDs within this range.
+PawnScan.FirstGemEnchantID = 2686
+PawnScan.LastGemEnchantID = 3879
 PawnScan.ItemsPerSecond = 10
 PawnScan.MaxAttempts = 3
 PawnScan.RetryDelay = 1
@@ -173,30 +177,12 @@ function PawnScan.RecordItem(Link, Example)
 	return "ok"
 end
 
--- Every gem ID in Pawn's gem tables for this version of the game.
-local function GemIDs()
-	local IDs, Seen = {}, {}
-	for _, Levels in ipairs({ PawnGemQualityLevels or {}, PawnMetaGemQualityLevels or {} }) do
-		for _, Level in ipairs(Levels) do
-			for _, Gem in ipairs(Level[2] or {}) do
-				if type(Gem.ID) == "number" and not Seen[Gem.ID] then
-					Seen[Gem.ID] = true
-					tinsert(IDs, Gem.ID)
-				end
-			end
-		end
-	end
-	table.sort(IDs)
-	return IDs
-end
-
 -- Entry number Index of the current scan.  Require: item ID that must be in the client cache first.
 function PawnScan.GetEntry(State, Index)
 	if State.mode == "range" then
 		return { Require = Index, Example = Index }
 	elseif State.mode == "gems" then
-		local Gem = State.gems[Index]
-		return { Require = Gem, Link = format("item:%d:0:%d:0:0:0:0:0", State.base, Gem), Example = "gem " .. Gem }
+		return { Link = format("item:%d:0:%d:0:0:0:0:0", State.base, Index), Example = "gem " .. Index }
 	elseif State.mode == "enchants" then
 		return { Link = format("item:%d:%d:0:0:0:0:0:0", State.base, Index), Example = "enchant " .. Index }
 	end
@@ -271,10 +257,6 @@ end
 function PawnScan.Start(Mode, First, Last, Base)
 	local R = PawnScan.GetResults()
 	local State = { mode = Mode, next = First, last = Last, base = Base, running = true }
-	if Mode == "gems" then
-		State.gems = GemIDs()
-		State.last = #State.gems
-	end
 	R.state = State
 	Pending = {}
 	Elapsed = 0
@@ -285,7 +267,6 @@ end
 function PawnScan.Resume()
 	local State = PawnScan.GetResults().state
 	if not State.mode or not State.next or State.next > State.last then return false end
-	if State.mode == "gems" then State.gems = State.gems or GemIDs() end
 	State.running = true
 	Pending = {}
 	Elapsed = 0
@@ -324,7 +305,11 @@ function PawnScan.Command(Text)
 			PawnScan.Message("l'objet " .. Base .. " n'est pas encore en cache. Réessayez dans quelques secondes.")
 			return
 		end
-		PawnScan.Start(Command, 1, Command == "enchants" and PawnScan.MaxEnchantID or 0, Base)
+		if Command == "gems" then
+			PawnScan.Start("gems", PawnScan.FirstGemEnchantID, PawnScan.LastGemEnchantID, Base)
+		else
+			PawnScan.Start("enchants", 1, PawnScan.MaxEnchantID, Base)
+		end
 	elseif Command == "stop" then
 		PawnScan.Stop()
 		PawnScan.Message("scan arrêté. " .. PawnScan.StatusText())

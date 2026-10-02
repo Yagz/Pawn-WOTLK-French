@@ -10,12 +10,13 @@ Pawn 2.8.11 as backported to WoW 3.3.5a by MarkosF (https://github.com/MarkosF/P
 
 All commands run from the addon root.
 
-- `luajit tests/run.lua` — unit tests plus every corpus file; exit code 1 on failure. Currently 2107 passing, 0 failures, 0 todo.
+- `luajit tests/run.lua` — unit tests plus every corpus file; exit code 1 on failure. Currently 2113 passing, 0 failures, 0 todo.
 - `luajit tests/run.lua tests/corpus/X.txt` — one corpus file.
 - `luajit tests/run.lua --propose tests/corpus/X.txt` — print what Pawn currently reads for each `todo` line.
 - `luajit tests/gen_corpus.lua` — regenerate the corpus from `tests/data/` (adds new texts only).
 - `luajit tests/import.lua logs | unknown <SV> | parsed <SV>` — import real lines; `<SV>` is `WTF/Account/<ACCOUNT>/SavedVariables/Pawn.lua`.
 - In game: `/pawnscan [first last] | gems | enchants | stop | status | clear | speed <n>`, and `/pawn debug on` to print every line Pawn doesn't understand. SavedVariables are only written on `/reload` or a clean quit.
+- `/pawnscan gems` iterates gem enchant IDs 2686..3879 (from GemProperties.dbc) in the first jewel slot of the base item: 3.3.5a jewel link fields take SpellItemEnchantment IDs, not gem item IDs.
 - Scanning needs the items cached: first pass at `/pawnscan speed 100` to warm the cache, then `/pawnscan clear` and a fast pass (`speed 500`). New files in `Pawn.toc` need a full client restart, not `/reload`.
 - `GetItemStats` exists in this client. `mismatch` entries are expected noise in gems/enchants modes and when an item has both melee and spell crit keys; the goal is "every mismatch explained", not an empty list.
 

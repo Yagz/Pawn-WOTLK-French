@@ -216,15 +216,17 @@ end)
 
 Test("scan : mode gemmes", function()
 	ResetScan()
-	local RealLevels, RealMeta = PawnGemQualityLevels, PawnMetaGemQualityLevels
-	PawnGemQualityLevels = { { 0, { { ID = 40000, R = true, Stats = { Strength = 12 } } } } }
-	PawnMetaGemQualityLevels = { { 0, { { ID = 41285, Stats = { CritRating = 21 } } } } }
 	WowApiItems[999] = { "Plastron", "INVTYPE_CHEST" }
-	PawnScan.Start("gems", 1, 0, 999)
+	PawnScan.Start("gems", PawnScan.FirstGemEnchantID, PawnScan.LastGemEnchantID, 999)
 	PawnScan.Stop()
-	PawnGemQualityLevels, PawnMetaGemQualityLevels = RealLevels, RealMeta
-	Equal(PawnScanResults.state.last, 2, "nombre de gemmes")
-	Equal(PawnScan.GetEntry(PawnScanResults.state, 1).Link, "item:999:0:40000:0:0:0:0:0", "lien")
+	local State = PawnScanResults.state
+	Equal(State.next, 2686, "premier enchantement de gemme")
+	Equal(State.last, 3879, "dernier enchantement de gemme")
+	local First, Last = PawnScan.GetEntry(State, State.next), PawnScan.GetEntry(State, State.last)
+	Equal(First.Link, "item:999:0:2686:0:0:0:0:0", "lien")
+	Equal(First.Example, "gem 2686", "exemple")
+	Equal(First.Require, nil, "pas de dépendance")
+	Equal(Last.Link, "item:999:0:3879:0:0:0:0:0", "dernier lien")
 end)
 
 Test("enUS : les tables d'analyse restent celles de la 2.8.11", function()
