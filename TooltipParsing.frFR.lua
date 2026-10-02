@@ -402,6 +402,27 @@ PawnRegexes =
 	{"^une chance de restaurer des points de mana au lancement d'un sort$"}, -- logs
 	{"^%d+%% de renvoi de sort$"}, -- logs
 	{"^durée d'Étourdissement réduite de %d+%%%.$"}, -- logs
+	{"^légère augmentation de la vitesse de course$"}, -- SpellItemEnchantment.dbc: "+24 à la puissance d'attaque et légère augmentation de la vitesse de course"
+	{"^augmentation de la Vitesse de course mineure$"}, -- SpellItemEnchantment.dbc: "+25 à la puissance des sorts et augmentation de la Vitesse de course mineure"
+	{"^durée de Silence réduite de %d+%%$"}, -- SpellItemEnchantment.dbc: "+25 à la puissance des sorts et durée de Silence réduite de 10%"
+	{"^durée de Peur réduite de %d+%%$"}, -- SpellItemEnchantment.dbc: "+21 au score de coup critique et durée de Peur réduite de 10%"
+	{"^durée de Etourdir réduite de %d+%%$"}, -- SpellItemEnchantment.dbc: "+32 Endurance et durée de Etourdir réduite de 10%"
+	{"^durée d'Etourdissement réduite de %d+%%$"}, -- SpellItemEnchantment.dbc: "+26 Endurance et durée d'Etourdissement réduite de 10%"
+	{"^%d+%% à la résistance aux étourdissements$"}, -- SpellItemEnchantment.dbc: "+24 à la puissance d'attaque et 5% à la résistance aux étourdissements"
+	{"^%d+%% de réduction de la menace$"}, -- SpellItemEnchantment.dbc: "+14 à la puissance des sorts et 2% de réduction de la menace"
+	{"^menace réduite de %d+%%$"}, -- SpellItemEnchantment.dbc: "+25 à la puissance des sorts et menace réduite de 2%", "+10 Esprit et menace réduite de 2%"
+	{"^%+%d+%% à l'Intelligence$"}, -- SpellItemEnchantment.dbc: "+25 à la puissance des sorts et +2% à l'Intelligence", "+14 à la puissance des sorts & +2% à l'Intelligence"
+	{"^%+%d+%% aux points de mana$"}, -- SpellItemEnchantment.dbc: "+21 au score de coup critique et +2% aux points de mana"
+	{"^%d+%% au renvoi des sorts$"}, -- SpellItemEnchantment.dbc: "+25 au score de coup critique et 1% au renvoi des sorts"
+	{"^une chance de rendre du mana lors des incantations$"}, -- SpellItemEnchantment.dbc: "+21 à l'Intelligence et une chance de rendre du mana lors des incantations"
+	{"^effets de soin critiques augmentés de %d+%%$"}, -- SpellItemEnchantment.dbc: "+11 points de mana toutes les 5 secondes et effets de soin critiques augmentés de 3%"
+	{"^réduit les dégâts des sorts reçus de %d+%%$"}, -- SpellItemEnchantment.dbc: "+32 Endurance et réduit les dégâts des sorts reçus de 2%"
+	{"^augmente de %d+%% la valeur d'armure des objets$"}, -- SpellItemEnchantment.dbc: "+32 Endurance et augmente de 2% la valeur d'armure des objets"
+	{"^régénère parfois vos points de vie quand critique$"}, -- SpellItemEnchantment.dbc: "+42 à la puissance d'attaque et régénère parfois vos points de vie quand critique"
+	-- Meta lines whose effect would be cut by the " et " or "/" split: whole line, stat part only
+	{"^%+(%d+) au score de coup critique et durée de Ralentir et Immobiliser réduite de %d+%%$", "CritRating"}, -- SpellItemEnchantment.dbc: "+21 au score de coup critique et durée de Ralentir et Immobiliser réduite de 10%"
+	{"^%+(%d+) au score de coup critique et durées des ralentissements/immobilisations réduites de %d+%%$", "CritRating"}, -- SpellItemEnchantment.dbc: "+12 au score de coup critique et durées des ralentissements/immobilisations réduites de 10%"
+	{"^%+(%d+) à la puissance des sort$", "SpellPower"}, -- SpellItemEnchantment.dbc: "+25 à la puissance des sort et durée de Etourdir réduite de 10%" (client typo)
 
 	{'^"'}, -- Flavor text
 }
