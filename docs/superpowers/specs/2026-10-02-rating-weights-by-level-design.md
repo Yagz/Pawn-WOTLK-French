@@ -33,7 +33,7 @@ Relevé du 2026-10-02, limité à trois points de contrôle (la table générée
 | Toucher sorts (8) | 8 | 12,615 | 26,232 |
 | Crit mêlée (9) / sorts (11) | 14 | 22,077 | 45,906 |
 | Résilience (15) | 28,75 | 45,3365 | 94,2712 |
-| Hâte mêlée (18) | 10 | 15,769 | 32,79 |
+| Hâte mêlée (18) | 10 | 15,7692 | 32,79 |
 | Expertise (24) | 2,5 | 3,942 | 8,1975 |
 | Pénétration d'armure (25) | 4,695 | 7,404 | 15,395 |
 

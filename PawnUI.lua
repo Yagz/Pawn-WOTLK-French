@@ -367,8 +367,9 @@ function PawnUI_ScalesTab_Refresh()
 	end
 		if PawnScaleIsReadOnly(PawnUICurrentScale) then
 			-- Fork frFR 3.3.5a: say when a Classic scale's rating weights were adjusted to the character's level.
+			-- The note replaces the read-only text here: both together don't fit on one line (the copy hint stays on the Values tab).
 			local LevelNote = PawnClassicRatingLevelNote(PawnUICurrentScale)
-			PawnUIFrame_ScaleTypeLabel:SetText(LevelNote and (LevelNote .. " " .. PawnUIFrame_ScaleTypeLabel_ReadOnlyScaleText) or PawnUIFrame_ScaleTypeLabel_ReadOnlyScaleText)
+			PawnUIFrame_ScaleTypeLabel:SetText(LevelNote or PawnUIFrame_ScaleTypeLabel_ReadOnlyScaleText)
 			PawnUIFrame_RenameScaleButton:Disable()
 			PawnUIFrame_DeleteScaleButton:Disable()
 		else

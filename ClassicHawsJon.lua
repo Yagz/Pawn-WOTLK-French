@@ -716,6 +716,15 @@ function PawnClassicApplyRatingLevel(Level)
 				if Originals[Stat] then Scale.Values[Stat] = Originals[Stat] * (Points[80] / Points[Level]) end
 			end
 			tinsert(Adjusted, ScaleName)
+
+			-- The best items saved for this character were scored with the old weights, and stored scores only ever go up,
+			-- so they would hide real upgrades.  Forget them when the level changes (as PawnSetStatValue does when weights change).
+			-- Other characters' lists were scored at their own levels and stay valid.
+			local CharacterOptions = Scale.PerCharacterOptions and Scale.PerCharacterOptions[PawnPlayerFullName]
+			if CharacterOptions and CharacterOptions.RatingLevel ~= Level then
+				CharacterOptions.BestItems = nil
+				CharacterOptions.RatingLevel = Level
+			end
 		end
 	end
 	-- Only remember the level once something was adjusted, so that a call made before the scales exist doesn't block the next one.
@@ -740,7 +749,14 @@ if VgerCore.IsWrath then
 	-- UnitLevel can still return the old level during PLAYER_LEVEL_UP, so use the level the event passes.
 	local LevelFrame = CreateFrame("Frame", "PawnClassicRatingLevelFrame")
 	LevelFrame:RegisterEvent("PLAYER_LEVEL_UP")
-	LevelFrame:SetScript("OnEvent", function(self, Event, Level) PawnClassicApplyRatingLevel(Level) end)
+	LevelFrame:SetScript("OnEvent", function(self, Event, Level)
+		PawnClassicApplyRatingLevel(Level)
+		-- Refresh the open Pawn window so that it shows the new level and weights (same guards as PawnUI_SelectScale).
+		if PawnUIFrame and PawnUIFrame:IsShown() then
+			if PawnUIScalesTabPage and PawnUIScalesTabPage:IsVisible() and PawnUI_ScalesTab_Refresh then PawnUI_ScalesTab_Refresh() end
+			if PawnUIValuesTabPage and PawnUIValuesTabPage:IsVisible() and PawnUI_ValuesTab_Refresh then PawnUI_ValuesTab_Refresh() end
+		end
+	end)
 end
 
 ------------------------------------------------------------

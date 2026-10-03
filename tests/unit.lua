@@ -617,4 +617,25 @@ Test("niveaux : mention du niveau pour l'interface", function()
 	Equal(PawnClassicRatingLevelNote(ShadowPriest, true), nil, "niveau 80")
 	PawnClassicApplyRatingLevel(60)
 end)
+Test("niveaux : les meilleurs objets mémorisés du personnage sont oubliés quand le niveau change", function()
+	ClassicScales()
+	PawnClassicApplyRatingLevel(60)
+	local Scale = PawnCommon.Scales[ShadowPriest]
+	Scale.PerCharacterOptions = Scale.PerCharacterOptions or {}
+	Scale.PerCharacterOptions["Mairy-Test"] = Scale.PerCharacterOptions["Mairy-Test"] or {}
+	Scale.PerCharacterOptions["Autre-Test"] = Scale.PerCharacterOptions["Autre-Test"] or {}
+	local Stub = { Stub = true }
+	Scale.PerCharacterOptions["Mairy-Test"].BestItems = Stub
+	Scale.PerCharacterOptions["Autre-Test"].BestItems = Stub
+	PawnClassicApplyRatingLevel(61)
+	Equal(Scale.PerCharacterOptions["Mairy-Test"].BestItems, nil, "liste du personnage oubliée")
+	Equal(Scale.PerCharacterOptions["Mairy-Test"].RatingLevel, 61, "niveau mémorisé")
+	Equal(Scale.PerCharacterOptions["Autre-Test"].BestItems, Stub, "liste d'un autre personnage conservée")
+	local Stub2 = { Stub = true }
+	Scale.PerCharacterOptions["Mairy-Test"].BestItems = Stub2
+	PawnClassicApplyRatingLevel(61)
+	Equal(Scale.PerCharacterOptions["Mairy-Test"].BestItems, Stub2, "niveau inchangé : liste conservée")
+	Scale.PerCharacterOptions["Autre-Test"] = nil
+	PawnClassicApplyRatingLevel(60)
+end)
 return Tests
