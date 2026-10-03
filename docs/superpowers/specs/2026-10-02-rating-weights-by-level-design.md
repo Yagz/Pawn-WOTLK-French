@@ -6,14 +6,17 @@ Cycle : premier sous-projet de « justesse des valeurs ». Les autres sous-proje
 
 ## Objectif
 
-Le serveur ouvre son contenu par phases (60 → 70 → 80), et l'utilisateur joue avec les échelles « Classic » fournies par Pawn (`ClassicHawsJon.lua`, mode Wrath), sans les modifier. Ces échelles sont calibrées pour le niveau 80 : un point de score (crit, toucher…) y vaut ce qu'il rapporte au niveau 80. Or un point de score rapporte 3,28 fois plus de % au niveau 60 et 2,08 fois plus au niveau 70. Pawn sous-évalue donc les scores face aux stats primaires sur les personnages 60 et 70, et la flèche « meilleur objet » peut se tromper.
+Le but n'est pas une valeur exacte. Il s'agit de désigner correctement, pour une spé, le meilleur objet pour le personnage à l'instant T. Seuls comptent donc les rapports entre les poids.
 
-Ce cycle ajuste les poids des scores des échelles Classic au niveau du personnage. La source est la table réelle du client, et le niveau appliqué est affiché dans l'interface.
+L'utilisateur joue avec les échelles « Classic » fournies par Pawn (`ClassicHawsJon.lua`, mode Wrath), sans les modifier. Ces échelles sont calibrées pour le niveau 80 : un point de score (crit, toucher…) y vaut ce qu'il rapporte au niveau 80. Or le nombre de points de score pour 1 % baisse avec le niveau, selon une courbe non linéaire. Un point de score rapporte par exemple 2,08 fois plus de % au niveau 70, 3,28 fois plus au niveau 60, et bien davantage en dessous. À tout niveau inférieur à 80, Pawn sous-évalue donc les scores face aux stats primaires, et la flèche « meilleur objet » peut se tromper.
+
+Ce cycle ajuste les poids des scores des échelles Classic au **niveau exact** du personnage, de 1 à 80, et suit chaque montée de niveau. Il n'y a pas de paliers. La source est la table réelle du client pour chaque niveau, et le niveau appliqué est affiché dans l'interface. Le serveur ouvre son contenu par phases (60 → 70 → 80). Ces trois niveaux servent seulement de points de contrôle dans les relevés et les tests ci-dessous.
 
 ### Hors périmètre
 
-- Les effets des stats primaires qui dépendent du niveau, comme la conversion Agilité/Intelligence → crit (`gtChanceToMeleeCrit`, `gtChanceToSpellCrit`). Ce sera un cycle ultérieur si les résultats le justifient.
-- Les échelles créées ou copiées par l'utilisateur ne sont jamais modifiées. Une copie d'une échelle Classic garde les poids du niveau où elle a été faite.
+- Les effets des stats primaires qui dépendent du niveau, comme la conversion Agilité/Intelligence → crit (`gtChanceToMeleeCrit`, `gtChanceToSpellCrit`). Cette part varie dans le même sens que les scores, mais moins fort. Elle ne change donc l'ordre que pour des objets presque à égalité, et la corriger obligerait à supposer comment HawsJon a réparti le poids de l'Intelligence entre crit et mana. Ce sera un cycle ultérieur si les résultats le justifient.
+- Les seuils propres au niveau 80 (plafond de toucher contre un boss 83, etc.) et les différences de rotation en leveling : aucune donnée du client ne les décrit.
+- Les échelles créées, copiées ou importées par l'utilisateur ne sont jamais modifiées. Une copie d'une échelle Classic garde les poids du niveau où elle a été faite. Une pawnstring issue d'une simulation est déjà calculée pour son niveau.
 - La séparation crit/toucher/hâte des sorts et de la mêlée : la fusion actuelle de `Pawn.lua` (`PawnCombineStats`) est conservée.
 
 ## Données : `gtCombatRatings.dbc`
@@ -22,7 +25,7 @@ Source : `Data/frFR/patch-frFR.MPQ`, fichier `DBFilesClient\gtCombatRatings.dbc`
 
 Format : un en-tête WDBC, puis 3200 enregistrements d'un flottant chacun, soit 32 scores × 100 niveaux. La valeur du score `CR` (indice 1-based, comme les constantes `CR_*` du client) au niveau `L` est l'enregistrement `(CR - 1) * 100 + (L - 1)`. Elle donne le nombre de points de score pour 1 % (ou pour 1 point de défense ou d'expertise).
 
-Relevé du 2026-10-02 :
+Relevé du 2026-10-02, limité à trois points de contrôle (la table générée contient les 80 niveaux) :
 
 | Score (CR) | niv. 60 | niv. 70 | niv. 80 |
 |---|---|---|---|
@@ -107,8 +110,9 @@ Le harnais charge déjà les vrais fichiers de l'addon. Il faut y ajouter `PawnR
    - une stat qui n'est pas un score (`Intellect`, `SpellPower`, `Stamina`) est inchangée ;
    - un score de poids nul reste absent.
 4. **Montée de niveau 60 → 61** : les valeurs et `PawnClassicRatingLevel` sont mis à jour, et un second appel au même niveau ne fait rien.
-5. **Échelle perso** : une échelle sans `Provider` n'est jamais modifiée.
-6. **Texte d'interface** : `PawnClassicRatingLevelNote` renvoie un texte contenant « 60 » pour une échelle Classic au niveau 60. Elle renvoie `nil` au niveau 80 et pour une échelle perso. L'affichage réel dans `PawnUI.lua` est vérifié en jeu.
+5. **Niveaux hors points de contrôle** : au niveau 15, le facteur appliqué est celui de la table pour le niveau 15. Les niveaux 0 et 85 sont ramenés à 1 et 80.
+6. **Échelle perso ou importée** : une échelle sans `Provider` n'est jamais modifiée.
+7. **Texte d'interface** : `PawnClassicRatingLevelNote` renvoie un texte contenant « 60 » pour une échelle Classic au niveau 60. Elle renvoie `nil` au niveau 80 et pour une échelle perso. L'affichage réel dans `PawnUI.lua` est vérifié en jeu.
 
 ## Vérifications en jeu (par l'utilisateur)
 
