@@ -10,7 +10,7 @@ Pawn 2.8.11 as backported to WoW 3.3.5a by MarkosF (https://github.com/MarkosF/P
 
 All commands run from the addon root.
 
-- `luajit tests/run.lua` — unit tests plus every corpus file; exit code 1 on failure. Currently 2285 passing, 0 failures, 0 todo.
+- `luajit tests/run.lua` — unit tests plus every corpus file; exit code 1 on failure. Currently 2294 passing, 0 failures, 0 todo.
 - `luajit tests/run.lua tests/corpus/X.txt` — one corpus file.
 - `luajit tests/run.lua --propose tests/corpus/X.txt` — print what Pawn currently reads for each `todo` line.
 - `luajit tests/gen_corpus.lua` — regenerate the corpus from `tests/data/` (adds new texts only).
@@ -20,6 +20,7 @@ All commands run from the addon root.
 - `/pawnscan gems` iterates gem enchant IDs 2686..3879 (from GemProperties.dbc) in the first jewel slot of the base item: 3.3.5a jewel link fields take SpellItemEnchantment IDs, not gem item IDs.
 - Scanning needs the items cached: first pass at `/pawnscan speed 100` to warm the cache, then `/pawnscan clear` and a fast pass (`speed 500`). New files in `Pawn.toc` need a full client restart, not `/reload`.
 - End of session: `/cloture-session` (`.claude/skills/cloture-session/`) records progress in memory, lists what's left, checks for corrections and proposes new tooling.
+- `uv run --with mpyq python tests/extract_ratings.py "../../../Data"` — regenerate `PawnRatingLevelFactors.lua` (gtCombatRatings.dbc + CR_* constants from the frFR MPQs); same data gives the same file.
 - `GetItemStats` exists in this client. `mismatch` entries are expected noise in gems/enchants modes and when an item has both melee and spell crit keys; the goal is "every mismatch explained", not an empty list.
 
 ## Architecture
@@ -29,7 +30,8 @@ All commands run from the addon root.
 - Most FR patterns are built at load time from the client's GlobalStrings via `PawnFrFormatToPattern` / `PawnFrPattern` / `PawnFrEquipPattern` / `PawnFrSpellPattern`.
 - `Pawn.lua`: `PawnGetStatsFromTooltip` → `PawnLookForSingleStat`. On frFR it turns non-breaking spaces into spaces before matching. Rows are `{pattern, Stat, N, Source, ...}`. Unknown lines before the first understood line of a tooltip are ignored (~line 2251), so neither the scanner nor `/pawn debug` reports them.
 - `PawnScan.lua` drives `PawnGetStatsForItemLink` over item IDs, gems and enchants, and stores unknown and parsed line templates and Lua errors in `PawnScanResults`.
-- `tests/harness.lua` loads the real addon files under LuaJIT with `tests/wowapi.lua` stubs and the client constants in `tests/data/GlobalStrings.frFR.lua`.
+- `PawnRatingLevelFactors.lua` (generated) holds the client's rating points per % for levels 1–80. `ClassicHawsJon.lua`'s `PawnClassicApplyRatingLevel` scales the 10 rating weights of the Classic scales by `P[80] / P[level]` at load and on `PLAYER_LEVEL_UP` (frame `PawnClassicRatingLevelFrame`); user and imported scales are never touched. `PawnClassicRatingLevelNote` gives the UI text.
+- `tests/harness.lua` loads the real addon files under LuaJIT with `tests/wowapi.lua` stubs and the client constants in `tests/data/GlobalStrings.frFR.lua`. It also loads `PawnRatingLevelFactors.lua` and `ClassicHawsJon.lua`; the level tests must stay last in `unit.lua` because they populate `PawnCommon.Scales`.
 
 ## Rules
 
