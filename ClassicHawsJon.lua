@@ -735,6 +735,7 @@ function PawnClassicRatingLevelNote(ScaleName, Long)
 	if not Text then return nil end -- other localizations don't have this text
 	return format(Text, PawnClassicRatingLevel)
 end
+
 if VgerCore.IsWrath then
 	-- UnitLevel can still return the old level during PLAYER_LEVEL_UP, so use the level the event passes.
 	local LevelFrame = CreateFrame("Frame", "PawnClassicRatingLevelFrame")
