@@ -649,6 +649,9 @@ function PawnClassicScaleProvider_AddScales()
 			MetaSocket=35, }
 		)
 
+		-- Fork frFR 3.3.5a: these weights are for level 80; scale the rating weights to the character's level.
+		PawnClassicApplyRatingLevel(UnitLevel("player"))
+
 	else
 		VgerCore.Fail("Failed to set up default Pawn scales because we weren't sure which version of WoW this is.")
 		return
@@ -684,6 +687,51 @@ function PawnClassicScaleProvider_AddScales()
 	PawnClassicScaleProvider_AddScales = nil
 
 end -- PawnClassicScaleProvider_AddScales
+
+-- Fork frFR 3.3.5a: the Wrath weights above are for level 80, but a rating point gives more % at lower levels
+-- (gtCombatRatings.dbc, see PawnRatingLevelFactors.lua).  Scale the rating weights of the Classic scales to the
+-- character's level so that items with ratings are ranked correctly while leveling.
+
+-- Level-80 weights of the rating stats, per scale name, saved the first time each scale is adjusted.  Not saved to disk.
+local OriginalRatingWeights = {}
+
+-- Level applied to the Classic scales; nil until at least one Classic scale has been adjusted.  Not saved to disk.
+PawnClassicRatingLevel = nil
+
+function PawnClassicApplyRatingLevel(Level)
+	Level = max(1, min(80, floor(tonumber(Level) or 80)))
+	if Level == PawnClassicRatingLevel or not PawnCommon or not PawnCommon.Scales then return end
+
+	local Adjusted = {}
+	for ScaleName, Scale in pairs(PawnCommon.Scales) do
+		if Scale.Provider == ScaleProviderName and Scale.Values then
+			local Originals = OriginalRatingWeights[ScaleName]
+			if not Originals then
+				Originals = {}
+				for Stat in pairs(PawnRatingPointsPerPercent) do Originals[Stat] = Scale.Values[Stat] end
+				OriginalRatingWeights[ScaleName] = Originals
+			end
+			for Stat, Points in pairs(PawnRatingPointsPerPercent) do
+				-- Parentheses keep the factor at exactly 1 on level 80.
+				if Originals[Stat] then Scale.Values[Stat] = Originals[Stat] * (Points[80] / Points[Level]) end
+			end
+			tinsert(Adjusted, ScaleName)
+		end
+	end
+	-- Only remember the level once something was adjusted, so that a call made before the scales exist doesn't block the next one.
+	if #Adjusted == 0 then return end
+	PawnClassicRatingLevel = Level
+
+	for _, ScaleName in pairs(Adjusted) do PawnRecalculateScaleTotal(ScaleName) end
+	PawnResetTooltips()
+end
+
+if VgerCore.IsWrath then
+	-- UnitLevel can still return the old level during PLAYER_LEVEL_UP, so use the level the event passes.
+	local LevelFrame = CreateFrame("Frame", "PawnClassicRatingLevelFrame")
+	LevelFrame:RegisterEvent("PLAYER_LEVEL_UP")
+	LevelFrame:SetScript("OnEvent", function(self, Event, Level) PawnClassicApplyRatingLevel(Level) end)
+end
 
 ------------------------------------------------------------
 

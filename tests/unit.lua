@@ -483,4 +483,124 @@ Test("niveaux : la table générée cite sa source", function()
 	end
 end)
 
+local function Near(Got, Expected, What)
+	if type(Got) ~= "number" or math.abs(Got - Expected) > 1e-9 * math.max(1, math.abs(Expected)) then
+		error((What or "valeur") .. " : attendu " .. tostring(Expected) .. ", obtenu " .. tostring(Got), 2)
+	end
+end
+
+local ShadowPriest = '"Classic":PRIEST3'
+
+-- Creates the Classic scales once, like a login at level 60.  Level80[ScaleName] keeps each scale's values as
+-- PawnAddPluginScale stored them (HawsJon weights, zeros removed), before any level adjustment.
+local Level80, LevelAtLogin
+local function ClassicScales()
+	if Level80 then return end
+	Level80 = {}
+	local Original = PawnAddPluginScale
+	PawnAddPluginScale = function(Provider, ScaleName, ...)
+		Original(Provider, ScaleName, ...)
+		local FullName = PawnGetProviderScaleName(Provider, ScaleName)
+		local Copy = {}
+		for Stat, Value in pairs(PawnCommon.Scales[FullName].Values) do Copy[Stat] = Value end
+		Level80[FullName] = Copy
+	end
+	PawnCommon.Scales = PawnCommon.Scales or {}
+	WowApiPlayerLevel = 60
+	PawnInitializePlugins()
+	PawnAddPluginScale = Original
+	LevelAtLogin = PawnClassicRatingLevel
+end
+
+local function CopyValues(ScaleName)
+	local Copy = {}
+	for Stat, Value in pairs(PawnCommon.Scales[ScaleName].Values) do Copy[Stat] = Value end
+	return Copy
+end
+
+Test("niveaux : un appel avant la création des échelles ne bloque pas le chargement", function()
+	Equal(Level80, nil, "échelles pas encore créées")
+	PawnClassicApplyRatingLevel(60)
+	Equal(PawnClassicRatingLevel, nil, "aucun niveau retenu sans échelle")
+	ClassicScales()
+	Equal(LevelAtLogin, 60, "niveau appliqué au chargement")
+	Near(PawnCommon.Scales[ShadowPriest].Values.CritRating, Level80[ShadowPriest].CritRating * (45.906 / 14), "crit d'Ombre")
+end)
+
+Test("niveaux : niveau 60, seuls les scores changent et un score absent reste absent", function()
+	ClassicScales()
+	PawnClassicApplyRatingLevel(60)
+	local Values, Original = PawnCommon.Scales[ShadowPriest].Values, Level80[ShadowPriest]
+	Near(Values.CritRating, Original.CritRating * (45.906 / 14), "CritRating")
+	Near(Values.HitRating, Original.HitRating * (32.79 / 10), "HitRating")
+	for _, Stat in ipairs({ "Intellect", "SpellPower", "Stamina", "Spirit" }) do
+		Equal(Values[Stat], Original[Stat], Stat)
+	end
+	Equal(Original.ExpertiseRating, nil, "expertise absente au niveau 80")
+	Equal(Values.ExpertiseRating, nil, "expertise absente au niveau 60")
+end)
+
+Test("niveaux : niveau 80, toutes les échelles Classic sont identiques aux poids HawsJon", function()
+	ClassicScales()
+	PawnClassicApplyRatingLevel(80)
+	Equal(PawnClassicRatingLevel, 80, "niveau")
+	local Scales = 0
+	for ScaleName, Original in pairs(Level80) do
+		Scales = Scales + 1
+		local Values = PawnCommon.Scales[ScaleName].Values
+		for Stat, Value in pairs(Original) do Equal(Values[Stat], Value, ScaleName .. " " .. Stat) end
+		for Stat in pairs(Values) do assert(Original[Stat] ~= nil, ScaleName .. " : stat ajoutée " .. Stat) end
+	end
+	assert(Scales > 20, "échelles Classic créées : " .. Scales)
+	PawnClassicApplyRatingLevel(60)
+end)
+
+Test("niveaux : montée de niveau 60 → 61 par l'événement, sans cumul au retour à 60", function()
+	ClassicScales()
+	PawnClassicApplyRatingLevel(60)
+	local At60 = CopyValues(ShadowPriest)
+	local Frame = PawnClassicRatingLevelFrame
+	Frame:GetScript("OnEvent")(Frame, "PLAYER_LEVEL_UP", 61)
+	Equal(PawnClassicRatingLevel, 61, "niveau après l'événement")
+	local P = PawnRatingPointsPerPercent.CritRating
+	Near(PawnCommon.Scales[ShadowPriest].Values.CritRating, Level80[ShadowPriest].CritRating * (P[80] / P[61]), "crit 61")
+	PawnCommon.Scales[ShadowPriest].Values.CritRating = 123
+	PawnClassicApplyRatingLevel(61)
+	Equal(PawnCommon.Scales[ShadowPriest].Values.CritRating, 123, "second appel au même niveau sans effet")
+	PawnClassicApplyRatingLevel(60)
+	for Stat, Value in pairs(At60) do Equal(PawnCommon.Scales[ShadowPriest].Values[Stat], Value, "retour à 60 : " .. Stat) end
+end)
+
+Test("niveaux : niveaux 15, 0, 85 et nil", function()
+	ClassicScales()
+	local P = PawnRatingPointsPerPercent.CritRating
+	local Crit = Level80[ShadowPriest].CritRating
+	PawnClassicApplyRatingLevel(15)
+	Equal(PawnClassicRatingLevel, 15, "niveau 15")
+	Near(PawnCommon.Scales[ShadowPriest].Values.CritRating, Crit * (P[80] / P[15]), "crit 15")
+	PawnClassicApplyRatingLevel(0)
+	Equal(PawnClassicRatingLevel, 1, "0 ramené à 1")
+	Near(PawnCommon.Scales[ShadowPriest].Values.CritRating, Crit * (P[80] / P[1]), "crit 1")
+	PawnClassicApplyRatingLevel(85)
+	Equal(PawnClassicRatingLevel, 80, "85 ramené à 80")
+	PawnClassicApplyRatingLevel(60)
+	PawnClassicApplyRatingLevel(nil)
+	Equal(PawnClassicRatingLevel, 80, "nil ramené à 80")
+	PawnClassicApplyRatingLevel(60)
+end)
+
+Test("niveaux : une échelle perso ou importée n'est jamais modifiée", function()
+	ClassicScales()
+	PawnCommon.Scales["Ma copie"] = { Values = { CritRating = 0.61, HitRating = 1.12, Intellect = 0.19 } }
+	PawnCommon.Scales["Importée"] = { Values = { CritRating = 10.35, HasteRating = 10.96 } }
+	for _, Level in ipairs({ 80, 60, 15, 61 }) do
+		PawnClassicApplyRatingLevel(Level)
+		Equal(PawnCommon.Scales["Ma copie"].Values.CritRating, 0.61, "copie au niveau " .. Level)
+		Equal(PawnCommon.Scales["Ma copie"].Values.HitRating, 1.12, "copie toucher au niveau " .. Level)
+		Equal(PawnCommon.Scales["Importée"].Values.CritRating, 10.35, "importée au niveau " .. Level)
+	end
+	PawnCommon.Scales["Ma copie"], PawnCommon.Scales["Importée"] = nil, nil
+	PawnClassicApplyRatingLevel(60)
+end)
+
 return Tests
