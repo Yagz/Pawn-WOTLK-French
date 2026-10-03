@@ -21,7 +21,7 @@ Ce cycle ajuste les poids des scores des échelles Classic au **niveau exact** d
 
 ## Données : `gtCombatRatings.dbc`
 
-Source : `Data/frFR/patch-frFR.MPQ`, fichier `DBFilesClient\gtCombatRatings.dbc`. Il prime sur `locale-frFR.MPQ` (la seule différence entre les deux concerne la résilience) et il est absent de `Patch-Z.MPQ`.
+Source : `Data/frFR/patch-frFR.MPQ`, fichier `DBFilesClient\gtCombatRatings.dbc`. Il prime sur `locale-frFR.MPQ` (la seule différence entre les deux concerne la résilience) et il est absent de `Patch-Z.MPQ`. `PaperDollFrame.lua` vient de `patch-frFR-3.MPQ`, le plus prioritaire des quatre MPQ qui le contiennent.
 
 Format : un en-tête WDBC, puis 3200 enregistrements d'un flottant chacun, soit 32 scores × 100 niveaux. La valeur du score `CR` (indice 1-based, comme les constantes `CR_*` du client) au niveau `L` est l'enregistrement `(CR - 1) * 100 + (L - 1)`. Elle donne le nombre de points de score pour 1 % (ou pour 1 point de défense ou d'expertise).
 
@@ -29,12 +29,12 @@ Relevé du 2026-10-02, limité à trois points de contrôle (la table générée
 
 | Score (CR) | niv. 60 | niv. 70 | niv. 80 |
 |---|---|---|---|
-| Toucher mêlée (6) | 10 | 15,769 | 32,79 |
+| Toucher mêlée (6) | 10 | 15,7692 | 32,79 |
 | Toucher sorts (8) | 8 | 12,615 | 26,232 |
 | Crit mêlée (9) / sorts (11) | 14 | 22,077 | 45,906 |
-| Résilience (15) | 28,75 | 45,337 | 94,271 |
+| Résilience (15) | 28,75 | 45,3365 | 94,2712 |
 | Hâte mêlée (18) | 10 | 15,769 | 32,79 |
-| Expertise (24) | 2,5 | 3,942 | 8,197 |
+| Expertise (24) | 2,5 | 3,942 | 8,1975 |
 | Pénétration d'armure (25) | 4,695 | 7,404 | 15,395 |
 
 Pour tous ces scores, le rapport niveau 80 / niveau 60 vaut 3,279.
@@ -62,9 +62,9 @@ Pawn fusionne les variantes mêlée, distance et sorts en une seule stat. Le scr
 
 C'est un script Python conservé dans le dépôt, à la différence du script MPQ jetable du cycle précédent. Il se lance avec `uv run --with mpyq python tests/extract_ratings.py <dossier Data du client>`.
 
-- Il lit `gtCombatRatings.dbc` en appliquant l'ordre de priorité des MPQ (`patch-frFR` avant `locale-frFR`).
+- Il lit `gtCombatRatings.dbc` en appliquant l'ordre de priorité complet des MPQ du client (`patch-frFR-3`, `-2`, `patch-frFR`, … `locale-frFR`, … `common`).
 - Il lit les constantes `CR_*` dans `Interface\FrameXML\PaperDollFrame.lua`, en appliquant le même ordre de priorité des MPQ.
-- Il écrit `PawnRatingLevelFactors.lua`, dont l'en-tête indique la source (MPQ, fichier, date) et la commande de régénération.
+- Il écrit `PawnRatingLevelFactors.lua`, dont l'en-tête indique la source (MPQ et md5 de chaque fichier extrait ; pas de date, pour que la régénération soit identique) et la commande de régénération.
 - Il fait la vérification des variantes décrite ci-dessus.
 
 Le fichier généré est commité. Le relancer sur les mêmes données doit produire exactement le même fichier.
@@ -103,7 +103,7 @@ Le niveau est affiché seulement pour une échelle Classic, quand `PawnClassicRa
 
 Le harnais charge déjà les vrais fichiers de l'addon. Il faut y ajouter `PawnRatingLevelFactors.lua` et `ClassicHawsJon.lua`, et une stub `UnitLevel` réglable.
 
-1. **Table conforme au DBC** : spot-checks sur les valeurs relevées ci-dessus (crit 60 = 14, crit 80 = 45,906, résilience 80 = 94,271…). Le test vérifie aussi que l'en-tête du fichier généré cite sa source.
+1. **Table conforme au DBC** : spot-checks sur les valeurs relevées ci-dessus (crit 60 = 14, crit 80 = 45,906, résilience 80 = 94,2712…). Le test vérifie aussi que l'en-tête du fichier généré cite sa source.
 2. **Niveau 80 = aucun changement** : toutes les valeurs de toutes les échelles Classic sont identiques aux poids HawsJon du fichier.
 3. **Niveau 60** :
    - le `CritRating` de « Prêtre : Ombre » vaut le poids HawsJon × 45,906 / 14 ;

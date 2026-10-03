@@ -99,3 +99,14 @@ function CreateFrame(Type, Name)
 end
 UIParent = CreateFrame("Frame", "UIParent")
 WorldFrame = CreateFrame("Frame", "WorldFrame")
+
+-- Player and classes, as !!!ClassicAPI provides them on 3.3.5a (GetClassInfo returns a C_CreatureInfo-style table).
+WowApiPlayerLevel = 80
+function UnitLevel(Unit) return WowApiPlayerLevel end
+function UnitClass(Unit) return "Prêtre", "PRIEST", 5 end
+local ClassFiles = { "WARRIOR", "PALADIN", "HUNTER", "ROGUE", "PRIEST", "DEATHKNIGHT", "SHAMAN", "MAGE", "WARLOCK", nil, "DRUID" }
+function GetClassInfo(ID) return { className = ClassFiles[ID], classFile = ClassFiles[ID], classID = ID } end
+RAID_CLASS_COLORS = setmetatable({}, { __index = function() return { colorStr = "ffffffff" } end })
+
+sort = table.sort
+function wipe(T) for Key in pairs(T) do T[Key] = nil end return T end

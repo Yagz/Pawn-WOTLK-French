@@ -452,4 +452,35 @@ Test("scan : inspect accepte un lien collé et un numéro", function()
 	Equal(#PawnScanResults.inspect, 3, "argument invalide ignoré")
 end)
 
+------------------------------------------------------------
+-- Rating weights by level (spec 2026-10-02). Keep these tests last: they fill PawnCommon.Scales.
+------------------------------------------------------------
+
+local RatingStats = { "HitRating", "CritRating", "HasteRating", "ExpertiseRating", "ArmorPenetration",
+	"DefenseRating", "DodgeRating", "ParryRating", "BlockRating", "ResilienceRating" }
+
+Test("niveaux : table des scores conforme au DBC", function()
+	local P = PawnRatingPointsPerPercent
+	for _, Stat in ipairs(RatingStats) do Equal(#P[Stat], 80, "niveaux de " .. Stat) end
+	Equal(P.CritRating[60], 14, "crit 60")
+	Equal(P.CritRating[80], 45.906, "crit 80")
+	Equal(P.HitRating[70], 15.7692, "toucher 70")
+	Equal(P.HitRating[80], 32.79, "toucher 80")
+	Equal(P.ExpertiseRating[60], 2.5, "expertise 60")
+	Equal(P.ResilienceRating[60], 28.75, "résilience 60")
+	Equal(P.ResilienceRating[80], 94.2712, "résilience 80")
+	local Count = 0
+	for _ in pairs(P) do Count = Count + 1 end
+	Equal(Count, #RatingStats, "nombre de stats")
+end)
+
+Test("niveaux : la table générée cite sa source", function()
+	local File = assert(io.open("PawnRatingLevelFactors.lua", "r"))
+	local Content = File:read("*a")
+	File:close()
+	for _, Needle in ipairs({ "tests/extract_ratings.py", "gtCombatRatings.dbc", "patch-frFR.MPQ", "PaperDollFrame.lua", "md5 " }) do
+		assert(Content:find(Needle, 1, true), "en-tête sans « " .. Needle .. " »")
+	end
+end)
+
 return Tests

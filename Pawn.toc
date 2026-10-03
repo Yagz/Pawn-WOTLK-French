@@ -34,5 +34,6 @@ Pawn.lua
 PawnUI.lua
 PawnUI.xml
 AskMrRobot.lua
+PawnRatingLevelFactors.lua
 ClassicHawsJon.lua
 PawnScan.lua

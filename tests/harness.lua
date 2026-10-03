@@ -1,7 +1,7 @@
 -- Loads Pawn 2.8.11's real localization and parsing code under LuaJIT and runs tooltip lines through it.
 local Harness = {}
 
--- Same order as Pawn.toc; UI files and scale providers are left out (not needed to parse tooltips).
+-- Same order as Pawn.toc; UI files and the Ask Mr. Robot provider are left out.
 Harness.Files = {
 	"VgerCore/VgerCore.lua",
 	"Core.lua",
@@ -17,6 +17,8 @@ Harness.Files = {
 	"ScaleTemplates.lua",
 	"ItemIDs.lua",
 	"Pawn.lua",
+	"PawnRatingLevelFactors.lua",
+	"ClassicHawsJon.lua",
 	"PawnScan.lua",
 }
 
@@ -33,6 +35,8 @@ function Harness.Load()
 	LoadGlobalStrings("tests/data/GlobalStrings.frFR.lua")
 	for _, Path in ipairs(Harness.Files) do dofile(Path) end
 	WowApiSetTooltip(PawnPrivateTooltipName, {}) -- normally created by PawnUI.xml
+	function PawnUIFrame_ScaleSelector_Refresh() end -- PawnUI.lua isn't loaded
+	PawnPlayerFullName = "Mairy-Test" -- normally set by PawnInitialize
 	PawnCommon = PawnCommon or {}
 end
 
