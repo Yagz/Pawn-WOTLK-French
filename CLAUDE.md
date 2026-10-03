@@ -10,7 +10,7 @@ Pawn 2.8.11 as backported to WoW 3.3.5a by MarkosF (https://github.com/MarkosF/P
 
 All commands run from the addon root.
 
-- `luajit tests/run.lua` — unit tests plus every corpus file; exit code 1 on failure. Currently 2295 passing, 0 failures, 0 todo.
+- `luajit tests/run.lua` — unit tests plus every corpus file; exit code 1 on failure. Currently 2296 passing, 0 failures, 0 todo.
 - `luajit tests/run.lua tests/corpus/X.txt` — one corpus file.
 - `luajit tests/run.lua --propose tests/corpus/X.txt` — print what Pawn currently reads for each `todo` line.
 - `luajit tests/gen_corpus.lua` — regenerate the corpus from `tests/data/` (adds new texts only).
@@ -40,5 +40,5 @@ All commands run from the addon root.
 - Use the Wrath stat names valued by `ClassicHawsJon.lua` (`SpellPower`, `CritRating`, `HitRating`, `HasteRating`, `Armor`…). Spell-specific rating lines count as the combined rating.
 - Lua patterns are byte-based: never put an accented letter inside `[...]` or match it with `.`.
 - frFR GlobalStrings put a no-break space (`\194\160`) before ":" in ~40 constants. Every constant-derived string must go through the local `PawnFrNoNbsp` (already used by `PawnFrFormatToPattern` and the PawnFr* helpers). Never build rows with `PawnGameConstant` / `PawnGameConstantUnwrapped`: they only escape `%` and `-` (so "Tenu(e) …" breaks) and don't normalize NBSP.
-- Fixes for `!!!ClassicAPI` incompatibilities stay minimal, commented, and in their own commit. Two exist: `PawnGetClassInfo` (accepts the table returned by `!!!ClassicAPI`'s `GetClassInfo`) and `PawnUI_GetQuestRewardButton` (3.3.5a reward buttons are `QuestInfoItemN`, per the client's FrameXML `QuestInfo.lua`).
+- Fixes for `!!!ClassicAPI` incompatibilities stay minimal, commented, and in their own commit. Three exist: `PawnGetClassInfo` (accepts the table returned by `!!!ClassicAPI`'s `GetClassInfo`) and `PawnUI_GetQuestRewardButton` (3.3.5a reward buttons are `QuestInfoItemN`, per the client's FrameXML `QuestInfo.lua`) and the trinket/ranged item level in `PawnGetInventoryItemValues` (`GetDetailedItemLevelInfo` doesn't exist in 3.3.5a; falls back to `GetItemInfo`).
 - `tests/data/` was extracted from `Data/frFR/*.MPQ` with a throwaway Python + `mpyq` script. The field numbers used: `Spell.dbc` description 172, `SpellItemEnchantment.dbc` text 16, `ItemSubClass.dbc` name 12.

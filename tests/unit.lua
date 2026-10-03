@@ -452,6 +452,19 @@ Test("scan : inspect accepte un lien collé et un numéro", function()
 	Equal(#PawnScanResults.inspect, 3, "argument invalide ignoré")
 end)
 
+Test("équipement : un bijou sans stats lisibles compte dans le niveau moyen (pas de GetDetailedItemLevelInfo en 3.3.5a)", function()
+	ResetScan()
+	WowApiItems["item:7"] = { "Bijou 7", "INVTYPE_TRINKET" }
+	local OriginalLink, OriginalID, OriginalSlotData = GetInventoryItemLink, GetInventoryItemID, PawnGetItemDataForInventorySlot
+	GetInventoryItemLink = function(Unit, Slot) if Slot == 13 then return "item:7" end end
+	GetInventoryItemID = function(Unit, Slot) if Slot == 13 then return 7 end end
+	PawnGetItemDataForInventorySlot = function() return nil end -- Pawn often reads no stats on trinkets
+	local Ok, Values, Count, AverageItemLevel = pcall(PawnGetInventoryItemValues, "player")
+	GetInventoryItemLink, GetInventoryItemID, PawnGetItemDataForInventorySlot = OriginalLink, OriginalID, OriginalSlotData
+	assert(Ok, tostring(Values))
+	Equal(AverageItemLevel, math.floor(100 / 17 + .05), "niveau moyen") -- GetItemInfo stub: item level 100; 17 slots with the ranged slot
+end)
+
 ------------------------------------------------------------
 -- Rating weights by level (spec 2026-10-02). Keep these tests last: they fill PawnCommon.Scales.
 ------------------------------------------------------------

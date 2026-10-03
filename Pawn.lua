@@ -2009,7 +2009,8 @@ function PawnGetInventoryItemValues(UnitName)
 				-- (Same with the relic slot in WoW Classic.)
 				local ItemLink = GetInventoryItemLink(UnitName, Slot)
 				if ItemLink then
-					local ThisItemLevel = GetDetailedItemLevelInfo(ItemLink)
+					-- 3.3.5a: GetDetailedItemLevelInfo doesn't exist (added in 7.1) and !!!ClassicAPI doesn't provide it; use GetItemInfo's item level.
+					local ThisItemLevel = GetDetailedItemLevelInfo and GetDetailedItemLevelInfo(ItemLink) or select(4, GetItemInfo(ItemLink))
 					if ThisItemLevel then
 						TotalItemLevel = TotalItemLevel + ThisItemLevel
 					end
