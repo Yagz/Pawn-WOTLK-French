@@ -93,8 +93,8 @@ Un nouveau fichier dans `Pawn.toc` exige un redémarrage complet du client, une 
 
 Le niveau est affiché seulement pour une échelle Classic, quand `PawnClassicRatingLevel` est défini et inférieur à 80. Le texte est construit par `PawnClassicRatingLevelNote(ScaleName, Long)`, dans `ClassicHawsJon.lua`. Elle renvoie `nil` hors de ces conditions. Comme le harnais ne charge pas `PawnUI.lua`, cette fonction reste testable hors jeu. `PawnUI.lua` se contente de l'appeler :
 
-- **Onglet Valeurs** (`PawnUI_ValuesTab_Refresh`) : on ajoute au texte lecture seule « Poids des scores ajustés pour le niveau %d (valeurs d'origine prévues pour le niveau 80). »
-- **Onglet Échelle** (libellé `PawnUIFrame_ScaleTypeLabel`) : « Poids des scores ajustés pour le niveau %d. » est placé devant le texte lecture seule existant.
+- **Onglet Valeurs** (« Poids » en français, `PawnUI_ValuesTab_Refresh`) : on ajoute au texte lecture seule « Poids des scores ajustés pour le niveau %d (valeurs d'origine prévues pour le niveau 80). »
+- **Onglet Échelle** (libellé `PawnUIFrame_ScaleTypeLabel`) : « Poids des scores ajustés pour le niveau %d. » remplace le texte lecture seule existant. Les deux textes ensemble ne tiennent pas sur une ligne, et une deuxième ligne chevaucherait la case `PawnUIFrame_ShowScaleCheck` (y = -155). La phrase sur la copie reste dans l'onglet Poids (décision de la revue finale, 2026-10-03).
 - Deux nouvelles clés, dans `Localization.lua` (enUS) et dans `Localization.frFR.lua`. Ce sont des textes d'interface propres à Pawn, et non des textes d'infobulle du client : la règle « données réelles » ne s'y applique pas.
   - En anglais : « Rating weights adjusted for level %d (original values are for level 80). » et « Rating weights adjusted for level %d. »
 - Si le texte déborde de la zone prévue, la mise en page est ajustée (hauteur de la FontString ou retour à la ligne). C'est un point à vérifier en jeu.
@@ -118,7 +118,7 @@ Le harnais charge déjà les vrais fichiers de l'addon. Il faut y ajouter `PawnR
 
 Avec Mairy, prêtre niveau 60, après un redémarrage complet du client :
 
-1. `/run print(GetCombatRatingBonus(11, 140))` doit afficher `10` : 140 points de crit des sorts = 10 % au niveau 60. Ça confirme la table côté client.
+1. `/run for i=1,25 do local r,b=GetCombatRating(i),GetCombatRatingBonus(i) if r>0 then print(i, r, b, b>0 and r/b) end end` affiche, pour chaque score porté, le nombre de points pour 1 %, qui doit correspondre à la table au niveau du personnage. Sur 3.3.5a, `GetCombatRatingBonus` ne prend que l'indice du score et renvoie le % du score actuel. Vérifié le 2026-10-03 : esquive (3), 12 points = 0,8696 %, soit 13,8 points pour 1 %, comme la table au niveau 60.
 2. Onglet Valeurs de « Prêtre : Ombre » : la mention du niveau 60 apparaît, et le poids de crit vaut 3,28 fois celui du fichier HawsJon.
 3. `/pawnscan inspect <objet avec score de crit>` : la valeur de l'objet augmente par rapport au relevé d'avant le changement.
 4. Optionnel : comparer la somme de contrôle de `gtCombatRatings.dbc` dans le dossier `dbc` du serveur AzerothCore avec celle de l'extrait du client. C'est le serveur qui calcule les vrais effets. Si les fichiers diffèrent, il faudra extraire la table du serveur.

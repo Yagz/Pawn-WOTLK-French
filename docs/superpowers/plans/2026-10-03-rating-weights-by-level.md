@@ -702,9 +702,9 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 - [ ] **Step 4 : vérifications en jeu (par l'utilisateur, après un redémarrage complet du client)**
 
 Avec Mairy, prêtre niveau 60 :
-1. `/run print(GetCombatRatingBonus(11, 140))` affiche `10`.
+1. `/run for i=1,25 do local r,b=GetCombatRating(i),GetCombatRatingBonus(i) if r>0 then print(i, r, b, b>0 and r/b) end end` : pour chaque score porté, le rapport points/% correspond à la table au niveau 60 (`GetCombatRatingBonus` ne prend que l'indice du score sur 3.3.5a).
 2. `/run print(PawnClassicRatingLevel)` affiche `60`.
-3. Onglet Valeurs de « Prêtre : Ombre » : la mention du niveau 60 apparaît, et le poids de crit vaut 0,61 × 45,906 / 14 ≈ 2. **Si le texte déborde sur la liste des stats**, solution de repli : n'afficher que la mention, sans le texte lecture seule (`SetText(LevelNote or PawnUIFrame_ValuesWelcomeLabel_ReadOnlyScaleText)`).
-4. Onglet Échelle : la mention est placée devant « Si vous souhaitez personnaliser cette échelle… » et tient dans la zone.
+3. Onglet Valeurs (« Poids » en français) de « Prêtre : Ombre » : la mention du niveau 60 apparaît, et le poids de crit vaut 0,61 × 45,906 / 14 ≈ 2. **Si le texte déborde sur la liste des stats**, solution de repli : n'afficher que la mention, sans le texte lecture seule (`SetText(LevelNote or PawnUIFrame_ValuesWelcomeLabel_ReadOnlyScaleText)`).
+4. Onglet Échelle : la mention du niveau s'affiche seule (décision de la revue finale) et tient sur une ligne.
 5. `/pawnscan inspect <objet avec score de crit>` puis `/reload` : la valeur de l'objet a augmenté par rapport au relevé d'avant.
 6. Optionnel : comparer le md5 de `gtCombatRatings.dbc` du serveur AzerothCore avec celui cité dans l'en-tête de `PawnRatingLevelFactors.lua`.
