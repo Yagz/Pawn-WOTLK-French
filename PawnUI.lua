@@ -366,7 +366,9 @@ function PawnUI_ScalesTab_Refresh()
 	    PawnUIFrame_ScaleNameLabel:SetText("No scale selected.")
 	end
 		if PawnScaleIsReadOnly(PawnUICurrentScale) then
-			PawnUIFrame_ScaleTypeLabel:SetText(PawnUIFrame_ScaleTypeLabel_ReadOnlyScaleText)
+			-- Fork frFR 3.3.5a: say when a Classic scale's rating weights were adjusted to the character's level.
+			local LevelNote = PawnClassicRatingLevelNote(PawnUICurrentScale)
+			PawnUIFrame_ScaleTypeLabel:SetText(LevelNote and (LevelNote .. " " .. PawnUIFrame_ScaleTypeLabel_ReadOnlyScaleText) or PawnUIFrame_ScaleTypeLabel_ReadOnlyScaleText)
 			PawnUIFrame_RenameScaleButton:Disable()
 			PawnUIFrame_DeleteScaleButton:Disable()
 		else
@@ -399,7 +401,9 @@ function PawnUI_ValuesTab_Refresh()
 	if PawnUICurrentScale == PawnLocal.NoScale then
 		PawnUIFrame_ValuesWelcomeLabel:SetText(PawnUIFrame_ValuesWelcomeLabel_NoScalesText)
 	elseif PawnScaleIsReadOnly(PawnUICurrentScale) then
-		PawnUIFrame_ValuesWelcomeLabel:SetText(PawnUIFrame_ValuesWelcomeLabel_ReadOnlyScaleText)
+		-- Fork frFR 3.3.5a: say when a Classic scale's rating weights were adjusted to the character's level.
+		local LevelNote = PawnClassicRatingLevelNote(PawnUICurrentScale, true)
+		PawnUIFrame_ValuesWelcomeLabel:SetText(LevelNote and (PawnUIFrame_ValuesWelcomeLabel_ReadOnlyScaleText .. " " .. LevelNote) or PawnUIFrame_ValuesWelcomeLabel_ReadOnlyScaleText)
 		PawnUIFrame_NormalizeValuesCheck:Disable()
 	else
 		PawnUIFrame_ValuesWelcomeLabel:SetText(PawnUIFrame_ValuesWelcomeLabel_NormalText)

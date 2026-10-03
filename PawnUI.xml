@@ -560,9 +560,9 @@
 									<Size><AbsDimension x="150" y="25" /></Size>
 								</FontString>
 
-								<FontString name="PawnUIFrame_ScaleTypeLabel" inherits="GameFontNormal" justifyH="LEFT" justifyV="MIDDLE"><!-- You can change this scale from the Values tab. -->
+								<FontString name="PawnUIFrame_ScaleTypeLabel" inherits="GameFontNormal" justifyH="LEFT" justifyV="TOP"><!-- You can change this scale from the Values tab. -->
 									<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="65" y="-130"/></Offset></Anchor></Anchors>
-									<Size><AbsDimension x="500" y="20" /></Size>
+									<Size><AbsDimension x="500" y="40" /></Size>
 								</FontString>
 								
 								<!-- Share area -->

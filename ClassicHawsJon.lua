@@ -726,6 +726,15 @@ function PawnClassicApplyRatingLevel(Level)
 	PawnResetTooltips()
 end
 
+-- Text that tells the user a Classic scale's rating weights were adjusted, or nil if they weren't.
+-- Long: the Values tab version; otherwise the Scale tab version.
+function PawnClassicRatingLevelNote(ScaleName, Long)
+	local Scale = PawnCommon and PawnCommon.Scales and PawnCommon.Scales[ScaleName]
+	if not Scale or Scale.Provider ~= ScaleProviderName or not PawnClassicRatingLevel or PawnClassicRatingLevel >= 80 then return nil end
+	local Text = Long and PawnLocal.UI.ValuesRatingLevel or PawnLocal.UI.ScaleTypeRatingLevel
+	if not Text then return nil end -- other localizations don't have this text
+	return format(Text, PawnClassicRatingLevel)
+end
 if VgerCore.IsWrath then
 	-- UnitLevel can still return the old level during PLAYER_LEVEL_UP, so use the level the event passes.
 	local LevelFrame = CreateFrame("Frame", "PawnClassicRatingLevelFrame")

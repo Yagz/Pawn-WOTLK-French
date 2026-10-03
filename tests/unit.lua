@@ -603,4 +603,18 @@ Test("niveaux : une échelle perso ou importée n'est jamais modifiée", functio
 	PawnClassicApplyRatingLevel(60)
 end)
 
+Test("niveaux : mention du niveau pour l'interface", function()
+	ClassicScales()
+	PawnClassicApplyRatingLevel(60)
+	local Long, Short = PawnClassicRatingLevelNote(ShadowPriest, true), PawnClassicRatingLevelNote(ShadowPriest)
+	Equal(Long, "Poids des scores ajustés pour le niveau 60 (valeurs d'origine prévues pour le niveau 80).", "onglet Valeurs")
+	Equal(Short, "Poids des scores ajustés pour le niveau 60.", "onglet Échelle")
+	PawnCommon.Scales["Ma copie"] = { Values = { CritRating = 1 } }
+	Equal(PawnClassicRatingLevelNote("Ma copie", true), nil, "échelle perso")
+	PawnCommon.Scales["Ma copie"] = nil
+	Equal(PawnClassicRatingLevelNote("Échelle inconnue", true), nil, "échelle inconnue")
+	PawnClassicApplyRatingLevel(80)
+	Equal(PawnClassicRatingLevelNote(ShadowPriest, true), nil, "niveau 80")
+	PawnClassicApplyRatingLevel(60)
+end)
 return Tests
