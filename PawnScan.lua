@@ -116,6 +116,14 @@ function PawnScan.CompareWithItemStats(Link, Stats, Example)
 		local Stat = PawnScan.ItemModToStat[Key]
 		if Stat then Expected[Stat] = (Expected[Stat] or 0) + Value end
 	end
+	-- GetItemStats also counts the general rating under each restricted key (item 31432: crit 7 and spell crit 6 give
+	-- CRIT 7, CRIT_MELEE 7, CRIT_RANGED 7, CRIT_SPELL 13), while the tooltip shows them apart.
+	for Stat, General in pairs(PawnRestrictedRatingStats) do
+		if Expected[Stat] and Expected[General] then
+			Expected[Stat] = Expected[Stat] - Expected[General]
+			if Expected[Stat] <= 0 then Expected[Stat] = nil end
+		end
+	end
 	for Stat, Value in pairs(Expected) do
 		local Got = Stats[Stat] or 0
 		if math.abs(Got - Value) > 0.001 then

@@ -10,7 +10,7 @@ Pawn 2.8.11 as backported to WoW 3.3.5a by MarkosF (https://github.com/MarkosF/P
 
 All commands run from the addon root.
 
-- `luajit tests/run.lua` — unit tests plus every corpus file; exit code 1 on failure. Currently 2305 passing, 0 failures, 0 todo.
+- `luajit tests/run.lua` — unit tests plus every corpus file; exit code 1 on failure. Currently 2306 passing, 0 failures, 0 todo.
 - `luajit tests/run.lua tests/corpus/X.txt` — one corpus file.
 - `luajit tests/run.lua --propose tests/corpus/X.txt` — print what Pawn currently reads for each `todo` line.
 - `luajit tests/gen_corpus.lua` — regenerate the corpus from `tests/data/` (adds new texts only).
@@ -22,7 +22,7 @@ All commands run from the addon root.
 - End of session: `/cloture-session` (`.claude/skills/cloture-session/`) records progress in memory, lists what's left, checks for corrections and proposes new tooling.
 - `uv run --with mpyq python tests/extract_ratings.py "../../../Data"` — regenerate `PawnRatingLevelFactors.lua` (gtCombatRatings.dbc + CR_* constants from the frFR MPQs); same data gives the same file.
 - `uv run --with mpyq python tests/extract_enchant_stats.py "../../../Data"` — regenerate `tests/data/enchant_stats.frFR.txt` (stat effects of SpellItemEnchantment.dbc: ID, ITEM_MOD_* stat number, amount, text).
-- `GetItemStats` exists in this client. `mismatch` entries are expected noise in gems/enchants modes (spell-, melee- and ranged-only `GetItemStats` keys map to their own restricted stats, so they no longer collide); the goal is "every mismatch explained", not an empty list.
+- `GetItemStats` exists in this client. `mismatch` entries are expected noise in gems/enchants modes. `GetItemStats` also counts the general rating under each restricted key (31432: CRIT 7, CRIT_MELEE 7, CRIT_RANGED 7, CRIT_SPELL 13 for crit 7 + spell crit 6); `PawnScan.CompareWithItemStats` subtracts it; the goal is "every mismatch explained", not an empty list.
 
 ## Architecture
 

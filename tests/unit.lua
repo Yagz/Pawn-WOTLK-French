@@ -242,6 +242,26 @@ Test("scan : écart avec GetItemStats", function()
 	Equal(Mismatch, "jeu 15, Pawn 0")
 end)
 
+-- In game (scan of 2026-10-04, item 31432: crit 7 and spell crit 6), GetItemStats also counts the general rating under each
+-- restricted key: CRIT 7, CRIT_MELEE 7, CRIT_RANGED 7, CRIT_SPELL 13.  That is not a reading error.
+Test("scan : GetItemStats compte aussi le score général dans les clés réservées", function()
+	ResetScan()
+	local Equip = ITEM_SPELL_TRIGGER_ONEQUIP .. " "
+	WowApiItemTooltips["item:31432"] = { "Bottes", INVTYPE_FEET, Equip .. format(ITEM_MOD_CRIT_RATING, 7), Equip .. format(ITEM_MOD_CRIT_SPELL_RATING, 6) }
+	GetItemStats = function() return { ITEM_MOD_CRIT_RATING_SHORT = 7, ITEM_MOD_CRIT_MELEE_RATING_SHORT = 7,
+		ITEM_MOD_CRIT_RANGED_RATING_SHORT = 7, ITEM_MOD_CRIT_SPELL_RATING_SHORT = 13 } end
+	PawnScan.RecordItem("item:31432", 31432)
+	GetItemStats = nil
+	Equal(next(PawnScanResults.mismatch), nil, "écart")
+	-- A real difference on a restricted key is still reported.
+	ResetScan()
+	WowApiItemTooltips["item:31433"] = { "Bottes", INVTYPE_FEET, Equip .. format(ITEM_MOD_CRIT_RATING, 7) }
+	GetItemStats = function() return { ITEM_MOD_CRIT_RATING_SHORT = 7, ITEM_MOD_CRIT_SPELL_RATING_SHORT = 13 } end
+	PawnScan.RecordItem("item:31433", 31433)
+	GetItemStats = nil
+	Equal(PawnScanResults.mismatch["31433 SpellCritRating"], "jeu 6, Pawn 0", "écart réel")
+end)
+
 Test("scan : mode gemmes", function()
 	ResetScan()
 	WowApiItems[999] = { "Plastron", "INVTYPE_CHEST" }
