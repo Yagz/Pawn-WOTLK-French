@@ -553,6 +553,78 @@ local RatingStats = { "HitRating", "CritRating", "HasteRating", "ExpertiseRating
 local RestrictedRatingStats = { "SpellHitRating", "SpellCritRating", "SpellHasteRating", "MeleeHitRating", "MeleeCritRating",
 	"MeleeHasteRating", "RangedHitRating", "RangedCritRating", "RangedHasteRating" }
 
+------------------------------------------------------------
+-- Gems (spec 2026-10-04).
+------------------------------------------------------------
+
+-- The gem tables as GemsWrath.lua defines them.  unit.lua is loaded before any test creates the Classic scales, so these are
+-- still the original lists (the gem quality by character level replaces them later).  They reach GemsWrath.lua's local tables.
+local WrathGemLevels, WrathMetaGemLevels = PawnGemQualityLevels, PawnMetaGemQualityLevels
+local function GemTableFor(Levels, ItemLevel)
+	for _, Entry in ipairs(Levels) do if Entry[1] == ItemLevel then return Entry[2] end end
+end
+local Gems70Rare, Meta70Rare = GemTableFor(WrathGemLevels, 100), GemTableFor(WrathMetaGemLevels, 0)
+
+-- ITEM_MOD_* numbers of the stat effects of the GemsWrath.lua gems (tests/data/gems.frFR.txt), each attested by the text of a
+-- one-stat gem enchantment: 3 "+6 Agilité" (2693), 4 "+6 Force" (2691), 5 "+6 Intelligence" (2694), 6 "+6 Esprit" (2699),
+-- 7 "+9 Endurance" (2698), 12 "+6 au score de défense" (2696), 13 "+8 au score d'esquive" (2730), 14 "+8 au score de parade"
+-- (2754), 31 "+6 au score de toucher" (2697), 32 "+6 au score de coup critique" (2695), 35 "+8 au score de résilience" (2759),
+-- 36 "+8 au score de hâte" (3270), 37 "+12 au score d'expertise" (3379), 38 "+16 à la puissance d'attaque" (2729),
+-- 43 "+3 points de mana toutes les 5 sec." (2701), 44 "+12 au score de pénétration d'armure" (3378),
+-- 45 "+7 à la puissance des sorts" (2690).
+local GemStatNumbers = { [3] = "Agility", [4] = "Strength", [5] = "Intellect", [6] = "Spirit", [7] = "Stamina",
+	[12] = "DefenseRating", [13] = "DodgeRating", [14] = "ParryRating", [31] = "HitRating", [32] = "CritRating",
+	[35] = "ResilienceRating", [36] = "HasteRating", [37] = "ExpertiseRating", [38] = "Ap", [43] = "Mp5",
+	[44] = "ArmorPenetration", [45] = "SpellPower" }
+
+Test("gemmes : chaque gemme de GemsWrath.lua a les stats et la couleur du client", function()
+	assert(Gems70Rare and Meta70Rare, "tables de BC introuvables dans les listes d'origine")
+	local Client = {}
+	for Line in io.lines("tests/data/gems.frFR.txt") do
+		local ID, Color, Effects = Line:match("^(%d+)\t(%d+)\t([%d:,]*)\t")
+		if ID then
+			ID = tonumber(ID)
+			Client[ID] = Client[ID] or {}
+			table.insert(Client[ID], { Color = tonumber(Color), Effects = Effects })
+		end
+	end
+	local Failures, Checked = {}, 0
+	local function Check(Levels, Meta)
+		for _, Entry in ipairs(Levels) do
+			for _, Gem in ipairs(Entry[2]) do
+				local What = "gemme " .. Gem.ID
+				local Lines = Client[Gem.ID]
+				assert(Lines, What .. " absente de gems.frFR.txt")
+				Equal(#Lines, 1, What .. " : enchantements")
+				local Expected = {}
+				for Number, Amount in Lines[1].Effects:gmatch("(%d+):(%d+)") do
+					local Stat = GemStatNumbers[tonumber(Number)]
+					assert(Stat, What .. " : numéro de stat " .. Number .. " inconnu")
+					Expected[Stat] = (Expected[Stat] or 0) + tonumber(Amount)
+				end
+				local Got = {}
+				for Stat, Amount in pairs(Gem.Stats) do
+					-- Spell penetration is a spell effect (type 3) in SpellItemEnchantment.dbc, not a stat effect.
+					if Stat ~= "SpellPenetration" then Got[Stat] = Amount end
+				end
+				local GotText, ExpectedText = Corpus.FormatStats(Got), Corpus.FormatStats(Expected)
+				if GotText ~= ExpectedText then
+					table.insert(Failures, What .. " : stats " .. GotText .. " au lieu de " .. ExpectedText)
+				end
+				local Color = (Gem.R and 2 or 0) + (Gem.Y and 4 or 0) + (Gem.B and 8 or 0)
+				if not Meta and Color ~= Lines[1].Color then
+					table.insert(Failures, What .. " : couleur " .. Color .. " au lieu de " .. Lines[1].Color)
+				end
+				Checked = Checked + 1
+			end
+		end
+	end
+	Check(WrathGemLevels, false)
+	Check(WrathMetaGemLevels, true)
+	assert(#Failures == 0, table.concat(Failures, " ; "))
+	assert(Checked > 360, "gemmes vérifiées : " .. Checked)
+end)
+
 Test("niveaux : table des scores conforme au DBC", function()
 	local P = PawnRatingPointsPerPercent
 	for _, Stat in ipairs(RatingStats) do Equal(#P[Stat], 80, "niveaux de " .. Stat) end

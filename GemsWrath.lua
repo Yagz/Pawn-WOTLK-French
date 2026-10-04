@@ -117,7 +117,7 @@ local PawnGemData70Uncommon =
 -- Purple gems
 ------------------------------------------------------------
 
-{ ID = 23100, R = true, B = true, Stats = { Strength = 3, Stamina = 4 } }, -- Sovereign Shadow Draenite
+{ ID = 23111, R = true, B = true, Stats = { Strength = 3, Stamina = 4 } }, -- Sovereign Shadow Draenite (fork frFR 3.3.5a: was 23100, the orange gem's ID; SpellItemEnchantment.dbc 2711)
 { ID = 23108, R = true, B = true, Stats = { SpellPower = 4, Stamina = 4 } }, -- Glowing Shadow Draenite
 { ID = 23109, R = true, B = true, Stats = { SpellPower = 4, Mp5 = 2 } }, -- Royal Shadow Draenite
 { ID = 23110, R = true, B = true, Stats = { Agility = 3, Stamina = 4 } }, -- Shifting Shadow Draenite
@@ -142,7 +142,7 @@ local PawnGemData70Rare =
 { ID = 24027, R = true, Stats = { Strength = 8 } }, -- Bold Living Ruby
 { ID = 24028, R = true, Stats = { Agility = 8 } }, -- Delicate Living Ruby
 { ID = 24029, R = true, Stats = { SpellPower = 9 } }, -- Teardrop Living Ruby
-{ ID = 24030, R = true, Stats = { SpellDamage = 9 } }, -- Runed Living Ruby
+{ ID = 24030, R = true, Stats = { SpellPower = 9 } }, -- Runed Living Ruby (fork frFR 3.3.5a: was SpellDamage; SpellItemEnchantment.dbc: spell power, stat 45)
 { ID = 24031, R = true, Stats = { Ap = 16 } }, -- Bright Living Ruby
 { ID = 24032, R = true, Stats = { DodgeRating = 8 } }, -- Subtle Living Ruby
 { ID = 24036, R = true, Stats = { ParryRating = 8 } }, -- Flashing Living Ruby
@@ -227,7 +227,7 @@ local PawnGemData70Epic =
 { ID = 32193, R = true, Stats = { Strength = 10 } }, -- Bold Crimson Spinel
 { ID = 32194, R = true, Stats = { Agility = 10 } }, -- Delicate Crimson Spinel
 { ID = 32195, R = true, Stats = { SpellPower = 12 } }, -- Teardrop Crimson Spinel
-{ ID = 32196, R = true, Stats = { SpellDamage = 12 } }, -- Runed Crimson Spinel
+{ ID = 32196, R = true, Stats = { SpellPower = 12 } }, -- Runed Crimson Spinel (fork frFR 3.3.5a: was SpellDamage; SpellItemEnchantment.dbc: spell power, stat 45)
 { ID = 32197, R = true, Stats = { Ap = 20 } }, -- Bright Crimson Spinel
 { ID = 32198, R = true, Stats = { DodgeRating = 10 } }, -- Subtle Crimson Spinel
 { ID = 32199, R = true, Stats = { ParryRating = 10 } }, -- Flashing Crimson Spinel
