@@ -2692,6 +2692,19 @@ end
 -- Fork frFR 3.3.5a: weight of Stat in a scale.  A restricted rating (PawnRestrictedRatingStats) takes the weight the
 -- Classic scales give it (PawnClassicRestrictedRatingWeights, ClassicHawsJon.lua), or else the weight of its general rating;
 -- if the general rating is ignored, so is the restricted one.
+-- Fork frFR 3.3.5a: class token by class ID (ChrClasses.dbc: field 0 = ID, field 55 = token).
+PawnClassTokens = { [1] = "WARRIOR", [2] = "PALADIN", [3] = "HUNTER", [4] = "ROGUE", [5] = "PRIEST", [6] = "DEATHKNIGHT",
+	[7] = "SHAMAN", [8] = "MAGE", [9] = "WARLOCK", [11] = "DRUID" }
+
+-- Fork frFR 3.3.5a: the class token a scale is for: its ClassID (Classic scales), else the character's class (the user's
+-- own and imported scales).
+function PawnGetScaleClassToken(ScaleName)
+	local Scale = PawnCommon.Scales[ScaleName]
+	if Scale and Scale.ClassID then return PawnClassTokens[Scale.ClassID] end
+	local _, Token = UnitClass("player")
+	return Token
+end
+
 -- Fork frFR 3.3.5a: reads the class list of an ITEM_CLASSES_ALLOWED line ("Classes : Druide") and adds UnusableBy<TOKEN> = 1
 -- for every class it doesn't list; PawnGetStatWeight makes the item unusable for a scale of such a class.  The client gives
 -- no list separator, so each class name it knows (LOCALIZED_CLASS_NAMES_MALE / _FEMALE, filled by FrameXML) is removed from
@@ -2721,6 +2734,12 @@ function PawnAddClassRestriction(Stats, List, DebugMessages)
 end
 
 function PawnGetStatWeight(ScaleName, ScaleValues, Stat)
+	-- Fork frFR 3.3.5a: an item restricted to other classes (PawnAddClassRestriction) is unusable for a scale of this class.
+	local Token = strmatch(Stat, "^UnusableBy(%u+)$")
+	if Token then
+		if Token == PawnGetScaleClassToken(ScaleName) then return PawnIgnoreStatValue end
+		return nil
+	end
 	local General = PawnRestrictedRatingStats[Stat]
 	if not General then return ScaleValues[Stat] end
 	local GeneralValue = ScaleValues[General]

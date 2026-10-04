@@ -10,7 +10,7 @@ WOW_PROJECT_ID = WOW_PROJECT_WRATH_CLASSIC
 LE_EXPANSION_CLASSIC, LE_EXPANSION_BURNING_CRUSADE, LE_EXPANSION_WRATH_OF_THE_LICH_KING = 0, 1, 2
 LE_EXPANSION_LEVEL_CURRENT = 2
 
-strfind, strsub, strlen, strlower, strupper = string.find, string.sub, string.len, string.lower, string.upper
+strfind, strsub, strlen, strlower, strupper, strmatch = string.find, string.sub, string.len, string.lower, string.upper, string.match
 strbyte, strchar, strrep, format = string.byte, string.char, string.rep, string.format
 gsub, gmatch, tinsert, tremove = string.gsub, string.gmatch, table.insert, table.remove
 floor, ceil, abs, min, max = math.floor, math.ceil, math.abs, math.min, math.max

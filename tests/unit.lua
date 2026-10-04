@@ -1097,7 +1097,7 @@ Test("gemmes : les meilleurs objets notés avant les châsses supposées sont ou
 	PawnClassicRatingLevel = nil -- as on login
 	PawnClassicApplyRatingLevel(60)
 	Equal(Options.BestItems, nil, "liste notée avec la version 1 oubliée")
-	Equal(Options.RatingWeightsVersion, 2, "version mémorisée")
+	assert(Options.RatingWeightsVersion > 1, "version mémorisée : " .. tostring(Options.RatingWeightsVersion))
 end)
 
 Test("gemmes : les meilleurs objets d'une échelle perso sont oubliés quand les gemmes supposées changent", function()
@@ -1130,5 +1130,74 @@ Test("gemmes : les meilleurs objets d'une échelle perso sont oubliés quand les
 	OnEvent(Frame, "PLAYER_LEVEL_UP", 60)
 	PawnCommon.Scales["Ma copie"] = nil
 	PawnRecalculateScaleTotal("Ma copie")
+end)
+
+------------------------------------------------------------
+-- Usable items (spec 2026-10-04).  They need the Classic scales, so they stay last.
+------------------------------------------------------------
+
+local Feral, Fury = '"Classic":DRUID2', '"Classic":WARRIOR2'
+local Rogues = { '"Classic":ROGUE1', '"Classic":ROGUE2', '"Classic":ROGUE3' }
+
+-- Tooltips built from client constants, with the numbers of the items inspected in game on 2026-10-04.
+local function Plus(Format, Number) return format(Format, 43, Number) end -- %c43 = "+"
+local function DruidStaff() -- 51432, "Classes : Druide"
+	return (TooltipStats({ "Bâton de test", { INVTYPE_2HWEAPON, SubclassName(2, 10) },
+		{ format(DAMAGE_TEMPLATE, 521, 782), SPEED .. " 2.00" }, Plus(ITEM_MOD_AGILITY, 167), Plus(ITEM_MOD_STAMINA, 275),
+		format(ITEM_CLASSES_ALLOWED, Classes.DRUID.Male) }))
+end
+local function OffHandDagger() -- 51528
+	return (TooltipStats({ "Dague de test", { INVTYPE_WEAPONOFFHAND, SubclassName(2, 15) },
+		{ format(DAMAGE_TEMPLATE, 315, 586), SPEED .. " 1.80" }, Plus(ITEM_MOD_STAMINA, 118) }))
+end
+local function UsableValue(Item, ScaleName) return (PawnGetItemValue(Item, 264, nil, ScaleName, false, true)) end
+
+Test("objets utilisables : un objet réservé au druide vaut 0 pour les autres classes", function()
+	ClassicScales()
+	for Token, Class in pairs(Classes) do Equal(PawnClassTokens[Class.ID], Token, "jeton de la classe " .. Class.ID) end
+	local Staff = DruidStaff()
+	Equal(Staff.UnusableByPRIEST, 1, "restriction lue")
+	Equal(UsableValue(Staff, ShadowPriest), 0, "Prêtre : Ombre")
+	Equal(UsableValue(Staff, Fury), 0, "guerrier Fureur")
+	assert(UsableValue(Staff, Feral) > 0, "druide farouche : " .. tostring(UsableValue(Staff, Feral)))
+end)
+
+Test("objets utilisables : une échelle perso suit la classe du personnage", function()
+	ClassicScales()
+	PawnCommon.Scales["Ma copie"] = { Values = { Agility = 1, Stamina = 1 } }
+	local Staff = DruidStaff()
+	local AsPriest = UsableValue(Staff, "Ma copie") -- tests/wowapi.lua: the character is a priest
+	local Original = UnitClass
+	UnitClass = function() return Classes.DRUID.Male, "DRUID", Classes.DRUID.ID end
+	local AsDruid = UsableValue(Staff, "Ma copie")
+	UnitClass = Original
+	PawnCommon.Scales["Ma copie"] = nil
+	Equal(AsPriest, 0, "personnage prêtre")
+	Equal(AsDruid, 167 + 275, "personnage druide")
+end)
+
+Test("objets utilisables : une arme de main gauche compte pour les voleurs, pas pour les tanks", function()
+	ClassicScales()
+	local Dagger = OffHandDagger()
+	for _, Rogue in ipairs(Rogues) do
+		Equal(PawnCommon.Scales[Rogue].Values.IsOffHand, nil, Rogue .. " : main gauche")
+		assert(UsableValue(Dagger, Rogue) > 0, Rogue .. " : " .. tostring(UsableValue(Dagger, Rogue)))
+	end
+	Equal(PawnCommon.Scales['"Classic":WARRIOR3'].Values.IsOffHand, PawnIgnoreStatValue, "guerrier Protection")
+	Equal(PawnCommon.Scales['"Classic":PALADIN2'].Values.IsOffHand, PawnIgnoreStatValue, "paladin Protection")
+end)
+
+Test("objets utilisables : les meilleurs objets notés avant cette version sont oubliés une fois", function()
+	ClassicScales()
+	PawnClassicApplyRatingLevel(60)
+	local Scale = PawnCommon.Scales[ShadowPriest]
+	Scale.PerCharacterOptions = Scale.PerCharacterOptions or {}
+	Scale.PerCharacterOptions["Mairy-Test"] = Scale.PerCharacterOptions["Mairy-Test"] or {}
+	local Options = Scale.PerCharacterOptions["Mairy-Test"]
+	Options.BestItems, Options.RatingWeightsVersion = { Stub = true }, 2
+	PawnClassicRatingLevel = nil -- as on login
+	PawnClassicApplyRatingLevel(60)
+	Equal(Options.BestItems, nil, "liste notée avec la version 2 oubliée")
+	Equal(Options.RatingWeightsVersion, 3, "version mémorisée")
 end)
 return Tests

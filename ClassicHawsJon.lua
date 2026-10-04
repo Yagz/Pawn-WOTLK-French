@@ -518,7 +518,7 @@ function PawnClassicScaleProvider_AddScales()
 			ScaleProviderName,
 			4, -- Rogue
 			1, -- Assassination
-			{ IsOffHand=PawnIgnoreStatValue, IsFrill=PawnIgnoreStatValue, IsShield=PawnIgnoreStatValue,
+			{ IsFrill=PawnIgnoreStatValue, IsShield=PawnIgnoreStatValue, -- fork frFR 3.3.5a: was also IsOffHand; rogues dual-wield
 			Strength=0.5, Agility=1, Dps=0, MeleeDps=3, RangedDps=0, Ap=0.45, Rap=0, FeralAp=0, HitRating=0.92, ExpertiseRating=0.84, CritRating=0.85, HasteRating=0.81, ArmorPenetration=1, MeleeMinDamage=1.25, MeleeMaxDamage=1.25,
 			Intellect=0, Mana=0, Spirit=0.05, Mp5=0, FireSpellDamage=0, FrostSpellDamage=0, ArcaneSpellDamage=0, ShadowSpellDamage=0, NatureSpellDamage=0, HolySpellDamage=0, SpellPower=0, SpellPenetration=0,
 			Stamina=0.3, Health=0.03, Hp5=1, Armor=0.005, DefenseRating=0.05, DodgeRating=0.05, ParryRating=0.12, BlockRating=0, BlockValue=0, ResilienceRating=0.2, AllResist=0.2, FireResist=0.04, FrostResist=0.04, ArcaneResist=0.04, ShadowResist=0.04, NatureResist=0.04,
@@ -529,7 +529,7 @@ function PawnClassicScaleProvider_AddScales()
 			ScaleProviderName,
 			4, -- Rogue
 			2, -- Combat
-			{ IsOffHand=PawnIgnoreStatValue, IsFrill=PawnIgnoreStatValue, IsShield=PawnIgnoreStatValue,
+			{ IsFrill=PawnIgnoreStatValue, IsShield=PawnIgnoreStatValue, -- fork frFR 3.3.5a: was also IsOffHand; rogues dual-wield
 			Strength=0.5, Agility=1, Dps=0, MeleeDps=3, RangedDps=0, Ap=0.45, Rap=0, FeralAp=0, HitRating=0.92, ExpertiseRating=0.84, CritRating=0.97, HasteRating=0.7, ArmorPenetration=1, MeleeMinDamage=0.875, MeleeMaxDamage=0.875,
 			Intellect=0, Mana=0, Spirit=0.05, Mp5=0, FireSpellDamage=0, FrostSpellDamage=0, ArcaneSpellDamage=0, ShadowSpellDamage=0, NatureSpellDamage=0, HolySpellDamage=0, SpellPower=0, SpellPenetration=0,
 			Stamina=0.3, Health=0.03, Hp5=1, Armor=0.005, DefenseRating=0.05, DodgeRating=0.05, ParryRating=0.12, BlockRating=0, BlockValue=0, ResilienceRating=0.2, AllResist=0.2, FireResist=0.04, FrostResist=0.04, ArcaneResist=0.04, ShadowResist=0.04, NatureResist=0.04,
@@ -540,7 +540,7 @@ function PawnClassicScaleProvider_AddScales()
 			ScaleProviderName,
 			4, -- Rogue
 			3, -- Subtlety
-			{ IsOffHand=PawnIgnoreStatValue, IsFrill=PawnIgnoreStatValue, IsShield=PawnIgnoreStatValue,
+			{ IsFrill=PawnIgnoreStatValue, IsShield=PawnIgnoreStatValue, -- fork frFR 3.3.5a: was also IsOffHand; rogues dual-wield
 			Strength=0.5, Agility=1, Dps=0, MeleeDps=3, RangedDps=0, Ap=0.45, Rap=0, FeralAp=0, HitRating=0.92, ExpertiseRating=0.84, CritRating=0.85, HasteRating=0.81, ArmorPenetration=1, MeleeMinDamage=1.25, MeleeMaxDamage=1.25,
 			Intellect=0, Mana=0, Spirit=0.05, Mp5=0, FireSpellDamage=0, FrostSpellDamage=0, ArcaneSpellDamage=0, ShadowSpellDamage=0, NatureSpellDamage=0, HolySpellDamage=0, SpellPower=0, SpellPenetration=0,
 			Stamina=0.3, Health=0.03, Hp5=1, Armor=0.005, DefenseRating=0.05, DodgeRating=0.05, ParryRating=0.12, BlockRating=0, BlockValue=0, ResilienceRating=0.2, AllResist=0.2, FireResist=0.04, FrostResist=0.04, ArcaneResist=0.04, ShadowResist=0.04, NatureResist=0.04,
@@ -708,8 +708,8 @@ PawnClassicRestrictedRatingWeights = {}
 local OriginalRestrictedWeights = {}
 
 -- Bump when the weights change in a way that makes the best items saved per character wrong (1: restricted ratings;
--- 2: sockets valued with the gems of the character's expansion).
-local RatingWeightsVersion = 2
+-- 2: sockets valued with the gems of the character's expansion; 3: rogue off-hand weapons and class-restricted items).
+local RatingWeightsVersion = 3
 
 -- Personal and imported scales value sockets with the same assumed gems (GemsWrath.lua) as the Classic scales.  Forget this
 -- character's best items on those scales when the gems change (Always), or once for lists saved before RatingWeightsVersion.
