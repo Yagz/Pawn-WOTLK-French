@@ -40,6 +40,16 @@ STATS = [
     ("ParryRating", ["CR_PARRY"]),
     ("BlockRating", ["CR_BLOCK"]),
     ("ResilienceRating", ["CR_CRIT_TAKEN_MELEE"]),
+    # Ratings that only apply to spells, melee or ranged attacks (PawnRestrictedRatingStats in Pawn.lua).
+    ("SpellHitRating", ["CR_HIT_SPELL"]),
+    ("SpellCritRating", ["CR_CRIT_SPELL"]),
+    ("SpellHasteRating", ["CR_HASTE_SPELL"]),
+    ("MeleeHitRating", ["CR_HIT_MELEE"]),
+    ("MeleeCritRating", ["CR_CRIT_MELEE"]),
+    ("MeleeHasteRating", ["CR_HASTE_MELEE"]),
+    ("RangedHitRating", ["CR_HIT_RANGED"]),
+    ("RangedCritRating", ["CR_CRIT_RANGED"]),
+    ("RangedHasteRating", ["CR_HASTE_RANGED"]),
 ]
 
 

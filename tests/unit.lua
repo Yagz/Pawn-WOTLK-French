@@ -472,9 +472,13 @@ end)
 local RatingStats = { "HitRating", "CritRating", "HasteRating", "ExpertiseRating", "ArmorPenetration",
 	"DefenseRating", "DodgeRating", "ParryRating", "BlockRating", "ResilienceRating" }
 
+local RestrictedRatingStats = { "SpellHitRating", "SpellCritRating", "SpellHasteRating", "MeleeHitRating", "MeleeCritRating",
+	"MeleeHasteRating", "RangedHitRating", "RangedCritRating", "RangedHasteRating" }
+
 Test("niveaux : table des scores conforme au DBC", function()
 	local P = PawnRatingPointsPerPercent
 	for _, Stat in ipairs(RatingStats) do Equal(#P[Stat], 80, "niveaux de " .. Stat) end
+	for _, Stat in ipairs(RestrictedRatingStats) do Equal(P[Stat] and #P[Stat], 80, "niveaux de " .. Stat) end
 	Equal(P.CritRating[60], 14, "crit 60")
 	Equal(P.CritRating[80], 45.906, "crit 80")
 	Equal(P.HitRating[70], 15.7692, "toucher 70")
@@ -482,9 +486,14 @@ Test("niveaux : table des scores conforme au DBC", function()
 	Equal(P.ExpertiseRating[60], 2.5, "expertise 60")
 	Equal(P.ResilienceRating[60], 28.75, "résilience 60")
 	Equal(P.ResilienceRating[80], 94.2712, "résilience 80")
+	-- CR_HIT_SPELL differs from CR_HIT_MELEE in value, not in how it scales with level.
+	Equal(P.SpellHitRating[60], 8, "toucher des sorts 60")
+	Equal(P.SpellHitRating[80], 26.232, "toucher des sorts 80")
+	Equal(P.SpellCritRating[80], 45.906, "crit des sorts 80")
+	Equal(P.RangedHasteRating[80], 32.79, "hâte à distance 80")
 	local Count = 0
 	for _ in pairs(P) do Count = Count + 1 end
-	Equal(Count, #RatingStats, "nombre de stats")
+	Equal(Count, #RatingStats + #RestrictedRatingStats, "nombre de stats")
 end)
 
 Test("niveaux : la table générée cite sa source", function()
