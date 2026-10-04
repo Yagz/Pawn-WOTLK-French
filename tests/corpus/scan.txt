@@ -154,7 +154,7 @@ Utiliser : Augmente l'Endurance de 10 et réduit les dégâts physiques de 5 pen
 Utiliser : Prononce l'Anathème. => unhandled
 Chances quand vous touchez : Blesse la cible et lui inflige 75 points de dégâts. => unhandled
 Chances quand vous touchez : Projette une boule ardente qui inflige 155 à 197 points de dégâts de Feu et 24 points de dégâts supplémentaires en 6 sec. => unhandled
-Équipé : Augmente votre score de coup critique à distance de 14. => CritRating=14
+Équipé : Augmente votre score de coup critique à distance de 14. => RangedCritRating=14
 Utiliser : Rend 450 à 750 points de vie à votre familier. (10 min de recharge) => unhandled
 Équipé : Augmente de 81 la puissance d'attaque lorsque vous combattez des morts-vivants. Permet aussi l'acquisition de Pierres du Fléau pour l'Aube d'argent. => unhandled
 Utiliser : Augmente l'Armure de 500, et rend 35 points de vie chaque fois que vous subissez des dégâts infligés par des attaques à distance ou en mêlée pendant 20 sec. (5 min de recharge) => unhandled

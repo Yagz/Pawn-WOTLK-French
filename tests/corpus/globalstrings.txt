@@ -10,17 +10,17 @@
 Équipé : Augmente la puissance d'attaque de 40. => Ap=40
 Équipé : Augmente la puissance d'attaque à distance de 40. => Rap=40
 Équipé : Augmente de 20 le score de coup critique. => CritRating=20
-Équipé : Augmente de 20 le score de coup critique en mêlée. => CritRating=20
-Équipé : Augmente de 20 le score de coup critique à distance. => CritRating=20
-Équipé : Augmente de 20 le score de coup critique des sorts. => CritRating=20
+Équipé : Augmente de 20 le score de coup critique en mêlée. => MeleeCritRating=20
+Équipé : Augmente de 20 le score de coup critique à distance. => RangedCritRating=20
+Équipé : Augmente de 20 le score de coup critique des sorts. => SpellCritRating=20
 Équipé : Augmente de 20 le score de toucher. => HitRating=20
-Équipé : Augmente de 20 le score de toucher en mêlée. => HitRating=20
-Équipé : Augmente de 20 le score de toucher à distance. => HitRating=20
-Équipé : Augmente de 20 le score de toucher des sorts. => HitRating=20
+Équipé : Augmente de 20 le score de toucher en mêlée. => MeleeHitRating=20
+Équipé : Augmente de 20 le score de toucher à distance. => RangedHitRating=20
+Équipé : Augmente de 20 le score de toucher des sorts. => SpellHitRating=20
 Équipé : Augmente de 20 le score de hâte. => HasteRating=20
-Équipé : Augmente de 20 le score de hâte en mêlée. => HasteRating=20
-Équipé : Augmente de 20 le score de hâte à distance. => HasteRating=20
-Équipé : Augmente de 20 le score de hâte des sorts. => HasteRating=20
+Équipé : Augmente de 20 le score de hâte en mêlée. => MeleeHasteRating=20
+Équipé : Augmente de 20 le score de hâte à distance. => RangedHasteRating=20
+Équipé : Augmente de 20 le score de hâte des sorts. => SpellHasteRating=20
 Équipé : Augmente votre score d'expertise de 20. => ExpertiseRating=20
 Équipé : Augmente de 20 votre score de pénétration d'armure. => ArmorPenetration=20
 Équipé : Augmente la puissance des sorts de 30. => SpellPower=30

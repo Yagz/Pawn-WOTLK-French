@@ -156,7 +156,7 @@
 Équipé : Augmente la résistance aux Arcanes de 12. => ArcaneResist=12
 Équipé : Augmente de 12 la puissance des sorts Chaîne d'éclairs et Eclair. => unhandled
 Équipé : Augmente la vitesse d'attaque en mêlée de 12%. => unhandled
-Équipé : Augmente le score de coup critique des sorts de 12. => CritRating=12
+Équipé : Augmente le score de coup critique des sorts de 12. => SpellCritRating=12
 Équipé : Augmente la puissance du sort Lumière sacrée de 12. => unhandled
 Équipé : Augmente le score de coup critique de 12. => CritRating=12
 Équipé : Augmente les vitesses d'attaque et d'incantation du lanceur de sorts de 12%. => unhandled

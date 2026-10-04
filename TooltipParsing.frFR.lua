@@ -232,17 +232,17 @@ PawnRegexes =
 	{FrEquip("ITEM_MOD_ATTACK_POWER"), "Ap"}, -- GlobalStrings
 	{FrEquip("ITEM_MOD_RANGED_ATTACK_POWER"), "Rap"}, -- GlobalStrings
 	{FrEquip("ITEM_MOD_CRIT_RATING"), "CritRating"}, -- GlobalStrings
-	{FrEquip("ITEM_MOD_CRIT_MELEE_RATING"), "CritRating"}, -- GlobalStrings
-	{FrEquip("ITEM_MOD_CRIT_RANGED_RATING"), "CritRating"}, -- GlobalStrings
-	{FrEquip("ITEM_MOD_CRIT_SPELL_RATING"), "CritRating"}, -- GlobalStrings (ratings are unified in 3.3.5)
+	{FrEquip("ITEM_MOD_CRIT_MELEE_RATING"), "MeleeCritRating"}, -- GlobalStrings
+	{FrEquip("ITEM_MOD_CRIT_RANGED_RATING"), "RangedCritRating"}, -- GlobalStrings
+	{FrEquip("ITEM_MOD_CRIT_SPELL_RATING"), "SpellCritRating"}, -- GlobalStrings (a separate rating server-side: PawnRestrictedRatingStats)
 	{FrEquip("ITEM_MOD_HIT_RATING"), "HitRating"}, -- GlobalStrings
-	{FrEquip("ITEM_MOD_HIT_MELEE_RATING"), "HitRating"}, -- GlobalStrings
-	{FrEquip("ITEM_MOD_HIT_RANGED_RATING"), "HitRating"}, -- GlobalStrings
-	{FrEquip("ITEM_MOD_HIT_SPELL_RATING"), "HitRating"}, -- GlobalStrings
+	{FrEquip("ITEM_MOD_HIT_MELEE_RATING"), "MeleeHitRating"}, -- GlobalStrings
+	{FrEquip("ITEM_MOD_HIT_RANGED_RATING"), "RangedHitRating"}, -- GlobalStrings
+	{FrEquip("ITEM_MOD_HIT_SPELL_RATING"), "SpellHitRating"}, -- GlobalStrings
 	{FrEquip("ITEM_MOD_HASTE_RATING"), "HasteRating"}, -- GlobalStrings
-	{FrEquip("ITEM_MOD_HASTE_MELEE_RATING"), "HasteRating"}, -- GlobalStrings
-	{FrEquip("ITEM_MOD_HASTE_RANGED_RATING"), "HasteRating"}, -- GlobalStrings
-	{FrEquip("ITEM_MOD_HASTE_SPELL_RATING"), "HasteRating"}, -- GlobalStrings
+	{FrEquip("ITEM_MOD_HASTE_MELEE_RATING"), "MeleeHasteRating"}, -- GlobalStrings
+	{FrEquip("ITEM_MOD_HASTE_RANGED_RATING"), "RangedHasteRating"}, -- GlobalStrings
+	{FrEquip("ITEM_MOD_HASTE_SPELL_RATING"), "SpellHasteRating"}, -- GlobalStrings
 	{FrEquip("ITEM_MOD_EXPERTISE_RATING"), "ExpertiseRating"}, -- GlobalStrings
 	{FrEquip("ITEM_MOD_ARMOR_PENETRATION_RATING"), "ArmorPenetration"}, -- GlobalStrings
 	{FrEquip("ITEM_MOD_SPELL_POWER"), "SpellPower"}, -- GlobalStrings
@@ -308,8 +308,8 @@ PawnRegexes =
 	{FrSpell("Augmente la résistance au Givre de #."), "FrostResist"}, -- Spell.dbc
 	{FrSpell("Augmente la puissance de vos sorts de #."), "SpellPower"}, -- Spell.dbc
 	{FrSpell("Augmente le score de coup critique de #."), "CritRating"}, -- Spell.dbc
-	{FrSpell("Augmente le score de coup critique des sorts de #."), "CritRating"}, -- Spell.dbc
-	{FrSpell("Augmente votre score de coup critique à distance de #."), "CritRating"}, -- scan: "Équipé : Augmente votre score de coup critique à distance de 14." (item 7348)
+	{FrSpell("Augmente le score de coup critique des sorts de #."), "SpellCritRating"}, -- Spell.dbc
+	{FrSpell("Augmente votre score de coup critique à distance de #."), "RangedCritRating"}, -- scan: "Équipé : Augmente votre score de coup critique à distance de 14." (item 7348)
 	{FrSpell("Augmente le score de hâte de #."), "HasteRating"}, -- Spell.dbc
 	{FrSpell("Augmente le score d'expertise de #."), "ExpertiseRating"}, -- Spell.dbc
 	{FrSpell("Augmente votre score d'esquive de #."), "DodgeRating"}, -- Spell.dbc
@@ -319,7 +319,7 @@ PawnRegexes =
 	{"^%+(%d+) à la puissance d'attaque$", "Ap"}, -- SpellItemEnchantment.dbc
 	{"^%+(%d+) à la puissance des attaques à distance$", "Rap"}, -- SpellItemEnchantment.dbc
 	{"^%+(%d+) au score de défense$", "DefenseRating"}, -- SpellItemEnchantment.dbc; logs
-	{"^%+?(%d+) au score de coup critique$", "CritRating"}, -- SpellItemEnchantment.dbc (also "+30 à la puissance des sorts et 20 au score de coup critique")
+	{"^%+?(%d+) au score de coup critique$", "CritRating"}, -- SpellItemEnchantment.dbc (also "+30 à la puissance des sorts et 20 au score de coup critique"); stays general: 2857 and 2858 have stat 19 (melee crit), the others 32 (crit)
 	{"^%+(%d+) au score de coups critiques$", "CritRating"}, -- logs
 	{"^%+(%d+) au score de critique$", "CritRating"}, -- logs
 	{"^%+(%d+) au score de toucher$", "HitRating"}, -- SpellItemEnchantment.dbc
@@ -365,11 +365,11 @@ PawnRegexes =
 	{"^%+(%d+) aux points de mana$", "Mana"}, -- SpellItemEnchantment.dbc: "+5 aux points de mana"
 	{"^%+(%d+) Défense$", "DefenseRating"}, -- SpellItemEnchantment.dbc: "+20 Défense et +15 au score d'esquive"
 	{"^%+(%d+) score de coup critique$", "CritRating"}, -- SpellItemEnchantment.dbc: "+5 Force et +4 score de coup critique"
-	{"^%+(%d+) au score de critique en mêlée$", "CritRating"}, -- SpellItemEnchantment.dbc
-	{"^%+(%d+) au score de coup critique à distance$", "CritRating"}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) au score de critique en mêlée$", "MeleeCritRating"}, -- SpellItemEnchantment.dbc (2506: stat 19, melee crit)
+	{"^%+(%d+) au score de coup critique à distance$", "RangedCritRating"}, -- SpellItemEnchantment.dbc (3608: stat 20, ranged crit)
 	{"^%+(%d+) aux score de toucher$", "HitRating"}, -- SpellItemEnchantment.dbc: "+11 aux score de toucher"
-	{"^%+(%d+) au score de toucher à distance$", "HitRating"}, -- SpellItemEnchantment.dbc
-	{"^%+(%d+) au score de hâte à distance$", "HasteRating"}, -- SpellItemEnchantment.dbc
+	{"^%+(%d+) au score de toucher à distance$", "RangedHitRating"}, -- SpellItemEnchantment.dbc (2523: stat 17, ranged hit)
+	{"^%+(%d+) au score de hâte à distance$", "RangedHasteRating"}, -- SpellItemEnchantment.dbc (3607: stat 29, ranged haste)
 	{"^%+(%d+) score de résilience$", "ResilienceRating"}, -- SpellItemEnchantment.dbc: "+6 Endurance et +5 score de résilience"
 	{"^%+(%d+) à la résilience$", "ResilienceRating"}, -- SpellItemEnchantment.dbc: "+9 à la résilience"
 	{"^%+(%d+) à la valeur de blocage$", "BlockValue"}, -- SpellItemEnchantment.dbc: "+36 à la valeur de blocage"
@@ -392,9 +392,9 @@ PawnRegexes =
 	{"^%+(%d+) point de dégâts$", "MinDamage", 1, Extract, "MaxDamage", 1, Extract}, -- SpellItemEnchantment.dbc: "+1 point de dégâts"
 	{"^%+(%d+) Dégâts de l'arme$", "MinDamage", 1, Extract, "MaxDamage", 1, Extract}, -- SpellItemEnchantment.dbc: "+1 Dégâts de l'arme"
 	{"^Lunette %(%+(%d+) points? de dégâts%)$", "MinDamage", 1, Extract, "MaxDamage", 1, Extract}, -- SpellItemEnchantment.dbc: ranged weapon scope
-	{"^Lunette %(%+(%d+) au score de coup critique%)$", "CritRating"}, -- SpellItemEnchantment.dbc
+	{"^Lunette %(%+(%d+) au score de coup critique%)$", "RangedCritRating"}, -- SpellItemEnchantment.dbc (2724: stat 20, ranged crit)
 	{"^Renforcé %(%+(%d+) Armure%)$", "Armor"}, -- SpellItemEnchantment.dbc: armor kit
-	{"^Contrepoids %(%+(%d+) au score de hâte%)$", "HasteRating"}, -- SpellItemEnchantment.dbc
+	{"^Contrepoids %(%+(%d+) au score de hâte%)$", "HasteRating"}, -- SpellItemEnchantment.dbc (34: stat 36, general haste)
 	-- Whole lines whose stats are not separated by ", ", "/", " & " or " et ", or whose "/" would split a stat in two
 	{"^%+(%d+) Score de défense %+(%d+) Endurance %+(%d+) Valeur de blocage$", "DefenseRating", 1, Extract, "Stamina", 2, Extract, "BlockValue", 3, Extract}, -- SpellItemEnchantment.dbc
 	{"^%+(%d+) à la puissance d'attaque %+(%d+) Endurance %+(%d+) au score de toucher$", "Ap", 1, Extract, "Stamina", 2, Extract, "HitRating", 3, Extract}, -- SpellItemEnchantment.dbc

@@ -267,8 +267,8 @@ Arme glacée => unhandled
 +9 aux dégâts => unhandled
 Vampirique => unhandled
 Arme impie => unhandled
-+28 au score de critique en mêlée => CritRating=28
-+30 au score de toucher à distance => HitRating=30
++28 au score de critique en mêlée => MeleeCritRating=28
++30 au score de toucher à distance => RangedHitRating=30
 5 à la régén. mana toutes les 5 sec. => Mp5=5
 +10 Score de défense +10 Endurance +30 Valeur de blocage => BlockValue=30; DefenseRating=10; Stamina=10
 +10 Défense/+10 Endurance/+12 à la puissance des sorts => DefenseRating=10; SpellPower=12; Stamina=10
@@ -311,7 +311,7 @@ Pointe en gangracier (26-38) => unhandled
 Rune de garde inférieure => unhandled
 Gardien de sauvegarde inférieur => unhandled
 Gardien de sauvegarde supérieur => unhandled
-Lunette (+28 au score de coup critique) => CritRating=28
+Lunette (+28 au score de coup critique) => RangedCritRating=28
 ZZOLD Rune de garde inférieure => unhandled
 Rune de garde supérieure => unhandled
 +4 points de mana rendus toutes les 5 secondes => Mp5=4
@@ -420,8 +420,8 @@ Ceinture à fragmentation => unhandled
 Pyrofusée à montage manuel => unhandled
 Accélérateurs hyper-stimulants => unhandled
 Doublure en toile de lin => unhandled
-+40 au score de hâte à distance => HasteRating=40
-+40 au score de coup critique à distance => CritRating=40
++40 au score de hâte à distance => RangedHasteRating=40
++40 au score de coup critique à distance => RangedCritRating=40
 Pierre de feu inférieure => unhandled
 Pierre de feu => unhandled
 Pierre de feu supérieure => unhandled

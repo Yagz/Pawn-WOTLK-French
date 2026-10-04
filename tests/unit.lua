@@ -465,6 +465,64 @@ Test("équipement : un bijou sans stats lisibles compte dans le niveau moyen (pa
 	Equal(AverageItemLevel, math.floor(100 / 17 + .05), "niveau moyen") -- GetItemInfo stub: item level 100; 17 slots with the ranged slot
 end)
 
+-- ITEM_MOD_* numbers of the rating effects of SpellItemEnchantment.dbc (tests/data/enchant_stats.frFR.txt).  The texts that
+-- name the attack type attest them: 2506 "+28 au score de critique en mêlée" = 19, 2523 "+30 au score de toucher à distance" = 17,
+-- 3607 "+40 au score de hâte à distance" = 29, 3608 "+40 au score de coup critique à distance" = 20; general ratings 31, 32, 36.
+local EnchantRatingStats = { [17] = "RangedHitRating", [19] = "MeleeCritRating", [20] = "RangedCritRating",
+	[29] = "RangedHasteRating", [31] = "HitRating", [32] = "CritRating", [36] = "HasteRating" }
+local EnchantRatingFamily = { [16] = "HitRating", [17] = "HitRating", [18] = "HitRating", [31] = "HitRating",
+	[19] = "CritRating", [20] = "CritRating", [21] = "CritRating", [32] = "CritRating",
+	[28] = "HasteRating", [29] = "HasteRating", [30] = "HasteRating", [36] = "HasteRating" }
+
+Test("frFR : les scores des enchantements suivent SpellItemEnchantment.dbc", function()
+	-- A text gets its restricted rating only if every enchantment with the same text (numbers aside) has the same stat number.
+	local Rows, NumbersByText = {}, {}
+	for Line in io.lines("tests/data/enchant_stats.frFR.txt") do
+		local ID, Number, Text = Line:match("^(%d+)\t(%d+)\t%-?%d+\t(.+)$")
+		Number = tonumber(Number)
+		if ID and EnchantRatingFamily[Number] then
+			assert(EnchantRatingStats[Number], "numéro de stat " .. Number .. " sans type connu (enchantement " .. ID .. ") : décision à prendre")
+			local Key = Text:gsub("%d+", "#") .. "|" .. EnchantRatingFamily[Number]
+			NumbersByText[Key] = NumbersByText[Key] or {}
+			NumbersByText[Key][Number] = true
+			table.insert(Rows, { ID = ID, Number = Number, Text = Text, Key = Key })
+		end
+	end
+	local Checked = 0
+	for _, Row in ipairs(Rows) do
+		local Raw, Understood = Harness.ParseLine(Row.Text)
+		if Understood then -- texts Pawn doesn't read are covered by enchants.txt
+			local Numbers = 0
+			for _ in pairs(NumbersByText[Row.Key]) do Numbers = Numbers + 1 end
+			local Family = EnchantRatingFamily[Row.Number]
+			local Expected = Numbers == 1 and EnchantRatingStats[Row.Number] or Family
+			local Found = {}
+			for Stat in pairs(Raw) do if Stat:find(Family .. "$") then table.insert(Found, Stat) end end
+			Equal(table.concat(Found, ","), Expected, "enchantement " .. Row.ID .. " « " .. Row.Text .. " »")
+			Checked = Checked + 1
+		end
+	end
+	assert(Checked > 300, "lignes vérifiées : " .. Checked)
+end)
+
+Test("frFR : Lunette suit le DBC (2724 : crit à distance), Contrepoids aussi (34 : hâte générale)", function()
+	local Raw = Harness.ParseLine(CorpusLeft("tests/corpus/enchants.txt", "Lunette (+28 au score de coup critique)"))
+	Equal(Raw.RangedCritRating, 28, "Lunette")
+	Raw = Harness.ParseLine(CorpusLeft("tests/corpus/enchants.txt", "Contrepoids (+20 au score de hâte)"))
+	Equal(Raw.HasteRating, 20, "Contrepoids")
+end)
+
+Test("scanner : GetItemStats sépare les scores réservés comme Pawn", function()
+	local Map = PawnScan.ItemModToStat
+	for _, Kind in ipairs({ "CRIT", "HIT", "HASTE" }) do
+		local General = ({ CRIT = "CritRating", HIT = "HitRating", HASTE = "HasteRating" })[Kind]
+		Equal(Map["ITEM_MOD_" .. Kind .. "_RATING_SHORT"], General, Kind)
+		Equal(Map["ITEM_MOD_" .. Kind .. "_SPELL_RATING_SHORT"], "Spell" .. General, Kind .. " sorts")
+		Equal(Map["ITEM_MOD_" .. Kind .. "_MELEE_RATING_SHORT"], "Melee" .. General, Kind .. " mêlée")
+		Equal(Map["ITEM_MOD_" .. Kind .. "_RANGED_RATING_SHORT"], "Ranged" .. General, Kind .. " distance")
+	end
+end)
+
 ------------------------------------------------------------
 -- Rating weights by level (spec 2026-10-02). Keep these tests last: they fill PawnCommon.Scales.
 ------------------------------------------------------------
