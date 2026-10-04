@@ -53,37 +53,41 @@ On extrait ces champs des MPQ frFR avec un script `uv run --with mpyq`, dans l'e
 
 Les numéros de champs exacts sont déterminés au moment de l'extraction et notés dans `CLAUDE.md`, comme pour les champs déjà utilisés.
 
+**Résultat (2026-10-04)** : `tests/extract_enchant_stats.py` écrit `tests/data/enchant_stats.frFR.txt` (champs : type d'effet 2-4, montant 5-7, numéro de stat 11-13, texte 16). Lunette 2724 porte le numéro 20 et passe à `RangedCritRating`. Contrepoids 34 porte le numéro 36 et reste en `HasteRating`. « +# au score de coup critique » reste en `CritRating`, parce que ce texte porte deux numéros : 19 pour les enchantements 2857 et 2858, 32 pour les autres.
+
 ### Scanner (`PawnScan.lua`)
 
 La table qui relie les clés de `GetItemStats` aux stats de Pawn (`PawnScan.lua:35-45`) suit la même séparation : `ITEM_MOD_CRIT_SPELL_RATING_SHORT` → `SpellCritRating`, etc. Les comparaisons `mismatch` continuent ainsi de comparer des stats équivalentes.
 
 ### Clients anglais
 
-Ils gardent les tables de lecture de Pawn 2.8.11. Le test enUS existant le vérifie.
+Ils gardent les tables de lecture de Pawn 2.8.11. Le test enUS existant le vérifie. Leurs valeurs changent quand même un peu : la lecture enUS produit déjà `SpellCritRating`, `SpellHitRating` et `SpellHasteRating`, qui valaient 0 en Wrath (stat fusionnée, retirée de l'échelle) et prennent maintenant le poids réservé ou le poids général.
 
 ## 2. Poids (`ClassicHawsJon.lua`, `Pawn.lua`)
 
 ### Relevé des poids d'origine
 
-Dans `ClassicHawsJon.lua`, chaque appel à `PawnAddPluginScaleFromTemplate` reçoit la table HawsJon complète, où `CritRating` (physique) et `SpellCritRating` (sorts) sont encore séparés. `PawnAddPluginScaleFromTemplate` copie cette table dans les valeurs de l'échelle (`Pawn.lua:5596`), et c'est la copie que `PawnCorrectScaleErrors` fusionne ; la table passée en argument reste intacte.
+*Corrigé le 2026-10-04.* La première version supposait que la table HawsJon sépare `CritRating` (physique) et `SpellCritRating` (sorts). C'est vrai seulement dans la branche Classic/BC de `ClassicHawsJon.lua`. Pawn utilise la branche Wrath, où chaque échelle n'a qu'un poids par score (`CritRating`, `HitRating`, `HasteRating`).
 
-Pour chaque échelle Classic, on enregistre donc, à partir de cette table, ses poids réservés au niveau 80 :
+Décision de l'utilisateur : le type auquel s'applique ce poids se déduit des valeurs de l'échelle au niveau 80 (`PawnClassicRestrictedRatingsAt80`).
 
 | Stat réservée | Poids |
 |---|---|
-| `SpellCritRating`, `SpellHitRating`, `SpellHasteRating` | poids sorts HawsJon de même nom |
-| `MeleeCritRating`, `MeleeHitRating`, `MeleeHasteRating` | poids physique HawsJon (`CritRating`, `HitRating`, `HasteRating`), ou 0 si la classe est chasseur (`ClassID` 3) |
-| `RangedCritRating`, `RangedHitRating`, `RangedHasteRating` | poids physique HawsJon si la classe est chasseur, 0 sinon |
+| `SpellCritRating`, `SpellHitRating`, `SpellHasteRating` | poids général de l'échelle si `SpellPower > 0`, 0 sinon |
+| `MeleeCritRating`, `MeleeHitRating`, `MeleeHasteRating` | poids général si `Ap > 0` ou si `SpellPower` est absent, sauf pour le chasseur (`ClassID` 3) ; 0 sinon |
+| `RangedCritRating`, `RangedHitRating`, `RangedHasteRating` | même règle que la mêlée, pour le chasseur seulement ; 0 pour les autres classes |
 
-Un poids absent de la table HawsJon compte comme 0.
+Une échelle peut compter pour les sorts et pour la mêlée à la fois (Amélioration, Protection et Vindicte paladin, Farouche tank) : les deux types prennent alors le poids général.
 
 Ces poids sont rangés dans `PawnClassicRestrictedRatingWeights[NomInterneÉchelle][Stat]`. La table n'est pas sauvegardée : elle est reconstruite à chaque chargement, comme `OriginalRatingWeights`.
 
 ### Ajustement au niveau
 
-`PawnClassicApplyRatingLevel` applique aussi à cette table le facteur `P[80] / P[niveau]` du sous-projet 1. Chaque stat réservée prend la ligne de `PawnRatingPointsPerPercent` de son propre score client (crit sorts, crit mêlée, crit distance, etc.). Si `PawnRatingLevelFactors.lua` ne contient pas encore ces lignes, le script d'extraction les ajoute à partir de `gtCombatRatings.dbc` et des constantes `CR_*`. Si une variante a exactement les mêmes valeurs que le score général, on peut utiliser la ligne générale, mais le test le vérifie.
+`PawnClassicApplyRatingLevel` applique aussi à cette table le facteur `P[80] / P[niveau]` du sous-projet 1. Chaque stat réservée prend la ligne de `PawnRatingPointsPerPercent` de son propre score client (crit sorts, crit mêlée, crit distance, etc.). Si `PawnRatingLevelFactors.lua` ne contient pas encore ces lignes, le script d'extraction les ajoute à partir de `gtCombatRatings.dbc` et des constantes `CR_*`. Si une variante a exactement les mêmes valeurs que le score général, on peut utiliser la ligne générale, mais le test le vérifie. Résultat : les 9 lignes sont ajoutées, car le toucher des sorts n'a pas les mêmes valeurs que le toucher général (8 contre 10 au niveau 60), seulement le même rapport entre niveaux.
 
 Un deuxième appel au même niveau ne change rien. Les poids réservés à niveau 80 sont identiques aux poids relevés.
+
+Les listes de meilleurs objets sauvegardées par personnage ont été notées avec les poids fusionnés. Elles sont oubliées une fois (`RatingWeightsVersion`, mémorisée à côté de `RatingLevel`).
 
 ### Calcul de la valeur (`PawnGetItemValue`)
 
@@ -102,7 +106,7 @@ Si la stat générale correspondante est marquée « ignorer » (poids `<= PawnI
 
 ## 3. Tests hors jeu (`luajit tests/run.lua`)
 
-Les tests de poids s'ajoutent dans `tests/unit.lua` avant les tests de niveau, qui doivent rester en dernier.
+Les tests de poids s'ajoutent dans `tests/unit.lua` après les tests de niveau : ils ont besoin des échelles Classic, et ce sont les tests qui remplissent `PawnCommon.Scales` qui doivent rester en dernier.
 
 1. **Lecture** : les lignes réservées du corpus (`globalstrings`, `spells`, `enchants`, `scan`, `regression`) attendent leur stat réservée ; les lignes générales sont inchangées. Les attentes sont régénérées par les outils du corpus, jamais retapées.
 2. **Lunettes et contrepoids** : la stat attendue correspond au numéro de stat extrait de `SpellItemEnchantment.dbc`, cité dans le test.
@@ -121,6 +125,6 @@ Les tests de poids s'ajoutent dans `tests/unit.lua` avant les tests de niveau, q
 Après un redémarrage complet du client :
 
 1. Avec Mairy (prêtre), `/pawnscan inspect 7348` : la ligne « … à distance de 14 » donne `RangedCritRating=14`, de valeur 0 dans les échelles prêtre.
-2. `/pawnscan inspect` sur un objet portant un score « crit des sorts », dont l'identifiant est trouvé pendant le plan : valeur positive pour l'échelle Ombre, nulle pour une échelle physique.
+2. `/pawnscan inspect 24256` (« Ceinturon de saccage », crit des sorts 20 d'après `Cache/WDB/frFR/itemcache.wdb`) : valeur positive pour l'échelle Ombre, nulle pour une échelle physique.
 3. Onglet Comparer avec l'un de ces objets : pas d'erreur Lua.
 4. Un scan rapide en mode objets : pas de nouvelle erreur, et pas de nouvel écart `mismatch` inexpliqué.
