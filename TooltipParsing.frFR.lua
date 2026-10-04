@@ -168,7 +168,7 @@ PawnRegexes =
 	{"^Idole$"}, -- ItemSubClass.dbc 4:8; logs
 	{"^Totem$"}, -- ItemSubClass.dbc 4:9; logs
 	{"^Cachet$"}, -- ItemSubClass.dbc 4:10
-	{Fr("ITEM_CLASSES_ALLOWED")}, -- GlobalStrings
+	{"^" .. gsub(PawnFrFormatToPattern(ITEM_CLASSES_ALLOWED), "%.%-", "(.+)") .. "$", "UnusableBy", 1, PawnClassesAllowed}, -- GlobalStrings: ITEM_CLASSES_ALLOWED; the list is read by PawnAddClassRestriction (Pawn.lua)
 	{Fr("ITEM_RACES_ALLOWED")}, -- GlobalStrings
 	{Fr("ITEM_MIN_LEVEL")}, -- GlobalStrings
 	{Fr("ITEM_MIN_SKILL")}, -- GlobalStrings; logs: "Forge (300) requis"

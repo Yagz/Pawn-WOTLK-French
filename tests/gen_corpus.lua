@@ -101,7 +101,7 @@ end
 for _, Case in ipairs({
 	{ DURABILITY_TEMPLATE, 100, 100 }, { ITEM_LEVEL, 200 }, { ITEM_MIN_LEVEL, 80 }, { ITEM_MIN_SKILL, "Forge", 300 },
 	{ ITEM_REQ_SKILL, "Forge" }, { ITEM_REQ_REPUTATION, "Aube d'argent", "Révéré" }, { ITEM_LEVEL_RANGE, 1, 80 },
-	{ ITEM_LEVEL_RANGE_CURRENT, 1, 80, 60 }, { ITEM_REQ_ARENA_RATING, 1800 }, { ITEM_CLASSES_ALLOWED, "Prêtre" },
+	{ ITEM_LEVEL_RANGE_CURRENT, 1, 80, 60 }, { ITEM_REQ_ARENA_RATING, 1800 },
 	{ ITEM_RACES_ALLOWED, "Humain" }, { ITEM_DISENCHANT_MIN_SKILL, "Enchantement", 300 }, { ITEM_DURATION_MIN, 30 },
 	{ ITEM_DURATION_SEC, 30 }, { ITEM_DURATION_HOURS, 2 }, { ITEM_DURATION_DAYS, 2 }, { ITEM_COOLDOWN_TIME, "5 min" },
 	{ ITEM_COOLDOWN_TIME_MIN, 5 }, { ITEM_COOLDOWN_TIME_SEC, 30 }, { ITEM_COOLDOWN_TIME_HOURS, 2 },
@@ -113,6 +113,9 @@ for _, Case in ipairs({
 }) do
 	table.insert(GlobalCases, { Render(unpack(Case)), "ignored" })
 end
+-- ITEM_CLASSES_ALLOWED: every class the line doesn't list becomes unusable (PawnAddClassRestriction, Pawn.lua).
+table.insert(GlobalCases, { Render(ITEM_CLASSES_ALLOWED, "Prêtre"), "UnusableByDEATHKNIGHT=1; UnusableByDRUID=1; UnusableByHUNTER=1; "
+	.. "UnusableByMAGE=1; UnusableByPALADIN=1; UnusableByROGUE=1; UnusableBySHAMAN=1; UnusableByWARLOCK=1; UnusableByWARRIOR=1" })
 local Entries = {}
 for _, Case in ipairs(GlobalCases) do table.insert(Entries, { Text = Case[1], Expect = Case[2] }) end
 print(Corpus.Append("tests/corpus/globalstrings.txt", Entries,

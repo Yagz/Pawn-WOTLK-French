@@ -20,6 +20,7 @@ PawnNewFeatureTexture = "|TInterface\\OptionsFrame\\UI-OptionsFrame-NewFeatureIc
 PawnSingleStatMultiplier = "_SingleMultiplier"
 PawnMultipleStatsFixed = "_MultipleFixed"
 PawnMultipleStatsExtract = "_MultipleExtract"
+PawnClassesAllowed = "_ClassesAllowed" -- Fork frFR 3.3.5a: the capture is a class list, read by PawnAddClassRestriction (Pawn.lua)
 
 local IsMainline = VgerCore.IsMainline
 

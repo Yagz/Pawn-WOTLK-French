@@ -114,7 +114,7 @@ Requiert Forge => ignored
 Requiert Aube d'argent - Révéré => ignored
 Requiert un niveau de 1 à 80 => ignored
 Nécessite une cote d'arène personnelle et en équipe de 1800 => ignored
-Classes : Prêtre => ignored
+Classes : Prêtre => UnusableByDEATHKNIGHT=1; UnusableByDRUID=1; UnusableByHUNTER=1; UnusableByMAGE=1; UnusableByPALADIN=1; UnusableByROGUE=1; UnusableBySHAMAN=1; UnusableByWARLOCK=1; UnusableByWARRIOR=1
 Races : Humain => ignored
 Le désenchantement nécessite Enchantement (300) => ignored
 Durée : 30 min => ignored

@@ -554,6 +554,74 @@ local RestrictedRatingStats = { "SpellHitRating", "SpellCritRating", "SpellHaste
 	"MeleeHasteRating", "RangedHitRating", "RangedCritRating", "RangedHasteRating" }
 
 ------------------------------------------------------------
+-- Class restriction (spec 2026-10-04, usable items).
+------------------------------------------------------------
+
+-- Classes of the client (tests/data/classes.frFR.txt, from ChrClasses.dbc): Classes[Token] = { ID, Male, Female }.
+local Classes = {}
+for Line in io.lines("tests/data/classes.frFR.txt") do
+	local ID, Token, Male, Female = Line:match("^(%d+)\t(%u+)\t([^\t]+)\t([^\t]*)$")
+	if ID then Classes[Token] = { ID = tonumber(ID), Male = Male, Female = Female } end
+end
+
+-- The UnusableBy* tokens read from a line, sorted and joined, and whether the line was understood.
+local function Restrictions(Line)
+	local Raw, Understood = Harness.ParseLine(Line)
+	local Tokens = {}
+	for Stat, Value in pairs(Raw) do
+		local Token = Stat:match("^UnusableBy(%u+)$")
+		assert(Token and Value == 1, "stat inattendue " .. Stat)
+		table.insert(Tokens, Token)
+	end
+	table.sort(Tokens)
+	return table.concat(Tokens, ","), Understood
+end
+
+-- Every class token except the given ones, sorted and joined.
+local function AllBut(...)
+	local Skip, Tokens = {}, {}
+	for _, Token in ipairs({ ... }) do Skip[Token] = true end
+	for Token in pairs(Classes) do if not Skip[Token] then table.insert(Tokens, Token) end end
+	table.sort(Tokens)
+	return table.concat(Tokens, ",")
+end
+
+Test("classes : une ligne à une classe rend l'objet inutilisable par les neuf autres", function()
+	local Got, Understood = Restrictions(format(ITEM_CLASSES_ALLOWED, Classes.DRUID.Male))
+	Equal(Understood, true, "ligne comprise")
+	Equal(Got, AllBut("DRUID"), "restrictions")
+	Equal(select(2, Got:gsub(",", "")) + 1, 9, "neuf classes")
+end)
+
+Test("classes : une liste de deux classes, avec ou sans espace après la virgule", function()
+	local Expected = AllBut("HUNTER", "SHAMAN")
+	Equal((Restrictions(format(ITEM_CLASSES_ALLOWED, Classes.HUNTER.Male .. ", " .. Classes.SHAMAN.Male))), Expected, "virgule et espace")
+	Equal((Restrictions(format(ITEM_CLASSES_ALLOWED, Classes.HUNTER.Male .. "," .. Classes.SHAMAN.Male))), Expected, "virgule seule")
+end)
+
+Test("classes : un nom féminin vaut le masculin, même quand il le contient", function()
+	assert(Classes.PRIEST.Female:find(Classes.PRIEST.Male, 1, true), "le nom féminin contient le masculin")
+	Equal((Restrictions(format(ITEM_CLASSES_ALLOWED, Classes.PRIEST.Female))), AllBut("PRIEST"), "nom féminin")
+	Equal((Restrictions(format(ITEM_CLASSES_ALLOWED, Classes.PRIEST.Female .. ", " .. Classes.MAGE.Male))), AllBut("PRIEST", "MAGE"), "féminin dans une liste")
+end)
+
+Test("classes : un nom inconnu ne restreint rien et la ligne reste comprise", function()
+	local Got, Understood = Restrictions(format(ITEM_CLASSES_ALLOWED, Classes.MAGE.Male .. ", Inconnu"))
+	Equal(Understood, true, "ligne comprise")
+	Equal(Got, "", "aucune restriction")
+end)
+
+Test("classes : sans les tables du client, la ligne reste comprise sans restriction", function()
+	local Male = LOCALIZED_CLASS_NAMES_MALE
+	LOCALIZED_CLASS_NAMES_MALE = nil
+	local Ok, Got, Understood = pcall(Restrictions, format(ITEM_CLASSES_ALLOWED, Classes.DRUID.Male))
+	LOCALIZED_CLASS_NAMES_MALE = Male
+	assert(Ok, tostring(Got))
+	Equal(Understood, true, "ligne comprise")
+	Equal(Got, "", "aucune restriction")
+end)
+
+------------------------------------------------------------
 -- Gems (spec 2026-10-04).
 ------------------------------------------------------------
 

@@ -33,6 +33,16 @@ end
 function Harness.Load()
 	dofile("tests/wowapi.lua")
 	LoadGlobalStrings("tests/data/GlobalStrings.frFR.lua")
+	-- FrameXML's Constants.lua fills these with FillLocalizedClassList; the names come from ChrClasses.dbc.  An empty female
+	-- name in the DBC (paladin, death knight) takes the male name here.
+	LOCALIZED_CLASS_NAMES_MALE, LOCALIZED_CLASS_NAMES_FEMALE = {}, {}
+	for Line in io.lines("tests/data/classes.frFR.txt") do
+		local Token, Male, Female = Line:match("^%d+\t(%u+)\t([^\t]+)\t([^\t]*)$")
+		if Token then
+			LOCALIZED_CLASS_NAMES_MALE[Token] = Male
+			LOCALIZED_CLASS_NAMES_FEMALE[Token] = Female ~= "" and Female or Male
+		end
+	end
 	for _, Path in ipairs(Harness.Files) do dofile(Path) end
 	WowApiSetTooltip(PawnPrivateTooltipName, {}) -- normally created by PawnUI.xml
 	function PawnUIFrame_ScaleSelector_Refresh() end -- PawnUI.lua isn't loaded

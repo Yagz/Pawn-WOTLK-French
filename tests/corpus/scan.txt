@@ -1,22 +1,22 @@
 # Lignes non comprises relevées par /pawnscan (un exemple réel par modèle, les plus fréquentes d'abord).
-Classes : Prêtre => ignored
+Classes : Prêtre => UnusableByDEATHKNIGHT=1; UnusableByDRUID=1; UnusableByHUNTER=1; UnusableByMAGE=1; UnusableByPALADIN=1; UnusableByROGUE=1; UnusableBySHAMAN=1; UnusableByWARLOCK=1; UnusableByWARRIOR=1
 Équipé : Augmente la puissance des sorts d'Ombre de 11. => ShadowSpellDamage=11
-Classes : Chasseur => ignored
+Classes : Chasseur => UnusableByDEATHKNIGHT=1; UnusableByDRUID=1; UnusableByMAGE=1; UnusableByPALADIN=1; UnusableByPRIEST=1; UnusableByROGUE=1; UnusableBySHAMAN=1; UnusableByWARLOCK=1; UnusableByWARRIOR=1
 Équipé : Augmente le score de défense de 19. => DefenseRating=19
-Classes : Mage => ignored
+Classes : Mage => UnusableByDEATHKNIGHT=1; UnusableByDRUID=1; UnusableByHUNTER=1; UnusableByPALADIN=1; UnusableByPRIEST=1; UnusableByROGUE=1; UnusableBySHAMAN=1; UnusableByWARLOCK=1; UnusableByWARRIOR=1
 Relique => ignored
-Classes : Guerrier => ignored
+Classes : Guerrier => UnusableByDEATHKNIGHT=1; UnusableByDRUID=1; UnusableByHUNTER=1; UnusableByMAGE=1; UnusableByPALADIN=1; UnusableByPRIEST=1; UnusableByROGUE=1; UnusableBySHAMAN=1; UnusableByWARLOCK=1
 Équipé : Augmente la puissance des sorts de Givre de 21. => FrostSpellDamage=21
 Équipé : Augmente la puissance des sorts de Feu de 36. => FireSpellDamage=36
-Classes : Druide => ignored
-Classes : Paladin => ignored
-Classes : Voleur => ignored
+Classes : Druide => UnusableByDEATHKNIGHT=1; UnusableByHUNTER=1; UnusableByMAGE=1; UnusableByPALADIN=1; UnusableByPRIEST=1; UnusableByROGUE=1; UnusableBySHAMAN=1; UnusableByWARLOCK=1; UnusableByWARRIOR=1
+Classes : Paladin => UnusableByDEATHKNIGHT=1; UnusableByDRUID=1; UnusableByHUNTER=1; UnusableByMAGE=1; UnusableByPRIEST=1; UnusableByROGUE=1; UnusableBySHAMAN=1; UnusableByWARLOCK=1; UnusableByWARRIOR=1
+Classes : Voleur => UnusableByDEATHKNIGHT=1; UnusableByDRUID=1; UnusableByHUNTER=1; UnusableByMAGE=1; UnusableByPALADIN=1; UnusableByPRIEST=1; UnusableBySHAMAN=1; UnusableByWARLOCK=1; UnusableByWARRIOR=1
 Équipé : Augmente votre score d'expertise de 17. => ExpertiseRating=17
-Classes : Démoniste => ignored
+Classes : Démoniste => UnusableByDEATHKNIGHT=1; UnusableByDRUID=1; UnusableByHUNTER=1; UnusableByMAGE=1; UnusableByPALADIN=1; UnusableByPRIEST=1; UnusableByROGUE=1; UnusableBySHAMAN=1; UnusableByWARRIOR=1
 20 - 38 points de dégâts (Arcanes) => MaxDamage=38; MinDamage=20
 Tenu(e) en main gauche => IsFrill=1
 Équipé : Augmente la puissance d'attaque de 148. => Ap=148
-Classes : Chaman => ignored
+Classes : Chaman => UnusableByDEATHKNIGHT=1; UnusableByDRUID=1; UnusableByHUNTER=1; UnusableByMAGE=1; UnusableByPALADIN=1; UnusableByPRIEST=1; UnusableByROGUE=1; UnusableByWARLOCK=1; UnusableByWARRIOR=1
 1 - 2 points de dégâts (Ombre) => MaxDamage=2; MinDamage=1
 1 - 2 points de dégâts (Nature) => MaxDamage=2; MinDamage=1
 Races : Humain => ignored

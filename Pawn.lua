@@ -2558,6 +2558,9 @@ function PawnLookForSingleStat(RegexTable, Stats, ThisString, DebugMessages)
 				if Source == PawnSingleStatMultiplier then ExtractedValue = ExtractedValue * Number end
 				if DebugMessages then PawnDebugMessage(format(PawnLocal.FoundStatMessage, ExtractedValue, Stat)) end
 				PawnAddStatToTable(Stats, Stat, ExtractedValue)
+			elseif Source == PawnClassesAllowed then
+				-- Fork frFR 3.3.5a: a class list ("Classes : Druide").
+				PawnAddClassRestriction(Stats, Matches[1], DebugMessages)
 			elseif Source == PawnMultipleStatsFixed then
 				-- This is a fixed number of a stat, such as a socket (1).
 				if DebugMessages then PawnDebugMessage(format(PawnLocal.FoundStatMessage, Number, Stat)) end
@@ -2689,6 +2692,34 @@ end
 -- Fork frFR 3.3.5a: weight of Stat in a scale.  A restricted rating (PawnRestrictedRatingStats) takes the weight the
 -- Classic scales give it (PawnClassicRestrictedRatingWeights, ClassicHawsJon.lua), or else the weight of its general rating;
 -- if the general rating is ignored, so is the restricted one.
+-- Fork frFR 3.3.5a: reads the class list of an ITEM_CLASSES_ALLOWED line ("Classes : Druide") and adds UnusableBy<TOKEN> = 1
+-- for every class it doesn't list; PawnGetStatWeight makes the item unusable for a scale of such a class.  The client gives
+-- no list separator, so each class name it knows (LOCALIZED_CLASS_NAMES_MALE / _FEMALE, filled by FrameXML) is removed from
+-- the list, longest first ("Prêtresse" before "Prêtre").  If anything but spaces and punctuation is left, a name is
+-- unknown and no restriction is added: better a value too many than an item hidden by mistake.
+function PawnAddClassRestriction(Stats, List, DebugMessages)
+	if type(LOCALIZED_CLASS_NAMES_MALE) ~= "table" or type(LOCALIZED_CLASS_NAMES_FEMALE) ~= "table" then return end
+	local Names = {}
+	for _, Localized in ipairs({ LOCALIZED_CLASS_NAMES_MALE, LOCALIZED_CLASS_NAMES_FEMALE }) do
+		for Token, Name in pairs(Localized) do tinsert(Names, { Name = Name, Token = Token }) end
+	end
+	sort(Names, function(A, B) return strlen(A.Name) > strlen(B.Name) end)
+	local Allowed, Rest, Count = {}, " " .. List .. " "
+	for _, Entry in ipairs(Names) do
+		local Escaped = gsub(Entry.Name, "[%^%$%(%)%%%.%[%]%*%+%-%?]", "%%%0")
+		-- A name only counts as a whole word: spaces or punctuation on both sides, kept for the next name.
+		Rest, Count = gsub(Rest, "([%s%p])" .. Escaped .. "([%s%p])", "%1%2")
+		if Count > 0 then Allowed[Entry.Token] = true end
+	end
+	if strfind(Rest, "[^%s%p]") or not next(Allowed) then
+		if DebugMessages then PawnDebugMessage("Classes : liste non reconnue, aucune restriction : " .. List) end
+		return
+	end
+	for Token in pairs(LOCALIZED_CLASS_NAMES_MALE) do
+		if not Allowed[Token] then PawnAddStatToTable(Stats, "UnusableBy" .. Token, 1) end
+	end
+end
+
 function PawnGetStatWeight(ScaleName, ScaleValues, Stat)
 	local General = PawnRestrictedRatingStats[Stat]
 	if not General then return ScaleValues[Stat] end
