@@ -660,4 +660,135 @@ Test("niveaux : les meilleurs objets mémorisés du personnage sont oubliés qua
 	Scale.PerCharacterOptions["Autre-Test"] = nil
 	PawnClassicApplyRatingLevel(60)
 end)
+
+------------------------------------------------------------
+-- Restricted ratings (spec 2026-10-03).  They need the Classic scales too, so they stay after the level tests.
+------------------------------------------------------------
+
+local Hunter, Warrior, Enhancement = '"Classic":HUNTER1', '"Classic":WARRIOR1', '"Classic":SHAMAN2'
+
+-- Copy of a scale's restricted weights at level 80; leaves the scales at level 60.
+local function RestrictedAt80(ScaleName)
+	PawnClassicApplyRatingLevel(80)
+	local Copy = {}
+	for Stat, Weight in pairs(PawnClassicRestrictedRatingWeights[ScaleName]) do Copy[Stat] = Weight end
+	PawnClassicApplyRatingLevel(60)
+	return Copy
+end
+
+Test("scores réservés : poids à niveau 80 selon le rôle de l'échelle", function()
+	ClassicScales()
+	local Shadow, S = RestrictedAt80(ShadowPriest), Level80[ShadowPriest]
+	Equal(Shadow.SpellCritRating, S.CritRating, "Ombre : crit des sorts")
+	Equal(Shadow.SpellHitRating, S.HitRating, "Ombre : toucher des sorts")
+	Equal(Shadow.SpellHasteRating, S.HasteRating, "Ombre : hâte des sorts")
+	Equal(Shadow.MeleeCritRating, 0, "Ombre : crit en mêlée")
+	Equal(Shadow.RangedCritRating, 0, "Ombre : crit à distance")
+	local Hunt, H = RestrictedAt80(Hunter), Level80[Hunter]
+	Equal(Hunt.RangedCritRating, H.CritRating, "chasseur : crit à distance")
+	Equal(Hunt.RangedHitRating, H.HitRating, "chasseur : toucher à distance")
+	Equal(Hunt.RangedHasteRating, H.HasteRating, "chasseur : hâte à distance")
+	Equal(Hunt.MeleeCritRating, 0, "chasseur : crit en mêlée")
+	Equal(Hunt.SpellCritRating, 0, "chasseur : crit des sorts")
+	local War, W = RestrictedAt80(Warrior), Level80[Warrior]
+	Equal(War.MeleeCritRating, W.CritRating, "guerrier : crit en mêlée")
+	Equal(War.MeleeHitRating, W.HitRating, "guerrier : toucher en mêlée")
+	Equal(War.MeleeHasteRating, W.HasteRating, "guerrier : hâte en mêlée")
+	Equal(War.RangedCritRating, 0, "guerrier : crit à distance")
+	Equal(War.SpellCritRating, 0, "guerrier : crit des sorts")
+	local Enh, E = RestrictedAt80(Enhancement), Level80[Enhancement]
+	Equal(Enh.SpellCritRating, E.CritRating, "Amélioration : crit des sorts")
+	Equal(Enh.MeleeCritRating, E.CritRating, "Amélioration : crit en mêlée")
+	Equal(Enh.RangedCritRating, 0, "Amélioration : crit à distance")
+end)
+
+Test("scores réservés : chaque échelle Classic garde son poids général pour au moins un type", function()
+	ClassicScales()
+	PawnClassicApplyRatingLevel(80)
+	local Count = 0
+	for ScaleName, Values in pairs(Level80) do
+		Count = Count + 1
+		local Weights = PawnClassicRestrictedRatingWeights[ScaleName]
+		assert(Weights, ScaleName .. " sans poids réservés")
+		local IsHunter = PawnCommon.Scales[ScaleName].ClassID == 3
+		local CasterOnly = not Values.Ap and (Values.SpellPower or 0) > 0
+		for _, Rating in ipairs({ "HitRating", "CritRating", "HasteRating" }) do
+			local General = Values[Rating] or 0
+			local Spell, Melee, Ranged = Weights["Spell" .. Rating], Weights["Melee" .. Rating], Weights["Ranged" .. Rating]
+			local What = ScaleName .. " " .. Rating
+			for _, Weight in ipairs({ Spell, Melee, Ranged }) do assert(Weight == 0 or Weight == General, What .. " : poids inattendu " .. tostring(Weight)) end
+			if General > 0 then assert(Spell == General or Melee == General or Ranged == General, What .. " : poids général perdu") end
+			if IsHunter then Equal(Ranged, General, What .. " distance") Equal(Melee, 0, What .. " mêlée")
+			else Equal(Ranged, 0, What .. " distance") end
+			if CasterOnly then Equal(Spell, General, What .. " sorts") Equal(Melee, 0, What .. " mêlée") end
+			if not Values.SpellPower then Equal(Spell, 0, What .. " sorts") end
+		end
+	end
+	assert(Count > 20, "échelles Classic : " .. Count)
+	PawnClassicApplyRatingLevel(60)
+end)
+
+Test("scores réservés : niveau 60, chaque poids suit la ligne de son score", function()
+	ClassicScales()
+	local P = PawnRatingPointsPerPercent
+	for _, ScaleName in ipairs({ ShadowPriest, Hunter, Warrior }) do
+		local At80 = RestrictedAt80(ScaleName)
+		for _, Stat in ipairs(RestrictedRatingStats) do
+			Near(PawnClassicRestrictedRatingWeights[ScaleName][Stat], At80[Stat] * (P[Stat][80] / P[Stat][60]), ScaleName .. " " .. Stat)
+		end
+	end
+	Near(PawnClassicRestrictedRatingWeights[ShadowPriest].SpellHitRating, Level80[ShadowPriest].HitRating * (26.232 / 8), "toucher des sorts d'Ombre")
+	local Weights = PawnClassicRestrictedRatingWeights[ShadowPriest]
+	local Crit60 = Weights.SpellCritRating
+	Weights.SpellCritRating = 123
+	PawnClassicApplyRatingLevel(60)
+	Equal(PawnClassicRestrictedRatingWeights[ShadowPriest].SpellCritRating, 123, "second appel au même niveau sans effet")
+	PawnClassicApplyRatingLevel(61)
+	PawnClassicApplyRatingLevel(60)
+	Equal(PawnClassicRestrictedRatingWeights[ShadowPriest].SpellCritRating, Crit60, "retour à 60 sans cumul")
+end)
+
+local function ItemValue(Item, ScaleName) return (PawnGetItemValue(Item, 0, nil, ScaleName, false, true)) end
+
+Test("scores réservés : valeur d'un objet dans les échelles Classic", function()
+	ClassicScales()
+	PawnClassicApplyRatingLevel(80)
+	local Crit = Level80[ShadowPriest].CritRating
+	Near(ItemValue({ SpellCritRating = 10 }, ShadowPriest), 10 * Crit, "crit des sorts, Ombre")
+	Equal(ItemValue({ SpellCritRating = 10 }, Warrior), 0, "crit des sorts, guerrier")
+	Near(ItemValue({ CritRating = 10 }, ShadowPriest), 10 * Crit, "crit général, Ombre")
+	Near(ItemValue({ CritRating = 10 }, Warrior), 10 * Level80[Warrior].CritRating, "crit général, guerrier")
+	Equal(ItemValue({ RangedCritRating = 14 }, ShadowPriest), 0, "crit à distance, Ombre (objet 7348)")
+	Near(ItemValue({ RangedCritRating = 14 }, Hunter), 14 * Level80[Hunter].CritRating, "crit à distance, chasseur")
+	PawnClassicApplyRatingLevel(60)
+end)
+
+Test("scores réservés : une échelle perso donne le poids du score général", function()
+	ClassicScales()
+	PawnCommon.Scales["Ma copie"] = { Values = { CritRating = 0.5, HitRating = 2, Stamina = 1 } }
+	Equal(ItemValue({ MeleeCritRating = 10 }, "Ma copie"), 5, "crit en mêlée")
+	Equal(ItemValue({ SpellHitRating = 4 }, "Ma copie"), 8, "toucher des sorts")
+	Equal(ItemValue({ RangedHasteRating = 4 }, "Ma copie"), 0, "hâte sans poids")
+	PawnCommon.Scales["Ma copie"].Values.CritRating = PawnIgnoreStatValue
+	Equal(ItemValue({ SpellCritRating = 10, Stamina = 10 }, "Ma copie"), 0, "score général ignoré : objet inutilisable")
+	PawnCommon.Scales["Ma copie"] = nil
+end)
+
+Test("scores réservés : les meilleurs objets notés avec les anciens poids sont oubliés une fois", function()
+	ClassicScales()
+	PawnClassicApplyRatingLevel(60)
+	local Options = PawnCommon.Scales[ShadowPriest].PerCharacterOptions["Mairy-Test"]
+	-- A list saved before this version, at the same level: the next login must forget it.
+	local Stub = { Stub = true }
+	Options.BestItems, Options.RatingWeightsVersion = Stub, nil
+	PawnClassicRatingLevel = nil -- as on login
+	PawnClassicApplyRatingLevel(60)
+	Equal(Options.BestItems, nil, "liste notée avec les anciens poids oubliée")
+	-- A list saved with the current weights is kept.
+	local Stub2 = { Stub = true }
+	Options.BestItems = Stub2
+	PawnClassicRatingLevel = nil
+	PawnClassicApplyRatingLevel(60)
+	Equal(Options.BestItems, Stub2, "liste notée avec les poids actuels conservée")
+end)
 return Tests

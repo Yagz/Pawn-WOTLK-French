@@ -698,6 +698,31 @@ local OriginalRatingWeights = {}
 -- Level applied to the Classic scales; nil until at least one Classic scale has been adjusted.  Not saved to disk.
 PawnClassicRatingLevel = nil
 
+-- Fork frFR 3.3.5a: weights of the ratings that only apply to spells, melee or ranged attacks (PawnRestrictedRatingStats),
+-- per scale name, at the character's level.  PawnGetStatWeight uses them for the Classic scales.  Not saved to disk.
+PawnClassicRestrictedRatingWeights = {}
+
+-- Level-80 restricted weights, per scale name, computed the first time each scale is adjusted.
+local OriginalRestrictedWeights = {}
+
+-- Bump when the weights change in a way that makes the best items saved per character wrong (1: restricted ratings).
+local RatingWeightsVersion = 1
+
+-- Level-80 weights of the restricted ratings of a Wrath Classic scale, from the scale's own values.  The HawsJon Wrath weights
+-- have one weight per rating, for the attacks the spec uses: spells if the scale values spell power, and its physical attacks
+-- (ranged for hunters, melee for everyone else) if it values attack power or not spell power.  Other attacks get 0.
+function PawnClassicRestrictedRatingsAt80(Values, ClassID)
+	local UsesSpells = (Values.SpellPower or 0) > 0
+	local PhysicalKind
+	if (Values.Ap or 0) > 0 or not UsesSpells then PhysicalKind = (ClassID == 3) and "Ranged" or "Melee" end
+	local Weights = {}
+	for Stat, General in pairs(PawnRestrictedRatingStats) do
+		local Applies = (UsesSpells and strfind(Stat, "^Spell")) or (PhysicalKind and strfind(Stat, "^" .. PhysicalKind))
+		Weights[Stat] = Applies and (Values[General] or 0) or 0
+	end
+	return Weights
+end
+
 function PawnClassicApplyRatingLevel(Level)
 	Level = max(1, min(80, floor(tonumber(Level) or 80)))
 	if Level == PawnClassicRatingLevel or not PawnCommon or not PawnCommon.Scales then return end
@@ -710,20 +735,28 @@ function PawnClassicApplyRatingLevel(Level)
 				Originals = {}
 				for Stat in pairs(PawnRatingPointsPerPercent) do Originals[Stat] = Scale.Values[Stat] end
 				OriginalRatingWeights[ScaleName] = Originals
+				OriginalRestrictedWeights[ScaleName] = PawnClassicRestrictedRatingsAt80(Scale.Values, Scale.ClassID)
 			end
 			for Stat, Points in pairs(PawnRatingPointsPerPercent) do
 				-- Parentheses keep the factor at exactly 1 on level 80.
 				if Originals[Stat] then Scale.Values[Stat] = Originals[Stat] * (Points[80] / Points[Level]) end
 			end
+			local Restricted = {}
+			for Stat, Weight in pairs(OriginalRestrictedWeights[ScaleName]) do
+				local Points = PawnRatingPointsPerPercent[Stat]
+				Restricted[Stat] = Weight * (Points[80] / Points[Level])
+			end
+			PawnClassicRestrictedRatingWeights[ScaleName] = Restricted
 			tinsert(Adjusted, ScaleName)
 
 			-- The best items saved for this character were scored with the old weights, and stored scores only ever go up,
-			-- so they would hide real upgrades.  Forget them when the level changes (as PawnSetStatValue does when weights change).
-			-- Other characters' lists were scored at their own levels and stay valid.
+			-- so they would hide real upgrades.  Forget them when the level or the weights change (as PawnSetStatValue does
+			-- when weights change).  Other characters' lists were scored at their own levels and stay valid until they log in.
 			local CharacterOptions = Scale.PerCharacterOptions and Scale.PerCharacterOptions[PawnPlayerFullName]
-			if CharacterOptions and CharacterOptions.RatingLevel ~= Level then
+			if CharacterOptions and (CharacterOptions.RatingLevel ~= Level or CharacterOptions.RatingWeightsVersion ~= RatingWeightsVersion) then
 				CharacterOptions.BestItems = nil
 				CharacterOptions.RatingLevel = Level
+				CharacterOptions.RatingWeightsVersion = RatingWeightsVersion
 			end
 		end
 	end

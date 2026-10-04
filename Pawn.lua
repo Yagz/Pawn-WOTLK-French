@@ -73,6 +73,15 @@ PawnImportScaleResultTagError = 3
 PawnIgnoreStatValue = -1000000
 PawnBigUpgradeThreshold = 100 -- = 10000% upgrade: don't display upgrade numbers that large
 
+-- Fork frFR 3.3.5a: ratings that only apply to spells, melee or ranged attacks, and the general rating each one belongs to.
+-- 3.3.5a items still show them apart; a scale without a weight for one uses the weight of its general rating.
+PawnRestrictedRatingStats =
+{
+	SpellHitRating = "HitRating", SpellCritRating = "CritRating", SpellHasteRating = "HasteRating",
+	MeleeHitRating = "HitRating", MeleeCritRating = "CritRating", MeleeHasteRating = "HasteRating",
+	RangedHitRating = "HitRating", RangedCritRating = "CritRating", RangedHasteRating = "HasteRating",
+}
+
 -- Data used by PawnGetSlotsForItemType.
 local PawnItemEquipLocToSlot1 =
 {
@@ -2677,6 +2686,19 @@ end
 --		Value: The numeric value of an item based on the given scale values.  (example: 21.75)
 --		TotalSocketValue: The total value of the sockets and socket bonus if applicable. (This is already factored into the total value.)
 --		SocketBonusValue: The total value of the socket bonus, IF it's worthwhile. (This is already factored into the previous two values.)
+-- Fork frFR 3.3.5a: weight of Stat in a scale.  A restricted rating (PawnRestrictedRatingStats) takes the weight the
+-- Classic scales give it (PawnClassicRestrictedRatingWeights, ClassicHawsJon.lua), or else the weight of its general rating;
+-- if the general rating is ignored, so is the restricted one.
+function PawnGetStatWeight(ScaleName, ScaleValues, Stat)
+	local General = PawnRestrictedRatingStats[Stat]
+	if not General then return ScaleValues[Stat] end
+	local GeneralValue = ScaleValues[General]
+	if GeneralValue and GeneralValue <= PawnIgnoreStatValue then return GeneralValue end
+	local Restricted = PawnClassicRestrictedRatingWeights and PawnClassicRestrictedRatingWeights[ScaleName]
+	if Restricted and Restricted[Stat] then return Restricted[Stat] end
+	return GeneralValue
+end
+
 function PawnGetItemValue(Item, ItemLevel, SocketBonus, ScaleName, DebugMessages, NoNormalization)
 	-- If either the item or scale is empty, exit now.
 	if (not Item) or (not ScaleName) then return end
@@ -2693,7 +2715,7 @@ function PawnGetItemValue(Item, ItemLevel, SocketBonus, ScaleName, DebugMessages
 	local IsUnusable
 	local ThisValue, Stat, Quantity
 	for Stat, Quantity in pairs(Item) do
-		ThisValue = ScaleValues[Stat]
+		ThisValue = PawnGetStatWeight(ScaleName, ScaleValues, Stat)
 		if VgerCore.IsMainline then
 			-- When not in Classic:
 			-- Attack Power gets converted into Strength or Agility, whichever is most valuable.
@@ -2789,7 +2811,7 @@ function PawnGetItemValue(Item, ItemLevel, SocketBonus, ScaleName, DebugMessages
 				-- Then, see if we can get a better value by going for the socket bonus.
 				if SocketBonus then
 					for Stat, Quantity in pairs(SocketBonus) do
-						ThisValue = ScaleValues[Stat]
+						ThisValue = PawnGetStatWeight(ScaleName, ScaleValues, Stat)
 						if ThisValue then
 							SocketBonusValue = SocketBonusValue + ThisValue * Quantity
 							if DebugMessages then PawnDebugMessage(format(PawnLocal.ValueCalculationMessage, Quantity, Stat, ThisValue, Quantity * ThisValue)) end
