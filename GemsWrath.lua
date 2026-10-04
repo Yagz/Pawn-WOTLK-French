@@ -739,4 +739,26 @@ PawnMetaGemQualityLevels =
 
 PawnMinimumItemLevelToConsiderGems = 187
 
+-- Fork frFR 3.3.5a: assume the best rare gems of the character's expansion in every socket, whatever the item's level:
+-- Burning Crusade's up to level 70, Wrath's after (spec 2026-10-04).  ClassicHawsJon.lua calls this on load and on
+-- PLAYER_LEVEL_UP.  Until then, the tables above stay in place.
+local PawnWrathGemQuality
+
+-- Returns true if the assumed gems changed: the caller must then recalculate every scale's best gems.
+function PawnWrathSetGemQualityForLevel(Level)
+	Level = max(1, min(80, floor(tonumber(Level) or 80)))
+	local Quality = (Level <= 70) and 70 or 80
+	if Quality == PawnWrathGemQuality then return false end
+	PawnWrathGemQuality = Quality
+	-- A single entry at item level 0: PawnGetGemQualityForItem gives it to every item.
+	if Quality == 70 then
+		PawnGemQualityLevels = { { 0, PawnGemData70Rare } }
+		PawnMetaGemQualityLevels = { { 0, PawnMetaGemData70Rare } }
+	else
+		PawnGemQualityLevels = { { 0, PawnGemData80Rare } }
+		PawnMetaGemQualityLevels = { { 0, PawnMetaGemData80Rare } }
+	end
+	return true
+end
+
 end -- if VgerCore.IsWrath

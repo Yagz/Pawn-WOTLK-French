@@ -941,4 +941,94 @@ Test("scores réservés : les meilleurs objets notés avec les anciens poids son
 	PawnClassicApplyRatingLevel(60)
 	Equal(Options.BestItems, Stub2, "liste notée avec les poids actuels conservée")
 end)
+
+------------------------------------------------------------
+-- Gem quality by character level (spec 2026-10-04).  They need the Classic scales, so they stay last.
+------------------------------------------------------------
+
+Test("gemmes : bleues de BC jusqu'au niveau 70, bleues de Wrath ensuite, quel que soit le niveau de l'objet", function()
+	ClassicScales()
+	Equal(PawnGemQualityLevels[1][2], Gems70Rare, "connexion au niveau 60 : gemmes")
+	Equal(PawnMetaGemQualityLevels[1][2], Meta70Rare, "connexion au niveau 60 : méta")
+	Equal(#PawnGemQualityLevels, 1, "une seule qualité")
+	Equal(PawnWrathSetGemQualityForLevel(60), false, "même qualité")
+	Equal(PawnWrathSetGemQualityForLevel(71), true, "71 : changement")
+	Equal(PawnGemQualityLevels[1][2], PawnGemData80Rare, "71 : gemmes")
+	Equal(PawnMetaGemQualityLevels[1][2], PawnMetaGemData80Rare, "71 : méta")
+	Equal(PawnWrathSetGemQualityForLevel(80), false, "80 : même qualité")
+	Equal(PawnWrathSetGemQualityForLevel(85), false, "85 ramené à 80")
+	Equal(PawnWrathSetGemQualityForLevel(70), true, "70 : changement")
+	Equal(PawnGemQualityLevels[1][2], Gems70Rare, "70 : gemmes")
+	Equal(PawnMetaGemQualityLevels[1][2], Meta70Rare, "70 : méta")
+	Equal(PawnWrathSetGemQualityForLevel(1), false, "1 : même qualité")
+	Equal(PawnWrathSetGemQualityForLevel(nil), true, "nil ramené à 80")
+	Equal(PawnWrathSetGemQualityForLevel(60), true, "retour à 60")
+	-- The Gems tab and PawnGetItemValue ask for the quality of an item level: every level gets the single entry.
+	Equal(PawnGetGemQualityForItem(PawnGemQualityLevels, 245), 0, "objet de niveau 245")
+	Equal(PawnGetGemQualityForItem(PawnGemQualityLevels, 60), 0, "objet de niveau 60")
+	Equal(PawnGetGemQualityForItem(PawnMetaGemQualityLevels, 1), 0, "méta, objet de niveau 1")
+end)
+
+Test("gemmes : au niveau 60, une châsse vaut la meilleure gemme bleue de BC, quel que soit le niveau de l'objet", function()
+	ClassicScales()
+	PawnClassicApplyRatingLevel(60)
+	local Ignore = PawnCommon.IgnoreGemsWhileLeveling
+	PawnCommon.IgnoreGemsWhileLeveling = false
+	-- Without a socket bonus, Pawn values a socket with the best gem of any color.
+	local Best = PawnFindBestGems(ShadowPriest, Gems70Rare)
+	assert(Best > 0, "meilleure gemme de BC : " .. tostring(Best))
+	local Socket = { RedSocket = 1 }
+	Near((PawnGetItemValue(Socket, 105, nil, ShadowPriest, false, true)), Best, "objet de niveau 105")
+	Near((PawnGetItemValue(Socket, 60, nil, ShadowPriest, false, true)), Best, "objet de niveau 60")
+	PawnCommon.IgnoreGemsWhileLeveling = true
+	Equal((PawnGetItemValue(Socket, 105, nil, ShadowPriest, false, true)), 0, "option cochée : châsse ignorée")
+	PawnCommon.IgnoreGemsWhileLeveling = Ignore
+end)
+
+Test("gemmes : passage de 70 à 71, les meilleures gemmes de toutes les échelles changent", function()
+	ClassicScales()
+	local Frame = PawnClassicRatingLevelFrame
+	local OnEvent = Frame:GetScript("OnEvent")
+	OnEvent(Frame, "PLAYER_LEVEL_UP", 70)
+	PawnCommon.Scales["Ma copie"] = { Values = { SpellPower = 1, Stamina = 0.5 } }
+	PawnRecalculateScaleTotal("Ma copie")
+	local BC = PawnFindBestGems("Ma copie", Gems70Rare, true, false, false)
+	Near(PawnScaleBestGems["Ma copie"].RedSocketValue[0], BC, "70 : rouge de BC, échelle perso")
+	OnEvent(Frame, "PLAYER_LEVEL_UP", 71)
+	local Wrath = PawnFindBestGems("Ma copie", PawnGemData80Rare, true, false, false)
+	assert(Wrath > BC, "rouge de Wrath " .. Wrath .. ", rouge de BC " .. BC)
+	Near(PawnScaleBestGems["Ma copie"].RedSocketValue[0], Wrath, "71 : rouge de Wrath, échelle perso")
+	Near(PawnScaleBestGems[ShadowPriest].PrismaticSocketValue[0], (PawnFindBestGems(ShadowPriest, PawnGemData80Rare)), "71 : Ombre")
+	PawnCommon.Scales["Ma copie"] = nil
+	PawnRecalculateScaleTotal("Ma copie") -- forgets its best gems
+	OnEvent(Frame, "PLAYER_LEVEL_UP", 60)
+	Near(PawnScaleBestGems[ShadowPriest].PrismaticSocketValue[0], (PawnFindBestGems(ShadowPriest, Gems70Rare)), "retour à 60 : Ombre")
+end)
+
+Test("gemmes : sans PawnWrathSetGemQualityForLevel, la montée de niveau ajuste les scores sans erreur", function()
+	ClassicScales()
+	local Set = PawnWrathSetGemQualityForLevel
+	PawnWrathSetGemQualityForLevel = nil
+	local Frame = PawnClassicRatingLevelFrame
+	local Ok, Err = pcall(Frame:GetScript("OnEvent"), Frame, "PLAYER_LEVEL_UP", 75)
+	PawnWrathSetGemQualityForLevel = Set
+	assert(Ok, tostring(Err))
+	Equal(PawnClassicRatingLevel, 75, "scores ajustés")
+	Equal(PawnGemQualityLevels[1][2], Gems70Rare, "gemmes inchangées")
+	Frame:GetScript("OnEvent")(Frame, "PLAYER_LEVEL_UP", 60)
+end)
+
+Test("gemmes : les meilleurs objets notés avant les châsses supposées sont oubliés une fois", function()
+	ClassicScales()
+	PawnClassicApplyRatingLevel(60)
+	local Scale = PawnCommon.Scales[ShadowPriest]
+	Scale.PerCharacterOptions = Scale.PerCharacterOptions or {}
+	Scale.PerCharacterOptions["Mairy-Test"] = Scale.PerCharacterOptions["Mairy-Test"] or {}
+	local Options = Scale.PerCharacterOptions["Mairy-Test"]
+	Options.BestItems, Options.RatingWeightsVersion = { Stub = true }, 1
+	PawnClassicRatingLevel = nil -- as on login
+	PawnClassicApplyRatingLevel(60)
+	Equal(Options.BestItems, nil, "liste notée avec la version 1 oubliée")
+	Equal(Options.RatingWeightsVersion, 2, "version mémorisée")
+end)
 return Tests

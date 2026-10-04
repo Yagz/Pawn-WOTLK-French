@@ -649,7 +649,9 @@ function PawnClassicScaleProvider_AddScales()
 			MetaSocket=35, }
 		)
 
-		-- Fork frFR 3.3.5a: these weights are for level 80; scale the rating weights to the character's level.
+		-- Fork frFR 3.3.5a: these weights are for level 80; scale the rating weights to the character's level, and assume the
+		-- gems of the character's expansion in sockets (GemsWrath.lua).  PawnInitialize then recalculates every scale's best gems.
+		if PawnWrathSetGemQualityForLevel then PawnWrathSetGemQualityForLevel(UnitLevel("player")) end
 		PawnClassicApplyRatingLevel(UnitLevel("player"))
 
 	else
@@ -705,8 +707,9 @@ PawnClassicRestrictedRatingWeights = {}
 -- Level-80 restricted weights, per scale name, computed the first time each scale is adjusted.
 local OriginalRestrictedWeights = {}
 
--- Bump when the weights change in a way that makes the best items saved per character wrong (1: restricted ratings).
-local RatingWeightsVersion = 1
+-- Bump when the weights change in a way that makes the best items saved per character wrong (1: restricted ratings;
+-- 2: sockets valued with the gems of the character's expansion).
+local RatingWeightsVersion = 2
 
 -- Level-80 weights of the restricted ratings of a Wrath Classic scale, from the scale's own values.  The HawsJon Wrath weights
 -- have one weight per rating, for the attacks the spec uses: spells if the scale values spell power, and its physical attacks
@@ -783,7 +786,13 @@ if VgerCore.IsWrath then
 	local LevelFrame = CreateFrame("Frame", "PawnClassicRatingLevelFrame")
 	LevelFrame:RegisterEvent("PLAYER_LEVEL_UP")
 	LevelFrame:SetScript("OnEvent", function(self, Event, Level)
+		local GemsChanged = PawnWrathSetGemQualityForLevel and PawnWrathSetGemQualityForLevel(Level)
 		PawnClassicApplyRatingLevel(Level)
+		if GemsChanged and PawnCommon and PawnCommon.Scales then
+			-- Every scale's best gems come from the gem tables, the user's own scales too.
+			for ScaleName in pairs(PawnCommon.Scales) do PawnRecalculateScaleTotal(ScaleName) end
+			PawnResetTooltips()
+		end
 		-- Refresh the open Pawn window so that it shows the new level and weights (same guards as PawnUI_SelectScale).
 		if PawnUIFrame and PawnUIFrame:IsShown() then
 			if PawnUIScalesTabPage and PawnUIScalesTabPage:IsVisible() and PawnUI_ScalesTab_Refresh then PawnUI_ScalesTab_Refresh() end
