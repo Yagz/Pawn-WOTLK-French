@@ -31,7 +31,7 @@ Pawn ne fait pas ce choix aujourd'hui (constaté le 2026-10-04) :
   |---|---|---|
   | 24030 | notée `SpellDamage = 9` au lieu de `SpellPower = 9` | `SpellDamage` ne vaut rien dans les échelles Wrath : jamais choisie |
   | 32196 | notée `SpellDamage = 12` au lieu de `SpellPower = 12` | idem |
-  | 23100 | notée Force 3, Endurance 4, rouge et bleue | devrait être Agilité 3, toucher 3, rouge et jaune |
+  | 23100 (Sovereign Shadow Draenite, `GemsWrath.lua:120`) | porte l'ID de la gemme orange 23100 (Agilité 3, toucher 3, rouge et jaune, juste à la ligne 78) | son ID dans le client est 23111 (Force 3, Endurance 4, couleur 10 = rouge et bleu) : la gemme 23111 manque, la 23100 est en double |
 
   Les 366 autres gemmes ont les mêmes stats et la même couleur que le client.
 
@@ -91,7 +91,7 @@ La pénétration des sorts n'est pas un effet de stat dans le DBC (c'est un effe
 ### Corrections
 
 - 24030 et 32196 : `SpellDamage` devient `SpellPower` (9 et 12).
-- 23100 : `Stats = { Agility = 3, HitRating = 3 }`, couleurs `R` et `Y`.
+- Ligne 120 (Sovereign Shadow Draenite) : `ID = 23100` devient `ID = 23111`, stats et couleurs inchangées.
 
 Chaque ligne corrigée cite `SpellItemEnchantment.dbc` en commentaire.
 
@@ -101,7 +101,7 @@ Les tests qui créent les échelles Classic restent à la fin de `tests/unit.lua
 
 1. **Données** : chaque gemme de `GemsWrath.lua` correspond au client (section 2).
 2. **Qualité** : aux niveaux 1, 60 et 70, la table est celle des bleues de BC ; aux niveaux 71 et 80, celle des bleues de Wrath. Un second appel au même niveau renvoie `false`.
-3. **Valeur d'un objet à châsses** : l'option est décochée et le personnage est au niveau 60. Pour un objet de niveau 105 à une châsse rouge, la châsse vaut la valeur de la meilleure gemme rouge de `PawnGemData70Rare` dans l'échelle. Un objet de niveau 60 avec la même châsse obtient la même valeur.
+3. **Valeur d'un objet à châsses** : l'option est décochée et le personnage est au niveau 60. Pour un objet de niveau 105 à une châsse rouge sans bonus de sertissage, la châsse vaut la meilleure gemme de `PawnGemData70Rare` dans l'échelle, toutes couleurs confondues (Pawn envisage de ne pas respecter la couleur quand le bonus ne compense pas). Un objet de niveau 60 avec la même châsse obtient la même valeur. Option cochée, la châsse d'un objet de niveau 105 vaut 0.
 4. **Passage de 70 à 71** : la meilleure gemme d'une échelle personnelle change de la table BC à la table Wrath, sans autre appel que celui de l'événement.
 5. **Meilleurs objets** : une liste notée avec `RatingWeightsVersion = 1` est oubliée une fois.
 6. **Clients non Wrath** : la fonction n'existe que dans le bloc `IsWrath`, et le gestionnaire vérifie qu'elle existe avant de l'appeler.
