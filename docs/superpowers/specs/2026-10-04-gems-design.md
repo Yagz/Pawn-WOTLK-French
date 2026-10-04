@@ -68,6 +68,8 @@ Avec une seule entrée de niveau 0, `PawnGetGemQualityForItem` renvoie 0 pour to
 
 Les listes `BestItems` sauvegardées ont été notées sans les châsses ou avec d'autres gemmes. `RatingWeightsVersion` (`ClassicHawsJon.lua`) passe de 1 à 2, ce qui les fait oublier une fois, comme au sous-projet 2.
 
+Les échelles personnelles et importées comptent les châsses avec les mêmes gemmes. Leurs listes du personnage sont donc oubliées une fois au chargement (même marqueur `RatingWeightsVersion`), puis à chaque changement de gemmes supposées (passage 70 → 71). Ajout après la relecture finale.
+
 ## 2. Données de gemmes vérifiées contre le client
 
 ### Extraction

@@ -1031,4 +1031,36 @@ Test("gemmes : les meilleurs objets notés avant les châsses supposées sont ou
 	Equal(Options.BestItems, nil, "liste notée avec la version 1 oubliée")
 	Equal(Options.RatingWeightsVersion, 2, "version mémorisée")
 end)
+
+Test("gemmes : les meilleurs objets d'une échelle perso sont oubliés quand les gemmes supposées changent", function()
+	ClassicScales()
+	local Frame = PawnClassicRatingLevelFrame
+	local OnEvent = Frame:GetScript("OnEvent")
+	OnEvent(Frame, "PLAYER_LEVEL_UP", 70)
+	PawnCommon.Scales["Ma copie"] = { Values = { SpellPower = 1 }, PerCharacterOptions = { ["Mairy-Test"] = {}, ["Autre-Test"] = {} } }
+	local Options, Other = PawnCommon.Scales["Ma copie"].PerCharacterOptions["Mairy-Test"], PawnCommon.Scales["Ma copie"].PerCharacterOptions["Autre-Test"]
+	-- A list saved before RatingWeightsVersion 2 is forgotten once, on login.
+	local Stub = { Stub = true }
+	Options.BestItems, Other.BestItems = Stub, Stub
+	PawnClassicRatingLevel = nil -- as on login
+	PawnClassicApplyRatingLevel(70)
+	Equal(Options.BestItems, nil, "connexion : liste notée avant la version 2 oubliée")
+	Equal(Other.BestItems, Stub, "connexion : liste d'un autre personnage conservée")
+	local Stub2 = { Stub = true }
+	Options.BestItems = Stub2
+	PawnClassicRatingLevel = nil
+	PawnClassicApplyRatingLevel(70)
+	Equal(Options.BestItems, Stub2, "connexion suivante : liste conservée")
+	-- Level up without a change of gems: the list stays.
+	OnEvent(Frame, "PLAYER_LEVEL_UP", 69)
+	Equal(Options.BestItems, Stub2, "69 : mêmes gemmes, liste conservée")
+	-- 70 -> 71: Wrath gems, the list was scored with BC gems.
+	OnEvent(Frame, "PLAYER_LEVEL_UP", 71)
+	Equal(Options.BestItems, nil, "71 : liste oubliée")
+	Equal(Other.BestItems, Stub, "71 : liste d'un autre personnage conservée")
+	PawnCommon.Scales["Ma copie"] = { Values = { SpellPower = 1 } } -- no PerCharacterOptions at all
+	OnEvent(Frame, "PLAYER_LEVEL_UP", 60)
+	PawnCommon.Scales["Ma copie"] = nil
+	PawnRecalculateScaleTotal("Ma copie")
+end)
 return Tests

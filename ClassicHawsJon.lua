@@ -711,6 +711,18 @@ local OriginalRestrictedWeights = {}
 -- 2: sockets valued with the gems of the character's expansion).
 local RatingWeightsVersion = 2
 
+-- Personal and imported scales value sockets with the same assumed gems (GemsWrath.lua) as the Classic scales.  Forget this
+-- character's best items on those scales when the gems change (Always), or once for lists saved before RatingWeightsVersion.
+local function PawnClassicForgetOtherBestItems(Always)
+	for _, Scale in pairs(PawnCommon.Scales) do
+		local CharacterOptions = Scale.Provider ~= ScaleProviderName and Scale.PerCharacterOptions and Scale.PerCharacterOptions[PawnPlayerFullName]
+		if CharacterOptions and (Always or CharacterOptions.RatingWeightsVersion ~= RatingWeightsVersion) then
+			CharacterOptions.BestItems = nil
+			CharacterOptions.RatingWeightsVersion = RatingWeightsVersion
+		end
+	end
+end
+
 -- Level-80 weights of the restricted ratings of a Wrath Classic scale, from the scale's own values.  The HawsJon Wrath weights
 -- have one weight per rating, for the attacks the spec uses: spells if the scale values spell power, and its physical attacks
 -- (ranged for hunters, melee for everyone else) if it values attack power or not spell power.  Other attacks get 0.
@@ -766,6 +778,7 @@ function PawnClassicApplyRatingLevel(Level)
 	-- Only remember the level once something was adjusted, so that a call made before the scales exist doesn't block the next one.
 	if #Adjusted == 0 then return end
 	PawnClassicRatingLevel = Level
+	PawnClassicForgetOtherBestItems(false)
 
 	for _, ScaleName in pairs(Adjusted) do PawnRecalculateScaleTotal(ScaleName) end
 	PawnResetTooltips()
@@ -790,6 +803,7 @@ if VgerCore.IsWrath then
 		PawnClassicApplyRatingLevel(Level)
 		if GemsChanged and PawnCommon and PawnCommon.Scales then
 			-- Every scale's best gems come from the gem tables, the user's own scales too.
+			PawnClassicForgetOtherBestItems(true)
 			for ScaleName in pairs(PawnCommon.Scales) do PawnRecalculateScaleTotal(ScaleName) end
 			PawnResetTooltips()
 		end
