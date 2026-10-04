@@ -10,7 +10,7 @@ Pawn 2.8.11 as backported to WoW 3.3.5a by MarkosF (https://github.com/MarkosF/P
 
 All commands run from the addon root.
 
-- `luajit tests/run.lua` — unit tests plus every corpus file; exit code 1 on failure. Currently 2322 passing, 0 failures, 0 todo.
+- `luajit tests/run.lua` — unit tests plus every corpus file; exit code 1 on failure. Currently 2323 passing, 0 failures, 0 todo.
 - `luajit tests/run.lua tests/corpus/X.txt` — one corpus file.
 - `luajit tests/run.lua --propose tests/corpus/X.txt` — print what Pawn currently reads for each `todo` line.
 - `luajit tests/gen_corpus.lua` — regenerate the corpus from `tests/data/` (adds new texts only).

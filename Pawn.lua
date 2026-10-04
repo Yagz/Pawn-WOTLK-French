@@ -2714,7 +2714,8 @@ function PawnAddClassRestriction(Stats, List, DebugMessages)
 	if type(LOCALIZED_CLASS_NAMES_MALE) ~= "table" or type(LOCALIZED_CLASS_NAMES_FEMALE) ~= "table" then return end
 	local Names = {}
 	for _, Localized in ipairs({ LOCALIZED_CLASS_NAMES_MALE, LOCALIZED_CLASS_NAMES_FEMALE }) do
-		for Token, Name in pairs(Localized) do tinsert(Names, { Name = Name, Token = Token }) end
+		-- An empty name (no female name in ChrClasses.dbc) would match any separator.
+		for Token, Name in pairs(Localized) do if type(Name) == "string" and Name ~= "" then tinsert(Names, { Name = Name, Token = Token }) end end
 	end
 	sort(Names, function(A, B) return strlen(A.Name) > strlen(B.Name) end)
 	local Allowed, Rest, Count = {}, " " .. List .. " "

@@ -605,6 +605,18 @@ Test("classes : un nom féminin vaut le masculin, même quand il le contient", f
 	Equal((Restrictions(format(ITEM_CLASSES_ALLOWED, Classes.PRIEST.Female .. ", " .. Classes.MAGE.Male))), AllBut("PRIEST", "MAGE"), "féminin dans une liste")
 end)
 
+Test("classes : un nom féminin vide dans les tables du client ne reconnaît pas les séparateurs", function()
+	-- ChrClasses.dbc has no female name for the paladin and the death knight: the client's table may hold "" for them.
+	local Paladin, DeathKnight = LOCALIZED_CLASS_NAMES_FEMALE.PALADIN, LOCALIZED_CLASS_NAMES_FEMALE.DEATHKNIGHT
+	LOCALIZED_CLASS_NAMES_FEMALE.PALADIN, LOCALIZED_CLASS_NAMES_FEMALE.DEATHKNIGHT = "", ""
+	local Ok, Single = pcall(Restrictions, format(ITEM_CLASSES_ALLOWED, Classes.DRUID.Male))
+	local _, Pair = pcall(Restrictions, format(ITEM_CLASSES_ALLOWED, Classes.HUNTER.Male .. ", " .. Classes.SHAMAN.Male))
+	LOCALIZED_CLASS_NAMES_FEMALE.PALADIN, LOCALIZED_CLASS_NAMES_FEMALE.DEATHKNIGHT = Paladin, DeathKnight
+	assert(Ok, tostring(Single))
+	Equal(Single, AllBut("DRUID"), "une classe")
+	Equal(Pair, AllBut("HUNTER", "SHAMAN"), "deux classes")
+end)
+
 Test("classes : un nom inconnu ne restreint rien et la ligne reste comprise", function()
 	local Got, Understood = Restrictions(format(ITEM_CLASSES_ALLOWED, Classes.MAGE.Male .. ", Inconnu"))
 	Equal(Understood, true, "ligne comprise")
