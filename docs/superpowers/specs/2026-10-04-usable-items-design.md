@@ -48,7 +48,7 @@ La ligne `ITEM_CLASSES_ALLOWED` (« Classes : %s ») cesse d'être ignorée. Sa 
 - elle prend tous les noms masculins et féminins, du plus long au plus court (« Prêtresse » avant « Prêtre ») ;
 - elle retire chaque nom trouvé dans la liste, mot entier, et note son jeton ;
 - s'il reste autre chose que des espaces et de la ponctuation, un nom est inconnu, et aucune restriction n'est ajoutée (message en mode debug) ;
-- sinon, elle ajoute `UnusableBy<JETON> = 1` pour chaque classe de `CLASS_SORT_ORDER` absente de la liste.
+- sinon, elle ajoute `UnusableBy<JETON> = 1` pour chaque classe de `LOCALIZED_CLASS_NAMES_MALE` absente de la liste.
 
 Si les tables du client manquent, la ligne reste comprise sans restriction.
 
@@ -60,20 +60,20 @@ Si les tables du client manquent, la ligne reste comprise sans restriction.
 
 Le script `tests/extract_classes.py` (`uv run --with mpyq`, même principe que `tests/extract_gems.py`) lit `ChrClasses.dbc` et écrit `tests/data/classes.frFR.txt`. Le format est `ID<TAB>jeton<TAB>nom masculin<TAB>nom féminin`. L'en-tête cite l'archive et le md5. Relancer le script sur les mêmes données donne le même fichier. Les numéros de champs (0 ID, 23 féminin, 40 masculin, 55 jeton) sont confirmés à l'extraction et notés dans `CLAUDE.md`.
 
-Le harnais de test remplit `LOCALIZED_CLASS_NAMES_MALE` / `_FEMALE` et `CLASS_SORT_ORDER` à partir de ce fichier, comme le fait le client.
+Le harnais de test remplit `LOCALIZED_CLASS_NAMES_MALE` / `_FEMALE` à partir de ce fichier, comme le fait le client. Un nom féminin vide dans le DBC (paladin, chevalier de la mort) prend le nom masculin dans le harnais.
 
 ## 4. Tests hors jeu (`luajit tests/run.lua`)
 
 1. **Lecture :**
    - « Classes : Druide » donne `UnusableBy*` pour les neuf autres classes et rien pour `DRUID` ;
-   - une liste de deux classes, construite à partir des noms du fichier de données séparés par une virgule avec et sans espace, puis par « et », donne huit restrictions ;
+   - une liste de deux classes, construite à partir des noms du fichier de données séparés par une virgule avec et sans espace, donne huit restrictions. Aucun autre séparateur n'est attesté par les données : la vérification en jeu (section 5) donne la vraie forme ;
    - un nom féminin (« Prêtresse ») vaut le masculin ;
    - un nom inconnu ne donne aucune restriction, et la ligne reste comprise.
 2. **Corpus :** les 9 lignes « Classes : … » de `tests/corpus/scan.txt` passent d'`ignored` aux stats `UnusableBy*`. Les attentes sont réécrites par script, et le texte du client n'est pas modifié.
 3. **Valeur :**
-   - le bâton 51432, reconstitué depuis les lignes de l'inspection en jeu, vaut 0 pour « Prêtre : Sacré » et pour le guerrier Fureur, et reste valorisé pour le druide farouche ;
+   - le bâton 51432, reconstitué à partir des constantes du client avec les nombres de l'inspection en jeu, vaut 0 pour « Prêtre : Sacré » et pour le guerrier Fureur, et reste valorisé pour le druide farouche ;
    - une échelle personnelle suit la classe du personnage.
-4. **Voleurs :** la dague 51528, reconstituée de même, a une valeur non nulle pour les trois échelles de voleur, et `IsOffHand` n'est plus bloqué chez eux. Les tanks guerrier et paladin le gardent bloqué.
+4. **Voleurs :** la dague 51528, reconstituée de la même façon, a une valeur non nulle pour les trois échelles de voleur, et `IsOffHand` n'est plus bloqué chez eux. Les tanks guerrier et paladin le gardent bloqué.
 5. **Mémorisation :** une liste notée avec `RatingWeightsVersion = 2` est oubliée une fois.
 
 ## 5. Vérifications en jeu (par l'utilisateur)
